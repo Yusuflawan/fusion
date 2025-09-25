@@ -1,0 +1,973 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- begin::GXON Meta Basic -->
+    <meta charset="utf-8" />
+<link rel="icon" type="image/png" href="assets/images/logo.jpeg" />
+    <title>Fusion</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&display=swap"
+      rel="stylesheet"
+    />
+    <!-- end::GXON Google Fonts -->
+
+    <!-- begin::GXON Required Stylesheet -->
+    <link rel="stylesheet" href="assets/libs/flaticon/css/all/all.css" />
+    <link rel="stylesheet" href="assets/libs/lucide/lucide.css" />
+    <link rel="stylesheet" href="assets/libs/fontawesome/css/all.min.css" />
+    <link rel="stylesheet" href="assets/libs/simplebar/simplebar.css" />
+    <link rel="stylesheet" href="assets/libs/node-waves/waves.css" />
+    <link
+      rel="stylesheet"
+      href="assets/libs/bootstrap-select/css/bootstrap-select.min.css"
+    />
+    <!-- Bootstrap CSS (optional if not already included) -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+
+    <!-- Bootstrap Icons -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css"
+      rel="stylesheet"
+    />
+
+    <!-- end::GXON Required Stylesheet -->
+
+    <!-- begin::GXON CSS Stylesheet -->
+    <link rel="stylesheet" href="assets/libs/flatpickr/flatpickr.min.css" />
+    <link rel="stylesheet" href="assets/css/styles.css" />
+    <!-- end::GXON CSS Stylesheet -->
+
+    <!-- begin::GXON Googletagmanager -->
+    <script
+      async
+      src="https://www.googletagmanager.com/gtag/js?id=G-XWVQM68HHQ"
+    ></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag("js", new Date());
+
+      gtag("config", "G-XWVQM68HHQ", {
+        cookie_flags: "SameSite=None;Secure",
+        send_page_view: true,
+      });
+    </script>
+    <!-- end::GXON Googletagmanager -->
+  </head>
+
+  <body>
+    <main>
+      <div class="page-layout">
+        <!-- begin::GXON Page Header -->
+        <header class="app-header">
+          <div class="app-header-inner" id="header"></div>
+        </header>
+
+        <div
+          class="modal fade"
+          id="searchResultsModal"
+          tabindex="-1"
+          aria-hidden="true"
+        >
+          <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+              <div class="modal-header py-1 px-3">
+                <form
+                  class="d-flex align-items-center position-relative w-100"
+                  action="leave.html#"
+                >
+                  <button
+                    type="button"
+                    class="btn btn-sm border-0 position-absolute start-0 p-0 text-sm"
+                  >
+                    <i class="fi fi-rr-search"></i>
+                  </button>
+                  <input
+                    type="text"
+                    class="form-control form-control-lg ps-4 border-0 shadow-none"
+                    id="searchInput"
+                    placeholder="Search anything's"
+                  />
+                </form>
+                <button
+                  type="button"
+                  class="btn-close"
+                  data-bs-dismiss="modal"
+                  aria-label="Close"
+                ></button>
+              </div>
+              <div class="modal-body pb-2" style="height: 300px" data-simplebar>
+                <div id="recentlyResults">
+                  <span
+                    class="text-uppercase text-2xs fw-semibold text-muted d-block mb-2"
+                    >Recently Searched:</span
+                  >
+                  <ul class="list-inline search-list">
+                    <li>
+                      <a class="search-item" href="index.html">
+                        <i class="fi fi-rr-apps"></i> Dashboard
+                      </a>
+                    </li>
+                    <li>
+                      <a class="search-item" href="user.html">
+                        <i class="fi fi-rr-comment"></i>User Management
+                      </a>
+                    </li>
+                    <li>
+                      <a class="search-item" href="roles.html">
+                        <i class="fi fi-rr-calendar"></i>Roles & Access control
+                      </a>
+                    </li>
+                    <li>
+                      <a class="search-item" href="PTSP.html">
+                        <i class="fi fi-rr-chart-pie-alt"></i> ptsp onboarding
+                      </a>
+                    </li>
+                    <li>
+                      <a class="search-item" href="data.html">
+                        <i class="fi fi-rr-file"></i>data ingestion monitor
+                      </a>
+                    </li>
+                    <li>
+                      <a class="search-item" href="audit.html">
+                        <i class="fi fi-rr-envelope"></i> audit log
+                      </a>
+                    </li>
+                    <li>
+                      <a class="search-item" href="transaction.html">
+                        <i class="fi fi-rr-envelope"></i>Tax Transaction Config
+                      </a>
+                    </li>
+                  </ul>
+                </div>
+                <div id="searchContainer"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- begin::GXON Sidebar Menu -->
+        <div id="sidebsr"></div>
+        <!-- end::GXON Sidebar Menu -->
+
+        <!-- begin::GXON Sidebar right -->
+        <div class="app-sidebar-end"></div>
+        <!-- end::GXON Sidebar right -->
+        <div class="app-wrapper">
+          <div class="container">
+            <div class="d-flex flex-wrap align-items-center mb-3 gap-2">
+              <!-- Page Title -->
+              <h1 class="app-page-title fw-bold me-3 mb-0">PTSP Onboarding</h1>
+              <!-- Status Select -->
+              <div class="d-flex justify-content-end gap-2">
+                <!-- Export Dropdown -->
+                <div>
+                  <select class="form-select form-select-sm">
+                    <option selected disabled>Export</option>
+                    <option value="csv">CSV</option>
+                    <option value="excel">Excel</option>
+                    <option value="pdf">PDF</option>
+                  </select>
+                </div>
+
+                <!-- Add PTSP Button -->
+                <button
+                  type="button"
+                  class="btn btn-primary"
+                  data-bs-toggle="modal"
+                  data-bs-target="#cacModal"
+                >
+                  <i class="bi bi-plus me-1"></i> Add PTSP
+                </button>
+
+                <!-- CAC Modal -->
+                <div
+                  class="modal fade"
+                  id="cacModal"
+                  tabindex="-1"
+                  aria-hidden="true"
+                >
+                  <div class="modal-dialog modal-fullscreen">
+                    <div class="modal-content border-0">
+                      <div
+                        class="modal-body d-flex align-items-center justify-content-center bg-white-50"
+                      >
+                        <div
+                          class="card shadow-sm p-4 rounded-4"
+                          style="max-width: 500px; width: 100%"
+                        >
+                          <div class="text-center mb-3">
+                            <i class="bi bi-building fs-1 text-primary"></i>
+                          </div>
+
+                          <h5 class="text-center fw-bold mb-2">
+                            CAC Business Verification
+                          </h5>
+                          <p class="text-center text-muted small">
+                            Enter your Corporate Affairs Commission (CAC)
+                            registration number to verify your business
+                          </p>
+
+                          <div class="mb-3">
+                            <label class="form-label fw-semibold"
+                              >CAC Registration Number</label
+                            >
+                            <input
+                              id="cacInput"
+                              type="text"
+                              class="form-control"
+                              placeholder="E.G., RC1234567"
+                            />
+                            <small class="text-muted"
+                              >Enter your company's CAC registration number
+                              (starts with RC)</small
+                            >
+                          </div>
+
+                          <div class="d-flex justify-content-between">
+                            <button
+                              class="btn btn-outline-secondary"
+                              data-bs-dismiss="modal"
+                            >
+                              Back
+                            </button>
+                            <button id="verifyBtn" class="btn btn-dark d-none">
+                              <span id="verifyText"
+                                ><i class="bi bi-check-circle me-1"></i> Verify
+                                CAC Number</span
+                              >
+                              <span
+                                id="verifyLoading"
+                                class="spinner-border spinner-border-sm d-none"
+                              ></span>
+                            </button>
+                          </div>
+
+                          <p class="text-center text-muted small mt-3 mb-0">
+                            Only businesses registered with the Corporate
+                            Affairs Commission can access the FUSION tax
+                            platform
+                          </p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Verification Result Modal -->
+                <div
+  class="modal fade"
+  id="cacResultModal"
+  tabindex="-1"
+  aria-hidden="true"
+>
+  <div class="modal-dialog modal-lg modal-dialog-centered">
+    <div class="modal-content border-0 rounded-4">
+      <div class="modal-body p-4">
+        <div class="text-center mb-4">
+          <div
+            class="bg-success bg-opacity-10 d-inline-flex justify-content-center align-items-center rounded-circle"
+            style="width: 60px; height: 60px"
+          >
+            <i class="bi bi-check-lg text-success fs-2"></i>
+          </div>
+          <h5 class="mt-3 fw-semibold">CAC Verification Successful</h5>
+          <p class="text-muted small">
+            Your business registration has been verified successfully
+          </p>
+        </div>
+
+        <div class="row g-4">
+          <!-- Business Information -->
+          <div class="col-md-6">
+            <h6 class="fw-bold mb-3">
+              <i class="bi bi-building me-2"></i>Business Information
+            </h6>
+            <p class="mb-1">
+              <strong>Company Name</strong><br />
+              <span id="companyName"></span>
+            </p>
+            <p class="mb-1">
+              <strong>Registration Number</strong><br />
+              <span id="registrationNumber"></span>
+            </p>
+            <p class="mb-1">
+              <strong>Company Type</strong><br />
+              <span id="companyType"></span>
+            </p>
+            <p>
+              <strong>Contact Email</strong><br />
+              <span id="contactEmail"></span>
+            </p>
+          </div>
+
+          <!-- Status & Compliance -->
+          <div class="col-md-6">
+            <h6 class="fw-bold mb-3">
+              <i class="bi bi-shield-check me-2"></i>Status & Compliance
+            </h6>
+            <p class="mb-1">
+              <strong>Registration Status</strong><br />
+              <span class="badge bg-dark" id="registrationStatus"></span>
+            </p>
+            <p class="mb-1">
+              <strong>Created At</strong><br />
+              <span id="createdAt"></span>
+            </p>
+          </div>
+        </div>
+
+        <hr class="my-4" />
+
+        <!-- Extra Editable Fields -->
+        <div class="row g-3 mb-3">
+          <div class="col-md-6">
+            <label for="agentNameInput" class="form-label fw-semibold">Agent Name</label>
+            <input
+              type="text"
+              class="form-control"
+              id="agentNameInput"
+              placeholder="Enter agent name"
+              required
+            />
+          </div>
+          <div class="col-md-6">
+            <label for="agentEmailInput" class="form-label fw-semibold">Agent Email</label>
+            <input
+              type="email"
+              class="form-control"
+              id="agentEmailInput"
+              placeholder="Enter agent email"
+              required
+            />
+          </div>
+          <div class="col-md-6">
+            <label for="agentPasswordInput" class="form-label fw-semibold">Agent Password</label>
+            <input
+              type="text"
+              class="form-control"
+              id="agentPasswordInput"
+              placeholder="Enter agent password"
+              required
+            />
+          </div>
+        </div>
+
+        <div class="d-flex justify-content-between">
+          <button class="btn btn-light border" data-bs-dismiss="modal">
+            Verify Different CAC
+          </button>
+          <button id="continueBtn" class="btn btn-dark">
+            <span id="continueText">Continue to Registration</span>
+            <span
+              id="continueLoading"
+              class="spinner-border spinner-border-sm d-none"
+            ></span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+              </div>
+            </div>
+          </div>
+
+          
+<!-- Success Modal -->
+<div class="modal fade" id="successModal" tabindex="-1" aria-hidden="true">
+  <div class="modal-dialog modal-sm modal-dialog-centered">
+    <div class="modal-content border-0 rounded-4 p-4 text-center">
+      <div class="bg-success bg-opacity-10 d-inline-flex justify-content-center align-items-center rounded-circle mb-3" style="width: 60px; height: 60px;">
+        <i class="bi bi-check2-circle text-success fs-2"></i>
+      </div>
+      <h5 class="fw-bold">Success!</h5>
+      <p class="text-muted small">Your registration has been submitted successfully.</p>
+      <button id="closeAllBtn" class="btn btn-dark w-100 mt-3">Close</button>
+    </div>
+  </div>
+</div>
+
+
+          <div class="container my-4">
+            <div class="row g-3 mb-4">
+              <div class="col-md-2">
+                <div class="card border-2 p-3 position-relative">
+                  <i
+                    class="bi bi-building text-primary position-absolute top-0 end-0 m-2 fs-4"
+                  ></i>
+                  <h6 class="mb-4">Total PTSPS</h6>
+                  <strong class="text-dark" id="totalPTSPS"></strong>
+                  <p class="small text-muted mb-0">Registered providers</p>
+                </div>
+              </div>
+
+              <div class="col-md-2">
+                <div class="card border-2 p-3 position-relative">
+                  <i
+                    class="bi bi-check-circle-fill text-success position-absolute top-0 end-0 m-2 fs-4"
+                  ></i>
+                  <h6 class="mb-4">Active</h6>
+                  <strong class="text-success" id="activeStatus"></strong>
+                  <p class="small text-muted mb-0">Operational PTSPS</p>
+                </div>
+              </div>
+
+              <div class="col-md-2">
+                <div class="card border-2 p-3 position-relative">
+                  <i
+                    class="bi bi-x-circle-fill text-danger position-absolute top-0 end-0 m-2 fs-4"
+                  ></i>
+                  <h6 class="mb-4">Suspended</h6>
+                  <strong class="text-danger" id="suspended"></strong>
+                  <p class="small text-muted mb-0">Suspended PTSPS</p>
+                </div>
+              </div>
+
+              <!-- <div class="col-md-2">
+                <div class="card border-2 p-3 position-relative">
+                  <i
+                    class="bi bi-hourglass-split text-warning position-absolute top-0 end-0 m-2 fs-4"
+                  ></i>
+                  <h6 class="mb-4">Pending</h6>
+                  <strong class="text-warning"></strong>
+                  <p class="small text-muted mb-0">Awaiting approval</p>
+                </div>
+              </div> -->
+
+              <!-- <div class="col-md-2">
+                <div class="card border-2 p-3 position-relative">
+                  <i
+                    class="bi bi-people-fill text-purple position-absolute top-0 end-0 m-2 fs-4"
+                  ></i>
+                  <h6 class="mb-4">Total Merchants</h6>
+                  <strong class="text-dark">2,793</strong>
+                  <p class="small text-muted mb-0">Across all PTSPS</p>
+                </div>
+              </div> -->
+
+              <!-- <div class="col-md-2">
+                <div class="card border-2 p-3 position-relative">
+                  <i
+                    class="bi bi-graph-up-arrow text-success position-absolute top-0 end-0 m-2 fs-4"
+                  ></i>
+                  <h6 class="mb-4">Monthly Volume</h6>
+                  <strong class="text-dark">₦545M</strong>
+                  <p class="small text-muted mb-0">Transaction volume</p>
+                </div>
+              </div> -->
+            </div>
+
+            <!-- Search and Filter -->
+            <div class="card shadow-sm border-0 p-3 mb-4">
+              <h6 class="fw-bold">Search and Filter</h6>
+              <div class="row g-3">
+                <div class="col-md-6">
+                  <input
+                    type="text"
+                    class="form-control"
+                    placeholder="Search PTSPs by name, license, or email..."
+                  />
+                </div>
+                <div class="col-md-4">
+                  <select class="form-select">
+                    <option selected>All Status</option>
+                    <option value="active">Active</option>
+                    <option value="suspended">Suspended</option>
+                    <option value="pending">Pending</option>
+                  </select>
+                </div>
+                <div class="col-md-2">
+                  <button class="btn btn-primary w-100">Search</button>
+                </div>
+              </div>
+            </div>
+
+            <!-- Table -->
+            <div class="card border-2">
+              <div class="card-header bg-white fw-bold text-dark fs-4">
+                Payment Terminal Service Providers
+              </div>
+              <div class="card-body p-0">
+                <table class="table table-hover align-middle mb-0">
+  <thead class="table-light">
+    <tr>
+      <th>PTSP Details</th>
+      <th>Contact Information</th>
+      <th>License & Status</th>
+      <th>Performance</th>
+      <th>Actions</th>
+    </tr>
+  </thead>
+  <tbody id="providersTableBody">
+  </tbody>
+</table>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <!-- begin::GXON Footer -->
+    <footer class="footer-wrapper bg-body">
+      <div class="container">
+        <div class="row g-2">
+          <div class="col-lg-6 col-md-7 text-center text-md-start">
+            <p class="mb-0">
+              © <span class="currentYear">2025</a>.
+            </p>
+          </div>
+        </div>
+      </div>
+    </footer>
+    <!-- end::GXON Footer -->
+
+    <!-- begin::GXON Page Scripts -->
+    <script src="assets/js/header.js"></script>
+    <!-- <script src="assets/libs/global/global.min.js"></script> -->
+    <script src="assets/libs/flatpickr/flatpickr.min.js"></script>
+    <script src="assets/js/dashboard.js"></script>
+    <script src="assets/js/appSettings.js"></script>
+    <script src="assets/js/main.js"></script>
+    <!-- Bootstrap JS (required for modals to work) -->
+    <!-- <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script> -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- <script>
+// const baseUrl = "https://arafatfootballacademy.com/fusion/backend";
+
+async function loadUser() {
+    const token = localStorage.getItem("token");
+
+    if (!token) {
+        console.log("No token found, redirecting to login.");
+        window.location.replace("login.html");
+        return;
+    }
+
+    try {
+        const userRes = await axios.get(`${baseUrl}/profile`, {
+            headers: { Authorization: `Bearer ${token}` },
+        });
+
+        const user = userRes.data.data;
+
+        localStorage.setItem("user", JSON.stringify(user));
+
+        if (document.getElementById("username")) {
+            document.getElementById("username").textContent = user.name;
+        }
+        if (document.getElementById("email")) {
+            document.getElementById("email").textContent = user.email;
+        }
+
+        if (document.getElementById("username1")) {
+            document.getElementById("username1").textContent = user.name;
+        }
+        
+    } catch (err) {
+        console.error("Token expired", err);
+        localStorage.removeItem("token");
+        localStorage.removeItem("user");
+        window.location.replace("login.html");
+    }
+}
+
+document.addEventListener("DOMContentLoaded", loadUser);
+const cacNumber = document.querySelector("#cacModal input").value;
+const verifyButton = document.querySelector("#cacModal button.btn-dark");
+
+//CAC caller
+const url = `https://arafatfootballacademy.com/tradepeep/backend/provider/search?cac_number=rc1234567`;
+
+async function fetchCacDetails() {
+  try {
+    const response = await axios.get(url);
+    const data = response.data;
+
+    if (data.status === "success") {
+      window.location.href = "rrr.html";
+    } else {
+      alert(data.message || "Invalid CAC number. Please try again.");
+    }
+  } catch (error) {
+    console.error("There was a problem with the request:", error);
+    alert("An error occurred while verifying. Please try again later.");
+  }
+}
+
+verifyButton.addEventListener("click", fetchCacDetails);
+
+
+</script> -->
+
+   <!-- Providers Table -->
+<table class="table">
+  <tbody id="providersTableBody"></tbody>
+</table>
+
+<!-- Modal -->
+<div class="modal fade" id="providerModal" tabindex="-1" aria-labelledby="providerModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg modal-dialog-scrollable">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="providerModalLabel">Provider Details</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+      </div>
+      <div class="modal-body" id="providerDetails">
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+<script>
+let lastFetchedCompany = null;
+const verifyBtn = document.getElementById("verifyBtn");
+const verifyText = document.getElementById("verifyText");
+const verifyLoading = document.getElementById("verifyLoading");
+const cacInput = document.getElementById("cacInput");
+
+cacInput.addEventListener("input", () => {
+  if (cacInput.value.trim() === "") {
+    verifyBtn.classList.add("d-none");
+  } else {
+    verifyBtn.classList.remove("d-none");
+  }
+});
+
+verifyBtn.addEventListener("click", async () => {
+  const cacNumber = cacInput.value.trim();
+  if (!cacNumber) return;
+
+  verifyText.classList.add("d-none");
+  verifyLoading.classList.remove("d-none");
+
+  try {
+    const url = `https://arafatfootballacademy.com/tradepeep/backend/provider/search?cac_number=${cacNumber}`;
+    const response = await axios.get(url);
+    const data = response.data;
+
+    if (data.status === "success") {
+      const company = data.data;
+      lastFetchedCompany = company;
+
+      document.getElementById("companyName").textContent = company.name;
+      document.getElementById("registrationNumber").textContent = company.cac_number;
+      document.getElementById("companyType").textContent = company.type;
+      document.getElementById("contactEmail").textContent = company.contact_email;
+      document.getElementById("registrationStatus").textContent = "Active";
+      document.getElementById("createdAt").textContent = company.created_at;
+
+      verifyText.classList.remove("d-none");
+      verifyLoading.classList.add("d-none");
+
+      const cacModal = bootstrap.Modal.getInstance(document.getElementById("cacModal"));
+      cacModal.hide();
+      new bootstrap.Modal(document.getElementById("cacResultModal")).show();
+    } else {
+      alert(data.message || "Invalid CAC number");
+    }
+  } catch (error) {
+    console.error("Error:", error);
+    alert("Please try again later.");
+  } finally {
+    verifyText.classList.remove("d-none");
+    verifyLoading.classList.add("d-none");
+  }
+});
+
+const continueBtn = document.getElementById("continueBtn");
+const continueText = document.getElementById("continueText");
+const continueLoading = document.getElementById("continueLoading");
+const agentNameInput = document.getElementById("agentNameInput");
+const agentEmailInput = document.getElementById("agentEmailInput");
+const agentPasswordInput = document.getElementById("agentPasswordInput");
+
+continueBtn.addEventListener("click", async () => {
+  if (!lastFetchedCompany) {
+    alert("No company details available. Please verify CAC first.");
+    return;
+  }
+
+   if (agentNameInput.value.trim() === "" || agentEmailInput.value.trim() === ""  || agentPasswordInput.value.trim() === "") {
+    alert("Please fill in Agent Name,Agent Email and Agent Password.");
+    return;
+  }
+
+  continueText.classList.add("d-none");
+  continueLoading.classList.remove("d-none");
+
+  try {
+    const payload = {
+      provider_name: lastFetchedCompany.name,
+      provider_email: lastFetchedCompany.contact_email,
+      provider_type: lastFetchedCompany.type,
+      api_key: "api_key",
+      agent_name: agentNameInput.value.trim(),
+      agent_email: agentEmailInput.value.trim(),
+      agent_password: agentPasswordInput.value.trim(),
+      staff_quota: "0",
+      terminal_volume: "0", 
+      logo: lastFetchedCompany.logo || "",
+      onboarded_by: "system",
+    };
+
+
+    const postUrl = "https://arafatfootballacademy.com/fusion/backend/provider/auth/register";
+    const res = await axios.post(postUrl, payload);
+
+    if (res.data.status === "success") {
+      const resultModal = bootstrap.Modal.getInstance(document.getElementById("cacResultModal"));
+      resultModal.hide();
+      new bootstrap.Modal(document.getElementById("successModal")).show();
+    } else {
+      alert("Error: " + (res.data.message || "Unable to register"));
+    }
+  } catch (err) {
+    console.error(err);
+    alert("An error occurred while submitting registration.");
+  } finally {
+    continueText.classList.remove("d-none");
+    continueLoading.classList.add("d-none");
+  }
+});
+
+document.getElementById("closeAllBtn").addEventListener("click", () => {
+  const modals = document.querySelectorAll(".modal.show");
+  modals.forEach(m => bootstrap.Modal.getInstance(m).hide());
+});
+
+async function loadProviders() {
+  try {
+    const res = await axios.get("https://arafatfootballacademy.com/fusion/backend/providers");
+    const providers = res.data.data;
+
+    const totalPTSPS = document.querySelector("#totalPTSPS");
+    const activeStatus = document.querySelector("#activeStatus");
+    const suspended = document.querySelector("#suspended");
+
+    const totalCount = providers.length;
+
+    const activeCount = providers.filter(item => item.status === "active").length;
+
+    const suspendedCount = providers.filter(item => item.status === "suspended").length;
+
+    totalPTSPS.textContent = totalCount;
+    activeStatus.textContent = activeCount;
+    suspended.textContent = suspendedCount;
+
+
+  const tbody = document.getElementById("providersTableBody");
+  tbody.innerHTML = "";
+
+  providers.forEach((provider) => {
+        const statusBadge =
+          provider.status === "active"
+            ? `<span class="badge bg-success">Active</span>`
+            : provider.status === "suspended"
+            ? `<span class="badge bg-danger">Suspended</span>`
+            : `<span class="badge bg-warning text-dark">Pending</span>`;
+
+        const row = `
+          <tr>
+            <td>
+              <strong>${provider.provider_name}</strong><br />
+              ${provider.provider_type}
+            </td>
+            <td>
+              <i class="bi bi-envelope"></i> ${provider.provider_email} <br />
+              <i class="bi bi-telephone"></i> N/A <br />
+              <i class="bi bi-geo-alt"></i> Lagos, Nigeria
+            </td>
+            <td>
+              ID-${provider.id} <br />
+              ${statusBadge}<br />
+              Integration: ${
+                provider.status === "active"
+                  ? "Live"
+                  : provider.status === "pending"
+                  ? "Testing"
+                  : "Maintenance"
+              }
+            </td>
+            <td>
+              Merchants: ${provider.staff_quota} <br />
+              Volume: ₦${provider.terminal_volume}M <br />
+              Score: ${
+                provider.status === "active"
+                  ? "95.0%"
+                  : provider.status === "pending"
+                  ? "0%"
+                  : "N/A"
+              }
+            </td>
+            <td>
+              <a href="#" class="text-primary view-btn" data-id="${provider.id}">
+                <i class="bi bi-eye me-2" role="button"></i>
+              </a>
+              <i class="bi bi-pencil-square me-2 text-success" role="button"></i>
+
+              <!-- Toggle Switch -->
+              <div class="form-check form-switch d-inline-block">
+                <input class="form-check-input provider-toggle" type="checkbox" role="switch"
+                  id="switch-${provider.id}" data-id="${provider.id}"
+                  ${provider.status === "active" ? "checked" : ""}>
+                <label class="form-check-label small" for="switch-${provider.id}">
+                  ${provider.status === "active" ? "Active" : "Suspended"}
+                </label>
+              </div>
+            </td>
+          </tr>
+        `;
+
+        tbody.innerHTML += row;
+      });
+
+  let providerModalInstance;
+
+document.addEventListener("click", async function (e) {
+  if (e.target.closest(".view-btn")) {
+    e.preventDefault();
+    const providerId = e.target.closest(".view-btn").dataset.id;
+
+    try {
+      const res = await fetch(`https://arafatfootballacademy.com/fusion/backend/providers/${providerId}/users`);
+      const data = await res.json();
+      const users = data.data;
+
+      if (users && users.length > 0) {
+        let userList = `
+          <div class="card border-0 shadow-sm rounded-3">
+            <div class="card-body">
+              <h5 class="card-title mb-3 text-primary fw-bold">Provider Users</h5>
+              <div class="table-responsive">
+                <table class="table table-hover align-middle">
+                  <thead class="table-light">
+                    <tr>
+                      <th>#</th>
+                      <th>Name</th>
+                      <th>Email</th>
+                      <th>Role</th>
+                      <th>Status</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+        `;
+
+        users.forEach((user, index) => {
+          userList += `
+            <tr>
+              <td>${index + 1}</td>
+              <td><strong>${user.name}</strong></td>
+              <td>${user.email}</td>
+              <td>${user.role || "N/A"}</td>
+              <td>
+                <span class="badge ${
+                  user.status === "active"
+                    ? "bg-success"
+                    : user.status === "suspended"
+                    ? "bg-danger"
+                    : "bg-warning text-dark"
+                }">${user.status}</span>
+              </td>
+            </tr>
+          `;
+        });
+
+        userList += `
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        `;
+
+        document.getElementById("providerDetails").innerHTML = userList;
+      } else {
+        document.getElementById("providerDetails").innerHTML = `
+          <div class="alert alert-warning mb-0">No users found for this provider.</div>
+        `;
+      }
+
+      // show modal
+      providerModalInstance = new bootstrap.Modal(document.getElementById("providerModal"));
+      providerModalInstance.show();
+    } catch (error) {
+      console.error("Error fetching users:", error);
+      document.getElementById("providerDetails").innerHTML = `
+        <div class="alert alert-danger mb-0">Error loading users. Please try again later.</div>
+      `;
+      providerModalInstance = new bootstrap.Modal(document.getElementById("providerModal"));
+      providerModalInstance.show();
+    }
+  }
+});
+
+document.addEventListener("click", function (e) {
+  if (e.target.matches(".btn-close") || e.target.getAttribute("data-bs-dismiss") === "modal") {
+    if (providerModalInstance) {
+      providerModalInstance.hide();
+      window.location.reload();
+    }
+  }
+});
+
+
+
+
+  // Attach click event for all view buttons
+ document.addEventListener("click", function (e) {
+  if (e.target.closest(".view-btn")) {
+    e.preventDefault();
+    const providerId = e.target.closest(".view-btn").dataset.id;
+
+    if (providerId) {
+      window.location.href = `./ptsp_list.html?id=${providerId}`;
+    }
+  }
+});
+
+
+
+    document.querySelectorAll(".provider-toggle").forEach((toggle) => {
+      toggle.addEventListener("change", async (e) => {
+        const providerId = e.target.getAttribute("data-id");
+        const newStatus = e.target.checked ? "active" : "suspended";
+
+        try {
+          await axios.put(`https://arafatfootballacademy.com/fusion/backend/providers/${providerId}/status`, {
+            status: newStatus,
+          });
+
+          loadProviders();
+        } catch (err) {
+          console.error("Failed to update provider status:", err);
+          alert("Could not update status.");
+        }
+      });
+    });
+
+  } catch (err) {
+    console.error("Error fetching providers:", err);
+  }
+}
+
+  document.addEventListener("DOMContentLoaded", loadProviders);
+
+</script>
+
+    <!-- end::GXON Page Scripts -->
+  </body>
+</html>

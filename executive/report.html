@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+  <!-- begin::GXON Meta Basic -->
+  <meta charset="utf-8">
+
+  <!-- begin::GXON Website Page Title -->
+  <title>Leave | Fusion HR Management Admin Dashboard</title>
+  <!-- end::GXON Website Page Title -->
+
+  <!-- begin::GXON Mobile Specific -->
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- end::GXON Mobile Specific -->
+
+  <!-- begin::GXON Favicon Tags -->
+  <link rel="icon" type="image/png" href="assets/images/logo.jpeg" />
+  <link rel="apple-touch-icon" sizes="180x180" href="assets/images/logo.jpeg">
+  <!-- end::GXON Favicon Tags -->
+
+  <!-- begin::GXON Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&display=swap"
+    rel="stylesheet">
+  <!-- end::GXON Google Fonts -->
+
+  <!-- begin::GXON Required Stylesheet -->
+  <link rel="stylesheet" href="assets/libs/flaticon/css/all/all.css">
+  <link rel="stylesheet" href="assets/libs/lucide/lucide.css">
+  <link rel="stylesheet" href="assets/libs/fontawesome/css/all.min.css">
+  <link rel="stylesheet" href="assets/libs/simplebar/simplebar.css">
+  <link rel="stylesheet" href="assets/libs/node-waves/waves.css">
+  <link rel="stylesheet" href="assets/libs/bootstrap-select/css/bootstrap-select.min.css">
+  <!-- end::GXON Required Stylesheet -->
+
+  <!-- begin::GXON CSS Stylesheet -->
+  <link rel="stylesheet" href="assets/libs/datatables/datatables.min.css">
+  <link rel="stylesheet" href="assets/libs/flatpickr/flatpickr.min.css">
+  <link rel="stylesheet" href="assets/css/styles.css">
+  <!-- end::GXON CSS Stylesheet -->
+
+
+  <!-- Bootstrap Icons CDN -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+
+
+  <!-- begin::GXON Googletagmanager -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-XWVQM68HHQ"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
+
+    gtag('config', 'G-XWVQM68HHQ', {
+      'cookie_flags': 'SameSite=None;Secure',
+      'send_page_view': true
+    });
+  </script>
+  <!-- end::GXON Googletagmanager -->
+
+</head>
+
+<body>
+  <div class="page-layout">
+
+    <!-- begin::GXON Page Header -->
+    <header class="app-header">
+      <div class="app-header-inner" id="header"></div>
+    </header>
+    <!-- end::GXON Page Header -->
+
+    <div class="modal fade" id="searchResultsModal" tabindex="-1" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+          <div class="modal-header py-1 px-3">
+            <form class="d-flex align-items-center position-relative w-100" action="leave.html#">
+              <button type="button" class="btn btn-sm border-0 position-absolute start-0 p-0 text-sm ">
+                <i class="fi fi-rr-search"></i>
+              </button>
+              <input type="text" class="form-control form-control-lg ps-4 border-0 shadow-none" id="searchInput"
+                placeholder="Search anything's">
+            </form>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body pb-2" style="height: 300px;" data-simplebar>
+            <div id="recentlyResults">
+              <span class="text-uppercase text-2xs fw-semibold text-muted d-block mb-2">Recently
+                Searched:</span>
+              <ul class="list-inline search-list">
+                <li>
+                  <a class="search-item" href="index.html">
+                    <i class="fi fi-rr-apps"></i> Dashboard
+                  </a>
+                </li>
+                <li>
+                  <a class="search-item" href="chat.html">
+                    <i class="fi fi-rr-comment"></i> Chat
+                  </a>
+                </li>
+                <li>
+                  <a class="search-item" href="calendar.html">
+                    <i class="fi fi-rr-calendar"></i> Calendar
+                  </a>
+                </li>
+                <li>
+                  <a class="search-item" href="chart/apexchart.html">
+                    <i class="fi fi-rr-chart-pie-alt"></i> Apexchart
+                  </a>
+                </li>
+                <li>
+                  <a class="search-item" href="pages/pricing.html">
+                    <i class="fi fi-rr-file"></i> Pricing
+                  </a>
+                </li>
+                <li>
+                  <a class="search-item" href="email/inbox.html">
+                    <i class="fi fi-rr-envelope"></i> Email
+                  </a>
+                </li>
+              </ul>
+            </div>
+            <div id="searchContainer"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- begin::GXON Sidebar Menu -->
+    <div id="sidebsr"></div>
+    <!-- end::GXON Sidebar Menu -->
+
+    <!-- begin::GXON Sidebar right -->
+    <div class="app-sidebar-end">
+    </div>
+    <!-- end::GXON Sidebar right -->
+
+    <main class="app-wrapper">
+      <div class="container">
+        <div class="container py-4">
+          <!-- Header with right button -->
+          <div class="d-flex justify-content-between align-items-start mb-5">
+            <div>
+              <h2 class="fw-bold mb-2">Executive Reports</h2>
+              <p class="text-muted mb-4">Comprehensive reporting and export capabilities</p>
+            </div>
+            <button class="btn btn-primary">Generate New Report</button>
+          </div>
+
+          <!-- Generate Custom Report -->
+          <div class="card rounded-4 mb-4">
+            <div class="card-body">
+              <h5 class="fw-bold mb-2">Generate Custom Report</h5>
+              <p class="text-muted small mb-4">Create tailored reports for specific requirements</p>
+              <div class="row g-3">
+                <div class="col-md-4">
+                  <label class="form-label small">Report Type</label>
+                  <select class="form-select">
+                    <option>Executive Summary</option>
+                    <option>FinancialAnalysis</option>
+                    <option>Operational View</option>
+                    <option>Compliance Status</option>
+                  </select>
+                </div>
+                <div class="col-md-4">
+                  <label class="form-label small">Time Frame</label>
+                  <select class="form-select">
+                    <option>Weekly</option>
+                    <option>Monthly</option>
+                    <option>Quarterly</option>
+                    <option>Yearly</option>
+                  </select>
+                </div>
+                <div class="col-md-4 d-flex align-items-end">
+                  <button class="btn btn-primary w-100">Generate Report</button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Available Reports -->
+          <div class="card rounded-4">
+            <div class="card-body">
+              <h4 class="fw-bold mb-1">Available Reports</h4>
+              <p class="text-muted small mb-4">Pre-configured reports and templates</p>
+
+              <!-- Report Item 1 -->
+              <div class="report-item mb-3">
+                <h6 class="fw-semibold mb-1">Executive Summary</h6>
+                <p class="text-muted small mb-1">High-level overview for executive leadership</p>
+                <div class="small text-muted mb-2">
+                  Frequency: Monthly &nbsp; | &nbsp; Last Generated: 2024-01-15 &nbsp; | &nbsp; Size: 2.3 MB
+                </div>
+                <div class="report-action">
+                  <a href="#" class="text-primary me-3">View</a>
+                  <a href="#" class="text-success me-3">Download</a>
+                  <a href="#" class="text-purple" style="color:purple;">Schedule</a>
+                </div>
+              </div>
+
+              <!-- Report Item 2 -->
+              <div class="report-item mb-3">
+                <h6 class="fw-semibold mb-1">LGA Performance Report</h6>
+                <p class="text-muted small mb-1">Detailed analysis of Local Government Area performance</p>
+                <div class="small text-muted mb-2">
+                  Frequency: Monthly &nbsp; | &nbsp; Last Generated: 2024-01-14 &nbsp; | &nbsp; Size: 5.7 MB
+                </div>
+                <div class="report-action">
+                  <a href="#" class="text-primary me-3">View</a>
+                  <a href="#" class="text-success me-3">Download</a>
+                  <a href="#" class="text-purple" style="color:purple;">Schedule</a>
+                </div>
+              </div>
+
+              <!-- Report Item 3 -->
+              <div class="report-item">
+                <h6 class="fw-semibold mb-1">Revenue Forecast Report</h6>
+                <p class="text-muted small mb-1">Predictive analytics and revenue projections</p>
+                <div class="small text-muted mb-2">
+                  Frequency: Monthly &nbsp; | &nbsp; Last Generated: 2024-01-13 &nbsp; | &nbsp; Size: 3.1 MB
+                </div>
+                <div class="report-action">
+                  <a href="#" class="text-primary me-3">View</a>
+                  <a href="#" class="text-success me-3">Download</a>
+                  <a href="#" class="text-purple" style="color:purple;">Schedule</a>
+                </div>
+              </div>
+
+              <!-- Report Item 3 (Compliance Overview) -->
+              <div class="report-item">
+                <h6 class="fw-semibold mb-1">Compliance Overview</h6>
+                <p class="text-muted small mb-1">Summary of compliance activities and key metrics</p>
+                <div class="small text-muted mb-2">
+                  Frequency: Monthly &nbsp; | &nbsp; Last Generated: 2024-01-13 &nbsp; | &nbsp; Size: 3.1 MB
+                </div>
+                <div class="report-action">
+                  <a href="#" class="text-primary me-3">View</a>
+                  <a href="#" class="text-success me-3">Download</a>
+                  <a href="#" class="text-purple" style="color:purple;">Schedule</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row g-3">
+        <!-- Report Usage Analytics -->
+        <div class="col-md-6">
+          <div class="card rounded-4 shadow-sm h-100">
+            <div class="card-body">
+              <h6 class="fw-bold mb-1">Report Usage Analytics</h6>
+              <p class="text-muted small mb-4">Most accessed reports this month</p>
+
+              <div class="d-flex justify-content-between small mb-2 text-dark">
+                <span>Executive Summary</span>
+                <span class="text-muted">47 downloads</span>
+              </div>
+              <div class="d-flex justify-content-between small mb-2 text-dark">
+                <span>LGA Performance</span>
+                <span class="text-muted">32 downloads</span>
+              </div>
+              <div class="d-flex justify-content-between small mb-2 text-dark">
+                <span>Compliance Overview</span>
+                <span class="text-muted">28 downloads</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Scheduled Reports -->
+        <div class="col-md-6">
+          <div class="card rounded-4 shadow-sm h-100">
+            <div class="card-body">
+              <h6 class="fw-bold mb-1">Scheduled Reports</h6>
+              <p class="text-muted small mb-4">Upcoming automated report generations</p>
+
+              <div class="d-flex justify-content-between small mb-2 text-dark">
+                <span>Weekly Compliance</span>
+                <span class="text-muted">Next: Tomorrow 9:00 AM</span>
+              </div>
+              <div class="d-flex justify-content-between small mb-2 text-dark">
+                <span>Monthly Executive</span>
+                <span class="text-muted">Next: Feb 1, 8:00 AM</span>
+              </div>
+              <div class="d-flex justify-content-between small mb-2 text-dark">
+                <span>Quarterly Forecast</span>
+                <span class="text-muted">Next: Apr 1, 8:00 AM</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </main>
+
+    <!-- begin::GXON Footer -->
+    <footer class="footer-wrapper bg-body">
+      <div class="container">
+        <div class="row g-2">
+          <div class="col-lg-6 col-md-7 text-center text-md-start">
+            <p class="mb-0">© <span class="currentYear">2025</span> GXON. Proudly powered by <a
+                href="javascript:void(0);">LayoutDrop</a>.</p>
+          </div>
+          <div class="col-lg-6 col-md-5">
+            <ul class="d-flex list-inline mb-0 gap-3 flex-wrap justify-content-center justify-content-md-end">
+              <li>
+                <a class="text-body" href="index.html">Home</a>
+              </li>
+              <li>
+                <a class="text-body" href="pages/faq.html">Faq's</a>
+              </li>
+              <li>
+                <a class="text-body" href="pages/faq.html">Support</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </footer>
+    <!-- end::GXON Footer -->
+
+  </div>
+  <!-- begin::GXON Page Scripts -->
+   <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+  <script src="assets/js/leaflet.js"></script>"
+  <script src="assets/js/header.js"></script>
+  <script src="assets/libs/global/global.min.js"></script>
+  <script src="assets/libs/chartjs/chart.js"></script>
+  <script src="assets/libs/apexcharts/apexcharts.min.js"></script>
+  <script src="assets/libs/datatables/datatables.min.js"></script>
+  <script src="assets/libs/flatpickr/flatpickr.min.js"></script>
+  <script src="assets/js/flatpickr.js"></script>
+  <script src="assets/js/dashboard.js"></script>
+  <script src="assets/js/appSettings.js"></script>
+  <script src="assets/js/main.js"></script>
+  <!-- end::GXON Page Scripts -->
+</body>
+
+</html>

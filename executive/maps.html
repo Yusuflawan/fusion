@@ -1,0 +1,841 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <title>Leave | Fusion HR Management Admin Dashboard</title>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- end::GXON Mobile Specific -->
+
+    <!-- begin::GXON Favicon Tags -->
+    <link rel="icon" type="image/png" href="assets/images/logo.jpeg" />
+    <link rel="apple-touch-icon" sizes="180x180" href="assets/images/logo.jpeg">
+    <!-- end::GXON Favicon Tags -->
+
+    <!-- begin::GXON Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&display=swap"
+        rel="stylesheet">
+    <!-- end::GXON Google Fonts -->
+
+    <!-- begin::GXON Required Stylesheet -->
+    <link rel="stylesheet" href="assets/libs/flaticon/css/all/all.css">
+    <link rel="stylesheet" href="assets/libs/lucide/lucide.css">
+    <link rel="stylesheet" href="assets/libs/fontawesome/css/all.min.css">
+    <link rel="stylesheet" href="assets/libs/simplebar/simplebar.css">
+    <link rel="stylesheet" href="assets/libs/node-waves/waves.css">
+    <link rel="stylesheet" href="assets/libs/bootstrap-select/css/bootstrap-select.min.css">
+    <!-- end::GXON Required Stylesheet -->
+
+    <!-- begin::GXON CSS Stylesheet -->
+    <link rel="stylesheet" href="assets/libs/datatables/datatables.min.css">
+    <link rel="stylesheet" href="assets/libs/flatpickr/flatpickr.min.css">
+    <link rel="stylesheet" href="assets/css/styles.css">
+    <!-- end::GXON CSS Stylesheet -->
+
+    <!-- begin::GXON Googletagmanager -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-XWVQM68HHQ"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+
+        gtag('config', 'G-XWVQM68HHQ', {
+            'cookie_flags': 'SameSite=None;Secure',
+            'send_page_view': true
+        });
+    </script>
+    <!-- end::GXON Googletagmanager -->
+     <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+<script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+
+
+</head>
+
+<body>
+    <div class="page-layout">
+
+        <!-- begin::GXON Page Header -->
+        <header class="app-header">
+            <div class="app-header-inner" id="header"></div>
+        </header>
+        <!-- end::GXON Page Header -->
+
+        <div class="modal fade" id="searchResultsModal" tabindex="-1" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+                    <div class="modal-header py-1 px-3">
+                        <form class="d-flex align-items-center position-relative w-100" action="leave.html#">
+                            <button type="button" class="btn btn-sm border-0 position-absolute start-0 p-0 text-sm ">
+                                <i class="fi fi-rr-search"></i>
+                            </button>
+                            <input type="text" class="form-control form-control-lg ps-4 border-0 shadow-none"
+                                id="searchInput" placeholder="Search anything's">
+                        </form>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body pb-2" style="height: 300px;" data-simplebar>
+                        <div id="recentlyResults">
+                            <span class="text-uppercase text-2xs fw-semibold text-muted d-block mb-2">Recently
+                                Searched:</span>
+                            <ul class="list-inline search-list">
+                                <li>
+                                    <a class="search-item" href="index.html">
+                                        <i class="fi fi-rr-apps"></i> Dashboard
+                                    </a>
+                                </li>
+                                <li>
+                                    <a class="search-item" href="chat.html">
+                                        <i class="fi fi-rr-comment"></i> Chat
+                                    </a>
+                                </li>
+                                <li>
+                                    <a class="search-item" href="calendar.html">
+                                        <i class="fi fi-rr-calendar"></i> Calendar
+                                    </a>
+                                </li>
+                                <li>
+                                    <a class="search-item" href="chart/apexchart.html">
+                                        <i class="fi fi-rr-chart-pie-alt"></i> Apexchart
+                                    </a>
+                                </li>
+                                <li>
+                                    <a class="search-item" href="pages/pricing.html">
+                                        <i class="fi fi-rr-file"></i> Pricing
+                                    </a>
+                                </li>
+                                <li>
+                                    <a class="search-item" href="email/inbox.html">
+                                        <i class="fi fi-rr-envelope"></i> Email
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                        <div id="searchContainer"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- begin::GXON Sidebar Menu -->
+        <div id="sidebsr"></div>
+        <!-- end::GXON Sidebar Menu -->
+
+         <!-- begin::GXON Sidebar right -->
+    <div class="app-sidebar-end">
+    </div>
+    <!-- end::GXON Sidebar right -->
+
+
+        <main class="app-wrapper">
+
+            <div class="container">
+<div class="container my-4">
+  <!-- Page Header -->
+  <h3 class="fw-bold">Geographic Compliance Map</h3>
+  <p class="text-muted">Interactive map showing merchant compliance across Abuja (FCT)</p>
+
+  <!-- Card -->
+  <div class="card shadow-sm">
+    <div class="card-body">
+      <h6 class="fw-bold">Plateau Compliance Map</h6>
+      <p class="text-muted small mb-4">Click on any LGA to view compliance details</p>
+
+      <!-- Map -->
+      <div id="map" style="height: 500px; width: 100%; border-radius: 10px; overflow: hidden;"></div>
+    </div>
+  </div>
+</div>
+
+<!-- ========== MODALS (copy-paste structure for each LGA) ========== -->
+
+<!-- Modal Template: change id, name, badge, stats -->
+<!-- Alimosho -->
+<div class="modal fade" id="modalAlimosho" tabindex="-1" aria-hidden="true">
+  <div class="modal-dialog modal-lg modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h6 class="modal-title fw-bold">LGA Compliance Details</h6>
+        <span class="badge bg-danger ms-3">Needs Attention</span>
+        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+      </div>
+      <div class="modal-body">
+        <h4 class="fw-bold">Alimosho 
+          <span class="float-end">72% <small class="text-muted">Compliance Rate</small></span>
+        </h4>
+        <div class="row mt-3">
+          <div class="col-md-3"><strong>Total Merchants:</strong> 250</div>
+          <div class="col-md-3"><strong>Population:</strong> 1,319,571</div>
+          <div class="col-md-3"><strong>Area:</strong> 137.8 km²</div>
+          <div class="col-md-3"><strong>Last Update:</strong><br>2024-01-20 15:10:00</div>
+        </div>
+        <hr>
+        <div class="row text-center">
+          <div class="col-md-4"><div class="p-3 rounded bg-light border">
+              <h6 class="text-success">Compliant Merchants</h6><h4 class="fw-bold text-success">180</h4><small>72.0%</small></div></div>
+          <div class="col-md-4"><div class="p-3 rounded bg-light border">
+              <h6 class="text-danger">Non-Compliant Merchants</h6><h4 class="fw-bold text-danger">50</h4><small>20.0%</small></div></div>
+          <div class="col-md-4"><div class="p-3 rounded bg-light border">
+              <h6 class="text-warning">Pending Review</h6><h4 class="fw-bold text-warning">20</h4><small>8.0%</small></div></div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button class="btn btn-light" data-bs-dismiss="modal">Close</button>
+        <button class="btn btn-dark">View Detailed Report</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Ikeja -->
+<div class="modal fade" id="modalIkeja" tabindex="-1" aria-hidden="true">
+  <div class="modal-dialog modal-lg modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h6 class="modal-title fw-bold">LGA Compliance Details</h6>
+        <span class="badge bg-success ms-3">Excellent</span>
+        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+      </div>
+      <div class="modal-body">
+        <h4 class="fw-bold">Ikeja 
+          <span class="float-end">85% <small class="text-muted">Compliance Rate</small></span>
+        </h4>
+        <div class="row mt-3">
+          <div class="col-md-3"><strong>Total Merchants:</strong> 200</div>
+          <div class="col-md-3"><strong>Population:</strong> 600,000</div>
+          <div class="col-md-3"><strong>Area:</strong> 52.5 km²</div>
+          <div class="col-md-3"><strong>Last Update:</strong><br>2024-01-20 15:10:00</div>
+        </div>
+        <hr>
+        <div class="row text-center">
+          <div class="col-md-4"><div class="p-3 rounded bg-light border">
+              <h6 class="text-success">Compliant Merchants</h6><h4 class="fw-bold text-success">170</h4><small>85.0%</small></div></div>
+          <div class="col-md-4"><div class="p-3 rounded bg-light border">
+              <h6 class="text-danger">Non-Compliant Merchants</h6><h4 class="fw-bold text-danger">20</h4><small>10.0%</small></div></div>
+          <div class="col-md-4"><div class="p-3 rounded bg-light border">
+              <h6 class="text-warning">Pending Review</h6><h4 class="fw-bold text-warning">10</h4><small>5.0%</small></div></div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button class="btn btn-light" data-bs-dismiss="modal">Close</button>
+        <button class="btn btn-dark">View Detailed Report</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Oshodi-Isolo -->
+<div class="modal fade" id="modalOshodi" tabindex="-1" aria-hidden="true">
+  <div class="modal-dialog modal-lg modal-dialog-centered">
+    <div class="modal-content">
+      
+      <!-- Header -->
+      <div class="modal-header">
+        <h6 class="modal-title fw-bold">LGA Compliance Details</h6>
+        <span class="badge bg-warning ms-3">Good</span>
+        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+      </div>
+
+      <!-- Body -->
+      <div class="modal-body">
+        <h4 class="fw-bold">Oshodi-Isolo 
+          <span class="float-end">75% <small class="text-muted">Compliance Rate</small></span>
+        </h4>
+
+        <!-- Top stats row -->
+        <div class="row mt-3">
+          <div class="col-md-3"><strong>Total Merchants:</strong> 180</div>
+          <div class="col-md-3"><strong>Population:</strong> 621,509</div>
+          <div class="col-md-3"><strong>Area:</strong> 45.0 km²</div>
+          <div class="col-md-3"><strong>Last Update:</strong><br>2024-01-20 15:10:00</div>
+        </div>
+
+        <hr>
+
+        <!-- Compliance breakdown -->
+        <div class="row text-center">
+          <div class="col-md-4">
+            <div class="p-3 rounded bg-light border">
+              <h6 class="text-success">Compliant Merchants</h6>
+              <h4 class="fw-bold text-success">135</h4>
+              <small>75.0%</small>
+            </div>
+          </div>
+
+          <div class="col-md-4">
+            <div class="p-3 rounded bg-light border">
+              <h6 class="text-danger">Non-Compliant Merchants</h6>
+              <h4 class="fw-bold text-danger">30</h4>
+              <small>16.7%</small>
+            </div>
+          </div>
+
+          <div class="col-md-4">
+            <div class="p-3 rounded bg-light border">
+              <h6 class="text-warning">Pending Review</h6>
+              <h4 class="fw-bold text-warning">15</h4>
+              <small>8.3%</small>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Footer -->
+      <div class="modal-footer">
+        <button class="btn btn-light" data-bs-dismiss="modal">Close</button>
+        <button class="btn btn-dark">View Detailed Report</button>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- Surulere -->
+<div class="modal fade" id="modalSurulere" tabindex="-1" aria-hidden="true">
+  <div class="modal-dialog modal-lg modal-dialog-centered">
+    <div class="modal-content">
+      
+      <!-- Header -->
+      <div class="modal-header">
+        <h6 class="modal-title fw-bold">LGA Compliance Details</h6>
+        <span class="badge bg-warning ms-3">Good</span>
+        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+      </div>
+
+      <!-- Body -->
+      <div class="modal-body">
+        <h4 class="fw-bold">Surulere 
+          <span class="float-end">78% <small class="text-muted">Compliance Rate</small></span>
+        </h4>
+
+        <!-- Top stats -->
+        <div class="row mt-3">
+          <div class="col-md-3"><strong>Total Merchants:</strong> 200</div>
+          <div class="col-md-3"><strong>Population:</strong> 503,975</div>
+          <div class="col-md-3"><strong>Area:</strong> 27.0 km²</div>
+          <div class="col-md-3"><strong>Last Update:</strong><br>2024-01-20 15:10:00</div>
+        </div>
+
+        <hr>
+
+        <!-- Compliance breakdown -->
+        <div class="row text-center">
+          <div class="col-md-4">
+            <div class="p-3 rounded bg-light border">
+              <h6 class="text-success">Compliant Merchants</h6>
+              <h4 class="fw-bold text-success">156</h4>
+              <small>78.0%</small>
+            </div>
+          </div>
+
+          <div class="col-md-4">
+            <div class="p-3 rounded bg-light border">
+              <h6 class="text-danger">Non-Compliant Merchants</h6>
+              <h4 class="fw-bold text-danger">30</h4>
+              <small>15.0%</small>
+            </div>
+          </div>
+
+          <div class="col-md-4">
+            <div class="p-3 rounded bg-light border">
+              <h6 class="text-warning">Pending Review</h6>
+              <h4 class="fw-bold text-warning">14</h4>
+              <small>7.0%</small>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Footer -->
+      <div class="modal-footer">
+        <button class="btn btn-light" data-bs-dismiss="modal">Close</button>
+        <button class="btn btn-dark">View Detailed Report</button>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- Mushin -->
+<div class="modal fade" id="modalMushin" tabindex="-1" aria-hidden="true">
+  <div class="modal-dialog modal-lg modal-dialog-centered">
+    <div class="modal-content">
+      
+      <!-- Header -->
+      <div class="modal-header">
+        <h6 class="modal-title fw-bold">LGA Compliance Details</h6>
+        <span class="badge bg-danger ms-3">Needs Attention</span>
+        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+      </div>
+
+      <!-- Body -->
+      <div class="modal-body">
+        <h4 class="fw-bold">Mushin 
+          <span class="float-end">70% <small class="text-muted">Compliance Rate</small></span>
+        </h4>
+
+        <!-- Top stats -->
+        <div class="row mt-3">
+          <div class="col-md-3"><strong>Total Merchants:</strong> 180</div>
+          <div class="col-md-3"><strong>Population:</strong> 633,009</div>
+          <div class="col-md-3"><strong>Area:</strong> 17.6 km²</div>
+          <div class="col-md-3"><strong>Last Update:</strong><br>2024-01-20 15:10:00</div>
+        </div>
+
+        <hr>
+
+        <!-- Compliance breakdown -->
+        <div class="row text-center">
+          <div class="col-md-4">
+            <div class="p-3 rounded bg-light border">
+              <h6 class="text-success">Compliant Merchants</h6>
+              <h4 class="fw-bold text-success">126</h4>
+              <small>70.0%</small>
+            </div>
+          </div>
+
+          <div class="col-md-4">
+            <div class="p-3 rounded bg-light border">
+              <h6 class="text-danger">Non-Compliant Merchants</h6>
+              <h4 class="fw-bold text-danger">40</h4>
+              <small>22.0%</small>
+            </div>
+          </div>
+
+          <div class="col-md-4">
+            <div class="p-3 rounded bg-light border">
+              <h6 class="text-warning">Pending Review</h6>
+              <h4 class="fw-bold text-warning">14</h4>
+              <small>8.0%</small>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Footer -->
+      <div class="modal-footer">
+        <button class="btn btn-light" data-bs-dismiss="modal">Close</button>
+        <button class="btn btn-dark">View Detailed Report</button>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- Kosofe -->
+<div class="modal fade" id="modalKosofe" tabindex="-1" aria-hidden="true">
+  <div class="modal-dialog modal-lg modal-dialog-centered">
+    <div class="modal-content">
+      
+      <!-- Header -->
+      <div class="modal-header">
+        <h6 class="modal-title fw-bold">LGA Compliance Details</h6>
+        <span class="badge bg-danger ms-3">Needs Attention</span>
+        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+      </div>
+
+      <!-- Body -->
+      <div class="modal-body">
+        <h4 class="fw-bold">Kosofe 
+          <span class="float-end">68% <small class="text-muted">Compliance Rate</small></span>
+        </h4>
+
+        <!-- Top stats -->
+        <div class="row mt-3">
+          <div class="col-md-3"><strong>Total Merchants:</strong> 220</div>
+          <div class="col-md-3"><strong>Population:</strong> 682,772</div>
+          <div class="col-md-3"><strong>Area:</strong> 81 km²</div>
+          <div class="col-md-3"><strong>Last Update:</strong><br>2024-01-20 15:10:00</div>
+        </div>
+
+        <hr>
+
+        <!-- Compliance breakdown -->
+        <div class="row text-center">
+          <div class="col-md-4">
+            <div class="p-3 rounded bg-light border">
+              <h6 class="text-success">Compliant Merchants</h6>
+              <h4 class="fw-bold text-success">150</h4>
+              <small>68.0%</small>
+            </div>
+          </div>
+
+          <div class="col-md-4">
+            <div class="p-3 rounded bg-light border">
+              <h6 class="text-danger">Non-Compliant Merchants</h6>
+              <h4 class="fw-bold text-danger">50</h4>
+              <small>22.7%</small>
+            </div>
+          </div>
+
+          <div class="col-md-4">
+            <div class="p-3 rounded bg-light border">
+              <h6 class="text-warning">Pending Review</h6>
+              <h4 class="fw-bold text-warning">20</h4>
+              <small>9.3%</small>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Footer -->
+      <div class="modal-footer">
+        <button class="btn btn-light" data-bs-dismiss="modal">Close</button>
+        <button class="btn btn-dark">View Detailed Report</button>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- Ikorodu -->
+<div class="modal fade" id="modalIkorodu" tabindex="-1" aria-hidden="true">
+  <div class="modal-dialog modal-lg modal-dialog-centered">
+    <div class="modal-content">
+      
+      <!-- Header -->
+      <div class="modal-header">
+        <h6 class="modal-title fw-bold">LGA Compliance Details</h6>
+        <span class="badge bg-danger ms-3">Needs Attention</span>
+        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+      </div>
+
+      <!-- Body -->
+      <div class="modal-body">
+        <h4 class="fw-bold">Ikorodu 
+          <span class="float-end">70% <small class="text-muted">Compliance Rate</small></span>
+        </h4>
+
+        <!-- Top stats -->
+        <div class="row mt-3">
+          <div class="col-md-3"><strong>Total Merchants:</strong> 200</div>
+          <div class="col-md-3"><strong>Population:</strong> 535,619</div>
+          <div class="col-md-3"><strong>Area:</strong> 345 km²</div>
+          <div class="col-md-3"><strong>Last Update:</strong><br>2024-01-20 15:10:00</div>
+        </div>
+
+        <hr>
+
+        <!-- Compliance breakdown -->
+        <div class="row text-center">
+          <div class="col-md-4">
+            <div class="p-3 rounded bg-light border">
+              <h6 class="text-success">Compliant Merchants</h6>
+              <h4 class="fw-bold text-success">140</h4>
+              <small>70.0%</small>
+            </div>
+          </div>
+
+          <div class="col-md-4">
+            <div class="p-3 rounded bg-light border">
+              <h6 class="text-danger">Non-Compliant Merchants</h6>
+              <h4 class="fw-bold text-danger">40</h4>
+              <small>20.0%</small>
+            </div>
+          </div>
+
+          <div class="col-md-4">
+            <div class="p-3 rounded bg-light border">
+              <h6 class="text-warning">Pending Review</h6>
+              <h4 class="fw-bold text-warning">20</h4>
+              <small>10.0%</small>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Footer -->
+      <div class="modal-footer">
+        <button class="btn btn-light" data-bs-dismiss="modal">Close</button>
+        <button class="btn btn-dark">View Detailed Report</button>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- Lagos Island -->
+<div class="modal fade" id="modalLagosIsland" tabindex="-1" aria-hidden="true">
+  <div class="modal-dialog modal-lg modal-dialog-centered">
+    <div class="modal-content">
+      
+      <!-- Header -->
+      <div class="modal-header">
+        <h6 class="modal-title fw-bold">LGA Compliance Details</h6>
+        <span class="badge bg-success ms-3">Excellent</span>
+        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+      </div>
+      
+      <!-- Body -->
+      <div class="modal-body">
+        <h4 class="fw-bold">
+          Lagos Island
+          <span class="float-end">92% <small class="text-muted">Compliance Rate</small></span>
+        </h4>
+
+        <!-- Stats -->
+        <div class="row mt-3">
+          <div class="col-md-3"><strong>Total Merchants:</strong> 220</div>
+          <div class="col-md-3"><strong>Population:</strong> 450,000</div>
+          <div class="col-md-3"><strong>Area:</strong> 27.0 km²</div>
+          <div class="col-md-3"><strong>Last Update:</strong><br>2024-01-20 15:10:00</div>
+        </div>
+
+        <hr>
+
+        <!-- Breakdown -->
+        <div class="row text-center">
+          <div class="col-md-4">
+            <div class="p-3 rounded bg-light border">
+              <h6 class="text-success">Compliant Merchants</h6>
+              <h4 class="fw-bold text-success">202</h4>
+              <small>92.0% of total</small>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="p-3 rounded bg-light border">
+              <h6 class="text-danger">Non-Compliant Merchants</h6>
+              <h4 class="fw-bold text-danger">10</h4>
+              <small>4.5% of total</small>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="p-3 rounded bg-light border">
+              <h6 class="text-warning">Pending Review</h6>
+              <h4 class="fw-bold text-warning">8</h4>
+              <small>3.5% of total</small>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Footer -->
+      <div class="modal-footer">
+        <button class="btn btn-light" data-bs-dismiss="modal">Close</button>
+        <button class="btn btn-dark">View Detailed Report</button>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- Victoria Island -->
+<div class="modal fade" id="modalVictoria" tabindex="-1" aria-hidden="true">
+  <div class="modal-dialog modal-lg modal-dialog-centered">
+    <div class="modal-content">
+
+      <!-- Header -->
+      <div class="modal-header">
+        <h6 class="modal-title fw-bold">LGA Compliance Details</h6>
+        <span class="badge bg-success ms-3">Excellent</span>
+        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+      </div>
+
+      <!-- Body -->
+      <div class="modal-body">
+        <h4 class="fw-bold">Victoria Island 
+          <span class="float-end">80% <small class="text-muted">Compliance Rate</small></span>
+        </h4>
+
+        <!-- Top stats -->
+        <div class="row mt-3">
+          <div class="col-md-3"><strong>Total Merchants:</strong> 150</div>
+          <div class="col-md-3"><strong>Population:</strong> 300,000</div>
+          <div class="col-md-3"><strong>Area:</strong> 87 km²</div>
+          <div class="col-md-3"><strong>Last Update:</strong><br>2024-01-20 15:10:00</div>
+        </div>
+
+        <hr>
+
+        <!-- Compliance breakdown -->
+        <div class="row text-center">
+          <div class="col-md-4">
+            <div class="p-3 rounded bg-light border">
+              <h6 class="text-success">Compliant Merchants</h6>
+              <h4 class="fw-bold text-success">120</h4>
+              <small>80.0%</small>
+            </div>
+          </div>
+
+          <div class="col-md-4">
+            <div class="p-3 rounded bg-light border">
+              <h6 class="text-danger">Non-Compliant Merchants</h6>
+              <h4 class="fw-bold text-danger">20</h4>
+              <small>13.3%</small>
+            </div>
+          </div>
+
+          <div class="col-md-4">
+            <div class="p-3 rounded bg-light border">
+              <h6 class="text-warning">Pending Review</h6>
+              <h4 class="fw-bold text-warning">10</h4>
+              <small>6.7%</small>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Footer -->
+      <div class="modal-footer">
+        <button class="btn btn-light" data-bs-dismiss="modal">Close</button>
+        <button class="btn btn-dark">View Detailed Report</button>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- Epe -->
+<div class="modal fade" id="modalEpe" tabindex="-1" aria-hidden="true">
+  <div class="modal-dialog modal-lg modal-dialog-centered">
+    <div class="modal-content">
+
+      <!-- Header -->
+      <div class="modal-header">
+        <h6 class="modal-title fw-bold">LGA Compliance Details</h6>
+        <span class="badge bg-warning ms-3">Good</span>
+        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+      </div>
+
+      <!-- Body -->
+      <div class="modal-body">
+        <h4 class="fw-bold">Epe 
+          <span class="float-end">75% <small class="text-muted">Compliance Rate</small></span>
+        </h4>
+
+        <!-- Top Stats -->
+        <div class="row mt-3">
+          <div class="col-md-3"><strong>Total Merchants:</strong> 120</div>
+          <div class="col-md-3"><strong>Population:</strong> 181,409</div>
+          <div class="col-md-3"><strong>Area:</strong> 965 km²</div>
+          <div class="col-md-3"><strong>Last Update:</strong><br>2024-01-20 15:10:00</div>
+        </div>
+
+        <hr>
+
+        <!-- Three Boxes -->
+        <div class="row text-center">
+          <div class="col-md-4">
+            <div class="p-3 rounded bg-light border">
+              <h6 class="text-success">Compliant Merchants</h6>
+              <h4 class="fw-bold text-success">90</h4>
+              <small>75.0%</small>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="p-3 rounded bg-light border">
+              <h6 class="text-danger">Non-Compliant Merchants</h6>
+              <h4 class="fw-bold text-danger">20</h4>
+              <small>16.7%</small>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="p-3 rounded bg-light border">
+              <h6 class="text-warning">Pending Review</h6>
+              <h4 class="fw-bold text-warning">10</h4>
+              <small>8.3%</small>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Footer -->
+      <div class="modal-footer">
+        <button class="btn btn-light" data-bs-dismiss="modal">Close</button>
+        <button class="btn btn-dark">View Detailed Report</button>
+      </div>
+
+    </div>
+  </div>
+</div>
+                                   </div>
+        </main>
+
+        <!-- begin::GXON Footer -->
+        <footer class="footer-wrapper bg-body">
+            <div class="container">
+                <div class="row g-2">
+                    <div class="col-lg-6 col-md-7 text-center text-md-start">
+                        <p class="mb-0">© <span class="currentYear">2025</p>
+                    </div>
+                </div>
+            </div>
+        </footer>
+        <!-- end::GXON Footer -->
+
+    </div>
+
+    <!-- begin::GXON Page Scripts -->
+     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="assets/js/leaflet.js"></script>"
+    <script src="assets/js/header.js"></script>
+    <script src="assets/libs/global/global.min.js"></script>
+    <script src="assets/libs/chartjs/chart.js"></script>
+    <script src="assets/libs/apexcharts/apexcharts.min.js"></script>
+    <script src="assets/libs/datatables/datatables.min.js"></script>
+    <script src="assets/libs/flatpickr/flatpickr.min.js"></script>
+    <script src="assets/js/flatpickr.js"></script>
+    <script src="assets/js/dashboard.js"></script>
+    <script src="assets/js/appSettings.js"></script>
+    <script src="assets/js/main.js"></script>
+    <!-- end::GXON Page Scripts -->
+     <script>
+document.addEventListener("DOMContentLoaded", async () => {
+  const map = L.map('map').setView([9.0579, 7.4951], 10);
+
+  L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+    maxZoom: 18,
+  }).addTo(map);
+
+  const response = await fetch("https://arafatfootballacademy.com/fusion/backend/state/32/lga/performance-matrix");
+  const result = await response.json();
+
+  console.log(result);
+
+  if (result.status === "success") {
+    result.data.forEach(lga => {
+      let coords = {
+        "Abaji": [8.474, 7.168],
+        "Bwari": [9.239, 7.383],
+        "Gwagwalada": [8.939, 7.082],
+        "Kuje": [8.878, 7.229],
+        "Kwali": [8.890, 7.020],
+        "Municipal Area Council": [9.0579, 7.4951],
+      };
+
+      if (!coords[lga.lga_name]) return;
+
+      let compliance = parseFloat(lga.compliant_rate) || 0;
+      let color = "gray";
+      if (compliance >= 80) color = "green";
+      else if (compliance >= 50) color = "orange";
+      else color = "red";
+
+      const marker = L.circleMarker(coords[lga.lga_name], {
+        radius: 12,
+        fillColor: color,
+        color: "#fff",
+        weight: 2,
+        opacity: 1,
+        fillOpacity: 0.8
+      }).addTo(map);
+
+      marker.bindPopup(`
+        <b>${lga.lga_name}</b><br>
+        Merchants: ${lga.marchant_count}<br>
+        Active: ${lga.active_marchants}<br>
+        Transactions: ₦${parseFloat(lga.transaction_volume).toLocaleString()}<br>
+        Compliant: ${lga.compliant_rate || "N/A"}<br>
+        Non-Compliant: ${lga.non_compliant_rate || "N/A"}<br>
+        Partial: ${lga.partial_compliant_rate || "N/A"}
+      `);
+    });
+  }
+});
+</script>
+
+</body>
+
+</html>

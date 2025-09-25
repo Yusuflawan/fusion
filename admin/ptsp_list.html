@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- begin::GXON Meta Basic -->
+    <meta charset="utf-8" />
+    <title>Fusion</title>
+    <link rel="icon" type="image/png" href="assets/images/logo.jpeg" />
+    <!-- end::GXON Website Page Title -->
+
+    <!-- begin::GXON Mobile Specific -->
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <!-- end::GXON Mobile Specific -->
+
+    <!-- begin::GXON Favicon Tags -->
+
+    <!-- end::GXON Favicon Tags -->
+
+    <!-- begin::GXON Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&display=swap"
+      rel="stylesheet"
+    />
+    <!-- end::GXON Google Fonts -->
+
+    <!-- begin::GXON Required Stylesheet -->
+    <link rel="stylesheet" href="assets/libs/flaticon/css/all/all.css" />
+    <link rel="stylesheet" href="assets/libs/lucide/lucide.css" />
+    <link rel="stylesheet" href="assets/libs/fontawesome/css/all.min.css" />
+    <link rel="stylesheet" href="assets/libs/simplebar/simplebar.css" />
+    <link rel="stylesheet" href="assets/libs/node-waves/waves.css" />
+    <link
+      rel="stylesheet"
+      href="assets/libs/bootstrap-select/css/bootstrap-select.min.css"
+    />
+    <!-- end::GXON Required Stylesheet -->
+    <!-- begin::GXON CSS Stylesheet -->
+    <link rel="stylesheet" href="assets/libs/flatpickr/flatpickr.min.css" />
+    <link rel="stylesheet" href="assets/libs/datatables/datatables.min.css" />
+    <link rel="stylesheet" href="assets/css/styles.css" />
+    <!-- end::GXON CSS Stylesheet -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <!-- Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <!-- begin::GXON Googletagmanager -->
+    <script
+      async
+      src="https://www.googletagmanager.com/gtag/js?id=G-XWVQM68HHQ"
+    ></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag("js", new Date());
+
+      gtag("config", "G-XWVQM68HHQ", {
+        cookie_flags: "SameSite=None;Secure",
+        send_page_view: true,
+      });
+    </script>
+    <!-- end::GXON Googletagmanager -->
+    <style>
+      .container {
+        max-width: px;
+        margin: 0 auto;
+        padding: 20px;
+      }
+
+      .header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 20px;
+        padding-bottom: 10px;
+        border-bottom: 1px solid #e5e5e5;
+      }
+
+      .title {
+        font-size: 16px;
+        font-weight: 600;
+        color: #333;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+      }
+
+      .period {
+        font-size: 14px;
+        color: #666;
+      }
+
+      .chart-container {
+        margin-bottom: 30px;
+        height: 300px;
+        position: relative;
+        border: 1px solid #f0f0f0;
+        background: #fafafa;
+      }
+
+      .chart-svg {
+        width: 100%;
+        height: 100%;
+      }
+
+      .metrics {
+        display: flex;
+        justify-content: space-between;
+        gap: 20px;
+      }
+
+      .metric {
+        flex: 1;
+        text-align: left;
+      }
+
+      .metric-header {
+        display: flex;
+        align-items: center;
+        margin-bottom: 5px;
+      }
+
+      .metric-dot {
+        width: 8px;
+        height: 8px;
+        border-radius: 50%;
+        margin-right: 8px;
+      }
+
+      .metric-dot.ptsp {
+        background-color: #e85d75;
+      }
+
+      .metric-dot.pssp {
+        background-color: #4ecdc4;
+      }
+
+      .metric-label {
+        font-size: 13px;
+        color: #666;
+      }
+
+      .metric-value {
+        font-size: 18px;
+        font-weight: 600;
+        color: #333;
+        margin: 2px 0;
+      }
+
+      .avg-label {
+        font-size: 13px;
+        color: #666;
+        margin-bottom: 5px;
+      }
+
+      .avg-value {
+        font-size: 18px;
+        font-weight: 600;
+        color: #333;
+      }
+
+      .axis-label {
+        font-size: 11px;
+        fill: #666;
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+          sans-serif;
+      }
+
+      .grid-line {
+        stroke: #f0f0f0;
+        stroke-width: 1;
+      }
+
+      .chart-line {
+        fill: none;
+        stroke-width: 3;
+      }
+
+      .ptsp-line {
+        stroke: #e85d75;
+      }
+
+      .pssp-line {
+        stroke: #4ecdc4;
+      }
+
+      @media (max-width: 768px) {
+        .container {
+          padding: 15px;
+        }
+
+        .header {
+          flex-direction: column;
+          align-items: flex-start;
+          gap: 10px;
+        }
+
+        .metrics {
+          flex-direction: column;
+          gap: 15px;
+        }
+
+        .chart-container {
+          height: 250px;
+        }
+      }
+
+      @media (max-width: 480px) {
+        body {
+          padding: 10px;
+        }
+
+        .chart-container {
+          height: 200px;
+        }
+
+        .metric-value,
+        .avg-value {
+          font-size: 16px;
+        }
+      }
+      /* last chart */
+
+      .chart-card {
+        background: #fff;
+        border-radius: 16px;
+        padding: 20px;
+        box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+      }
+      .chart-container {
+        position: relative;
+        height: 350px;
+      }
+      .chart-title {
+        font-weight: 600;
+        font-size: 1.1rem;
+        color: #1a1a3d;
+      }
+    </style>
+  </head>
+  <body>
+    <header class="app-header">
+      <div class="app-header-inner" id="header"></div>
+    </header>
+
+    <div id="sidebsr"></div>
+
+    <div class="app-sidebar-end"></div>
+
+    <main class="app-wrapper">
+      <div class="container">
+        <div
+          class="app-page-head d-flex align-items-center justify-content-between"
+        >
+          <div class="clearfix">
+            <h3>PTSP / <span>Merchants List</span></h3>
+            <nav aria-label="breadcrumb">
+              <ol class="breadcrumb mb-0">
+                <li class="breadcrumb-item"></li>
+              </ol>
+            </nav>
+          </div>
+          <div
+            class="d-flex justify-content-end align-items-center gap-2"
+          ></div>
+        </div>
+        <div class="card">
+          <div class="card-body">
+            <div class="table-responsive">
+              <table class="table align-middle table-hover">
+                <thead class="table-light">
+                  <tr>
+                    <th>#</th>
+                    <th>Name</th>
+                    <th>Status</th>
+                    <th>Total Transactions</th>
+                    <th>Total Revenue</th>
+                    <th>Tax Liabilities</th>
+                    <th class="text-end">Action</th>
+                  </tr>
+                </thead>
+                <tbody id="merchantsTableBody">
+                  <tr>
+                    <td colspan="9" class="text-center text-muted">
+                      Loading merchants...
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+
+        <script>
+          const urlParams = new URLSearchParams(window.location.search);
+          const providerId = urlParams.get("id");
+          const API_URL = `https://arafatfootballacademy.com/fusion/backend/provider/${providerId}/marchants`;
+
+          async function fetchMerchants() {
+            try {
+              const res = await fetch(API_URL);
+              const json = await res.json();
+              const merchants = json.data || [];
+
+              const tbody = document.getElementById("merchantsTableBody");
+              tbody.innerHTML = "";
+
+              if (merchants.length === 0) {
+                tbody.innerHTML = `<tr><td colspan="9" class="text-center text-muted">No merchants found</td></tr>`;
+                return;
+              }
+
+              merchants.forEach((m, index) => {
+                const row = `
+        <tr>
+          <td>${index + 1}</td>
+          <td>${m.marchant_name}</td>
+          <td>
+            <span class="badge ${
+              m.status === "active" ? "bg-primary" : "bg-secondary"
+            }">
+              ${m.status}
+            </span>
+          </td>
+          <td>${m.total_transactions}</td>
+          <td>₦${parseFloat(m.total_volume).toLocaleString()}</td>
+          <td>₦${parseFloat(m.total_tax_liabilities).toLocaleString()}</td>
+          <td class="text-end">
+            <button class="btn btn-sm btn-outline-primary" onclick="viewMerchant(${
+              m.marchant_id
+            })">
+              <i class="bi bi-eye"></i> View
+            </button>
+          </td>
+        </tr>
+      `;
+                tbody.insertAdjacentHTML("beforeend", row);
+              });
+            } catch (err) {
+              console.error("Error fetching merchants:", err);
+            }
+          }
+
+          function viewMerchant(id) {
+            alert("Viewing details for merchant ID: " + id);
+          }
+
+          fetchMerchants();
+        </script>
+      </div>
+    </main>
+
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="assets/js/header.js"></script>
+    <script src="assets/libs/global/global.min.js"></script>
+    <script src="assets/libs/chartjs/chart.js"></script>
+    <script src="assets/libs/apexcharts/apexcharts.min.js"></script>
+    <script src="assets/libs/datatables/datatables.min.js"></script>
+    <script src="assets/libs/flatpickr/flatpickr.min.js"></script>
+  </body>
+</html>

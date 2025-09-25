@@ -1,0 +1,600 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- begin::GXON Meta Basic -->
+    <meta charset="utf-8" />
+
+    <title>Fusion</title>
+    <link rel="icon" type="image/png" href="assets/images/logo.jpeg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css"
+      rel="stylesheet"
+    />
+
+    <!-- begin::GXON Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&display=swap"
+      rel="stylesheet"
+    />
+    <!-- end::GXON Google Fonts -->
+
+    <!-- begin::GXON Required Stylesheet -->
+    <link rel="stylesheet" href="assets/libs/flaticon/css/all/all.css" />
+    <link rel="stylesheet" href="assets/libs/lucide/lucide.css" />
+    <link rel="stylesheet" href="assets/libs/fontawesome/css/all.min.css" />
+    <link rel="stylesheet" href="assets/libs/simplebar/simplebar.css" />
+    <link rel="stylesheet" href="assets/libs/node-waves/waves.css" />
+    <link
+      rel="stylesheet"
+      href="assets/libs/bootstrap-select/css/bootstrap-select.min.css"
+    />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css"
+    />
+    <!-- end::GXON Required Stylesheet -->
+
+    <!-- begin::GXON CSS Stylesheet -->
+    <link rel="stylesheet" href="assets/libs/datatables/datatables.min.css" />
+    <link rel="stylesheet" href="assets/libs/flatpickr/flatpickr.min.css" />
+    <link rel="stylesheet" href="assets/css/styles.css" />
+    <!-- end::GXON CSS Stylesheet -->
+
+    <!-- begin::GXON Googletagmanager -->
+    <script
+      async
+      src="https://www.googletagmanager.com/gtag/js?id=G-XWVQM68HHQ"
+    ></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag("js", new Date());
+
+      gtag("config", "G-XWVQM68HHQ", {
+        cookie_flags: "SameSite=None;Secure",
+        send_page_view: true,
+      });
+    </script>
+    <!-- Include Choices.js CSS & JS -->
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/choices.js/public/assets/styles/choices.min.css"
+    />
+    <script src="https://cdn.jsdelivr.net/npm/choices.js/public/assets/scripts/choices.min.js"></script>
+    <!-- end::GXON Googletagmanager -->
+  </head>
+
+  <body>
+    <div class="page-layout">
+      <!-- begin::GXON Page Header -->
+      <header class="app-header">
+        <div class="app-header-inner" id="header"></div>
+      </header>
+      <!-- end::GXON Page Header -->
+
+      <div
+        class="modal fade"
+        id="searchResultsModal"
+        tabindex="-1"
+        aria-hidden="true"
+      >
+        <div class="modal-dialog modal-dialog-centered">
+          <div class="modal-content">
+            <div class="modal-header py-1 px-3">
+              <form
+                class="d-flex align-items-center position-relative w-100"
+                action="leave.html#"
+              >
+                <button
+                  type="button"
+                  class="btn btn-sm border-0 position-absolute start-0 p-0 text-sm"
+                >
+                  <i class="fi fi-rr-search"></i>
+                </button>
+                <input
+                  type="text"
+                  class="form-control form-control-lg ps-4 border-0 shadow-none"
+                  id="searchInput"
+                  placeholder="Search anything's"
+                />
+              </form>
+              <button
+                type="button"
+                class="btn-close"
+                data-bs-dismiss="modal"
+                aria-label="Close"
+              ></button>
+            </div>
+            <div class="modal-body pb-2" style="height: 300px" data-simplebar>
+              <div id="recentlyResults">
+                <span
+                  class="text-uppercase text-2xs fw-semibold text-muted d-block mb-2"
+                  >Recently Searched:</span
+                >
+                <ul class="list-inline search-list">
+                  <li>
+                    <a class="search-item" href="index.html">
+                      <i class="fi fi-rr-apps"></i> Dashboard
+                    </a>
+                  </li>
+                  <li>
+                    <a class="search-item" href="user.html">
+                      <i class="fi fi-rr-comment"></i>User Management
+                    </a>
+                  </li>
+                  <li>
+                    <a class="search-item" href="roles.html">
+                      <i class="fi fi-rr-calendar"></i>Roles & Access control
+                    </a>
+                  </li>
+                  <li>
+                    <a class="search-item" href="PTSP.html">
+                      <i class="fi fi-rr-chart-pie-alt"></i> ptsp onboarding
+                    </a>
+                  </li>
+                  <li>
+                    <a class="search-item" href="data.html">
+                      <i class="fi fi-rr-file"></i>data ingestion monitor
+                    </a>
+                  </li>
+                  <li>
+                    <a class="search-item" href="audit.html">
+                      <i class="fi fi-rr-envelope"></i> audit log
+                    </a>
+                  </li>
+                  <li>
+                    <a class="search-item" href="transaction.html">
+                      <i class="fi fi-rr-envelope"></i>Tax Transaction Config
+                    </a>
+                  </li>
+                  <li>
+                    <a class="search-item" href="taxconfig.html">
+                        <i class="fi fi-rr-envelope"></i>Tax Configuration
+                    </a>
+                  </li>
+                </ul>
+              </div>
+              <div id="searchContainer"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- begin::GXON Sidebar Menu -->
+      <div id="sidebsr"></div>
+      <!-- end::GXON Sidebar Menu -->
+
+      <!-- begin::GXON Sidebar right -->
+      <div class="app-sidebar-end"></div>
+      <!-- end::GXON Sidebar right -->
+
+      <main class="app-wrapper">
+        <div class="container">
+          <div
+            class="app-page-head d-flex flex-wrap gap-3 align-items-center justify-content-between"
+          >
+            <div class="clearfix">
+              <h1 class="app-page-title">Tax Configuration</h1>
+            </div>
+
+          <div class="container my-4">
+            <!-- Top Stats Cards -->
+       <div class="row g-3 mb-4">
+  <!-- Total Taxes -->
+  <div class="col-md-3">
+    <div class="card shadow-sm rounded-3 h-100">
+      <div class="card-body d-flex justify-content-between align-items-start">
+        <div>
+          <p class="text-dark small mb-3">Total Tax Types</p>
+          <h3 class="fw-bold mb-0" id="totalTaxes">...</h3>
+          <p class="text-muted small">Configured in system</p>
+        </div>
+        <div>
+          <i class="bi bi-graph-up-arrow text-success fs-4"></i>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Active Taxes -->
+  <div class="col-md-3">
+    <div class="card shadow-sm rounded-3 h-100">
+      <div class="card-body d-flex justify-content-between align-items-start">
+        <div>
+          <p class="text-dark small mb-3">Active Taxes</p>
+          <h3 class="fw-bold mb-0" id="activeTaxes">...</h3>
+          <p class="text-muted small">Currently enforced</p>
+        </div>
+        <div>
+          <i class="bi bi-arrow-up-right-circle text-primary fs-4"></i>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Inactive Taxes -->
+  <div class="col-md-3">
+    <div class="card shadow-sm rounded-3 h-100">
+      <div class="card-body d-flex justify-content-between align-items-start">
+        <div>
+          <p class="text-dark small mb-3">Inactive Taxes</p>
+          <h3 class="fw-bold mb-0" id="inactiveTaxes">...</h3>
+          <p class="text-muted small">Temporarily disabled</p>
+        </div>
+        <div>
+          <i class="bi bi-infinity fs-4" style="color: purple"></i>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Compliance Required -->
+  <div class="col-md-3">
+    <div class="card shadow-sm rounded-3 h-100">
+      <div class="card-body d-flex justify-content-between align-items-start">
+        <div>
+          <p class="text-dark small mb-3">Compliance Required</p>
+          <h3 class="fw-bold mb-0" id="complianceRequired">...</h3>
+          <p class="text-muted small">Mandatory reporting</p>
+        </div>
+        <div>
+          <i class="bi bi-clock-history fs-4 text-danger"></i>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="card shadow-sm rounded-3">
+  <div class="card-body">
+    <h5 class="card-title mb-1 fw-bold">
+      Tax Types Management
+    </h5>
+    <p class="text-muted small mb-3">
+      Configure and manage available tax types
+    </p>
+
+    <!-- Search & Filter -->
+    <div class="d-flex mb-3 gap-2">
+      <input
+        type="text"
+        id="searchInput"
+        class="form-control"
+        placeholder="Search by code, name or description..."
+      />
+      <button id="searchButton" class="btn btn-dark">Search</button>
+      <select id="filterSelect" class="form-select" style="max-width: 200px;">
+        <option value="">All</option>
+        <option value="WHT">Withholding Tax</option>
+        <option value="PIT">Personal Income Tax</option>
+      </select>
+    </div>
+
+<div class="table-responsive">
+  <table class="table align-middle" id="taxTable">
+    <thead class="table-light">
+      <tr>
+        <th>ID</th>
+        <th>Code</th>
+        <th>Name</th>
+        <th>Description</th>
+        <th>Status</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody id="taxTableBody"></tbody>
+  </table>
+</div>
+
+<div class="modal fade" id="reasonModal" tabindex="-1" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Deactivate Tax</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+      </div>
+      <div class="modal-body">
+        <input type="hidden" id="modalTaxId" />
+        <div class="mb-3">
+          <label for="deactivateReason" class="form-label">Reason</label>
+          <textarea id="deactivateReason" class="form-control" rows="3" placeholder="Enter reason"></textarea>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+        <button class="btn btn-danger" id="confirmDeactivate">Confirm Deactivate</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+<script>
+  let allTaxes = [];
+  let reasonModal; 
+
+    async function loadTaxes() {
+    try {
+      const response = await axios.get(
+        "https://arafatfootballacademy.com/fusion/backend/tiers"
+      );
+      allTaxes = response.data.data;
+
+      updateDashboardCounts(allTaxes);
+
+      renderTable(allTaxes);
+    } catch (error) {
+      console.error("Error fetching taxes:", error);
+    }
+  }
+
+  function updateDashboardCounts(data) {
+    const total = data.length;
+    const active = data.filter(t => t.status === "active").length;
+    const inactive = data.filter(t => t.status === "inactive").length;
+
+    const compliance = active;
+
+    document.getElementById("totalTaxes").textContent = total;
+    document.getElementById("activeTaxes").textContent = active;
+    document.getElementById("inactiveTaxes").textContent = inactive;
+    document.getElementById("complianceRequired").textContent = compliance;
+  }
+
+  document.addEventListener("DOMContentLoaded", loadTaxes);
+  function renderTable(data) {
+    const tableBody = document.getElementById("taxTableBody");
+    tableBody.innerHTML = "";
+
+    if (data.length === 0) {
+      tableBody.innerHTML = `
+        <tr><td colspan="6" class="text-center text-muted">No results found</td></tr>
+      `;
+      return;
+    }
+
+    data.forEach((tax) => {
+      const isActive = tax.status === "active";
+      const row = `
+        <tr>
+          <td>${tax.id}</td>
+          <td><span class="badge bg-dark">${tax.code}</span></td>
+          <td>${tax.name}</td>
+          <td>${tax.description}</td>
+          <td>
+            <span class="badge ${isActive ? "bg-success" : "bg-secondary"}">
+              ${tax.status}
+            </span>
+          </td>
+          <td>
+            <button class="btn btn-sm ${isActive ? "btn-outline-danger" : "btn-outline-success"} toggle-btn" 
+              data-id="${tax.id}" 
+              data-status="${tax.status}">
+              ${isActive ? "Deactivate" : "Activate"}
+            </button>
+          </td>
+        </tr>
+      `;
+      tableBody.innerHTML += row;
+    });
+
+    document.querySelectorAll(".toggle-btn").forEach((btn) => {
+      btn.addEventListener("click", () => {
+        const id = parseInt(btn.getAttribute("data-id"));
+        const status = btn.getAttribute("data-status");
+        if (status === "active") {
+          document.getElementById("modalTaxId").value = id;
+          document.getElementById("deactivateReason").value = "";
+          reasonModal = new bootstrap.Modal(document.getElementById("reasonModal"));
+          reasonModal.show();
+        } else {
+          toggleStatus(id, "active");
+        }
+      });
+    });
+  }
+
+  document.getElementById("confirmDeactivate").addEventListener("click", () => {
+    const id = document.getElementById("modalTaxId").value;
+    const reason = document.getElementById("deactivateReason").value.trim();
+    if (!reason) {
+      alert("Please enter a reason for deactivation");
+      return;
+    }
+    toggleStatus(parseInt(id), "inactive", reason);
+    reasonModal.hide();
+  });
+
+  async function toggleStatus(id, newStatus, reason = "") {
+    const baseurl = "https://arafatfootballacademy.com/fusion/backend";
+
+    const tax = allTaxes.find((t) => t.id === id);
+    if (!tax) return;
+
+    const userIdI = JSON.parse(localStorage.getItem("user"));
+
+    let payload;
+    if (newStatus === "inactive") {
+      payload = {
+        userId: userIdI.user_id,
+        reason: reason,
+        taxId: tax.id,
+        status: "inactive",
+      };
+    } else {
+      payload = {
+        taxId: tax.id,
+        status: "active",
+      };
+    }
+
+    try {
+      const response = await fetch(`${baseurl}/tax`, {
+        method: "PUT",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(payload),
+      });
+
+      if (!response.ok) throw new Error("Failed to update status");
+
+      tax.status = newStatus;
+      renderTable(filteredTaxes());
+      // setTimeout(() => {
+        window.location.reload();
+      // },2000);
+    } catch (error) {
+      alert("Could not update status. Please try again.");
+    }
+  }
+
+  document.getElementById("searchInput").addEventListener("input", filterTable);
+  document.getElementById("searchButton").addEventListener("click", filterTable);
+  document.getElementById("filterSelect").addEventListener("change", filterTable);
+
+  function filterTable() {
+    renderTable(filteredTaxes());
+  }
+
+  function filteredTaxes() {
+    const searchValue = document.getElementById("searchInput").value.toLowerCase();
+    const filterValue = document.getElementById("filterSelect").value;
+
+    return allTaxes.filter((tax) => {
+      const matchesSearch =
+        tax.code.toLowerCase().includes(searchValue) ||
+        tax.name.toLowerCase().includes(searchValue) ||
+        tax.description.toLowerCase().includes(searchValue);
+
+      const matchesFilter = filterValue === "" || tax.code === filterValue;
+
+      return matchesSearch && matchesFilter;
+    });
+  }
+
+  document.addEventListener("DOMContentLoaded", loadTaxes);
+</script>
+
+  </div>
+</div>
+
+
+          </div>
+        </div>
+        <div class="container my-5">
+  <div class="card border-0 shadow-sm rounded-4">
+    <div class="card-body p-4">
+      <h5 class="fw-bold mb-1">Configuration History</h5>
+      <p class="text-muted small mb-4">
+        Track changes to commission tier configurations
+      </p>
+
+      <!-- History List -->
+      <div id="historyList"></div>
+    </div>
+  </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+<script>
+  async function loadHistory() {
+    try {
+      const response = await axios.get(
+        "https://arafatfootballacademy.com/fusion/backend/tier/configuration-history"
+      );
+      const history = response.data.data;
+      renderHistory(history);
+    } catch (error) {
+      console.error("Error history:", error);
+    }
+  }
+
+  function renderHistory(data) {
+    const container = document.getElementById("historyList");
+    container.innerHTML = "";
+
+    if (!data || data.length === 0) {
+      container.innerHTML = `
+        <div class="text-center text-muted">No history records found.</div>
+      `;
+      return;
+    }
+
+    data.forEach((item) => {
+      const row = `
+        <div
+          class="p-4 mb-3 rounded-4 bg-light d-flex justify-content-between align-items-start shadow-sm"
+        >
+          <div class="d-flex align-items-start">
+            <div
+              class="bg-primary bg-opacity-10 text-primary rounded-circle d-flex align-items-center justify-content-center me-3"
+              style="width: 40px; height: 40px"
+            >
+              <i class="bi bi-pencil-square fs-5"></i>
+            </div>
+            <div>
+              <span class="badge bg-primary mb-1">Tax Modified</span>
+              <div class="fw-semibold mt-1">
+                ${item.description}
+              </div>
+              <small class="text-muted">
+                ${item.updated_at} · by ${item.name}
+              </small>
+            </div>
+          </div>
+          <span class="badge bg-dark rounded-pill align-self-start">applied</span>
+        </div>
+      `;
+      container.innerHTML += row;
+    });
+  }
+
+  document.addEventListener("DOMContentLoaded", loadHistory);
+</script>
+
+      </main>
+
+      <!-- begin::GXON Footer -->
+      <footer class="footer-wrapper bg-body">
+        <div class="container">
+          <div class="row g-2">
+            <div class="col-lg-6 col-md-7 text-center text-md-start">
+              <p class="mb-0">
+                © <span class="currentYear">2025</span></a>.
+              </p>
+            </div>
+
+          </div>
+        </div>
+      </footer>
+      <!-- end::GXON Footer -->
+    </div>
+
+    <!-- begin::GXON Page Scripts -->
+     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="assets/js/header.js"></script>
+    <script src="assets/libs/global/global.min.js"></script>
+    <script src="assets/libs/chartjs/chart.js"></script>
+    <script src="assets/libs/apexcharts/apexcharts.min.js"></script>
+    <script src="assets/libs/datatables/datatables.min.js"></script>
+    <script src="assets/libs/flatpickr/flatpickr.min.js"></script>
+    <script src="assets/js/flatpickr.js"></script>
+    <script src="assets/js/dashboard.js"></script>
+    <script src="assets/js/appSettings.js"></script>
+    <script src="assets/js/main.js"></script>
+    <!-- <script src="assets/js/my-js/transaction-settings.js"></script> -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- end::GXON Page Scripts -->
+  </body>
+</html>

@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- begin::GXON Meta Basic -->
+    <meta charset="utf-8" />
+
+    <title>Fussion</title>
+  
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <!-- end::GXON Mobile Specific -->
+
+    <!-- begin::GXON Favicon Tags -->
+<link rel="icon" type="image/png" href="assets/images/logo.jpeg" />
+    <link
+      rel="apple-touch-icon"
+      sizes="180x180"
+      href="assets/images/logo.jpeg"
+    />
+    <!-- end::GXON Favicon Tags -->
+
+    <!-- begin::GXON Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&display=swap"
+      rel="stylesheet"
+    />
+    <!-- end::GXON Google Fonts -->
+
+    <!-- begin::GXON Required Stylesheet -->
+    <link rel="stylesheet" href="assets/libs/flaticon/css/all/all.css" />
+    <link rel="stylesheet" href="assets/libs/lucide/lucide.css" />
+    <link rel="stylesheet" href="assets/libs/fontawesome/css/all.min.css" />
+    <link rel="stylesheet" href="assets/libs/simplebar/simplebar.css" />
+    <link rel="stylesheet" href="assets/libs/node-waves/waves.css" />
+    <link
+      rel="stylesheet"
+      href="assets/libs/bootstrap-select/css/bootstrap-select.min.css"
+    />
+    <!-- end::GXON Required Stylesheet -->
+
+    <!-- begin::GXON CSS Stylesheet -->
+    <link rel="stylesheet" href="assets/libs/flatpickr/flatpickr.min.css" />
+    <link rel="stylesheet" href="assets/css/styles.css" />
+    <!-- end::GXON CSS Stylesheet -->
+
+    <!-- begin::GXON Googletagmanager -->
+    <script
+      async
+      src="https://www.googletagmanager.com/gtag/js?id=G-XWVQM68HHQ"
+    ></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag("js", new Date());
+
+      gtag("config", "G-XWVQM68HHQ", {
+        cookie_flags: "SameSite=None;Secure",
+        send_page_view: true,
+      });
+    </script>
+    <!-- end::GXON Googletagmanager -->
+  </head>
+
+  <body>
+    <div class="page-layout">
+      <!-- begin::GXON Page Header -->
+      <header class="app-header">
+        <div class="app-header-inner" id="header"></div>
+      </header>
+      <!-- end::GXON Page Header -->
+
+      <!-- begin::GXON Sidebar Menu -->
+      <div class="app-menubar" id="sidebsr"></div>
+      <!-- end::GXON Sidebar Menu -->
+
+      <!-- begin::GXON Sidebar right -->
+      <!-- <div class="app-sidebar-end">
+        <ul class="sidebar-list">
+          <li>
+            <a href="javascript:void(0);">
+              <div
+                class="avatar avatar-sm bg-warning shadow-sharp-warning rounded-circle text-white mx-auto mb-2"
+              >
+                <i class="fi fi-rr-to-do"></i>
+              </div>
+              <span class="text-dark">Tax</span>
+            </a>
+          </li>
+          <li>
+            <a href="javascript:void(0);">
+              <div
+                class="avatar avatar-sm bg-secondary shadow-sharp-secondary rounded-circle text-white mx-auto mb-2"
+              >
+                <i class="fi fi-rr-interrogation"></i>
+              </div>
+              <span class="text-dark">Help</span>
+            </a>
+          </li>
+          <li>
+            <a href="javascript:void(0);">
+              <div
+                class="avatar avatar-sm bg-info shadow-sharp-info rounded-circle text-white mx-auto mb-2"
+              >
+                <i class="fi fi-rr-calendar"></i>
+              </div>
+              <span class="text-dark">date</span>
+            </a>
+          </li>
+          <li>
+            <a href="javascript:void(0);">
+              <div
+                class="avatar avatar-sm bg-gray shadow-sharp-gray rounded-circle text-white mx-auto mb-2"
+              >
+                <i class="fi fi-rr-settings"></i>
+              </div>
+              <span class="text-dark">Settings</span>
+            </a>
+          </li>
+        </ul>
+      </div> -->
+      <!-- end::GXON Sidebar right -->
+
+      <main class="app-wrapper">
+        <div class="container">
+          <div
+            class="app-page-head d-flex align-items-center justify-content-between"
+          >
+            <div class="clearfix">
+              <h1 class="app-page-title">Calendar</h1>
+              <nav aria-label="breadcrumb">
+                <ol class="breadcrumb mb-0">
+                  <li class="breadcrumb-item">
+                    <a href="index.html">Dashboard</a>
+                  </li>
+                  <li class="breadcrumb-item active" aria-current="page">
+                    Calendar
+                  </li>
+                </ol>
+              </nav>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-12">
+              <div class="card">
+                <div class="card-body p-0">
+                  <div class="row g-0">
+                    <div class="col-lg-3 p-4 border-end">
+                      <hr class="border-dashed my-4" />
+                      <h6 class="mb-3">Tax Calendar Features</h6>
+                      <div id="external-events" class="d-grid gap-2">
+                        <div
+                          class="fc-event cursor-move rounded-2 px-3 py-2 bg-primary-subtle text-primary"
+                          data-color="var(--bs-primary)"
+                          data-location="Head Office"
+                          data-description="Discuss project status and next steps."
+                        >
+                          <i class="fi fi-rr-plane-departure me-1"></i> Filing
+                          Deadline
+                        </div>
+                        <div
+                          class="fc-event cursor-move rounded-2 px-3 py-2 bg-success-subtle text-success"
+                          data-color="var(--bs-success)"
+                          data-location="Remote"
+                          data-description="Complete assigned tasks and update progress."
+                        >
+                          <i class="fi fi-rr-workflow-alt me-1"></i> Payment Due
+                        </div>
+                        <div
+                          class="fc-event cursor-move rounded-2 px-3 py-2 bg-info-subtle text-info"
+                          data-color="var(--bs-info)"
+                          data-location="Conference Room"
+                          data-description="Prepare and deliver client presentation."
+                        >
+                          <i class="fi fi-rr-podium me-1"></i> Audit & Review
+                        </div>
+                        <div
+                          class="fc-event cursor-move rounded-2 px-3 py-2 bg-warning-subtle text-warning"
+                          data-color="var(--bs-warning)"
+                          data-location="Personal"
+                          data-description="Follow up on pending emails and calls."
+                        >
+                          <i class="fi fi-rs-massage me-1"></i> Tax Consultation
+                        </div>
+                        <div
+                          class="fc-event cursor-move rounded-2 px-3 py-2 bg-danger-subtle text-danger"
+                          data-color="var(--bs-danger)"
+                          data-location="Office"
+                          data-description="Handle urgent support tickets immediately."
+                        >
+                          <i class="fi fi-rr-hr me-1"></i> Document Preparation
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-lg-9 p-4">
+                      <div id="calendar"></div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div
+                class="modal fade"
+                id="modalAddEvent"
+                tabindex="-1"
+                aria-labelledby="modalAddEventLabel"
+                aria-hidden="true"
+              >
+                <div class="modal-dialog modal-dialog-centered">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <h5 class="modal-title" id="modalAddEventLabel">
+                        Add Event
+                      </h5>
+                      <button
+                        type="button"
+                        class="btn-close"
+                        data-bs-dismiss="modal"
+                        aria-label="Close"
+                      ></button>
+                    </div>
+                    <div class="modal-body">
+                      <form id="eventForm">
+                        <div class="row">
+                          <div class="col-12 mb-3">
+                            <label class="form-label">Title</label>
+                            <input
+                              type="text"
+                              id="title"
+                              class="form-control"
+                              required
+                            />
+                          </div>
+                          <div class="col-12 mb-3">
+                            <label class="form-label">Label</label>
+                            <select id="label" class="form-select">
+                              <option value="primary">Primary</option>
+                              <option value="success">Success</option>
+                              <option value="warning">Warning</option>
+                              <option value="danger">Danger</option>
+                              <option value="info">Info</option>
+                            </select>
+                          </div>
+                          <div class="col-6 mb-3">
+                            <label class="form-label">Start Date</label>
+                            <input
+                              type="datetime-local"
+                              id="eventStartDate"
+                              class="form-control"
+                              required
+                            />
+                          </div>
+                          <div class="col-6 mb-3">
+                            <label class="form-label">End Date</label>
+                            <input
+                              type="datetime-local"
+                              id="eventEndDate"
+                              class="form-control"
+                            />
+                          </div>
+                          <div class="col-12 mb-3">
+                            <label class="form-label">Event URL</label>
+                            <input
+                              type="url"
+                              id="url"
+                              class="form-control"
+                              placeholder="https://www.google.com/"
+                            />
+                          </div>
+                          <div class="col-12 mb-3">
+                            <label class="form-label">Location</label>
+                            <input
+                              type="text"
+                              id="location"
+                              class="form-control"
+                            />
+                          </div>
+                          <div class="col-12 mb-3">
+                            <label class="form-label">Description</label>
+                            <textarea
+                              id="description"
+                              class="form-control"
+                            ></textarea>
+                          </div>
+                          <div class="col-12">
+                            <button
+                              type="button"
+                              class="btn btn-light waves-effect waves-light"
+                              data-bs-dismiss="modal"
+                            >
+                              Close
+                            </button>
+                            <button
+                              type="submit"
+                              class="btn btn-primary waves-effect waves-light ms-2"
+                              data-bs-dismiss="modal"
+                            >
+                              Add Event
+                            </button>
+                          </div>
+                        </div>
+                      </form>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div
+                class="modal fade"
+                id="eventDetailsModal"
+                tabindex="-1"
+                aria-hidden="true"
+              >
+                <div class="modal-dialog modal-dialog-centered">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <h5 class="modal-title" id="eventTitle">Event Title</h5>
+                      <button
+                        type="button"
+                        class="btn-close"
+                        data-bs-dismiss="modal"
+                        aria-label="Close"
+                      ></button>
+                    </div>
+                    <div class="modal-body">
+                      <p>
+                        <strong class="text-dark">Start:</strong>
+                        <span id="eventStart"></span>
+                      </p>
+                      <p>
+                        <strong class="text-dark">End:</strong>
+                        <span id="eventEnd"></span>
+                      </p>
+                      <p>
+                        <strong class="text-dark">Location:</strong>
+                        <span id="eventLocation"></span>
+                      </p>
+                      <p class="mb-0">
+                        <strong class="text-dark">Description:</strong>
+                        <span id="eventDescription"></span>
+                      </p>
+                    </div>
+                    <div class="modal-footer">
+                      <button
+                        type="button"
+                        class="btn btn-light waves-effect waves-light"
+                        data-bs-dismiss="modal"
+                      >
+                        Close
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </main>
+
+      <!-- begin::GXON Footer -->
+
+      <!-- end::GXON Footer -->
+    </div>
+
+    <!-- begin::GXON Page Scripts -->
+    <script src="assets/js/header.js"></script>
+    <script src="assets/libs/global/global.min.js"></script>
+    <script src="assets/libs/flatpickr/flatpickr.min.js"></script>
+    <script src="assets/libs/fullcalendar/index.global.min.js"></script>
+    <script src="assets/js/fullcalendar.js"></script>
+    <script src="assets/js/appSettings.js"></script>
+    <script src="assets/js/main.js"></script>
+    <!-- end::GXON Page Scripts -->
+  </body>
+</html>

@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+  <!-- begin::GXON Meta Basic -->
+  <meta charset="utf-8">
+ <link rel="icon" type="image/png" href="assets/images/logo.jpeg" />
+
+  <title>Payroll | fusion HR Management Admin Dashboard</title>
+  <!-- end::GXON Website Page Title -->
+
+  <!-- begin::GXON Mobile Specific -->
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="assets/images/logo.jpeg">
+  <!-- end::GXON Favicon Tags -->
+
+  <!-- begin::GXON Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&display=swap"
+    rel="stylesheet">
+  <!-- end::GXON Google Fonts -->
+
+  <!-- begin::GXON Required Stylesheet -->
+  <link rel="stylesheet" href="assets/libs/flaticon/css/all/all.css">
+  <link rel="stylesheet" href="assets/libs/lucide/lucide.css">
+  <link rel="stylesheet" href="assets/libs/fontawesome/css/all.min.css">
+  <link rel="stylesheet" href="assets/libs/simplebar/simplebar.css">
+  <link rel="stylesheet" href="assets/libs/node-waves/waves.css">
+  <link rel="stylesheet" href="assets/libs/bootstrap-select/css/bootstrap-select.min.css">
+  <!-- end::GXON Required Stylesheet -->
+
+  <!-- begin::GXON CSS Stylesheet -->
+  <link rel="stylesheet" href="assets/libs/datatables/datatables.min.css">
+  <link rel="stylesheet" href="assets/libs/flatpickr/flatpickr.min.css">
+  <link rel="stylesheet" href="assets/css/styles.css">
+  <!-- Bootstrap CSS + Icons -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
+
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
+
+  <!-- end::GXON CSS Stylesheet -->
+
+  <!-- begin::GXON Googletagmanager -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-XWVQM68HHQ"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
+
+    gtag('config', 'G-XWVQM68HHQ', {
+      'cookie_flags': 'SameSite=None;Secure',
+      'send_page_view': true
+    });
+  </script>
+  <!-- end::GXON Googletagmanager -->
+
+</head>
+
+<body>
+  <div class="page-layout">
+
+    <!-- begin::GXON Page Header -->
+    <header class="app-header">
+      <div class="app-header-inner" id="header"></div>
+    </header>
+    <!-- end::GXON Page Header -->
+
+    <div class="modal fade" id="searchResultsModal" tabindex="-1" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+          <div class="modal-header py-1 px-3">
+            <form class="d-flex align-items-center position-relative w-100" action="payroll.html#">
+              <button type="button" class="btn btn-sm border-0 position-absolute start-0 p-0 text-sm ">
+                <i class="fi fi-rr-search"></i>
+              </button>
+              <input type="text" class="form-control form-control-lg ps-4 border-0 shadow-none" id="searchInput"
+                placeholder="Search anything's">
+            </form>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body pb-2" style="height: 300px;" data-simplebar>
+            <div id="recentlyResults">
+              <span class="text-uppercase text-2xs fw-semibold text-muted d-block mb-2">Recently Searched:</span>
+              <ul class="list-inline search-list">
+                <li>
+                  <a class="search-item" href="index.html">
+                    <i class="fi fi-rr-apps"></i> Dashboard
+                  </a>
+                </li>
+                <li>
+                  <a class="search-item" href="chat.html">
+                    <i class="fi fi-rr-comment"></i> Chat
+                  </a>
+                </li>
+                <li>
+                  <a class="search-item" href="calendar.html">
+                    <i class="fi fi-rr-calendar"></i> Calendar
+                  </a>
+                </li>
+                <li>
+                  <a class="search-item" href="chart/apexchart.html">
+                    <i class="fi fi-rr-chart-pie-alt"></i> Apexchart
+                  </a>
+                </li>
+                <li>
+                  <a class="search-item" href="pages/pricing.html">
+                    <i class="fi fi-rr-file"></i> Pricing
+                  </a>
+                </li>
+                <li>
+                  <a class="search-item" href="email/inbox.html">
+                    <i class="fi fi-rr-envelope"></i> Email
+                  </a>
+                </li>
+              </ul>
+            </div>
+            <div id="searchContainer"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- begin::GXON Sidebar Menu -->
+    <div id="sidebsr"></div>
+    <!-- end::GXON Sidebar Menu -->
+
+    <!-- begin::GXON Sidebar right -->
+    <div class="app-sidebar-end">
+    </div>
+    <!-- end::GXON Sidebar right -->
+
+    <main class="app-wrapper">
+
+
+      <div class="container-fluid p-2">
+        <!-- Top Metric Cards -->
+        <div class="d-flex justify-content-between align-items-start mb-1">
+          <div>
+            <h2 class="fw-bold mb-2">LGA Performance Monitor</h2>
+            <p class="text-muted mb-4">Detailed Local Government Area performance analytics</p>
+          </div>
+          <div class="d-flex flex-wrap gap-2">
+            <!-- Analysis Dropdown -->
+            <select class="form-select form-select-sm w-auto">
+              <option selected>Revenue Analysis</option>
+              <option value="1">Compliance Analysis</option>
+              <option value="2">Growth Analysis</option>
+            </select>
+
+            <!-- Month Dropdown -->
+            <select class="form-select form-select-sm w-auto">
+              <option selected>Select Period</option>
+              <option value="1">6 Months</option>
+              <option value="2">3 Months</option>
+              <option value="3">1 Year</option>
+            </select>
+          </div>
+
+
+        </div>
+
+        <div class="row g-3 mb-4">
+          <div class="col-md-3">
+            <div class="card border-1 rounded-4">
+              <div class="card-body position-relative">
+                <i class="bi bi-geo-alt text-primary position-absolute top-0 end-0 m-3 fs-4"></i>
+                <h6 class="text-dark mb-3">Total LGAs</h6>
+                <div class="fs-2 fw-bold text-dark">8</div>
+                <p class="small text-secondary mb-0">Active coverage areas</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-md-3">
+            <div class="card border-1 rounded-4">
+              <div class="card-body position-relative">
+                <i class="bi bi-graph-up-arrow text-success position-absolute top-0 end-0 m-3 fs-4"></i>
+                <h6 class="text-dark mb-3">Above Target</h6>
+                <div class="fs-2 fw-bold text-dark">3</div>
+                <p class="small text-secondary mb-0">LGAs exceeding targets</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-md-3">
+            <div class="card border-1 rounded-4">
+              <div class="card-body position-relative">
+                <i class="bi bi-bar-chart-line text-primary position-absolute top-0 end-0 m-3 fs-4"></i>
+                <h6 class="text-dark mb-3">High Compliance</h6>
+                <div class="fs-2 fw-bold text-dark">3</div>
+                <p class="small text-secondary mb-0">≥80% compliance rate</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-md-3">
+            <div class="card border-1 rounded-4">
+              <div class="card-body position-relative">
+                <i class="bi bi-graph-up text-primary position-absolute top-0 end-0 m-3 fs-4"></i>
+                <h6 class="text-dark mb-3">Growth Rate</h6>
+                <div class="fs-2 fw-bold text-dark">4.1%</div>
+                <p class="small text-secondary mb-0">Average growth rate</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Chart Card -->
+        <div class="card border-1 rounded-4">
+          <div class="card-body">
+            <h6 class="fw-bold mb-0">LGA Revenue Performance vs Targets</h6>
+            <p class="text-muted small mb-3">Performance comparison across Local Government Areas</p>
+            <canvas id="lgaChart" height="100"></canvas>
+          </div>
+        </div>
+      </div>
+
+      <div class="card rounded-4 mt-4">
+  <div class="card-body">
+    <h6 class="fw-bold">Detailed LGA Analysis</h6>
+    <p class="text-muted small mb-4">
+      Comprehensive performance metrics by Local Government Area
+    </p>
+
+    <div class="table-responsive">
+      <table class="table align-middle mb-0">
+        <thead class="table-light">
+          <tr>
+            <th>LGA</th>
+            <th>Revenue (₦)</th>
+            <th>Target (₦)</th>
+            <th>Performance</th>
+            <th>Merchants</th>
+            <th>Compliance</th>
+            <th>Growth</th>
+            <th>Status</th>
+          </tr>
+        </thead>
+        <tbody id="lgaTableBody">
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+<script>
+  document.addEventListener('DOMContentLoaded', async function () {
+    try {
+      const response = await fetch('https://arafatfootballacademy.com/fusion/backend/executive/32/detailed-lga-analysis');
+      const result = await response.json();
+      const tbody = document.getElementById('lgaTableBody');
+
+      result.data.forEach(item => {
+        const formatCurrency = (val) => {
+          const num = parseFloat(val);
+          return isNaN(num) ? "₦0" : "₦" + num.toLocaleString();
+        };
+
+
+        const performance = item.performance ?? "-";
+        const compliance = item.compliance ?? "-";
+        const growth = item.growth ?? "-";
+
+        let statusClass = "bg-warning-subtle text-warning";
+        if (item.status === "Excellent") {
+          statusClass = "bg-success-subtle text-success";
+        } else if (item.status === "Poor") {
+          statusClass = "bg-danger-subtle text-danger";
+        }
+
+        const row = `
+          <tr>
+            <td>${item.LGA}</td>
+            <td>${formatCurrency(item.revenue)}</td>
+            <td>${formatCurrency(item.target)}</td>
+            <td class="${performance.includes('%') && parseFloat(performance) >= 100 ? 'text-success' : 'text-danger'}">
+              ${performance}
+            </td>
+            <td>${item.marchants}</td>
+            <td>${compliance}</td>
+            <td class="${growth && growth.startsWith('+') ? 'text-success' : growth && growth.startsWith('-') ? 'text-danger' : ''}">
+              ${growth}
+            </td>
+            <td>
+              <span class="badge rounded-pill ${statusClass}">${item.status}</span>
+            </td>
+          </tr>
+        `;
+        tbody.insertAdjacentHTML('beforeend', row);
+      });
+    } catch (error) {
+      console.error('Error loading LGA table data:', error);
+    }
+  });
+</script>
+
+
+    </main>
+
+    <!-- begin::GXON Footer -->
+    <footer class="footer-wrapper bg-body">
+      <div class="container">
+        <div class="row g-2">
+          <div class="col-lg-6 col-md-7 text-center text-md-start">
+            <p class="mb-0">© <span class="currentYear">2025</p>
+          </div>
+        </div>
+      </div>
+    </footer>
+    <!-- end::GXON Footer -->
+
+  </div>
+
+<canvas id="lgaChart" width="400" height="200"></canvas>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script>
+  document.addEventListener('DOMContentLoaded', async function () {
+    try {
+      const response = await fetch('https://arafatfootballacademy.com/fusion/backend/executive/32/revenue-activity');
+      const result = await response.json();
+
+      const labels = result.data.map(item => item.lga_name);
+      const revenues = result.data.map(item => parseFloat(item.total_revenue));
+
+      const ctx = document.getElementById('lgaChart').getContext('2d');
+      new Chart(ctx, {
+        type: 'bar',
+        data: {
+          labels: labels,
+          datasets: [{
+            label: 'Revenue Performance',
+            data: revenues,
+            backgroundColor: '#3b82f6'
+          }]
+        },
+        options: {
+          scales: {
+            y: {
+              beginAtZero: true,
+              grid: { color: '#f0f0f0' }
+            },
+            x: {
+              grid: { display: false }
+            }
+          },
+          plugins: {
+            legend: { display: false }
+          }
+        }
+      });
+    } catch (error) {
+      console.error('Error loading data:', error);
+    }
+  });
+</script>
+
+
+  <!-- Chart.js -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+
+  <!-- begin::GXON Page Scripts -->
+  <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+  <script src="assets/libs/global/global.min.js"></script>
+  <script src="assets/js/header.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script src="assets/libs/chartjs/chart.js"></script>
+  <script src="assets/libs/apexcharts/apexcharts.min.js"></script>
+  <script src="assets/libs/datatables/datatables.min.js"></script>
+  <script src="assets/libs/flatpickr/flatpickr.min.js"></script>
+  <script src="assets/js/flatpickr.js"></script>
+  <script src="assets/js/dashboard.js"></script>
+  <script src="assets/js/appSettings.js"></script>
+  <script src="assets/js/main.js"></script>
+  <!-- end::GXON Page Scripts -->
+</body>
+
+</html>

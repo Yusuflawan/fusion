@@ -1,0 +1,434 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- begin::GXON Meta Basic -->
+    <meta charset="utf-8" />
+
+    <title>Fussion</title>
+    <!-- end::GXON Website Page Title -->
+
+    <!-- begin::GXON Mobile Specific -->
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+ <link rel="icon" type="image/png" href="assets/images/logo.jpeg" />
+
+    <link
+      rel="apple-touch-icon"
+      sizes="180x180"
+      href="assets/images/logo.jpeg"
+    />
+    <!-- end::GXON Favicon Tags -->
+
+    <!-- begin::GXON Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&display=swap"
+      rel="stylesheet"
+    />
+    <!-- end::GXON Google Fonts -->
+
+    <!-- begin::GXON Required Stylesheet -->
+    <link rel="stylesheet" href="assets/libs/flaticon/css/all/all.css" />
+    <link rel="stylesheet" href="assets/libs/lucide/lucide.css" />
+    <link rel="stylesheet" href="assets/libs/fontawesome/css/all.min.css" />
+    <link rel="stylesheet" href="assets/libs/simplebar/simplebar.css" />
+    <link rel="stylesheet" href="assets/libs/node-waves/waves.css" />
+    <link
+      rel="stylesheet"
+      href="assets/libs/bootstrap-select/css/bootstrap-select.min.css"
+    />
+    <link rel="stylesheet" href="assets/css/chart.css" />
+    <!-- end::GXON Required Stylesheet -->
+
+    <!-- begin::GXON CSS Stylesheet -->
+    <link rel="stylesheet" href="assets/libs/flatpickr/flatpickr.min.css" />
+    <link rel="stylesheet" href="assets/css/styles.css" />
+    <!-- end::GXON CSS Stylesheet -->
+
+    <!-- begin::GXON Googletagmanager -->
+    <script async src=""></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag("js", new Date());
+
+      gtag("config", "G-XWVQM68HHQ", {
+        cookie_flags: "SameSite=None;Secure",
+        send_page_view: true,
+      });
+    </script>
+    <!-- end::GXON Googletagmanager -->
+  </head>
+
+  <body>
+    <div class="page-layout">
+      <!-- begin::GXON Page Header -->
+      <header class="app-header">
+        <div class="app-header-inner" id="header"></div>
+      </header>
+      <!-- end::GXON Page Header -->
+
+      <!-- begin::GXON Sidebar Menu -->
+      <div class="app-menubar" id="sidebsr"></div>
+      <!-- end::GXON Sidebar Menu -->
+
+      <!-- begin::GXON Sidebar right -->
+      <div class="app-sidebar-end">
+        <ul class="sidebar-list">
+          <li>
+            <a href="javascript:void(0);">
+              <div
+                class="avatar avatar-sm bg-warning shadow-sharp-warning rounded-circle text-white mx-auto mb-2"
+              >
+                <i class="fi fi-rr-to-do"></i>
+              </div>
+              <span class="text-dark">Tax</span>
+            </a>
+          </li>
+          <li>
+            <a href="javascript:void(0);">
+              <div
+                class="avatar avatar-sm bg-secondary shadow-sharp-secondary rounded-circle text-white mx-auto mb-2"
+              >
+                <i class="fi fi-rr-interrogation"></i>
+              </div>
+              <span class="text-dark">Help</span>
+            </a>
+          </li>
+          <li>
+            <a href="javascript:void(0);">
+              <div
+                class="avatar avatar-sm bg-info shadow-sharp-info rounded-circle text-white mx-auto mb-2"
+              >
+                <i class="fi fi-rr-calendar"></i>
+              </div>
+              <span class="text-dark">date</span>
+            </a>
+          </li>
+          <li>
+            <a href="javascript:void(0);">
+              <div
+                class="avatar avatar-sm bg-gray shadow-sharp-gray rounded-circle text-white mx-auto mb-2"
+              >
+                <i class="fi fi-rr-settings"></i>
+              </div>
+              <span class="text-dark">Settings</span>
+            </a>
+          </li>
+        </ul>
+      </div>
+      <!-- end::GXON Sidebar right -->
+
+      <main class="app-wrapper">
+        <div class="container">
+          <div
+            class="app-page-head d-flex align-items-center justify-content-between"
+          >
+            <div class="clearfix">
+              <h1 class="app-page-title">Performance Metrics</h1>
+              <nav aria-label="breadcrumb">
+                <ol class="breadcrumb mb-0">
+                  <li class="breadcrumb-item">
+                    <a href="index.html">Dashboard</a>
+                  </li>
+                  <li class="breadcrumb-item active" aria-current="page">
+                    Performance Metrics
+                  </li>
+                </ol>
+              </nav>
+            </div>
+            <div class="d-flex flex-wrap gap-2">
+              <!-- First Dropdown -->
+              <select class="filter-select">
+                <option>Response Time</option>
+                <option>Throughput</option>
+                <option>Error Rate</option>
+                <option>Availability</option>
+              </select>
+
+              <!-- Second Dropdown -->
+              <select class="filter-select">
+                <option>Last 24 Hours</option>
+                <option>Last Hour</option>
+                <option>Last 7 Days</option>
+                <option>Last 30 Days</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-12">
+              <div class="row">
+                <div class="col-xxl-2 col-lg-4 col-sm-6">
+                  <div
+                    class="card card-action action-border-secondary p-1 position-relative"
+                  >
+                    <div
+                      class="card-body d-flex gap-3 align-items-center p-4"
+                      style="position: relative"
+                    >
+                      <div class="clearfix">
+                        <div class="mb-1 text-dark fw-bold">
+                          Avg<br />
+                          Response
+                        </div>
+                        <h3 class="mb-0 fw-bold mt-3">243ms</h3>
+                        <small>Average time</small>
+                      </div>
+                      <div
+                        class="clearfix pe-2 text-primary"
+                        style="position: absolute; top: 10%; right: 0%"
+                      >
+                        <i class="fi fi-rr-clock"></i>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-xxl-2 col-lg-4 col-sm-6">
+                  <div
+                    class="card card-action action-border-secondary p-1 position-relative"
+                  >
+                    <div
+                      class="card-body d-flex gap-3 align-items-center p-4"
+                      style="position: relative"
+                    >
+                      <div class="clearfix">
+                        <div class="mb-1 text-dark fw-bold">
+                          Peak <br />Throughput
+                        </div>
+                        <h3 class="mb-0 fw-bold mt-3">2140</h3>
+                        <small>Requests/hour</small>
+                      </div>
+                      <div
+                        class="clearfix pe-2 text-success"
+                        style="position: absolute; top: 10%; right: 0%"
+                      >
+                        <i class="fi fi-rr-dashboard"></i>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-xxl-2 col-lg-4 col-sm-6">
+                  <div
+                    class="card card-action action-border-secondary p-1 position-relative"
+                  >
+                    <div
+                      class="card-body d-flex gap-3 align-items-center p-4"
+                      style="position: relative"
+                    >
+                      <div class="clearfix">
+                        <div class="mb-1 text-dark fw-bold">
+                          Total<br />
+                          Requests
+                        </div>
+                        <h3 class="mb-0 fw-bold mt-3">12,630</h3>
+                        <small>Today</small>
+                      </div>
+                      <div
+                        class="clearfix pe-2"
+                        style="
+                          position: absolute;
+                          top: 10%;
+                          right: 0%;
+                          color: blueviolet;
+                        "
+                      >
+                        <i class="fi fi-rr-list"></i>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-xxl-2 col-lg-4 col-sm-6">
+                  <div
+                    class="card card-action action-border-secondary p-1 position-relative"
+                  >
+                    <div
+                      class="card-body d-flex gap-3 align-items-center p-4"
+                      style="position: relative"
+                    >
+                      <div class="clearfix">
+                        <div class="mb-1 text-dark fw-bold">
+                          Success<br />
+                          Rate
+                        </div>
+                        <h3 class="mb-0 fw-bold text-success mt-3">99.92%</h3>
+                        <small>API calls</small>
+                      </div>
+                      <div
+                        class="clearfix pe-2"
+                        style="
+                          position: absolute;
+                          top: 10%;
+                          right: 0%;
+                          color: green;
+                        "
+                      >
+                        <i class="fi fi-rr-badge-check"></i>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-xxl-2 col-lg-4 col-sm-6">
+                  <div
+                    class="card card-action action-border-secondary p-1 position-relative"
+                  >
+                    <div
+                      class="card-body d-flex gap-3 align-items-center p-4"
+                      style="position: relative"
+                    >
+                      <div class="clearfix">
+                        <div class="mb-1 text-dark fw-bold">
+                          P95 <br />Response
+                        </div>
+                        <h3 class="mb-0 fw-bold text-dark mt-3">456ms</h3>
+                        <small>95th percentile</small>
+                      </div>
+                      <div
+                        class="clearfix pe-2 text-warning"
+                        style="position: absolute; top: 10%; right: 0%"
+                      >
+                        <i class="fi fi-rr-stopwatch"></i>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-xxl-2 col-lg-4 col-sm-6">
+                  <div
+                    class="card card-action action-border-secondary p-1 position-relative"
+                  >
+                    <div
+                      class="card-body d-flex gap-3 align-items-center p-4"
+                      style="position: relative"
+                    >
+                      <div class="clearfix">
+                        <div class="mb-1 text-dark fw-bold">
+                          P99 <br />Response
+                        </div>
+                        <h3 class="mb-0 fw-bold text-dark mt-3">789ms</h3>
+                        <small>99th percentile</small>
+                      </div>
+                      <div
+                        class="clearfix pe-2 text-danger"
+                        style="position: absolute; top: 10%; right: 0%"
+                      >
+                        <i class="fi fi-rr-pulse"></i>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="">
+                <div class="card shadow-sm card-customee">
+                  <div class="card-body">
+                    <h6 class="fw-bold">Performance Trends</h6>
+                    <p class="text-muted">Real-time performance monitoring</p>
+                    <div class="chart-container">
+                      <canvas id="performanceChart"></canvas>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="">
+                <div class="card shadow-sm card-customy">
+                  <div class="card-body">
+                    <h6 class="fw-bold">SLA Performance</h6>
+                    <p class="text-muted">
+                      Service level agreement compliance metrics
+                    </p>
+
+                    <!-- Availability -->
+                    <div class="metric-card">
+                      <div class="d-flex justify-content-between">
+                        <span class="fw-semibold">Availability</span>
+                        <small>Target: 99.9% | Actual: 99.97%</small>
+                      </div>
+                      <div class="progress mt-2">
+                        <div
+                          class="progress-bar bg-primary"
+                          style="width: 80%"
+                        ></div>
+                      </div>
+                      <span class="status-badge status-meeting mt-2"
+                        >meeting</span
+                      >
+                    </div>
+
+                    <!-- Response Time -->
+                    <div class="metric-card">
+                      <div class="d-flex justify-content-between">
+                        <span class="fw-semibold">Response Time</span>
+                        <small>Target: 500ms | Actual: 243ms</small>
+                      </div>
+                      <div class="progress mt-2">
+                        <div
+                          class="progress-bar bg-primary"
+                          style="width: 100%"
+                        ></div>
+                      </div>
+                      <span class="status-badge status-meeting mt-2"
+                        >meeting</span
+                      >
+                    </div>
+
+                    <!-- Throughput -->
+                    <div class="metric-card">
+                      <div class="d-flex justify-content-between">
+                        <span class="fw-semibold">Throughput</span>
+                        <small>Target: 1000 req/h | Actual: 1805 req/h</small>
+                      </div>
+                      <div class="progress mt-2">
+                        <div
+                          class="progress-bar bg-success"
+                          style="width: 100%"
+                        ></div>
+                      </div>
+                      <span class="status-badge status-exceeding mt-2"
+                        >exceeding</span
+                      >
+                    </div>
+
+                    <!-- Error Rate -->
+                    <div class="metric-card">
+                      <div class="d-flex justify-content-between">
+                        <span class="fw-semibold">Error Rate</span>
+                        <small>Target: 1% | Actual: 0.08%</small>
+                      </div>
+                      <div class="progress mt-2">
+                        <div
+                          class="progress-bar bg-primary"
+                          style="width: 100%"
+                        ></div>
+                      </div>
+                      <span class="status-badge status-meeting mt-2"
+                        >meeting</span
+                      >
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </main>
+
+      <!-- begin::GXON Footer -->
+
+      <!-- end::GXON Footer -->
+    </div>
+
+    <!-- begin::GXON Page Scripts -->
+     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="assets/js/chart2.js"></script>
+    <script src="assets/js/header.js"></script>
+    <script src="assets/libs/global/global.min.js"></script>
+    <script src="assets/libs/flatpickr/flatpickr.min.js"></script>
+    <script src="assets/libs/fullcalendar/index.global.min.js"></script>
+    <script src="assets/js/fullcalendar.js"></script>
+    <script src="assets/js/appSettings.js"></script>
+    <script src="assets/js/main.js"></script>
+    <!-- end::GXON Page Scripts -->
+  </body>
+</html>

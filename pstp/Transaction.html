@@ -1,0 +1,1146 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- begin::GXON Meta Basic -->
+    <meta charset="utf-8" />
+    <!-- end::GXON Meta Basic -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined"
+      rel="stylesheet"
+    />
+
+    <!-- Material Symbols Rounded (optional) -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded"
+      rel="stylesheet"
+    />
+
+    <!-- Material Symbols Sharp (optional) -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Sharp"
+      rel="stylesheet"
+    />
+  
+    <title>Fussion</title>
+    <!-- end::GXON Website Page Title -->
+
+    <!-- begin::GXON Mobile Specific -->
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="icon" type="image/png" href="assets/images/logo.jpeg" />
+
+    <link
+      rel="apple-touch-icon"
+      sizes="180x180"
+      href="assets/images/logo.jpeg"
+    />
+    <!-- end::GXON Favicon Tags -->
+
+    <!-- begin::GXON Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&display=swap"
+      rel="stylesheet"
+    />
+    <!-- end::GXON Google Fonts -->
+
+    <!-- begin::GXON Required Stylesheet -->
+    <link rel="stylesheet" href="assets/libs/flaticon/css/all/all.css" />
+    <link rel="stylesheet" href="assets/libs/lucide/lucide.css" />
+    <link rel="stylesheet" href="assets/libs/fontawesome/css/all.min.css" />
+    <link rel="stylesheet" href="assets/libs/simplebar/simplebar.css" />
+    <link rel="stylesheet" href="assets/libs/node-waves/waves.css" />
+    <link
+      rel="stylesheet"
+      href="assets/libs/bootstrap-select/css/bootstrap-select.min.css"
+    />
+    <!-- end::GXON Required Stylesheet -->
+
+    <!-- begin::GXON CSS Stylesheet -->
+    <link rel="stylesheet" href="assets/libs/datatables/datatables.min.css" />
+    <link rel="stylesheet" href="assets/libs/flatpickr/flatpickr.min.css" />
+    <link rel="stylesheet" href="assets/css/styles.css" />
+    <!-- end::GXON CSS Stylesheet -->
+
+    <!-- begin::GXON Googletagmanager -->
+    <script
+      async
+      src="https://www.googletagmanager.com/gtag/js?id=G-XWVQM68HHQ"
+    ></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag("js", new Date());
+
+      gtag("config", "G-XWVQM68HHQ", {
+        cookie_flags: "SameSite=None;Secure",
+        send_page_view: true,
+      });
+    </script>
+    <!-- end::GXON Googletagmanager -->
+  </head>
+
+  <body>
+    <div class="page-layout">
+      <!-- begin::GXON Page Header -->
+      <header class="app-header">
+        <div class="app-header-inner" id="header"></div>
+      </header>
+      <!-- end::GXON Page Header -->
+
+      <div
+        class="modal fade"
+        id="searchResultsModal"
+        tabindex="-1"
+        aria-hidden="true"
+      >
+        <div class="modal-dialog modal-dialog-centered">
+          <div class="modal-content">
+            <div class="modal-header py-1 px-3">
+              <form
+                class="d-flex align-items-center position-relative w-100"
+                action="recruitment.html#"
+              >
+                <button
+                  type="button"
+                  class="btn btn-sm border-0 position-absolute start-0 p-0 text-sm"
+                >
+                  <i class="fi fi-rr-search"></i>
+                </button>
+                <input
+                  type="text"
+                  class="form-control form-control-lg ps-4 border-0 shadow-none"
+                  id="searchInput"
+                  placeholder="Search anything's"
+                />
+              </form>
+              <button
+                type="button"
+                class="btn-close"
+                data-bs-dismiss="modal"
+                aria-label="Close"
+              ></button>
+            </div>
+            <div class="modal-body pb-2" style="height: 300px" data-simplebar>
+              <div id="recentlyResults">
+                <span
+                  class="text-uppercase text-2xs fw-semibold text-muted d-block mb-2"
+                  >Recently Searched:</span
+                >
+                <ul class="list-inline search-list">
+                  <li>
+                    <a class="search-item" href="index.html">
+                      <i class="fi fi-rr-apps"></i> Dashboard
+                    </a>
+                  </li>
+                  <li>
+                    <a class="search-item" href="chat.html">
+                      <i class="fi fi-rr-comment"></i> Chat
+                    </a>
+                  </li>
+                  <li>
+                    <a class="search-item" href="calendar.html">
+                      <i class="fi fi-rr-calendar"></i> Calendar
+                    </a>
+                  </li>
+                  <li>
+                    <a class="search-item" href="chart/apexchart.html">
+                      <i class="fi fi-rr-chart-pie-alt"></i> Apexchart
+                    </a>
+                  </li>
+                  <li>
+                    <a class="search-item" href="pages/pricing.html">
+                      <i class="fi fi-rr-file"></i> Pricing
+                    </a>
+                  </li>
+                  <li>
+                    <a class="search-item" href="email/inbox.html">
+                      <i class="fi fi-rr-envelope"></i> Email
+                    </a>
+                  </li>
+                </ul>
+              </div>
+              <div id="searchContainer"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- begin::GXON Sidebar Menu -->
+      <div id="sidebsr" class="app-menubar"></div>
+      <!-- end::GXON Sidebar Menu -->
+
+      <!-- begin::GXON Sidebar right -->
+      <div class="app-sidebar-end">
+        <ul class="sidebar-list">
+          <li>
+            <a href="task-management.html">
+              <div
+                class="avatar avatar-sm bg-warning shadow-sharp-warning rounded-circle text-white mx-auto mb-2"
+              >
+                <i class="fi fi-rr-to-do"></i>
+              </div>
+              <span class="text-dark">Task</span>
+            </a>
+          </li>
+          <li>
+            <a href="pages/faq.html">
+              <div
+                class="avatar avatar-sm bg-secondary shadow-sharp-secondary rounded-circle text-white mx-auto mb-2"
+              >
+                <i class="fi fi-rr-interrogation"></i>
+              </div>
+              <span class="text-dark">Help</span>
+            </a>
+          </li>
+          <li>
+            <a href="calendar.html">
+              <div
+                class="avatar avatar-sm bg-info shadow-sharp-info rounded-circle text-white mx-auto mb-2"
+              >
+                <i class="fi fi-rr-calendar"></i>
+              </div>
+              <span class="text-dark">Event</span>
+            </a>
+          </li>
+          <li>
+            <a href="javascript:void(0);">
+              <div
+                class="avatar avatar-sm bg-gray shadow-sharp-gray rounded-circle text-white mx-auto mb-2"
+              >
+                <i class="fi fi-rr-settings"></i>
+              </div>
+              <span class="text-dark">Settings</span>
+            </a>
+          </li>
+        </ul>
+      </div>
+      <!-- end::GXON Sidebar right -->
+
+      <main class="app-wrapper">
+        <div class="container-fluid mb-5">
+          <div
+            class="app-page-head d-flex flex-wrap gap-3 align-items-center justify-content-between"
+          >
+            <div class="clearfix">
+              <h1 class="app-page-title">Transaction Monitor</h1>
+              <nav aria-label="breadcrumb">
+                <ol class="breadcrumb mb-0">
+                  <li class="breadcrumb-item">
+                    <a href="index.html">Dashboard</a>
+                  </li>
+                  <li class="breadcrumb-item active" aria-current="page">
+                    Transaction Monitor
+                  </li>
+                </ol>
+              </nav>
+            </div>
+          </div>
+          <div class="row g-3 align-items-end">
+            <!-- Left edge (navy) -->
+            <div class="col-12 col-md-6 col-lg-3">
+              <input type="date" class="form-select" />
+            </div>
+
+            <!-- Middle 1 -->
+            <div class="col-12 col-md-6 col-lg-3">
+              <select class="form-select">
+                <option selected disabled>All LGAs</option>
+                <option>Lagos</option>
+                <option>Abuja</option>
+                <option>Kwara</option>
+                <option>Rivers</option>
+              </select>
+            </div>
+
+            <!-- Middle 2 -->
+            <div class="col-12 col-md-6 col-lg-3">
+              <select class="form-select">
+                <option selected disabled>Ingestion Status</option>
+                <option>Paid</option>
+                <option>Unpaid</option>
+                <option>Pending</option>
+              </select>
+            </div>
+
+            <!-- Right edge (navy) -->
+            <div class="col-12 col-md-6 col-lg-3">
+              <select class="form-select select-edge">
+                <option selected disabled>Export</option>
+                <option>PDF</option>
+                <option>Excel</option>
+                <option>CSV</option>
+              </select>
+            </div>
+          </div>
+        </div>
+        <div class="container">
+          <div class="row">
+            <div class="col-xxl-12">
+              <div class="row">
+                <div class="col-xxl-4 col-lg-4 col-sm-6">
+                  <div
+                    class="card card-action action-border-secondary p-1 position-relative"
+                  >
+                    <div class="position-absolute top-0 end-0 p-3">
+                      <select
+                        class="selectpicker"
+                        data-style="btn-sm btn-outline-light text-primary btn-shadow waves-effect"
+                      >
+                        <option>Daily</option>
+                        <option>Weekly</option>
+                        <option>Monthly</option>
+                      </select>
+                    </div>
+                    <div class="card-body d-flex gap-3 align-items-center p-4">
+                      <div class="clearfix pe-2 text-secondary">
+                        <span
+                          class="material-symbols-outlined"
+                          style="color: green; font-size: 40px"
+                        >
+                          check_circle
+                        </span>
+                      </div>
+                      <div class="clearfix">
+                        <div class="mb-1">Successful Transactions</div>
+                        <h3 class="mb-0 fw-bold">80%</h3>
+                        <small class="">1000 successful batches</small>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-xxl-4 col-lg-4 col-sm-6">
+                  <div
+                    class="card card-action action-border-secondary p-1 position-relative"
+                  >
+                    <div class="position-absolute top-0 end-0 p-3">
+                      <select
+                        class="selectpicker"
+                        data-style="btn-sm btn-outline-light text-primary btn-shadow waves-effect"
+                      >
+                        <option>Daily</option>
+                        <option>Weekly</option>
+                        <option>Monthly</option>
+                      </select>
+                    </div>
+                    <div class="card-body d-flex gap-3 align-items-center p-4">
+                      <div class="clearfix pe-2 text-secondary">
+                        <span
+                          class="material-symbols-outlined"
+                          style="color: #b8860b; font-size: 40px"
+                        >
+                          hourglass_empty
+                        </span>
+                      </div>
+                      <div class="clearfix">
+                        <div class="mb-1">Pending Transactions</div>
+                        <h3 class="mb-0 fw-bold">15%</h3>
+                        <small class="">150 pending batches</small>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-xxl-4 col-lg-4 col-sm-6">
+                  <div
+                    class="card card-action action-border-secondary p-1 position-relative"
+                  >
+                    <div class="position-absolute top-0 end-0 p-3">
+                      <select
+                        class="selectpicker"
+                        data-style="btn-sm btn-outline-light text-primary btn-shadow waves-effect"
+                      >
+                        <option>Daily</option>
+                        <option>Weekly</option>
+                        <option>Monthly</option>
+                      </select>
+                    </div>
+                    <div class="card-body d-flex gap-3 align-items-center p-4">
+                      <div class="clearfix pe-2 text-secondary">
+                        <span
+                          class="material-symbols-outlined"
+                          style="color: red; font-size: 40px"
+                        >
+                          cancel
+                        </span>
+                      </div>
+                      <div class="clearfix">
+                        <div class="mb-1">FAILED Transactions</div>
+                        <h3 class="mb-0 fw-bold">5%</h3>
+                        <small class="">50 failed batches</small>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <!--
+                <div class="col-xxl-6 col-lg-4 col-sm-6">
+                  <div
+                    class="card card-action action-border-primary p-1 position-relative"
+                  >
+                    <div class="card-body d-flex gap-3 align-items-center p-4">
+                      <div class="clearfix pe-2 text-primary">
+                        <i class="fi fi-sr-headphones fs-1"></i>
+                      </div>
+                      <div class="clearfix">
+                        <div class="mb-1">Interviewed</div>
+                        <h3 class="mb-0 fw-bold">12,240</h3>
+                      </div>
+                    </div>
+                    <a
+                      href="javascript:void(0);"
+                      class="action-visible link-primary position-absolute bottom-0 end-0 mb-2 me-2"
+                    >
+                      View All <i class="fi fi-rr-arrow-right ms-1"></i>
+                    </a>
+                  </div>
+                </div>
+                <div class="col-xxl-6 col-lg-4 col-sm-6">
+                  <div
+                    class="card card-action action-border-danger p-1 position-relative"
+                  >
+                    <div class="card-body d-flex gap-3 align-items-center p-4">
+                      <div class="clearfix pe-2 text-danger">
+                        <i class="fi fi-sr-delete-user fs-1"></i>
+                      </div>
+                      <div class="clearfix">
+                        <div class="mb-1">Rejected</div>
+                        <h3 class="mb-0 fw-bold">13,250</h3>
+                      </div>
+                    </div>
+                    <a
+                      href="javascript:void(0);"
+                      class="action-visible link-danger position-absolute bottom-0 end-0 mb-2 me-2"
+                    >
+                      View All <i class="fi fi-rr-arrow-right ms-1"></i>
+                    </a>
+                  </div>
+                </div>
+                <div class="col-xxl-6 col-lg-4 col-sm-6">
+                  <div
+                    class="card card-action action-border-success p-1 position-relative"
+                  >
+                    <div class="card-body d-flex gap-3 align-items-center p-4">
+                      <div class="clearfix pe-2 text-success">
+                        <i class="fi fi-ss-badget-check-alt fs-1"></i>
+                      </div>
+                      <div class="clearfix">
+                        <div class="mb-1">Hired</div>
+                        <h3 class="mb-0 fw-bold">2,724</h3>
+                      </div>
+                    </div>
+                    <a
+                      href="javascript:void(0);"
+                      class="action-visible link-success position-absolute bottom-0 end-0 mb-2 me-2"
+                    >
+                      View All <i class="fi fi-rr-arrow-right ms-1"></i>
+                    </a>
+                  </div>
+                </div>
+                -->
+              </div>
+            </div>
+            <!--
+            <div class="col-xxl-7">
+              <div class="card bg-gray bg-opacity-10 border-0 shadow-none">
+                <div
+                  class="card-header d-flex gap-3 flex-wrap align-items-center justify-content-between border-0 pb-0"
+                >
+                  <h6 class="card-title mb-0">Interview Schedule</h6>
+                  <div class="clearfix d-flex align-items-center">
+                    <a href="javascript:void(0);" class="btn-link me-4"
+                      >View All</a
+                    >
+                    <div class="dropdown">
+                      <button
+                        class="btn dropdown-toggle btn-white btn-shadow waves-effect btn-sm"
+                        type="button"
+                        data-bs-toggle="dropdown"
+                        aria-expanded="false"
+                      >
+                        Last Month
+                      </button>
+                      <ul class="dropdown-menu">
+                        <li>
+                          <a class="dropdown-item" href="javascript:void(0);"
+                            >Last Month</a
+                          >
+                        </li>
+                        <li>
+                          <a class="dropdown-item" href="javascript:void(0);"
+                            >Category</a
+                          >
+                        </li>
+                        <li>
+                          <a class="dropdown-item" href="javascript:void(0);"
+                            >Published</a
+                          >
+                        </li>
+                        <li>
+                          <a class="dropdown-item" href="javascript:void(0);"
+                            >Date Modifed</a
+                          >
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+                <div class="card-body px-3 pb-2">
+                  <div class="row gx-2">
+                    <div class="col-md-6">
+                      <ul
+                        class="list-group list-group-smooth list-group-unlined mb-0"
+                      >
+                        <li
+                          class="list-group-item d-flex justify-content-between align-items-center mb-2"
+                        >
+                          <div class="avatar rounded-circle me-1">
+                            <img
+                              src="assets/images/avatar/avatar1.webp"
+                              alt=""
+                            />
+                          </div>
+                          <div class="ms-2 me-auto">
+                            <h6 class="mb-0">William Johnson</h6>
+                            <small class="text-body">Web Designer</small>
+                          </div>
+                          <span
+                            class="badge badge-lg bg-danger-subtle text-danger"
+                            >12.30 PM</span
+                          >
+                        </li>
+                        <li
+                          class="list-group-item d-flex justify-content-between align-items-center mb-2"
+                        >
+                          <div class="avatar rounded-circle me-1">
+                            <img
+                              src="assets/images/avatar/avatar2.webp"
+                              alt=""
+                            />
+                          </div>
+                          <div class="ms-2 me-auto">
+                            <h6 class="mb-0">Alexander Brown</h6>
+                            <small class="text-body">Front-End Developer</small>
+                          </div>
+                          <span
+                            class="badge badge-lg bg-primary-subtle text-primary"
+                            >24 July 2024</span
+                          >
+                        </li>
+                        <li
+                          class="list-group-item d-flex justify-content-between align-items-center mb-2"
+                        >
+                          <div class="avatar rounded-circle me-1">
+                            <img
+                              src="assets/images/avatar/avatar3.webp"
+                              alt=""
+                            />
+                          </div>
+                          <div class="ms-2 me-auto">
+                            <h6 class="mb-0">Michael Davis</h6>
+                            <small class="text-body">UI/UX Designer</small>
+                          </div>
+                          <span
+                            class="badge badge-lg bg-secondary-subtle text-secondary"
+                            >11.00 AM</span
+                          >
+                        </li>
+                        <li
+                          class="list-group-item d-flex justify-content-between align-items-center mb-2"
+                        >
+                          <div class="avatar rounded-circle me-1">
+                            <img
+                              src="assets/images/avatar/avatar4.webp"
+                              alt=""
+                            />
+                          </div>
+                          <div class="ms-2 me-auto">
+                            <h6 class="mb-0">David Wilson</h6>
+                            <small class="text-body">Back-End Developer</small>
+                          </div>
+                          <span
+                            class="badge badge-lg bg-success-subtle text-success"
+                            >12.30 PM</span
+                          >
+                        </li>
+                      </ul>
+                    </div>
+                    <div class="col-md-6">
+                      <ul
+                        class="list-group list-group-smooth list-group-unlined mb-0"
+                      >
+                        <li
+                          class="list-group-item d-flex justify-content-between align-items-center mb-2"
+                        >
+                          <div class="avatar rounded-circle me-1">
+                            <img
+                              src="assets/images/avatar/avatar4.webp"
+                              alt=""
+                            />
+                          </div>
+                          <div class="ms-2 me-auto">
+                            <h6 class="mb-0">David Wilson</h6>
+                            <small class="text-body">Back-End Developer</small>
+                          </div>
+                          <span
+                            class="badge badge-lg bg-success-subtle text-success"
+                            >12.30 - 02.30</span
+                          >
+                        </li>
+                        <li
+                          class="list-group-item d-flex justify-content-between align-items-center mb-2"
+                        >
+                          <div class="avatar rounded-circle me-1">
+                            <img
+                              src="assets/images/avatar/avatar1.webp"
+                              alt=""
+                            />
+                          </div>
+                          <div class="ms-2 me-auto">
+                            <h6 class="mb-0">William Johnson</h6>
+                            <small class="text-body">Web Designer</small>
+                          </div>
+                          <span
+                            class="badge badge-lg bg-secondary-subtle text-secondary"
+                            >10.30 AM</span
+                          >
+                        </li>
+                        <li
+                          class="list-group-item d-flex justify-content-between align-items-center mb-2"
+                        >
+                          <div class="avatar rounded-circle me-1">
+                            <img
+                              src="assets/images/avatar/avatar2.webp"
+                              alt=""
+                            />
+                          </div>
+                          <div class="ms-2 me-auto">
+                            <h6 class="mb-0">Alexander Brown</h6>
+                            <small class="text-body">Front-End Developer</small>
+                          </div>
+                          <span
+                            class="badge badge-lg bg-primary-subtle text-primary"
+                            >24 July 2024</span
+                          >
+                        </li>
+                        <li
+                          class="list-group-item d-flex justify-content-between align-items-center mb-2"
+                        >
+                          <div class="avatar rounded-circle me-1">
+                            <img
+                              src="assets/images/avatar/avatar3.webp"
+                              alt=""
+                            />
+                          </div>
+                          <div class="ms-2 me-auto">
+                            <h6 class="mb-0">Michael Davis</h6>
+                            <small class="text-body">UI/UX Designer</small>
+                          </div>
+                          <span
+                            class="badge badge-lg bg-secondary-subtle text-secondary"
+                            >25 Dec 2024</span
+                          >
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            
+          <div class="col-lg-12 my-3">
+            <h5 class="fw-bold mb-0">Current Vacancy <span class="text-primary ms-1 text-2xs">74 Job Added</span>
+            </h5>
+          </div>
+
+          <div class="col-xxl-3 col-md-6">
+            <div class="card card-action action-elevate bg-primary-subtle border-0 shadow-none">
+              <div class="card-body">
+                <div class="d-flex gap-3 align-items-center mb-4">
+                  <div class="avatar bg-body rounded-3 p-2">
+                    <img src="assets/images/media/figma.png" alt="">
+                  </div>
+                  <div class="clearfix">
+                    <h6 class="mb-1 text-sm">Figma Designer</h6>
+                    <ul class="list-inline list-inline-disc d-flex mb-0">
+                      <li>Full Time</li>
+                      <li>Remote</li>
+                    </ul>
+                  </div>
+                </div>
+                <div class="bg-body p-3 rounded-3 mb-3 d-flex">
+                  <div class="text-center w-50">
+                    <h2 class="fs-1 fw-bold mb-1">76</h2>
+                    <span class="text-primary">Applied</span>
+                  </div>
+                  <div class="vr"></div>
+                  <div class="text-center w-50">
+                    <h2 class="fs-1 fw-bold mb-1">14</h2>
+                    <span class="text-primary">New</span>
+                  </div>
+                </div>
+                <div class="d-flex justify-content-between gap-2 pt-1 mb-3">
+                  <div class="text-start">
+                    <span class="text-1xs">Salary</span>
+                    <span class="text-sm text-dark d-block fw-semibold">$100K - $200K</span>
+                  </div>
+                  <div class="text-end">
+                    <span class="text-1xs">Location</span>
+                    <span class="text-sm text-dark d-block fw-semibold">USA</span>
+                  </div>
+                </div>
+                <a href="pages/blog.html" class="btn btn-primary waves-effect waves-light w-100">
+                  See Job Post
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-xxl-3 col-md-6">
+            <div class="card card-action action-elevate bg-secondary-subtle border-0 shadow-none">
+              <div class="card-body">
+                <div class="d-flex gap-3 align-items-center mb-4">
+                  <div class="avatar bg-body rounded-3 p-2">
+                    <img src="assets/images/media/python.png" alt="">
+                  </div>
+                  <div class="clearfix">
+                    <h6 class="mb-1 text-sm">Python Developer </h6>
+                    <ul class="list-inline list-inline-disc d-flex mb-0">
+                      <li>Full Time</li>
+                      <li>Remote</li>
+                    </ul>
+                  </div>
+                </div>
+                <div class="bg-body p-3 rounded-3 mb-3 d-flex">
+                  <div class="text-center w-50">
+                    <h2 class="fs-1 fw-bold mb-1">12</h2>
+                    <span class="text-primary">Applied</span>
+                  </div>
+                  <div class="vr"></div>
+                  <div class="text-center w-50">
+                    <h2 class="fs-1 fw-bold mb-1">07</h2>
+                    <span class="text-primary">New</span>
+                  </div>
+                </div>
+                <div class="d-flex justify-content-between gap-2 pt-1 mb-3">
+                  <div class="text-start">
+                    <span class="text-1xs">Salary</span>
+                    <span class="text-sm text-dark d-block fw-semibold">$100K - $200K</span>
+                  </div>
+                  <div class="text-end">
+                    <span class="text-1xs">Location</span>
+                    <span class="text-sm text-dark d-block fw-semibold">USA</span>
+                  </div>
+                </div>
+                <a href="pages/blog.html" class="btn btn-primary waves-effect waves-light w-100">
+                  See Job Post
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-xxl-3 col-md-6">
+            <div class="card card-action action-elevate bg-info-subtle border-0 shadow-none">
+              <div class="card-body">
+                <div class="d-flex gap-3 align-items-center mb-4">
+                  <div class="avatar bg-body rounded-3 p-2">
+                    <img src="assets/images/media/code.png" alt="">
+                  </div>
+                  <div class="clearfix">
+                    <h6 class="mb-1 text-sm">Web Developer</h6>
+                    <ul class="list-inline list-inline-disc d-flex mb-0">
+                      <li>Full Time</li>
+                      <li>Remote</li>
+                    </ul>
+                  </div>
+                </div>
+                <div class="bg-body p-3 rounded-3 mb-3 d-flex">
+                  <div class="text-center w-50">
+                    <h2 class="fs-1 fw-bold mb-1">99</h2>
+                    <span class="text-primary">Applied</span>
+                  </div>
+                  <div class="vr"></div>
+                  <div class="text-center w-50">
+                    <h2 class="fs-1 fw-bold mb-1">23</h2>
+                    <span class="text-primary">New</span>
+                  </div>
+                </div>
+                <div class="d-flex justify-content-between gap-2 pt-1 mb-3">
+                  <div class="text-start">
+                    <span class="text-1xs">Salary</span>
+                    <span class="text-sm text-dark d-block fw-semibold">$100K - $200K</span>
+                  </div>
+                  <div class="text-end">
+                    <span class="text-1xs">Location</span>
+                    <span class="text-sm text-dark d-block fw-semibold">USA</span>
+                  </div>
+                </div>
+                <a href="pages/blog.html" class="btn btn-primary waves-effect waves-light w-100">
+                  See Job Post
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-xxl-3 col-md-6">
+            <div class="card card-action action-elevate bg-success-subtle border-0 shadow-none">
+              <div class="card-body">
+                <div class="d-flex gap-3 align-items-center mb-4">
+                  <div class="avatar bg-body rounded-3 p-2">
+                    <img src="assets/images/media/react.png" alt="">
+                  </div>
+                  <div class="clearfix">
+                    <h6 class="mb-1 text-sm">React Developer</h6>
+                    <ul class="list-inline list-inline-disc d-flex mb-0">
+                      <li>Full Time</li>
+                      <li>Remote</li>
+                    </ul>
+                  </div>
+                </div>
+                <div class="bg-body p-3 rounded-3 mb-3 d-flex">
+                  <div class="text-center w-50">
+                    <h2 class="fs-1 fw-bold mb-1">46</h2>
+                    <span class="text-primary">Applied</span>
+                  </div>
+                  <div class="vr"></div>
+                  <div class="text-center w-50">
+                    <h2 class="fs-1 fw-bold mb-1">61</h2>
+                    <span class="text-primary">New</span>
+                  </div>
+                </div>
+                <div class="d-flex justify-content-between gap-2 pt-1 mb-3">
+                  <div class="text-start">
+                    <span class="text-1xs">Salary</span>
+                    <span class="text-sm text-dark d-block fw-semibold">$100K - $200K</span>
+                  </div>
+                  <div class="text-end">
+                    <span class="text-1xs">Location</span>
+                    <span class="text-sm text-dark d-block fw-semibold">USA</span>
+                  </div>
+                </div>
+                <a href="pages/blog.html" class="btn btn-primary waves-effect waves-light w-100">
+                  See Job Post
+                </a>
+              </div>
+            </div>
+          </div>
+          -->
+            <div class="col-lg-12">
+              <div class="card overflow-hidden">
+                <div
+                  class="card-header d-flex gap-3 flex-wrap align-items-center justify-content-between border-0 pb-0"
+                >
+                  <h6 class="card-title mb-0">Employee’s Leave</h6>
+                  <div class="d-flex gap-3 flex-wrap">
+                    <div id="dt_PageEmployeeLeave_Search"></div>
+                    <button
+                      type="button"
+                      class="btn btn-sm btn-outline-light btn-shadow waves-effect"
+                    >
+                      Download Report
+                    </button>
+                    <select
+                      class="selectpicker"
+                      data-style="btn-sm btn-outline-light btn-shadow waves-effect"
+                    >
+                      <option value="pending">2024</option>
+                      <option>2023</option>
+                      <option>2022</option>
+                      <option>2021</option>
+                    </select>
+                  </div>
+                </div>
+                <div class="card-body p-2">
+                  <table
+                    id="dt_PageEmployeeLeave"
+                    class="table display table-row-rounded"
+                  >
+                    <thead class="table-light">
+                      <tr>
+                        <th class="minw-200px">Batch ID</th>
+                        <th class="minw-200px">Channel</th>
+                        <th class="minw-200px">Records</th>
+                        <th class="minw-150px">Originating IP</th>
+                        <th class="minw-200px">Time</th>
+                        <th class="minw-150px">Status</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td class="pe-0">I293DSA39</td>
+                        <td>
+                          <div class="d-flex align-items-center mw-175px">
+                            <div class="ms-2 me-auto">James Anderson</div>
+                          </div>
+                        </td>
+                        <td>Back-End Developer</td>
+                        <td>+01 789 456 3201</td>
+                        <td>example@mail.com</td>
+
+                        <td>
+                          <span class="badge badge-lg bg-success"
+                            >Completed</span
+                          >
+                        </td>
+                      </tr>
+                      <tr>
+                        <td class="pe-0">I293DSA39</td>
+                        <td>
+                          <div class="d-flex align-items-center mw-175px">
+                            <div class="ms-2 me-auto">James Anderson</div>
+                          </div>
+                        </td>
+                        <td>Back-End Developer</td>
+                        <td>+01 789 456 3201</td>
+                        <td>example@mail.com</td>
+
+                        <td>
+                          <span class="badge badge-lg bg-success"
+                            >Completed</span
+                          >
+                        </td>
+                      </tr>
+                      <tr>
+                        <td class="pe-0">I293DSA39</td>
+                        <td>
+                          <div class="d-flex align-items-center mw-175px">
+                            <div class="ms-2 me-auto">James Anderson</div>
+                          </div>
+                        </td>
+                        <td>Back-End Developer</td>
+                        <td>+01 789 456 3201</td>
+                        <td>example@mail.com</td>
+
+                        <td>
+                          <span class="badge badge-lg bg-success"
+                            >Completed</span
+                          >
+                        </td>
+                      </tr>
+                      <tr>
+                        <td class="pe-0">I293DSA39</td>
+                        <td>
+                          <div class="d-flex align-items-center mw-175px">
+                            <div class="ms-2 me-auto">James Anderson</div>
+                          </div>
+                        </td>
+                        <td>Back-End Developer</td>
+                        <td>+01 789 456 3201</td>
+                        <td>example@mail.com</td>
+
+                        <td>
+                          <span class="badge badge-lg bg-success"
+                            >Completed</span
+                          >
+                        </td>
+                      </tr>
+                      <tr>
+                        <td class="pe-0">I293DSA39</td>
+                        <td>
+                          <div class="d-flex align-items-center mw-175px">
+                            <div class="ms-2 me-auto">James Anderson</div>
+                          </div>
+                        </td>
+                        <td>Back-End Developer</td>
+                        <td>+01 789 456 3201</td>
+                        <td>example@mail.com</td>
+
+                        <td>
+                          <span class="badge badge-lg bg-success"
+                            >Completed</span
+                          >
+                        </td>
+                      </tr>
+                      <tr>
+                        <td class="pe-0">I293DSA39</td>
+                        <td>
+                          <div class="d-flex align-items-center mw-175px">
+                            <div class="ms-2 me-auto">James Anderson</div>
+                          </div>
+                        </td>
+                        <td>Back-End Developer</td>
+                        <td>+01 789 456 3201</td>
+                        <td>example@mail.com</td>
+
+                        <td>
+                          <span class="badge badge-lg bg-success"
+                            >Completed</span
+                          >
+                        </td>
+                      </tr>
+                      <tr>
+                        <td class="pe-0">I293DSA39</td>
+                        <td>
+                          <div class="d-flex align-items-center mw-175px">
+                            <div class="ms-2 me-auto">James Anderson</div>
+                          </div>
+                        </td>
+                        <td>Back-End Developer</td>
+                        <td>+01 789 456 3201</td>
+                        <td>example@mail.com</td>
+
+                        <td>
+                          <span class="badge badge-lg bg-success"
+                            >Completed</span
+                          >
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div
+            class="modal fade"
+            id="createJobModal"
+            tabindex="-1"
+            aria-hidden="true"
+          >
+            <div class="modal-dialog modal-dialog-centered">
+              <div class="modal-content">
+                <div class="modal-header py-3">
+                  <h5 class="modal-title">Create Job</h5>
+                  <button
+                    type="button"
+                    class="btn-close"
+                    data-bs-dismiss="modal"
+                    aria-label="Close"
+                  ></button>
+                </div>
+                <div class="modal-body">
+                  <form>
+                    <div class="mb-3">
+                      <label for="jobTitle" class="form-label">Job Title</label>
+                      <input
+                        type="text"
+                        class="form-control"
+                        id="jobTitle"
+                        placeholder="Enter job title"
+                      />
+                    </div>
+                    <div class="mb-3">
+                      <label for="jobDepartment" class="form-label"
+                        >Department</label
+                      >
+                      <select class="form-select" id="jobDepartment">
+                        <option selected disabled>Select department</option>
+                        <option>Human Resources</option>
+                        <option>Marketing</option>
+                        <option>Development</option>
+                        <option>Sales</option>
+                      </select>
+                    </div>
+                    <div class="mb-3">
+                      <label for="jobType" class="form-label">Job Type</label>
+                      <select class="form-select" id="jobType">
+                        <option selected disabled>Select type</option>
+                        <option>Full-time</option>
+                        <option>Part-time</option>
+                        <option>Internship</option>
+                        <option>Contract</option>
+                      </select>
+                    </div>
+                    <div class="mb-3">
+                      <label for="location" class="form-label">Location</label>
+                      <input
+                        type="text"
+                        class="form-control"
+                        id="location"
+                        placeholder="Enter location"
+                      />
+                    </div>
+                    <div class="mb-3">
+                      <label for="salaryRange" class="form-label"
+                        >Salary Range</label
+                      >
+                      <input
+                        type="text"
+                        class="form-control"
+                        id="salaryRange"
+                        placeholder="$40,000 - $60,000"
+                      />
+                    </div>
+                    <div class="mb-3">
+                      <label for="flatpickr_basic" class="form-label"
+                        >Application Deadline</label
+                      >
+                      <input
+                        type="date"
+                        class="form-control"
+                        id="flatpickr_basic"
+                      />
+                    </div>
+                    <div class="mb-3">
+                      <label for="jobDescription" class="form-label"
+                        >Job Description</label
+                      >
+                      <textarea
+                        class="form-control"
+                        id="jobDescription"
+                        rows="4"
+                        placeholder="Enter job responsibilities and requirements"
+                      ></textarea>
+                    </div>
+                    <div class="text-end">
+                      <button
+                        type="submit"
+                        class="btn btn-primary waves-effect waves-light"
+                      >
+                        Post Job
+                      </button>
+                    </div>
+                  </form>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </main>
+
+      <!-- begin::GXON Footer -->
+      <footer class="footer-wrapper bg-body">
+        <div class="container">
+          <div class="row g-2">
+            <div class="col-lg-6 col-md-7 text-center text-md-start">
+              <p class="mb-0">
+                © <span class="currentYear">2025</span>. Proudly powered by
+              </p>
+            </div>
+            <div class="col-lg-6 col-md-5">
+              <ul
+                class="d-flex list-inline mb-0 gap-3 flex-wrap justify-content-center justify-content-md-end"
+              >
+                <li>
+                  <a class="text-body" href="javascript:void(0);">Home</a>
+                </li>
+                <li>
+                  <a class="text-body" href="javascript:void(0);">Faq's</a>
+                </li>
+                <li>
+                  <a class="text-body" href="javascript:void(0);">Support</a>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </footer>
+      <!-- end::GXON Footer -->
+    </div>
+
+    <!-- begin::GXON Page Scripts -->
+     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="assets/js/header.js"></script>
+    <script src="assets/libs/global/global.min.js"></script>
+    <script src="assets/libs/chartjs/chart.js"></script>
+    <script src="assets/libs/apexcharts/apexcharts.min.js"></script>
+    <script src="assets/libs/datatables/datatables.min.js"></script>
+    <script src="assets/libs/flatpickr/flatpickr.min.js"></script>
+    <script src="assets/js/flatpickr.js"></script>
+    <script src="assets/js/dashboard.js"></script>
+    <script src="assets/js/appSettings.js"></script>
+    <script src="assets/js/main.js"></script>
+    <!-- end::GXON Page Scripts -->
+  </body>
+</html>

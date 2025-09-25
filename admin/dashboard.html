@@ -1,0 +1,1144 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- begin::GXON Meta Basic -->
+    <meta charset="utf-8" />
+    <title>Fusion</title>
+    <link rel="icon" type="image/png" href="assets/images/logo.jpeg" />
+    <!-- end::GXON Website Page Title -->
+
+    <!-- begin::GXON Mobile Specific -->
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <!-- end::GXON Mobile Specific -->
+
+    <!-- begin::GXON Favicon Tags -->
+
+    <!-- end::GXON Favicon Tags -->
+
+    <!-- begin::GXON Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&display=swap"
+      rel="stylesheet"
+    />
+    <!-- end::GXON Google Fonts -->
+
+    <!-- begin::GXON Required Stylesheet -->
+    <link rel="stylesheet" href="assets/libs/flaticon/css/all/all.css" />
+    <link rel="stylesheet" href="assets/libs/lucide/lucide.css" />
+    <link rel="stylesheet" href="assets/libs/fontawesome/css/all.min.css" />
+    <link rel="stylesheet" href="assets/libs/simplebar/simplebar.css" />
+    <link rel="stylesheet" href="assets/libs/node-waves/waves.css" />
+    <link
+      rel="stylesheet"
+      href="assets/libs/bootstrap-select/css/bootstrap-select.min.css"
+    />
+    <!-- end::GXON Required Stylesheet -->
+    <!-- begin::GXON CSS Stylesheet -->
+    <link rel="stylesheet" href="assets/libs/flatpickr/flatpickr.min.css" />
+    <link rel="stylesheet" href="assets/libs/datatables/datatables.min.css" />
+    <link rel="stylesheet" href="assets/css/styles.css" />
+    <!-- end::GXON CSS Stylesheet -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <!-- Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <!-- begin::GXON Googletagmanager -->
+    <script
+      async
+      src="https://www.googletagmanager.com/gtag/js?id=G-XWVQM68HHQ"
+    ></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag("js", new Date());
+
+      gtag("config", "G-XWVQM68HHQ", {
+        cookie_flags: "SameSite=None;Secure",
+        send_page_view: true,
+      });
+    </script>
+    <!-- end::GXON Googletagmanager -->
+    <style>
+      .container {
+        max-width: px;
+        margin: 0 auto;
+        padding: 20px;
+      }
+
+      .header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 20px;
+        padding-bottom: 10px;
+        border-bottom: 1px solid #e5e5e5;
+      }
+
+      .title {
+        font-size: 16px;
+        font-weight: 600;
+        color: #333;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+      }
+
+      .period {
+        font-size: 14px;
+        color: #666;
+      }
+
+      .chart-container {
+        margin-bottom: 30px;
+        height: 300px;
+        position: relative;
+        border: 1px solid #f0f0f0;
+        background: #fafafa;
+      }
+
+      .chart-svg {
+        width: 100%;
+        height: 100%;
+      }
+
+      .metrics {
+        display: flex;
+        justify-content: space-between;
+        gap: 20px;
+      }
+
+      .metric {
+        flex: 1;
+        text-align: left;
+      }
+
+      .metric-header {
+        display: flex;
+        align-items: center;
+        margin-bottom: 5px;
+      }
+
+      .metric-dot {
+        width: 8px;
+        height: 8px;
+        border-radius: 50%;
+        margin-right: 8px;
+      }
+
+      .metric-dot.ptsp {
+        background-color: #e85d75;
+      }
+
+      .metric-dot.pssp {
+        background-color: #4ecdc4;
+      }
+
+      .metric-label {
+        font-size: 13px;
+        color: #666;
+      }
+
+      .metric-value {
+        font-size: 18px;
+        font-weight: 600;
+        color: #333;
+        margin: 2px 0;
+      }
+
+      .avg-label {
+        font-size: 13px;
+        color: #666;
+        margin-bottom: 5px;
+      }
+
+      .avg-value {
+        font-size: 18px;
+        font-weight: 600;
+        color: #333;
+      }
+
+      .axis-label {
+        font-size: 11px;
+        fill: #666;
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+          sans-serif;
+      }
+
+      .grid-line {
+        stroke: #f0f0f0;
+        stroke-width: 1;
+      }
+
+      .chart-line {
+        fill: none;
+        stroke-width: 3;
+      }
+
+      .ptsp-line {
+        stroke: #e85d75;
+      }
+
+      .pssp-line {
+        stroke: #4ecdc4;
+      }
+
+      @media (max-width: 768px) {
+        .container {
+          padding: 15px;
+        }
+
+        .header {
+          flex-direction: column;
+          align-items: flex-start;
+          gap: 10px;
+        }
+
+        .metrics {
+          flex-direction: column;
+          gap: 15px;
+        }
+
+        .chart-container {
+          height: 250px;
+        }
+      }
+
+      @media (max-width: 480px) {
+        body {
+          padding: 10px;
+        }
+
+        .chart-container {
+          height: 200px;
+        }
+
+        .metric-value,
+        .avg-value {
+          font-size: 16px;
+        }
+      }
+      /* last chart */
+
+      .chart-card {
+        background: #fff;
+        border-radius: 16px;
+        padding: 20px;
+        box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+      }
+      .chart-container {
+        position: relative;
+        height: 350px;
+      }
+      .chart-title {
+        font-weight: 600;
+        font-size: 1.1rem;
+        color: #1a1a3d;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="page-layout">
+      <!-- begin::GXON Page Header -->
+      <header class="app-header">
+        <div class="app-header-inner" id="header"></div>
+      </header>
+
+      <!-- end::GXON Page Header -->
+      <div
+        class="modal fade"
+        id="searchResultsModal"
+        tabindex="-1"
+        aria-hidden="true"
+      >
+        <div class="modal-dialog modal-dialog-centered">
+          <div class="modal-content">
+            <div class="modal-header py-1 px-3">
+              <form
+                class="d-flex align-items-center position-relative w-100"
+                action="leave.html#"
+              >
+                <button
+                  type="button"
+                  class="btn btn-sm border-0 position-absolute start-0 p-0 text-sm"
+                >
+                  <i class="fi fi-rr-search"></i>
+                </button>
+                <input
+                  type="text"
+                  class="form-control form-control-lg ps-4 border-0 shadow-none"
+                  id="searchInput"
+                  placeholder="Search anything's"
+                />
+              </form>
+              <button
+                type="button"
+                class="btn-close"
+                data-bs-dismiss="modal"
+                aria-label="Close"
+              ></button>
+            </div>
+            <div class="modal-body pb-2" style="height: 300px" data-simplebar>
+              <div id="recentlyResults">
+                <span
+                  class="text-uppercase text-2xs fw-semibold text-muted d-block mb-2"
+                  >Recently Searched:</span
+                >
+                <ul class="list-inline search-list">
+                  <li>
+                    <a class="search-item" href="index.html">
+                      <i class="fi fi-rr-apps"></i> Dashboard
+                    </a>
+                  </li>
+                  <li>
+                    <a class="search-item" href="user.html">
+                      <i class="fi fi-rr-comment"></i>User Management
+                    </a>
+                  </li>
+                  <li>
+                    <a class="search-item" href="roles.html">
+                      <i class="fi fi-rr-calendar"></i>Roles & Access control
+                    </a>
+                  </li>
+                  <li>
+                    <a class="search-item" href="PTSP.html">
+                      <i class="fi fi-rr-chart-pie-alt"></i> ptsp onboarding
+                    </a>
+                  </li>
+                  <li>
+                    <a class="search-item" href="data.html">
+                      <i class="fi fi-rr-file"></i>data ingestion monitor
+                    </a>
+                  </li>
+                  <li>
+                    <a class="search-item" href="audit.html">
+                      <i class="fi fi-rr-envelope"></i> audit log
+                    </a>
+                  </li>
+                  <li>
+                    <a class="search-item" href="transaction.html">
+                      <i class="fi fi-rr-envelope"></i>Tax Transaction Config
+                    </a>
+                  </li>
+                </ul>
+              </div>
+              <div id="searchContainer"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- begin::GXON Sidebar Menu -->
+      <div id="sidebsr"></div>
+      <!-- end::GXON Sidebar Menu -->
+
+      <!-- begin::GXON Sidebar right -->
+      <div class="app-sidebar-end"></div>
+      <!-- end::GXON Sidebar right -->
+
+      <main class="app-wrapper">
+        <div class="container">
+          <div
+            class="app-page-head d-flex align-items-center justify-content-between"
+          >
+            <div class="clearfix">
+              <h1 class="app-page-title">Dashboard</h1>
+              <nav aria-label="breadcrumb">
+                <ol class="breadcrumb mb-0">
+                  <li class="breadcrumb-item"></li>
+                </ol>
+              </nav>
+            </div>
+            <div class="d-flex justify-content-end align-items-center gap-2">
+              <!-- <div
+                class="d-inline-flex align-items-center fw-semibold px-3 py-2 border rounded-3 shadow-sm"
+              >
+                Configure Levy
+              </div> -->
+
+              <!-- <button
+                type="button"
+                class="btn btn-primary waves-effect waves-light"
+                data-bs-toggle="modal"
+                data-bs-target="#createUserModal"
+              >
+                <i class="fi fi-rr-plus me-1"></i> Create New User
+              </button> -->
+              <!-- Create User Modal -->
+              <div
+                class="modal fade"
+                id="createUserModal"
+                tabindex="-1"
+                aria-labelledby="createUserModalLabel"
+                aria-hidden="true"
+              >
+                <div class="modal-dialog modal-dialog-centered">
+                  <div class="modal-content">
+                    <!-- Modal Header -->
+                    <div class="modal-header">
+                      <div>
+                        <h5 class="modal-title" id="createUserModalLabel">
+                          Add New User
+                        </h5>
+                        <div class="small text-muted">
+                          Add new user to the role
+                        </div>
+                      </div>
+                      <button
+                        type="button"
+                        class="btn-close"
+                        data-bs-dismiss="modal"
+                        aria-label="Close"
+                      ></button>
+                    </div>
+
+                    <!-- Modal Body -->
+                    <div class="modal-body">
+                      <form id="">
+                        <div class="mb-3">
+                          <label for="userName" class="form-label"
+                            >User Name</label
+                          >
+                          <input
+                            type="text"
+                            class="form-control"
+                            id="userName"
+                            placeholder="Enter user name"
+                            required
+                          />
+                        </div>
+                        <div class="mb-3">
+                          <label for="userEmail" class="form-label"
+                            >Email Address</label
+                          >
+                          <input
+                            type="email"
+                            class="form-control"
+                            id="userEmail"
+                            placeholder="Enter user email"
+                            required
+                          />
+                        </div>
+                        <div class="mb-3">
+                          <label for="userDepartment" class="form-label">Department</label>
+                          <select class="form-select" id="userDepartment" required>
+                            <option value="" selected disabled>Select department</option>
+                            <option value="SIRS Executive Office">SIRS Executive Office</option>
+                            <option value="Tax Compliance & Enforcement">Tax Compliance & Enforcement</option>
+                            <option value="Data Analytics & Intelligence">Data Analytics & Intelligence</option>
+                            <option value="IT Administration">IT Administration</option>
+                          </select>
+                        </div>
+                        <div class="mb-3">
+                          <label for="userRole" class="form-label"
+                            >Select Role</label
+                          >
+                          <select class="form-select" id="userRole" required>
+                            <option value="" disabled selected>
+                              Select role
+                            </option>
+                          </select>
+                        </div>
+                      </form>
+                    </div>
+
+                    <!-- Modal -->
+                    <div class="modal-footer">
+                      <button
+                      id="add-user-btn"
+                        type="button"
+                        class="btn btn-primary"
+                      >
+                        Add New User
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="row g-4 mb-4">
+              <!-- Card 1 -->
+              <div class="col-xxl-4 col-lg-4 col-sm-6">
+                <div
+                  class="card card-action action-border-secondary p-1 position-relative h-100"
+                >
+                  <div
+                    class="card-body p-4 position-relative d-flex flex-column justify-content-between"
+                  >
+                    <div class="d-flex gap-4 align-items-center">
+                      <!-- Icon -->
+                      <div class="text-success">
+                        <i class="fi fi-rr-users fs-1"></i>
+                      </div>
+                      <!-- Texts -->
+                      <div>
+                        <div class="mb-2">TOTAL ONBOARDED MERCHANTS</div>
+                        <h3 class="mb-2 fw-bold" id="totalMarchantCount"></h3>
+                        <div class="small text-muted">
+                          +0% more than last month
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Card 2 -->
+              <div class="col-xxl-4 col-lg-4 col-sm-6">
+                <div
+                  class="card card-action action-border-success p-1 position-relative h-100"
+                >
+                  <div
+                    class="card-body p-4 position-relative d-flex flex-column justify-content-between"
+                  >
+                    <div class="d-flex gap-4 align-items-center">
+                      <!-- Icon -->
+                      <div class="text-success">
+                        <i class="fi fi-rr-bank fs-1 text-success"></i>
+                      </div>
+                      <!-- Texts -->
+                      <div>
+                        <div class="mb-2">ACTIVE PTSP/PSSP</div>
+                        <h3 class="mb-2 fw-bold" id="activePSSP"></h3>
+                        <div class="small text-muted">
+                          PTSP: 0 &nbsp; | &nbsp; 0
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Card 3 -->
+              <div class="col-xxl-4 col-lg-4 col-sm-6">
+                <div
+                  class="card card-action action-border-info p-1 position-relative h-100"
+                >
+                  <div
+                    class="card-body p-4 position-relative d-flex flex-column justify-content-between"
+                  >
+                    <!-- Dropdown -->
+                    <div class="position-absolute top-0 end-0 mt-3 me-3">
+                      <!-- <select class="form-select form-select-sm">
+                        <option selected>Aug</option>
+                        <option>July</option>
+                        <option>June</option>
+                        <option>May</option>
+                      </select> -->
+                    </div>
+                    <div class="d-flex gap-4 align-items-center">
+                      <!-- Icon -->
+                      <div class="text-info">
+                        <i class="fi fi-rr-shield-check fs-1 text-info"></i>
+                      </div>
+                      <!-- Texts -->
+                      <div>
+                        <div class="mb-2">
+                          PAYMENT COMPLIANCE <br />
+                          RATE
+                        </div>
+                        <h3 class="mb-2 fw-bold" id="paymentCompliance"></h3>
+                        <div class="small text-muted">
+                          +20% more than last month
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Card 4 -->
+              <!-- <div class="col-xxl-4 col-lg-4 col-sm-6">
+                <div
+                  class="card card-action action-border-info p-1 position-relative h-100"
+                >
+                  <div
+                    class="card-body p-4 position-relative d-flex flex-column justify-content-between"
+                  >
+                    <div class="position-absolute top-0 end-0 mt-3 me-3">
+                      <select class="form-select form-select-sm">
+                        <option selected>Aug</option>
+                        <option>July</option>
+                        <option>June</option>
+                        <option>May</option>
+                      </select>
+                    </div>
+                    <div class="d-flex gap-4 align-items-center">
+                      <div class="text-info">
+                        <i class="fi fi-rr-coins fs-1 text-info"></i>
+                      </div>
+                      <div>
+                        <div class="mb-2">SYSTEM UPTIME</div>
+                        <h3 class="mb-0 fw-bold">99.98%</h3>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div> -->
+
+              <!-- Card 5 -->
+              <div class="col-xxl-4 col-lg-4 col-sm-6">
+                <div
+                  class="card card-action action-border-info p-1 position-relative h-100"
+                >
+                  <div
+                    class="card-body p-4 position-relative d-flex flex-column justify-content-between"
+                  >
+                    <!-- Dropdown -->
+                    <!-- <div class="position-absolute top-0 end-0 mt-3 me-3">
+                      <select class="form-select form-select-sm">
+                        <option selected>Aug</option>
+                        <option>July</option>
+                        <option>June</option>
+                        <option>May</option>
+                      </select>
+                    </div> -->
+                    <div class="d-flex gap-4 align-items-center">
+                      <!-- Icon -->
+                      <div class="text-info">
+                        <i class="fi fi-rr-store-alt fs-1 text-info"></i>
+                      </div>
+                      <!-- Texts -->
+                      <div>
+                        <div class="mb-2">
+                          GENERATED TAX <br />
+                          LIABILITIES
+                        </div>
+                        <h3 class="mb-0 fw-bold" id="generatedTaxLia"></h3>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-xxl-4 col-lg-4 col-sm-6">
+                <div
+                  class="card card-action action-border-secondary p-1 position-relative h-100 shadow-sm"
+                >
+                  <div
+                    class="card-body p-4 d-flex flex-column justify-content-between"
+                  >
+                    <div class="d-flex gap-4 align-items-center">
+                      <!-- Icon -->
+                      <div class="text-success">
+                        <i class="fi fi-rr-users fs-1"></i>
+                      </div>
+
+                      <!-- Texts -->
+                      <div>
+                        <div class="mb-2">Daily Transactions</div>
+                        <h3 class="mb-2 fw-bold" id="dailyTransactions"></h3>
+                        <div class="small text-muted">
+                          <i class="bi bi-graph-up-arrow text-success"></i> +0%
+                          more than last month
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-xxl-4 col-lg-4 col-sm-6">
+                <div
+                  class="card card-action action-border-secondary p-1 position-relative h-100 shadow-sm"
+                >
+                  <div
+                    class="card-body p-4 d-flex flex-column justify-content-between"
+                  >
+                    <div class="d-flex gap-4 align-items-center">
+                      <!-- Icon -->
+                      <div class="text-primary">
+                        <i class="fi fi-rr-stats fs-1"></i>
+                      </div>
+
+                      <!-- Texts -->
+                      <div>
+                        <div class="mb-2">Total Transactions</div>
+                        <h3 class="mb-2 fw-bold" id="totalTransactions"></h3>
+                        <div class="small text-muted">
+                          <i class="bi bi-graph-up-arrow text-success"></i> +0%
+                          more than last month
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- <div class="col-xxl-7">
+              <div
+                class="container"
+                style="
+                  box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.1);
+                  border-radius: 8px;
+                "
+              >
+                <div class="header">
+                  <div class="title">DATA INGESTION MONITOR</div>
+                  <div class="col-md-4 col-xxl-3">
+                    <select class="form-select" id="monthSelect">
+                      <option selected>January</option>
+                      <option>February</option>
+                      <option>March</option>
+                      <option>April</option>
+                      <option>May</option>
+                      <option>June</option>
+                      <option>July</option>
+                      <option>August</option>
+                      <option>September</option>
+                      <option>October</option>
+                      <option>November</option>
+                      <option>December</option>
+                    </select>
+                  </div>
+
+                  <div class="period">Last 30 days</div>
+                </div>
+
+                <div class="chart-container">
+                  <svg class="chart-svg" id="chartSvg">
+                    <g id="gridLines"></g>
+                    <g id="yAxisLabels"></g>
+                    <g id="xAxisLabels"></g>
+                    <g id="chartLines"></g>
+                  </svg>
+                </div>
+
+                <div class="metrics">
+                  <div class="metric">
+                    <div class="metric-header">
+                      <div class="metric-dot ptsp"></div>
+                      <div class="metric-label">PTSP Batches</div>
+                    </div>
+                    <div class="metric-value">234,356</div>
+                  </div>
+
+                  <div class="metric">
+                    <div class="metric-header">
+                      <div class="metric-dot pssp"></div>
+                      <div class="metric-label">PSSP Batches</div>
+                    </div>
+                    <div class="metric-value">125,736</div>
+                  </div>
+
+                  <div class="metric">
+                    <div class="avg-label">Avg. batch per day</div>
+                    <div class="avg-value">29,763</div>
+                  </div>
+                </div>
+              </div>
+            </div> -->
+
+            <!-- <div class="col-xxl-5 col-md-6 col-lg-4 order-lg-1 order-xxl-0">
+              <div class="card">
+                <div
+                  class="card-header d-flex align-items-center justify-content-between border-0 pb-0"
+                >
+                  <h6 class="card-title mb-0">Recent Activity</h6>
+                  <div class="clearfix">
+                    <a href="javascript:void(0);" class="btn-link">View More</a>
+                  </div>
+                </div>
+                <div class="card-body px-3 pb-3">
+                  <ul
+                    class="list-group list-group-hover list-group-smooth list-group-space-sm"
+                  >
+                    <li
+                      class="list-group-item d-flex justify-content-between align-items-center"
+                    >
+                      <div class="me-auto">
+                        <h6 class="mb-0">10 PTSPs register successfully</h6>
+                        <small class="fw-medium text-body d-block"
+                          >system activity
+                        </small>
+                      </div>
+                      <div class="text-muted small">
+                        Last seen: <span class="fw-semibold">2 mins ago</span>
+                      </div>
+                    </li>
+                  </ul>
+                </div>
+
+                <div class="card-body px-3 pb-3">
+                  <ul
+                    class="list-group list-group-hover list-group-smooth list-group-space-sm"
+                  >
+                    <li
+                      class="list-group-item d-flex justify-content-between align-items-center"
+                    >
+                      <div class="me-auto">
+                        <h6 class="mb-0">10 PTSPs register successfully</h6>
+                        <small class="fw-medium text-body d-block"
+                          >system activity
+                        </small>
+                      </div>
+                      <div class="text-muted small">
+                        Last seen: <span class="fw-semibold">2 mins ago</span>
+                      </div>
+                    </li>
+                  </ul>
+                </div>
+
+                <div class="card-body px-3 pb-3">
+                  <ul
+                    class="list-group list-group-hover list-group-smooth list-group-space-sm"
+                  >
+                    <li
+                      class="list-group-item d-flex justify-content-between align-items-center"
+                    >
+                      <div class="me-auto">
+                        <h6 class="mb-0">10 PTSPs register successfully</h6>
+                        <small class="fw-medium text-body d-block"
+                          >system activity
+                        </small>
+                      </div>
+                      <div class="text-muted small">
+                        Last seen: <span class="fw-semibold">2 mins ago</span>
+                      </div>
+                    </li>
+                  </ul>
+                </div>
+
+                <div class="card-body px-3 pb-3">
+                  <ul
+                    class="list-group list-group-hover list-group-smooth list-group-space-sm"
+                  >
+                    <li
+                      class="list-group-item d-flex justify-content-between align-items-center"
+                    >
+                      <div class="me-auto">
+                        <h6 class="mb-0">10 PTSPs register successfully</h6>
+                        <small class="fw-medium text-body d-block"
+                          >system activity
+                        </small>
+                      </div>
+                      <div class="text-muted small">
+                        Last seen: <span class="fw-semibold">2 mins ago</span>
+                      </div>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div> -->
+
+            <!-- <div class="col-xxl-12 col-md-6 col-lg-4 order-lg-1 order-xxl-0">
+              <div class="container py-5">
+                <div class="chart-card">
+                  <div
+                    class="d-flex justify-content-between align-items-center mb-3"
+                  >
+                    <span class="chart-title">Issued Demand Notice</span>
+                    <select
+                      id="timeFilter"
+                      class="form-select form-select-sm"
+                      style="width: auto"
+                    >
+                      <option value="weekly" selected>Weekly</option>
+                      <option value="monthly">Monthly</option>
+                      <option value="yearly">Yearly</option>
+                    </select>
+                  </div>
+
+                  <div class="chart-container">
+                    <canvas id="demandChart"></canvas>
+                  </div>
+                </div>
+              </div>
+            </div> -->
+          </div>
+        </div>
+      </main>
+
+      <!-- begin::GXON Footer -->
+
+      <!-- end::GXON Footer -->
+    </div>
+    <script>
+      function drawChart() {
+        const svg = document.getElementById("chartSvg");
+        const rect = svg.getBoundingClientRect();
+        const width = rect.width;
+        const height = rect.height;
+
+        // Set SVG dimensions
+        svg.setAttribute("viewBox", `0 0 ${width} ${height}`);
+
+        // Chart margins
+        const margin = { top: 20, right: 20, bottom: 40, left: 50 };
+        const chartWidth = width - margin.left - margin.right;
+        const chartHeight = height - margin.top - margin.bottom;
+
+        // Data points (matching the pattern in your image)
+        const labels = [
+          "Sept 2",
+          "Sept 7",
+          "Sept 12",
+          "Sept 17",
+          "Sept 22",
+          "Sept 27",
+          "Oct 2",
+        ];
+        const ptspData = [200, 350, 500, 150, 100, 450, 400];
+        const psspData = [250, 300, 400, 200, 100, 350, 300];
+
+        const maxValue = 500;
+        const minValue = 0;
+
+        // Clear existing content
+        document.getElementById("gridLines").innerHTML = "";
+        document.getElementById("yAxisLabels").innerHTML = "";
+        document.getElementById("xAxisLabels").innerHTML = "";
+        document.getElementById("chartLines").innerHTML = "";
+
+        // Draw grid lines and Y-axis labels
+        for (let i = 0; i <= 5; i++) {
+          const y = margin.top + (i * chartHeight) / 5;
+          const value = maxValue - i * 100;
+
+          // Grid line
+          const gridLine = document.createElementNS(
+            "http://www.w3.org/2000/svg",
+            "line"
+          );
+          gridLine.setAttribute("x1", margin.left);
+          gridLine.setAttribute("y1", y);
+          gridLine.setAttribute("x2", margin.left + chartWidth);
+          gridLine.setAttribute("y2", y);
+          gridLine.setAttribute("class", "grid-line");
+          document.getElementById("gridLines").appendChild(gridLine);
+
+          // Y-axis label
+          const yLabel = document.createElementNS(
+            "http://www.w3.org/2000/svg",
+            "text"
+          );
+          yLabel.setAttribute("x", margin.left - 10);
+          yLabel.setAttribute("y", y + 4);
+          yLabel.setAttribute("text-anchor", "end");
+          yLabel.setAttribute("class", "axis-label");
+          yLabel.textContent = value;
+          document.getElementById("yAxisLabels").appendChild(yLabel);
+        }
+
+        // Draw X-axis labels
+        labels.forEach((label, i) => {
+          const x = margin.left + (i * chartWidth) / (labels.length - 1);
+          const xLabel = document.createElementNS(
+            "http://www.w3.org/2000/svg",
+            "text"
+          );
+          xLabel.setAttribute("x", x);
+          xLabel.setAttribute("y", height - 10);
+          xLabel.setAttribute("text-anchor", "middle");
+          xLabel.setAttribute("class", "axis-label");
+          xLabel.textContent = label;
+          document.getElementById("xAxisLabels").appendChild(xLabel);
+        });
+
+        // Function to create smooth curve
+        function createSmoothPath(data) {
+          let path = "";
+          for (let i = 0; i < data.length; i++) {
+            const x = margin.left + (i * chartWidth) / (data.length - 1);
+            const y =
+              margin.top + chartHeight - (data[i] / maxValue) * chartHeight;
+
+            if (i === 0) {
+              path += `M ${x} ${y}`;
+            } else {
+              // Create smooth curves using quadratic Bézier curves
+              const prevX =
+                margin.left + ((i - 1) * chartWidth) / (data.length - 1);
+              const prevY =
+                margin.top +
+                chartHeight -
+                (data[i - 1] / maxValue) * chartHeight;
+              const cpX = prevX + (x - prevX) / 2;
+              path += ` Q ${cpX} ${prevY} ${x} ${y}`;
+            }
+          }
+          return path;
+        }
+
+        // Draw PTSP line
+        const ptspPath = document.createElementNS(
+          "http://www.w3.org/2000/svg",
+          "path"
+        );
+        ptspPath.setAttribute("d", createSmoothPath(ptspData));
+        ptspPath.setAttribute("class", "chart-line ptsp-line");
+        document.getElementById("chartLines").appendChild(ptspPath);
+
+        // Draw PSSP line
+        const psspPath = document.createElementNS(
+          "http://www.w3.org/2000/svg",
+          "path"
+        );
+        psspPath.setAttribute("d", createSmoothPath(psspData));
+        psspPath.setAttribute("class", "chart-line pssp-line");
+        document.getElementById("chartLines").appendChild(psspPath);
+      }
+
+      // Draw chart when page loads
+      window.addEventListener("load", function () {
+        setTimeout(drawChart, 100); // Small delay to ensure dimensions are available
+      });
+
+      // Redraw on window resize
+      window.addEventListener("resize", function () {
+        setTimeout(drawChart, 100);
+      });
+    </script>
+
+    <script>
+      const ctx = document.getElementById("demandChart").getContext("2d");
+
+      // Define datasets
+      const datasets = {
+        weekly: {
+          labels: ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat"],
+          data: [30, 80, 150, 220, 180, 120],
+        },
+        monthly: {
+          labels: Array.from({ length: 30 }, (_, i) => `Day ${i + 1}`),
+          data: Array.from(
+            { length: 30 },
+            () => Math.floor(Math.random() * 250) + 20
+          ),
+        },
+        yearly: {
+          labels: [
+            "Jan",
+            "Feb",
+            "Mar",
+            "Apr",
+            "May",
+            "Jun",
+            "Jul",
+            "Aug",
+            "Sep",
+            "Oct",
+            "Nov",
+            "Dec",
+          ],
+          data: [500, 700, 450, 800, 650, 900, 1000, 750, 600, 850, 950, 1100],
+        },
+      };
+
+      // Create chart
+      let demandChart = new Chart(ctx, {
+        type: "bar",
+        data: {
+          labels: datasets.weekly.labels,
+          datasets: [
+            {
+              label: "Issued Demand Notice",
+              data: datasets.weekly.data,
+              backgroundColor: function (context) {
+                const maxIndex = context.dataset.data.indexOf(
+                  Math.max(...context.dataset.data)
+                );
+                return context.dataIndex === maxIndex
+                  ? "rgba(100, 149, 255, 0.7)"
+                  : "rgba(0,0,0,0.8)";
+              },
+              borderRadius: 5,
+            },
+          ],
+        },
+        options: {
+          responsive: true,
+          maintainAspectRatio: false,
+          plugins: {
+            legend: { display: false },
+            tooltip: {
+              backgroundColor: "#333",
+              padding: 8,
+              titleFont: { size: 12 },
+              bodyFont: { size: 14 },
+            },
+          },
+          scales: {
+            y: {
+              beginAtZero: true,
+              ticks: { stepSize: 100 },
+            },
+          },
+        },
+      });
+
+      // Update chart when select changes
+      document
+        .getElementById("timeFilter")
+        .addEventListener("change", function () {
+          const selected = this.value;
+          demandChart.data.labels = datasets[selected].labels;
+          demandChart.data.datasets[0].data = datasets[selected].data;
+          demandChart.update();
+        });
+    </script>
+    <!-- begin::GXON Page Scripts -->
+    <script src="assets/js/header.js"></script>
+    <script src="assets/libs/global/global.min.js"></script>
+    <script src="assets/libs/chartjs/chart.js"></script>
+    <script src="assets/libs/apexcharts/apexcharts.min.js"></script>
+    <script src="assets/libs/datatables/datatables.min.js"></script>
+    <script src="assets/libs/flatpickr/flatpickr.min.js"></script>
+    <!-- <script src="assets/js/dashboard.js"></script> -->
+    <script src="assets/js/appSettings.js"></script>
+    <!-- <script src="assets/js/main.js"></script> -->
+    <!-- <script src="assets/js/my-js/dashboard.js"></script> -->
+
+  <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+   <script>
+    const totalMarchantCountDOM = document.querySelector("#totalMarchantCount");
+    const activePSSPDOM = document.querySelector("#activePSSP");
+    const totalTransactionsDOM = document.querySelector("#totalTransactions");
+    const dailyTransactionsDOM = document.querySelector("#dailyTransactions");
+    const generatedTaxLiaDOM = document.querySelector("#generatedTaxLia");
+    const paymentComplianceDOM = document.querySelector("#paymentCompliance");
+     // const [ totalMarchantCount ] = Promise.all([
+      //   await axios.get(`${baseUrl}/onboarded-marchants/count`)
+      //   // await axios.get('/tax-libilities'),
+      //   // await axios.get('/pssp/count'),
+      //   // await axios.get('/transactions'),
+      //   // await axios.get('/ptsp'),
+      // ]);
+      
+      async function loadData(){
+        const baseUrl = "https://arafatfootballacademy.com/fusion/backend";
+      const totalMarchantCount = await axios.get(`${baseUrl}/onboarded-marchants/count`);
+      const activePSSP = await axios.get(`${baseUrl}/pssp/count`);
+      const totalTransactions = await axios.get(`${baseUrl}/transactions/total`);
+      const generatedTaxLia = await axios.get(`${baseUrl}/tax-liabilities?month=9`);
+      const compilanceRate = await axios.get(`${baseUrl}/compliance/overall-rate`)
+
+        totalMarchantCountDOM.textContent = totalMarchantCount.data.data.count;
+        activePSSPDOM.textContent = activePSSP.data.data.count;
+        paymentComplianceDOM.textContent = compilanceRate.data.data.compliance_rate + "%";
+        totalTransactionsDOM.textContent = totalTransactions.data.data.total_transactions;
+        dailyTransactionsDOM.textContent = formatToNaira(totalTransactions.data.data.total_amount);
+        generatedTaxLiaDOM.textContent = formatToNaira(generatedTaxLia.data.data.total_amount);
+      }
+      loadData()
+      function formatToNaira(amount) {
+  return new Intl.NumberFormat("en-NG", {
+    style: "currency",
+    currency: "NGN",
+    minimumFractionDigits: 2,
+  }).format(amount);
+}
+
+     </script>
+
+
+    <!-- end::GXON Page Scripts -->
+  </body>
+</html>

@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+ 
+    <title>Fussion</title>
+    <!-- end::GXON Website Page Title -->
+
+    <!-- begin::GXON Mobile Specific -->
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+   <link rel="icon" type="image/png" href="assets/images/logo.jpeg" />
+    <link
+      rel="apple-touch-icon"
+      sizes="180x180"
+      href="assets/images/logo.jpeg"
+    />
+    <!-- end::GXON Favicon Tags -->
+
+    <!-- begin::GXON Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css"
+      rel="stylesheet"
+    />
+    <!-- end::GXON Google Fonts -->
+
+    <!-- begin::GXON Required Stylesheet -->
+    <link rel="stylesheet" href="assets/libs/flaticon/css/all/all.css" />
+    <link rel="stylesheet" href="assets/libs/lucide/lucide.css" />
+    <link rel="stylesheet" href="assets/libs/fontawesome/css/all.min.css" />
+    <link rel="stylesheet" href="assets/libs/simplebar/simplebar.css" />
+    <link rel="stylesheet" href="assets/libs/node-waves/waves.css" />
+    <link
+      rel="stylesheet"
+      href="assets/libs/bootstrap-select/css/bootstrap-select.min.css"
+    />
+    <link rel="stylesheet" href="assets/css/my1.css" />
+    <!-- end::GXON Required Stylesheet -->
+
+    <!-- begin::GXON CSS Stylesheet -->
+    <link rel="stylesheet" href="assets/libs/tagify/tagify.css" />
+    <link rel="stylesheet" href="assets/css/styles.css" />
+    <!-- end::GXON CSS Stylesheet -->
+
+    <!-- begin::GXON Googletagmanager -->
+    <script
+      async
+      src="https://www.googletagmanager.com/gtag/js?id=G-XWVQM68HHQ"
+    ></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag("js", new Date());
+
+      gtag("config", "G-XWVQM68HHQ", {
+        cookie_flags: "SameSite=None;Secure",
+        send_page_view: true,
+      });
+    </script>
+    <!-- end::GXON Googletagmanager -->
+  </head>
+
+  <body>
+    <div class="page-layout">
+      <!-- begin::GXON Page Header -->
+      <header class="app-header">
+        <div class="app-header-inner" id="header"></div>
+      </header>
+      <!-- end::GXON Page Header -->
+
+      <!-- begin::GXON Sidebar Menu -->
+      <div class="app-menubar" id="sidebsr"></div>
+      <!-- end::GXON Sidebar Menu -->
+
+      <!-- begin::GXON Sidebar right -->
+      <!-- <div class="app-sidebar-end">
+        <ul class="sidebar-list">
+          <li>
+            <a href="javascript:void(0);">
+              <div
+                class="avatar avatar-sm bg-warning shadow-sharp-warning rounded-circle text-white mx-auto mb-2"
+              >
+                <i class="fi fi-rr-to-do"></i>
+              </div>
+              <span class="text-dark">Tax</span>
+            </a>
+          </li>
+          <li>
+            <a href="javascript:void(0);">
+              <div
+                class="avatar avatar-sm bg-secondary shadow-sharp-secondary rounded-circle text-white mx-auto mb-2"
+              >
+                <i class="fi fi-rr-interrogation"></i>
+              </div>
+              <span class="text-dark">Help</span>
+            </a>
+          </li>
+          <li>
+            <a href="javascript:void(0);">
+              <div
+                class="avatar avatar-sm bg-info shadow-sharp-info rounded-circle text-white mx-auto mb-2"
+              >
+                <i class="fi fi-rr-calendar"></i>
+              </div>
+              <span class="text-dark">date</span>
+            </a>
+          </li>
+          <li>
+            <a href="javascript:void(0);">
+              <div
+                class="avatar avatar-sm bg-gray shadow-sharp-gray rounded-circle text-white mx-auto mb-2"
+              >
+                <i class="fi fi-rr-settings"></i>
+              </div>
+              <span class="text-dark">Settings</span>
+            </a>
+          </li>
+        </ul>
+      </div> -->
+      <!-- end::GXON Sidebar right -->
+
+      <main class="app-wrapper">
+        <div class="col-xxl-12 col-lg-12 col-sm-6">
+          <div class="container-fluid py-5">
+            <div
+              class="app-page-head d-flex flex-wrap gap-3 align-items-center justify-content-between mt-0"
+            >
+              <div class="clearfix">
+                <h1 class="app-page-title">Business Profile</h1>
+                <nav aria-label="breadcrumb">
+                  <ol class="breadcrumb mb-0">
+                    <li class="breadcrumb-item">
+                      <a href="index.html">Dashboard</a>
+                    </li>
+                    <li class="breadcrumb-item active" aria-current="page">
+                      Business Profile
+                    </li>
+                  </ol>
+                </nav>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-12">
+                <div class="card csrd p-4">
+                  <!-- Header -->
+                  <h6>
+                    <i class="bi bi-building text-primary"></i> Business
+                    Information
+                  </h6>
+                  <p class="text-muted">Your registered business details</p>
+
+                <!-- Info Rows -->
+<div class="row mb-3">
+  <div class="col-md-6 col-12 mb-3">
+    <p class="info-label">Business Name</p>
+    <p id="businessName" class="info-value text-dark">---</p>
+  </div>
+  <div class="col-md-6 col-12 mb-3">
+    <p class="info-label">CAC Number</p>
+    <p id="cacNumber" class="info-value text-dark">---</p>
+  </div>
+  <div class="col-md-6 col-12 mb-3">
+    <p class="info-label">TIN Number</p>
+    <p id="tinNumber" class="info-value text-dark">---</p>
+  </div>
+  <div class="col-md-6 col-12 mb-3">
+    <p class="info-label">Business Email</p>
+    <p id="businessEmail" class="info-value text-dark">---</p>
+  </div>
+</div>
+
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    const storedData = localStorage.getItem("default_account"); 
+    if (storedData) {
+      const account = JSON.parse(storedData);
+
+      document.getElementById("businessName").textContent = account.name || "---";
+      document.getElementById("businessEmail").textContent = account.email || "---";
+
+      document.getElementById("cacNumber").textContent = account.cac_number || "Not Available";
+      document.getElementById("tinNumber").textContent = account.tin || "Not Available";
+    }
+  });
+</script>
+
+                  <!-- Chart -->
+                </div>
+              </div>
+            </div>
+            <div class="container-fluid py-5">
+              <div class="row">
+                <div class="col-12">
+                  <div class="card card44 p-4">
+                    <!-- Header -->
+                    <h6>Compliance Status</h6>
+                    <p class="text-muted">Your current compliance standing</p>
+
+                    <!-- Status -->
+                    <p class="good">
+                      <i class="bi bi-check-circle status-icon"></i>
+                      Good Standing
+                    </p>
+                    <p class="text-muted">
+                      All tax obligations are current. Your PTSP automatically
+                      handles your tax payments.
+                    </p>
+
+                    <!-- Chart -->
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </main>
+
+      <!-- begin::GXON Footer -->
+
+      <!-- end::GXON Footer -->
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+    <!-- begin::GXON Page Scripts -->
+    <script src="assets/js/header.js"></script>
+    <!-- <script src="assets/libs/global/global.min.js"></script> -->
+    <script src="assets/libs/tagify/tagify.js"></script>
+    <script src="assets/js/appSettings.js"></script>
+    <script src="assets/js/main.js"></script>
+    <script src="assets/js/loaderl.js"></script>
+    <!-- end::GXON Page Scripts -->
+  </body>
+</html>

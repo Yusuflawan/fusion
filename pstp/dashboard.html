@@ -1,0 +1,733 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- begin::GXON Meta Basic 245ms-->
+    <meta charset="utf-8" />
+ 
+    <link
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined"
+      rel="stylesheet"
+    />
+
+    <!-- Material Symbols Rounded (optional) -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded"
+      rel="stylesheet"
+    />
+
+    <!-- Material Symbols Sharp (optional) -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Sharp"
+      rel="stylesheet"
+    />
+
+    <title>Fusion</title>
+ <link rel="icon" type="image/png" href="assets/images/logo.jpeg" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&display=swap"
+      rel="stylesheet"
+    />
+    <!-- end::GXON Google Fonts -->
+
+    <!-- begin::GXON Required Stylesheet -->
+    <link rel="stylesheet" href="assets/libs/flaticon/css/all/all.css" />
+    <link rel="stylesheet" href="assets/libs/lucide/lucide.css" />
+    <link rel="stylesheet" href="assets/libs/fontawesome/css/all.min.css" />
+    <link rel="stylesheet" href="assets/libs/simplebar/simplebar.css" />
+    <link rel="stylesheet" href="assets/libs/node-waves/waves.css" />
+    <link
+      rel="stylesheet"
+      href="assets/libs/bootstrap-select/css/bootstrap-select.min.css"
+    />
+    <link rel="stylesheet" href="assets/css/chart.css" />
+    <!-- end::GXON Required Stylesheet -->
+
+    <!-- begin::GXON CSS Stylesheet -->
+    <link rel="stylesheet" href="assets/libs/datatables/datatables.min.css" />
+    <link rel="stylesheet" href="assets/libs/flatpickr/flatpickr.min.css" />
+    <link rel="stylesheet" href="assets/css/styles.css" />
+    <!-- end::GXON CSS Stylesheet -->
+
+    <!-- begin::GXON Googletagmanager -->
+    <script
+      async
+      src="https://www.googletagmanager.com/gtag/js?id=G-XWVQM68HHQ"
+    ></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag("js", new Date());
+
+      gtag("config", "G-XWVQM68HHQ", {
+        cookie_flags: "SameSite=None;Secure",
+        send_page_view: true,
+      });
+    </script>
+    <!-- end::GXON Googletagmanager -->
+  </head>
+
+  <body>
+    <div class="page-layout">
+      <!-- begin::GXON Page Header -->
+      <header class="app-header">
+        <div class="app-header-inner" id="header"></div>
+      </header>
+      <!-- end::GXON Page Header -->
+
+      <!-- begin::GXON Sidebar Menu -->
+      <div id="sidebsr" class="app-menubar"></div>
+      <!-- end::GXON Sidebar Menu -->
+
+      <!-- begin::GXON Sidebar right -->
+      <!-- <div class="app-sidebar-end">
+        <ul class="sidebar-list">
+          <li>
+            <a href="javascript:void(0);">
+              <div
+                class="avatar avatar-sm bg-warning shadow-sharp-warning rounded-circle text-white mx-auto mb-2"
+              >
+                <i class="fi fi-rr-to-do"></i>
+              </div>
+              <span class="text-dark">Tax</span>
+            </a>
+          </li>
+          <li>
+            <a href="javascript:void(0);">
+              <div
+                class="avatar avatar-sm bg-secondary shadow-sharp-secondary rounded-circle text-white mx-auto mb-2"
+              >
+                <i class="fi fi-rr-interrogation"></i>
+              </div>
+              <span class="text-dark">Help</span>
+            </a>
+          </li>
+          <li>
+            <a href="javascript:void(0);">
+              <div
+                class="avatar avatar-sm bg-info shadow-sharp-info rounded-circle text-white mx-auto mb-2"
+              >
+                <i class="fi fi-rr-calendar"></i>
+              </div>
+              <span class="text-dark">date</span>
+            </a>
+          </li>
+          <li>
+            <a href="javascript:void(0);">
+              <div
+                class="avatar avatar-sm bg-gray shadow-sharp-gray rounded-circle text-white mx-auto mb-2"
+              >
+                <i class="fi fi-rr-settings"></i>
+              </div>
+              <span class="text-dark">Settings</span>
+            </a>
+          </li>
+        </ul>
+      </div> -->
+      <!-- end::GXON Sidebar right -->
+
+      <main class="app-wrapper">
+        <div class="container-fluid mb-5">
+          <div class="row g-3 align-items-end">
+            <div class="clearfix">
+              <h1 class="app-page-title">Dashboard</h1>
+              <nav aria-label="breadcrumb"></nav>
+            </div>
+          </div>
+        </div>
+        <div class="container">
+          <div
+            class="app-page-head d-flex flex-wrap gap-3 align-items-center justify-content-between"
+          >
+            <div class="col-lg-12">
+              <div class="row">
+                <div class="col-xxl-2 col-lg-4 col-sm-6">
+                  <div
+                    class="card card-action action-border-secondary p-1 position-relative"
+                  >
+                    <div
+                      class="card-body d-flex gap-3 align-items-center p-4"
+                      style="position: relative"
+                    >
+                      <div class="clearfix">
+                        <div class="mb-1 text-dark fw-bold">
+                          Daily <br />Submissions
+                        </div>
+                        <h3 class="mb-0 fw-bold mt-3" id="totalSubmissions"></h3>
+                        <small>Transactions submitted</small>
+                      </div>
+                      <div
+                        class="clearfix pe-2 text-secondary"
+                        style="position: absolute; top: 10%; right: 0%"
+                      >
+                        <i class="fi fi-rr-document"></i>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-xxl-2 col-lg-4 col-sm-6">
+                  <div
+                    class="card card-action action-border-secondary p-1 position-relative"
+                  >
+                    <div
+                      class="card-body d-flex gap-3 align-items-center p-4"
+                      style="position: relative"
+                    >
+                      <div class="clearfix">
+                        <div class="mb-1 text-dark fw-bold">
+                          Success<br />
+                          Rate
+                        </div>
+                        <h3 class="mb-0 fw-bold mt-3 text-success" id="successRate"></h3>
+                        <small>Successful submissions</small>
+                      </div>
+                      <div
+                        class="clearfix pe-2 text-secondary"
+                        style="position: absolute; top: 10%; right: 0%"
+                      >
+                        <i class="fi fi-rr-stats"></i>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-xxl-2 col-lg-4 col-sm-6">
+                  <div
+                    class="card card-action action-border-secondary p-1 position-relative"
+                  >
+                    <div
+                      class="card-body d-flex gap-3 align-items-center p-4"
+                      style="position: relative"
+                    >
+                      <div class="clearfix">
+                        <div class="mb-1 text-dark fw-bold">
+                          Error <br />Count
+                        </div>
+                        <h3 class="mb-0 fw-bold text-danger mt-3" id="errorCount"></h3>
+                        <small>Failed submissions</small>
+                      </div>
+                      <div
+                        class="clearfix pe-2 text-danger"
+                        style="position: absolute; top: 10%; right: 0%"
+                      >
+                        <i class="fi fi-rr-cross-circle"></i>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-xxl-2 col-lg-4 col-sm-6">
+                  <div
+                    class="card card-action action-border-secondary p-1 position-relative"
+                  >
+                    <div
+                      class="card-body d-flex gap-3 align-items-center p-4"
+                      style="position: relative"
+                    >
+                      <div class="clearfix">
+                        <div class="mb-1 text-dark fw-bold">
+                          Compliance <br />Score
+                        </div>
+                        <h3 class="mb-0 fw-bold text-success mt-3" id="compliceScore"></h3>
+                        <small>Overall compliance</small>
+                      </div>
+                      <div
+                        class="clearfix pe-2 text-secondary"
+                        style="position: absolute; top: 10%; right: 0%"
+                      >
+                        <i class="fi fi-rr-stats"></i>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-xxl-2 col-lg-4 col-sm-6">
+                  <div
+                    class="card card-action action-border-secondary p-1 position-relative"
+                  >
+                    <div
+                      class="card-body d-flex gap-3 align-items-center p-4"
+                      style="position: relative"
+                    >
+                      <div class="clearfix">
+                        <div class="mb-1 text-dark fw-bold">API Status</div>
+                        <h3 class="mb-0 fw-bold text-success mt-3">Online</h3>
+                        <small>Connection healthy</small>
+                      </div>
+                      <div
+                        class="clearfix pe-2 text-success"
+                        style="position: absolute; top: 10%; right: 0%"
+                      >
+                        <i class="fi fi-rr-wifi"></i>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!--
+            <button
+              type="button"
+              class="btn btn-primary waves-effect waves-light"
+              data-bs-toggle="modal"
+              data-bs-target="#addPayrollModal"
+            >
+              <i class="fi fi-rr-plus me-1"></i> Add Payroll
+            </button>
+            -->
+          </div>
+
+          <div class="row">
+            <div class="col-xl-12">
+              <div class="my-4">
+                <div class="card card212 p-3">
+                  <h6 class="fw-bold">Today's Submission Activity</h6>
+                  <p class="text-muted mb-3">
+                    Hourly transaction submissions and error rates
+                  </p>
+                  <div class="chart-container">
+                    <canvas id="submissionChart"></canvas>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- <div class="col-md-6 col-lg-12 order-lg-1 order-xxl-0 pb-0"> -->
+              <!-- <div class="my-4">
+                <div class="card card312 p-3">
+                  <h6 class="fw-bold">Compliance Performance</h6>
+                  <p class="text-muted">Data quality and compliance metrics</p> -->
+
+                  <!-- Data Completeness -->
+                  <!-- <div class="metric-box">
+                    <div
+                      class="d-flex justify-content-between align-items-center"
+                    >
+                      <span class="metric-label">Data Completeness</span>
+                      <div class="d-flex align-items-center">
+                        <span class="me-3 metric-value">99.8%</span>
+                        <span class="badge badge-status badge-excellent"
+                          >excellent</span
+                        >
+                      </div>
+                    </div>
+                    <div class="progress mt-2">
+                      <div
+                        class="progress-bar bg-success"
+                        role="progressbar"
+                        data-value="99.8"
+                      ></div>
+                    </div>
+                  </div> -->
+
+                  <!-- Timeliness -->
+                  <!-- <div class="metric-box">
+                    <div
+                      class="d-flex justify-content-between align-items-center"
+                    >
+                      <span class="metric-label">Timeliness</span>
+                      <div class="d-flex align-items-center">
+                        <span class="me-3 metric-value">98.9%</span>
+                        <span class="badge badge-status badge-excellent"
+                          >excellent</span
+                        >
+                      </div>
+                    </div>
+                    <div class="progress mt-2">
+                      <div
+                        class="progress-bar bg-primary"
+                        role="progressbar"
+                        data-value="98.9"
+                      ></div>
+                    </div>
+                  </div> -->
+
+                  <!-- Format Compliance -->
+                  <!-- <div class="metric-box">
+                    <div
+                      class="d-flex justify-content-between align-items-center"
+                    >
+                      <span class="metric-label">Format Compliance</span>
+                      <div class="d-flex align-items-center">
+                        <span class="me-3 metric-value">100%</span>
+                        <span class="badge badge-status badge-excellent"
+                          >excellent</span
+                        >
+                      </div>
+                    </div>
+                    <div class="progress mt-2">
+                      <div
+                        class="progress-bar bg-success"
+                        role="progressbar"
+                        data-value="100"
+                      ></div>
+                    </div>
+                  </div> -->
+
+                  <!-- Data Quality -->
+                  <!-- <div class="metric-box">
+                    <div
+                      class="d-flex justify-content-between align-items-center"
+                    >
+                      <span class="metric-label">Data Quality</span>
+                      <div class="d-flex align-items-center">
+                        <span class="me-3 metric-value">97.2%</span>
+                        <span class="badge badge-status badge-good bg-dark"
+                          >good</span
+                        >
+                      </div>
+                    </div>
+                    <div class="progress mt-2">
+                      <div
+                        class="progress-bar bg-primary"
+                        role="progressbar"
+                        data-value="97.2"
+                      ></div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div> -->
+
+            <div class="col-lg-12">
+              <div class="my-4">
+                <div class="row g-3">
+                  <!-- Recent Submissions -->
+                  <div class="col-lg-6 col-md-12 d-flex">
+                    <div class="card card412 p-3 w-100 h-100">
+                      <h6 class="fw-bold">Recent Submissions</h6>
+                      <p class="text-muted">
+                        Latest transaction batch submissions
+                      </p>
+                      <div
+                        class="d-flex justify-content-between align-items-center mb-2"
+                      >
+                        <span>Batch #45123</span>
+                        <div class="d-flex align-items-center gap-2">
+                          <span class="submission-status status-success"
+                            >Success</span
+                          >
+                          <small class="text-muted">15:45</small>
+                        </div>
+                      </div>
+                      <div
+                        class="d-flex justify-content-between align-items-center mb-2"
+                      >
+                        <span>Batch #45122</span>
+                        <div class="d-flex align-items-center gap-2">
+                          <span class="submission-status status-success"
+                            >Success</span
+                          >
+                          <small class="text-muted">15:30</small>
+                        </div>
+                      </div>
+                      <div
+                        class="d-flex justify-content-between align-items-center mb-2"
+                      >
+                        <span>Batch #45121</span>
+                        <div class="d-flex align-items-center gap-2">
+                          <span class="submission-status status-success"
+                            >Success</span
+                          >
+                          <small class="text-muted">15:15</small>
+                        </div>
+                      </div>
+                      <div
+                        class="d-flex justify-content-between align-items-center mt-auto"
+                      >
+                        <span>Batch #45120</span>
+                        <div class="d-flex align-items-center gap-2">
+                          <span class="submission-status status-failed"
+                            >Failed</span
+                          >
+                          <small class="text-muted">15:00</small>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <!-- System Notifications -->
+                  <div class="col-lg-6 col-md-12 d-flex">
+                    <div class="card card412 p-3 w-100 h-100">
+                      <h6 class="fw-bold">System Notifications</h6>
+                      <p class="text-muted">Important updates and alerts</p>
+
+                      <div class="notification notif-success">
+                        <i class="bi bi-check-circle notif-icon"></i>
+                        <div class="notif-body">
+                          <div class="fw-bold">
+                            Compliance certificate renewed
+                          </div>
+                          <small>Valid until: Dec 31, 2024</small>
+                        </div>
+                      </div>
+
+                      <div class="notification notif-info">
+                        <i class="bi bi-activity notif-icon"></i>
+                        <div class="notif-body">
+                          <div class="fw-bold">API rate limit increased</div>
+                          <small>New limit: 10,000 requests/hour</small>
+                        </div>
+                      </div>
+
+                      <div class="notification notif-warning mb-0">
+                        <i class="bi bi-exclamation-triangle notif-icon"></i>
+                        <div class="notif-body">
+                          <div class="fw-bold">Scheduled maintenance</div>
+                          <small>Jan 25, 2024 – 2:00 AM to 4:00 AM</small>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </main>
+
+      <!-- begin::GXON Footer -->
+
+      <!-- end::GXON Footer -->
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+      // Data that matches the original image
+      const months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul"];
+
+      // Submitted data (blue line) - lower values matching the image
+      const submittedData = [
+        5, 10, 12, 8, 15, 18, 20, 18, 25, 32, 40, 35, 30, 25, 28, 22, 25, 30,
+        22, 25, 28, 30, 25, 45,
+      ];
+
+      // Expected data (orange line) - higher values matching the image
+      const expectedData = [
+        45, 40, 48, 52, 60, 65, 58, 52, 70, 78, 82, 78, 75, 72, 78, 75, 68, 75,
+        78, 75, 68, 62, 65, 62,
+      ];
+
+      function initChart() {
+        const ctx = document.getElementById("chartCanvas").getContext("2d");
+
+        new Chart(ctx, {
+          type: "line",
+          data: {
+            labels: Array.from({ length: 24 }, (_, i) => {
+              const monthIndex = Math.floor(i / 4) % 7;
+              return months[monthIndex];
+            }),
+            datasets: [
+              {
+                label: "Submitted Transaction Volume",
+                data: submittedData,
+                borderColor: "#4A90E2",
+                backgroundColor: "transparent",
+                borderWidth: 2,
+                fill: false,
+                tension: 0.4,
+                pointRadius: 0,
+                pointHoverRadius: 4,
+                pointBackgroundColor: "#4A90E2",
+                pointHoverBackgroundColor: "#4A90E2",
+              },
+              {
+                label: "Expected Transaction Volume",
+                data: expectedData,
+                borderColor: "#F5A623",
+                backgroundColor: "transparent",
+                borderWidth: 2,
+                fill: false,
+                tension: 0.4,
+                pointRadius: 0,
+                pointHoverRadius: 4,
+                pointBackgroundColor: "#F5A623",
+                pointHoverBackgroundColor: "#F5A623",
+              },
+            ],
+          },
+          options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            plugins: {
+              legend: {
+                display: false,
+              },
+              tooltip: {
+                mode: "index",
+                intersect: false,
+                backgroundColor: "rgba(0, 0, 0, 0.8)",
+                titleColor: "white",
+                bodyColor: "white",
+                borderWidth: 0,
+                cornerRadius: 6,
+                displayColors: false,
+                callbacks: {
+                  label: function (context) {
+                    return context.dataset.label + ": " + context.parsed.y;
+                  },
+                },
+              },
+            },
+            scales: {
+              x: {
+                grid: {
+                  display: false,
+                },
+                border: {
+                  display: false,
+                },
+                ticks: {
+                  color: "#999",
+                  font: {
+                    size: 12,
+                  },
+                },
+              },
+              y: {
+                beginAtZero: true,
+                max: 100,
+                grid: {
+                  color: "rgba(0, 0, 0, 0.1)",
+                  drawBorder: false,
+                },
+                border: {
+                  display: false,
+                },
+                ticks: {
+                  color: "#999",
+                  font: {
+                    size: 12,
+                  },
+                  stepSize: 20,
+                },
+              },
+            },
+            interaction: {
+              mode: "nearest",
+              axis: "x",
+              intersect: false,
+            },
+          },
+        });
+      }
+
+      // Time period buttons
+      document.querySelectorAll(".time-btn").forEach((btn) => {
+        btn.addEventListener("click", function () {
+          document
+            .querySelectorAll(".time-btn")
+            .forEach((b) => b.classList.remove("active"));
+          this.classList.add("active");
+        });
+      });
+
+      // Initialize chart when page loads
+      document.addEventListener("DOMContentLoaded", initChart);
+      // search
+
+      // Initialize functionality
+      document.addEventListener("DOMContentLoaded", function () {
+        // Search functionality
+        const searchInput = document.getElementById("searchInput");
+
+        // Dropdown item selection
+        document.querySelectorAll(".dropdown-item").forEach((item) => {
+          item.addEventListener("click", function (e) {
+            e.preventDefault();
+
+            const dropdown = this.closest(".dropdown");
+            const button = dropdown.querySelector(".dropdown-toggle");
+            const value = this.getAttribute("data-value");
+            const text = this.textContent.trim();
+
+            // Update button text (preserve badge if exists)
+            const badge = button.querySelector(".badge-count");
+            const badgeHTML = badge ? badge.outerHTML : "";
+            button.innerHTML =
+              text + badgeHTML + ' <span class="dropdown-toggle-split"></span>';
+
+            // Update active state
+            dropdown
+              .querySelectorAll(".dropdown-item")
+              .forEach((i) => i.classList.remove("active"));
+            this.classList.add("active");
+          });
+        });
+
+        // Export functionality
+        document
+          .getElementById("exportBtn")
+          .addEventListener("click", function () {
+            // Add loading state
+            this.innerHTML =
+              '<i class="fas fa-spinner fa-spin"></i> Exporting...';
+            this.disabled = true;
+
+            // Simulate export process
+            setTimeout(() => {
+              this.innerHTML = '<i class="fas fa-check"></i> Exported!';
+              setTimeout(() => {
+                this.innerHTML = '<i class="fas fa-download"></i> Export';
+                this.disabled = false;
+              }, 1500);
+            }, 2000);
+          });
+
+        // Date change handler
+        document
+          .getElementById("dateInput")
+          .addEventListener("change", function () {
+            const selectedDate = new Date(this.value).toLocaleDateString();
+          });
+      });
+    </script>
+
+    <!-- begin::GXON Page Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="assets/js/header.js"></script>
+    <script src="assets/js/chartrtt.js"></script>
+    <script src="assets/js/chart.js"></script>
+    <script src="assets/libs/chartjs/chart.js"></script>
+    <script src="assets/libs/apexcharts/apexcharts.min.js"></script>
+    <script src="assets/libs/datatables/datatables.min.js"></script>
+    <!-- <script src="assets/libs/global/global.min.js"></script> -->
+    <script src="assets/libs/flatpickr/flatpickr.min.js"></script>
+    <script src="assets/js/flatpickr.js"></script>
+    <script src="assets/js/dashboard.js"></script>
+    <script src="assets/js/appSettings.js"></script>
+    <!-- <script src="assets/js/main.js"></script> -->
+    <!-- end::GXON Page Scripts -->
+<script>
+// const baseUrl = "https://arafatfootballacademy.com/fusion/backend";
+
+
+const totalSubmissions = document.getElementById("totalSubmissions");
+const successRate = document.getElementById("successRate");
+const errorCount = document.getElementById("errorCount");
+const compliceScore = document.getElementById("compliceScore");
+
+async function loadDashboard() {
+    const token = localStorage.getItem("token");
+    const user = JSON.parse(localStorage.getItem("user"));
+    const baseUrl = "https://arafatfootballacademy.com/fusion/backend";
+    const id = user.user_id;
+
+    try {
+        const dashboardRes = await axios.get(`${baseUrl}/provider/${id}/dashboard-cards`);
+
+        const dashboard = dashboardRes.data.data;
+
+        totalSubmissions.textContent = dashboard.totalSubmissions || '0';
+        successRate.textContent = dashboard.successRate ? `${dashboard.successRate}%` : '0%';
+        errorCount.textContent = dashboard.errorCount || '0';
+        compliceScore.textContent = dashboard.complianceScore ? `${dashboard.complianceScore}%` : '0%';
+
+    } catch (err) {
+        console.error("Error loading dashboard", err);
+    }
+}
+document.addEventListener("DOMContentLoaded", loadDashboard);
+</script>
+  </body>
+</html>

@@ -1,0 +1,229 @@
+.card-custom {
+  border-radius: 12px;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.05);
+}
+.chart-container {
+  position: relative;
+  width: 100%;
+  height: 350px;
+}
+@media (max-width: 768px) {
+  .chart-container {
+    height: 250px;
+  }
+}
+/* chart-2 */
+
+.cardd-custom {
+  border-radius: 12px;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.05);
+}
+.chartt-container {
+  position: relative;
+  width: 100%;
+  height: 350px;
+}
+@media (max-width: 768px) {
+  .chartt-container {
+    height: 250px;
+  }
+}
+
+/* resent activity */
+
+.carder-custom {
+  border-radius: 12px;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.05);
+}
+.statuse-badge {
+  background-color: #0f172a; /* dark navy */
+  color: white;
+  font-size: 0.8rem;
+  padding: 4px 12px;
+  border-radius: 20px;
+  text-transform: lowercase;
+}
+.table thead th {
+  font-weight: 600;
+  color: #111827;
+}
+.table td {
+  vertical-align: middle;
+}
+@media (max-width: 768px) {
+  .table-responsive {
+    font-size: 0.85rem;
+  }
+}
+
+/* Tax Assessment Summary */
+
+.card {
+  border-radius: 15px;
+  box-shadow: 0px 3px 8px rgba(0, 0, 0, 0.1);
+}
+.status-paid {
+  background-color: #000;
+  color: #fff;
+  font-size: 0.75rem;
+  padding: 5px 10px;
+  border-radius: 10px;
+}
+.status-pending {
+  background-color: #e9ecef;
+  color: #333;
+  font-size: 0.75rem;
+  padding: 5px 10px;
+  border-radius: 10px;
+}
+
+/* mytaxhtml */
+
+.card22 {
+  border-radius: 15px;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.08);
+}
+.status2-badge {
+  background-color: #e9ecef;
+  color: #333;
+  font-size: 0.75rem;
+  padding: 5px 10px;
+  border-radius: 10px;
+}
+.action-link {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: 500;
+}
+.action-link i {
+  margin-right: 5px;
+}
+.tax-box {
+  background: #f8f9fa;
+  border-radius: 10px;
+  padding: 15px;
+}
+
+/* faq process */
+.cards {
+  border-radius: 15px;
+  box-shadow: 0px 3px 8px rgba(0, 0, 0, 0.08);
+}
+h6 {
+  font-weight: bold;
+}
+ul {
+  padding-left: 1.2rem;
+}
+/* tax.html */
+.card33 {
+  border-radius: 15px;
+  box-shadow: 0px 3px 8px rgba(0, 0, 0, 0);
+}
+.status-badge {
+  font-size: 0.75rem;
+  padding: 4px 10px;
+  border-radius: 10px;
+}
+.status-completed {
+  background-color: #000;
+  color: #fff;
+}
+.status-failed {
+  background-color: #dc3545;
+  color: #fff;
+}
+table th {
+  white-space: nowrap;
+}
+/* input */
+
+.card {
+  border-radius: 15px;
+  box-shadow: 0px 3px 8px rgba(0, 0, 0, 0);
+}
+label {
+  font-weight: 600;
+  font-size: 0.9rem;
+}
+.form-control,
+.form-select {
+  border-radius: 10px;
+}
+/* bussines profile */
+.csrd {
+  border-radius: 15px;
+  box-shadow: 0px 3px 8px rgba(0, 0, 0, 0.08);
+}
+h6 {
+  font-weight: bold;
+}
+.info-label {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: #6c757d;
+}
+.info-value {
+  font-size: 1rem;
+  font-weight: 500;
+  color: #212529;
+}
+/* last card */
+.card44 {
+  border-radius: 15px;
+  box-shadow: 0px 3px 8px rgba(0, 0, 0, 0.08);
+}
+h6 {
+  font-weight: bold;
+}
+.status-icon {
+  font-size: 1.2rem;
+  margin-right: 6px;
+}
+.good {
+  color: green;
+  font-weight: 600;
+}
+/* modal */
+
+.card444 {
+  border-radius: 10px;
+  margin-bottom: 1rem;
+}
+.tax-liability {
+  color: red;
+  font-weight: bold;
+}
+.btn-download {
+  background-color: #0a0a23;
+  color: #fff;
+  border-radius: 8px;
+}
+.btn-download:hover {
+  background-color: #1a1a3c;
+}
+.modal-lg {
+  max-width: 900px;
+}
+/* payment modal */
+
+.card55 {
+  border-radius: 12px;
+  margin-bottom: 1rem;
+}
+.info-box {
+  background-color: #f1f6ff;
+  padding: 12px;
+  border-radius: 8px;
+  font-size: 0.9rem;
+}
+.info-box strong {
+  color: #004085;
+}
+.list-info li {
+  margin-bottom: 8px;
+  font-size: 0.95rem;
+}
+.modal-lg {
+  max-width: 850px;
+}

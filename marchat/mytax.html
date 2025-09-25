@@ -1,0 +1,881 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- begin::GXON Meta Basic -->
+    <meta charset="utf-8" />
+
+    <title>Fussion</title>
+    <!-- end::GXON Website Page Title -->
+
+    <!-- begin::GXON Mobile Specific -->
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <link rel="icon" type="image/png" href="assets/images/logo.jpeg" />
+    <link
+      rel="apple-touch-icon"
+      sizes="180x180"
+      href="assets/images/logo.jpeg"
+    />
+    <!-- end::GXON Favicon Tags -->
+
+    <!-- begin::GXON Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&display=swap"
+      rel="stylesheet"
+    />
+    <!-- end::GXON Google Fonts -->
+
+    <!-- begin::GXON Required Stylesheet -->
+    <link rel="stylesheet" href="assets/libs/flaticon/css/all/all.css" />
+    <link rel="stylesheet" href="assets/libs/lucide/lucide.css" />
+    <link rel="stylesheet" href="assets/libs/fontawesome/css/all.min.css" />
+    <link rel="stylesheet" href="assets/libs/simplebar/simplebar.css" />
+    <link rel="stylesheet" href="assets/libs/node-waves/waves.css" />
+    <link
+      rel="stylesheet"
+      href="assets/libs/bootstrap-select/css/bootstrap-select.min.css"
+    />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <!-- end::GXON Required Stylesheet -->
+
+    <!-- begin::GXON CSS Stylesheet -->
+    <link rel="stylesheet" href="assets/libs/datatables/datatables.min.css" />
+    <link rel="stylesheet" href="assets/libs/flatpickr/flatpickr.min.css" />
+    <link rel="stylesheet" href="assets/css/styles.css" />
+    <link rel="stylesheet" href="assets/css/my1.css" />
+    <!-- end::GXON CSS Stylesheet -->
+
+    <!-- begin::GXON Googletagmanager -->
+    <script
+      async
+      src="https://www.googletagmanager.com/gtag/js?id=G-XWVQM68HHQ"
+    ></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag("js", new Date());
+
+      gtag("config", "G-XWVQM68HHQ", {
+        cookie_flags: "SameSite=None;Secure",
+        send_page_view: true,
+      });
+    </script>
+
+    <style>
+      .filter-container {
+        padding: 1rem;
+        border-radius: 8px;
+
+        display: inline-flex;
+        gap: 1rem;
+        align-items: center;
+      }
+
+      .filter-btn {
+        border: 1px solid #d1d5db;
+        background: white;
+        color: #374151;
+        border-radius: 6px;
+        padding: 0.5rem 0.75rem;
+        font-size: 0.875rem;
+        font-weight: 500;
+        transition: all 0.2s ease;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        white-space: nowrap;
+      }
+
+      .filter-btn:hover {
+        background: #f9fafb;
+        border-color: #9ca3af;
+      }
+
+      .filter-btn:focus {
+        outline: none;
+        box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+        border-color: #3b82f6;
+      }
+
+      .filter-btn.active {
+        background: #1e40af;
+        color: white;
+        border-color: #1e40af;
+      }
+
+      .filter-btn.active:hover {
+        background: #1d4ed8;
+        border-color: #1d4ed8;
+      }
+
+      .dropdown-arrow {
+        font-size: 0.75rem;
+        color: #9ca3af;
+        transition: transform 0.2s ease;
+      }
+
+      .filter-btn.active .dropdown-arrow {
+        color: white;
+      }
+
+      .date-picker-container {
+        position: relative;
+      }
+
+      .date-picker-btn {
+        cursor: pointer;
+      }
+
+      .date-picker-btn:hover {
+        background: #f9fafb !important;
+        border-color: #9ca3af !important;
+      }
+
+      #hiddenDateInput {
+        position: absolute;
+        opacity: 0;
+        pointer-events: none;
+      }
+
+      .calendar-icon {
+        color: #6b7280;
+      }
+
+      .export-icon {
+        color: white;
+      }
+
+      .dropdown-menu {
+        border: 1px solid #e5e7eb;
+        border-radius: 6px;
+        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+        padding: 0.5rem;
+        margin-top: 0.25rem;
+      }
+
+      .dropdown-item {
+        padding: 0.5rem 0.75rem;
+        border-radius: 4px;
+        font-size: 0.875rem;
+        color: #374151;
+        transition: all 0.15s ease;
+      }
+
+      .dropdown-item:hover {
+        background: #f3f4f6;
+        color: #1f2937;
+      }
+
+      @media (max-width: 768px) {
+        .filter-container {
+          flex-wrap: wrap;
+          justify-content: center;
+        }
+
+        .filter-btn {
+          font-size: 0.8rem;
+          padding: 0.4rem 0.6rem;
+        }
+      }
+    </style>
+    <!-- end::GXON Googletagmanager -->
+  </head>
+
+  <body>
+    <div class="page-layout">
+      <!-- begin::GXON Page Header -->
+      <header class="app-header">
+        <div class="app-header-inner" id="header"></div>
+      </header>
+      <!-- end::GXON Page Header -->
+
+      <!-- begin::GXON Sidebar Menu -->
+      <div class="app-menubar" id="sidebsr"></div>
+      <!-- end::GXON Sidebar Menu -->
+
+      <!-- begin::GXON Sidebar right -->
+      <!-- <div class="app-sidebar-end">
+        <ul class="sidebar-list">
+          <li>
+            <a href="javascript:void(0);">
+              <div
+                class="avatar avatar-sm bg-warning shadow-sharp-warning rounded-circle text-white mx-auto mb-2"
+              >
+                <i class="fi fi-rr-to-do"></i>
+              </div>
+              <span class="text-dark">Tax</span>
+            </a>
+          </li>
+          <li>
+            <a href="javascript:void(0);">
+              <div
+                class="avatar avatar-sm bg-secondary shadow-sharp-secondary rounded-circle text-white mx-auto mb-2"
+              >
+                <i class="fi fi-rr-interrogation"></i>
+              </div>
+              <span class="text-dark">Help</span>
+            </a>
+          </li>
+          <li>
+            <a href="javascript:void(0);">
+              <div
+                class="avatar avatar-sm bg-info shadow-sharp-info rounded-circle text-white mx-auto mb-2"
+              >
+                <i class="fi fi-rr-calendar"></i>
+              </div>
+              <span class="text-dark">date</span>
+            </a>
+          </li>
+          <li>
+            <a href="javascript:void(0);">
+              <div
+                class="avatar avatar-sm bg-gray shadow-sharp-gray rounded-circle text-white mx-auto mb-2"
+              >
+                <i class="fi fi-rr-settings"></i>
+              </div>
+              <span class="text-dark">Settings</span>
+            </a>
+          </li>
+        </ul>
+      </div> -->
+      <!-- end::GXON Sidebar right -->
+
+      <main class="app-wrapper">
+        <div class="container">
+          <div
+            class="app-page-head d-flex flex-wrap gap-3 align-items-center justify-content-between"
+          >
+            <div class="clearfix">
+              <h1 class="app-page-title">My Assessments</h1>
+              <nav aria-label="breadcrumb">
+                <ol class="breadcrumb mb-0">
+                  <li class="breadcrumb-item">
+                    <a href="index.html">Dashboard</a>
+                  </li>
+                  <li class="breadcrumb-item active" aria-current="page">
+                    My Assessments
+                  </li>
+                </ol>
+              </nav>
+            </div>
+          </div>
+
+          <!-- Your Template -->
+          <div class="row">
+            <div class="container-fluid">
+              <div class="row">
+                <div class="col-lg-12">
+                  <div class="row">
+                    <!-- Total Assessments -->
+                    <div class="col-xxl-3 col-lg-4 col-sm-6">
+                      <div
+                        class="card card-action action-border-secondary p-1 position-relative"
+                      >
+                        <div
+                          class="card-body d-flex gap-3 align-items-center p-4"
+                        >
+                          <div class="clearfix pe-2 text-secondary">
+                            <i class="fi fi-sr-wallet fs-1"></i>
+                          </div>
+                          <div class="clearfix">
+                            <div class="mb-1 text-dark fw-bold">
+                              Total Assessments
+                            </div>
+                            <h3
+                              id="total-assessments"
+                              class="mb-0 fw-bold text-success mt-3"
+                            >
+                              0
+                            </h3>
+                            <small>Assessment periods</small>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+
+                    <!-- Total Revenue -->
+                    <div class="col-xxl-3 col-lg-4 col-sm-6">
+                      <div
+                        class="card card-action action-border-secondary p-1 position-relative"
+                      >
+                        <div
+                          class="card-body d-flex gap-3 align-items-center p-4"
+                        >
+                          <div class="clearfix pe-2 text-secondary">
+                            <i class="fi fi-sr-exchange fs-1"></i>
+                          </div>
+                          <div class="clearfix">
+                            <div class="mb-1 text-dark fw-bold">
+                              Total Revenue
+                            </div>
+                            <h3 id="total-revenue" class="mb-0 fw-bold mt-3">
+                              ₦0
+                            </h3>
+                            <small>Assessed revenue</small>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+
+                    <!-- Total Tax -->
+                    <div class="col-xxl-3 col-lg-4 col-sm-6">
+                      <div
+                        class="card card-action action-border-warning p-1 position-relative"
+                      >
+                        <div
+                          class="card-body d-flex gap-3 align-items-center p-4"
+                        >
+                          <div class="clearfix pe-2 text-warning">
+                            <i class="fi fi-sr-receipt fs-1"></i>
+                          </div>
+                          <div class="clearfix">
+                            <div class="mb-1 text-dark fw-bold">Total Tax</div>
+                            <h3 id="total-tax" class="mb-0 fw-bold mt-3">₦0</h3>
+                            <small>Tax Liability</small>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+
+                    <!-- Payment Compliance -->
+                    <div class="col-xxl-3 col-lg-4 col-sm-6">
+                      <div
+                        class="card card-action action-border-info p-1 position-relative"
+                      >
+                        <div
+                          class="card-body d-flex gap-3 align-items-center p-4"
+                        >
+                          <div class="clearfix pe-2 text-info">
+                            <i class="bi bi-calculator text-success fs-1"></i>
+                          </div>
+                          <div class="clearfix">
+                            <div class="mb-1 text-dark fw-bold">
+                              Compliance
+                            </div>
+                            <h3 id="payment-rate" class="mb-0 fw-bold mt-3">
+                              0%
+                            </h3>
+                            <small>Compliance rate</small>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <script>
+            function formatCurrency(num) {
+              return (
+                "₦" +
+                Number(num).toLocaleString("en-NG", {
+                  maximumFractionDigits: 2,
+                })
+              );
+            }
+
+            async function loadDashboard() {
+              try {
+                const token = localStorage.getItem("token");
+                if (!token) {
+                  console.error("Token not found in localStorage");
+                  return;
+                }
+
+                const profileRes = await fetch(
+                  "https://arafatfootballacademy.com/fusion/backend/profile",
+                  {
+                    headers: {
+                      Authorization: `Bearer ${token}`,
+                    },
+                  }
+                );
+
+                const profileData = await profileRes.json();
+
+                if (profileData.status !== "success") {
+                  console.error("Failed to load profile:", profileData.message);
+                  return;
+                }
+
+                const merchant_number = profileData.data?.marchant_number;
+                if (!merchant_number) {
+                  console.error(
+                    "merchant_number not found in profile response"
+                  );
+                  return;
+                }
+
+                const aggRes = await fetch(
+                  `https://arafatfootballacademy.com/fusion/backend/marchant/${merchant_number}/tax-assessments/aggregate`
+                );
+
+                const aggData = await aggRes.json();
+
+                if (aggData.status === "success") {
+                  const stats = aggData.data;
+
+                  document.getElementById("total-assessments").textContent =
+                    stats.total_assessments;
+                  document.getElementById("total-revenue").textContent =
+                    formatCurrency(stats.total_revenue);
+                  document.getElementById("total-tax").textContent =
+                    formatCurrency(stats.total_tax_liability);
+
+                  let rate = parseFloat(stats.payment_compliance_rate);
+                  if (!isNaN(rate)) {
+                    rate = (rate * 100).toFixed(0) + "%";
+                  } else {
+                    rate = "0%";
+                  }
+                  document.getElementById("payment-rate").textContent = rate;
+                }
+              } catch (error) {
+                console.error("Error loading dashboard:", error);
+              }
+            }
+
+            document.addEventListener("DOMContentLoaded", loadDashboard);
+          </script>
+
+          <div class="col-lg-12">
+            <div class="table-responsive mt-4">
+  <table class="table table-hover align-middle">
+    <thead class="table-light">
+      <tr>
+        <th>Assessment Period</th>
+        <th>Financial Details</th>
+        <th>Payment Info</th>
+        <th>Tax Calculation</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody id="assessmentsTableBody"></tbody>
+  </table>
+</div>
+
+          </div>
+        </div>
+      </main>
+
+      <!-- Tax Assessment Details Modal -->
+      <div
+  class="modal fade"
+  id="taxModal"
+  tabindex="-1"
+  aria-labelledby="taxModalLabel"
+  aria-hidden="true"
+>
+  <div class="modal-dialog modal-lg modal-dialog-scrollable">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="taxModalLabel">
+          Tax Assessment Details
+        </h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+      </div>
+
+      <div class="modal-body">
+        <!-- Assessment & Financial Summary -->
+        <h6 class="fw-bold mb-2">Assessment Information</h6>
+        <table class="table table-sm table-bordered align-middle mb-4">
+          <tbody>
+            <tr>
+              <th>Assessment ID</th>
+              <td id="modal-assessment-id">-</td>
+              <th>Period</th>
+              <td id="modal-period">-</td>
+            </tr>
+            <tr>
+              <th>Assessment Date</th>
+              <td id="modal-assessment-date">-</td>
+              <th>Due Date</th>
+              <td id="modal-due-date">-</td>
+            </tr>
+            <tr>
+              <th>Status</th>
+              <td colspan="3">
+                <span id="modal-status" class="badge bg-secondary">-</span>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+
+        <h6 class="fw-bold mb-2">Financial Summary</h6>
+        <table class="table table-sm table-bordered align-middle mb-4">
+          <tbody>
+            <tr>
+              <th>Total Revenue</th>
+              <td id="modal-revenue">-</td>
+              <th>Tax Rate</th>
+              <td id="modal-tax-rate">-</td>
+            </tr>
+            <tr>
+              <th>Tax Liability</th>
+              <td id="modal-tax-liability" class="tax-liability">-</td>
+              <th>Transaction Count</th>
+              <td id="modal-transaction-count">-</td>
+            </tr>
+            <tr>
+              <th>Average per Transaction</th>
+              <td colspan="3" id="modal-avg-transaction">-</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <!-- Payment Service Provider -->
+        <h6 class="fw-bold mb-2">Payment Service Provider</h6>
+        <table class="table table-sm table-bordered align-middle mb-4">
+          <tbody>
+            <tr>
+              <th>PTSP Name</th>
+              <td id="modal-ptsp-name">-</td>
+              <th>Contact Phone</th>
+              <td id="modal-ptsp-phone">-</td>
+            </tr>
+            <tr>
+              <th>PTSP ID</th>
+              <td id="modal-ptsp-id">-</td>
+              <th>Contact Email</th>
+              <td id="modal-ptsp-email">-</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <!-- Tax Calculation Breakdown -->
+        <h6 class="fw-bold mb-2">Tax Calculation Breakdown</h6>
+        <table class="table table-sm table-bordered align-middle">
+          <tbody>
+            <tr>
+              <th>Gross Transaction Revenue</th>
+              <td id="modal-gross-revenue">-</td>
+            </tr>
+            <tr>
+              <th>Less: Exemptions/Deductions</th>
+              <td id="modal-deductions">-</td>
+            </tr>
+            <tr>
+              <th>Taxable Revenue</th>
+              <td id="modal-taxable-revenue">-</td>
+            </tr>
+            <tr>
+              <th>Tax Rate Applied</th>
+              <td id="modal-applied-rate">-</td>
+            </tr>
+            <tr class="table-active">
+              <th>Total Tax Liability</th>
+              <td id="modal-total-liability" class="fw-bold tax-liability">-</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="modal-footer d-flex justify-content-between">
+        <button class="btn btn-primary" id="modal-download-invoice">
+          <i class="bi bi-download"></i> Download Invoice
+        </button>
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+          Close
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+      <!-- payment details modal -->
+      <div
+        class="modal fade"
+        id="paymentDetailsModal"
+        tabindex="-1"
+        aria-labelledby="paymentDetailsModalLabel"
+        aria-hidden="true"
+      >
+        <div class="modal-dialog modal-lg modal-dialog-scrollable">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="paymentDetailsModalLabel">
+                Payment Details
+              </h5>
+              <button
+                type="button"
+                class="btn-close"
+                data-bs-dismiss="modal"
+              ></button>
+            </div>
+
+            <div class="modal-body">
+              <div class="card card55 p-3">
+                <h6>
+                  <i class="bi bi-building me-1"></i> Automatic Payment via PTSP
+                </h6>
+
+                <div class="info-box mt-2">
+                  <strong>Payment Process</strong>
+                  <p class="mb-0">
+                    Your tax payment will be automatically handled by your
+                    registered Payment Terminal Service Provider (PTSP). No
+                    action is required from you.
+                  </p>
+                </div>
+
+                <div class="row mt-3">
+                  <div class="col-md-6">
+                    <p>
+                      <strong>PTSP Name:</strong> Interswitch Nigeria Limited
+                    </p>
+                    <p><strong>PTSP ID:</strong> PTSP-001</p>
+                  </div>
+                  <div class="col-md-6">
+                    <p>
+                      <strong>Contact Phone:</strong>
+                      <i class="bi bi-telephone me-1"></i> +234-1-4488200
+                    </p>
+                    <p>
+                      <strong>Contact Email:</strong>
+                      <i class="bi bi-envelope me-1"></i>
+                      tax.compliance@interswitch.com
+                    </p>
+                  </div>
+                </div>
+              </div>
+
+              <div class="card p-3">
+                <h6>
+                  <i class="bi bi-info-circle me-1"></i> Important Information
+                </h6>
+                <ul class="list-unstyled list-info mt-2">
+                  <li>
+                    <span class="text-primary">●</span> Your PTSP will
+                    automatically deduct the tax amount from your account.
+                  </li>
+                  <li>
+                    <span class="text-primary">●</span> Ensure sufficient funds
+                    are available to avoid failed payments.
+                  </li>
+                  <li>
+                    <span class="text-primary">●</span> You will receive a
+                    confirmation email once payment is processed.
+                  </li>
+                </ul>
+              </div>
+            </div>
+
+            <div class="modal-footer">
+              <button
+                type="button"
+                class="btn btn-secondary"
+                data-bs-dismiss="modal"
+              >
+                Close
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css"
+    />
+
+    <!-- begin::GXON Page Scripts -->
+     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="assets/js/header.js"></script>
+    <script src="assets/libs/global/global.min.js"></script>
+    <script src="assets/libs/chartjs/chart.js"></script>
+    <script src="assets/libs/apexcharts/apexcharts.min.js"></script>
+    <script src="assets/libs/datatables/datatables.min.js"></script>
+    <script src="assets/libs/flatpickr/flatpickr.min.js"></script>
+    <script src="assets/js/flatpickr.js"></script>
+    <script src="assets/js/dashboard.js"></script>
+    <script src="assets/js/appSettings.js"></script>
+    <script src="assets/js/main.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <script src="assets/js/loaderl.js"></script>
+
+    <script>
+      function formatCurrency(num) {
+        return "₦" + Number(num).toLocaleString("en-NG", { maximumFractionDigits: 2 });
+      }
+
+      function formatPeriod(start, end) {
+        const date = new Date(start);
+        return date.toLocaleString("en-US", { month: "long", year: "numeric" });
+      }
+
+      let currentAssessment = null;
+
+      function openAssessmentModal(assessment) {
+        currentAssessment = assessment;
+        
+        document.getElementById('modal-assessment-id').textContent = assessment.id || 'ASS-' + assessment.period_start.replace(/-/g, '');
+        document.getElementById('modal-period').textContent = formatPeriod(assessment.period_start, assessment.period_end);
+        document.getElementById('modal-assessment-date').textContent = assessment.assessed_at;
+        document.getElementById('modal-due-date').textContent = assessment.due_date;
+
+        const statusElement = document.getElementById('modal-status');
+        statusElement.textContent = assessment.status;
+        statusElement.className = 'badge ' + 
+          (assessment.status === 'paid' ? 'bg-success' : 
+           assessment.status === 'pending' ? 'bg-warning' : 'bg-secondary');
+        
+        document.getElementById('modal-revenue').textContent = formatCurrency(assessment.revenue);
+        document.getElementById('modal-tax-rate').textContent = assessment.tax_rate + '%';
+        document.getElementById('modal-tax-liability').textContent = formatCurrency(assessment.tax_liability);
+   
+        document.getElementById('modal-transaction-count').textContent = 'N/A';
+        document.getElementById('modal-avg-transaction').textContent = 'N/A';
+        
+        document.getElementById('modal-ptsp-name').textContent = 'Interswitch Nigeria Limited';
+        document.getElementById('modal-ptsp-phone').textContent = '+234-1-4488200';
+        document.getElementById('modal-ptsp-id').textContent = 'PTSP-001';
+        document.getElementById('modal-ptsp-email').textContent = 'tax.compliance@interswitch.com';
+
+        document.getElementById('modal-gross-revenue').textContent = formatCurrency(assessment.revenue);
+        document.getElementById('modal-deductions').textContent = '₦0';
+        document.getElementById('modal-taxable-revenue').textContent = formatCurrency(assessment.revenue);
+        document.getElementById('modal-applied-rate').textContent = assessment.tax_rate + '%';
+        document.getElementById('modal-total-liability').textContent = formatCurrency(assessment.tax_liability);
+        
+        const modal = new bootstrap.Modal(document.getElementById('taxModal'));
+        modal.show();
+      }
+
+
+      function downloadInvoice(assessment) {
+        const { jsPDF } = window.jspdf;
+        const pdf = new jsPDF();
+
+        pdf.setFontSize(20);
+        pdf.text('TAX ASSESSMENT INVOICE', 20, 20);
+        
+        pdf.setFontSize(12);
+        pdf.text(`Assessment ID: ${assessment.id || 'ASS-' + assessment.period_start.replace(/-/g, '')}`, 20, 40);
+        pdf.text(`Period: ${formatPeriod(assessment.period_start, assessment.period_end)}`, 20, 50);
+        pdf.text(`Assessment Date: ${assessment.assessed_at}`, 20, 60);
+        pdf.text(`Due Date: ${assessment.due_date}`, 20, 70);
+        pdf.text(`Status: ${assessment.status}`, 20, 80);
+        
+        pdf.text(`Revenue: ${formatCurrency(assessment.revenue)}`, 20, 100);
+        pdf.text(`Tax Rate: ${assessment.tax_rate}%`, 20, 110);
+        pdf.text(`Tax Liability: ${formatCurrency(assessment.tax_liability)}`, 20, 120);
+
+        pdf.save(`Tax_Invoice_${assessment.period_start}_${assessment.id || ''}.pdf`);
+      }
+
+async function loadAssessments() {
+  try {
+    const token = localStorage.getItem("token");
+    if (!token) {
+      console.error("Token not found in localStorage");
+      return;
+    }
+
+    // Get profile
+    const profileRes = await fetch("https://arafatfootballacademy.com/fusion/backend/profile", {
+      headers: { Authorization: `Bearer ${token}` },
+    });
+    const profileData = await profileRes.json();
+    console.log(profileData);
+
+    const merchant_number = profileData?.data?.marchant_number;
+    if (!merchant_number) {
+      console.error("No merchant_number found");
+      return;
+    }
+
+    // Get assessments
+    const assessRes = await fetch(
+      `https://arafatfootballacademy.com/fusion/backend/marchant/${merchant_number}/tax-assessments`,
+      { headers: { Authorization: `Bearer ${token}` } }
+    );
+    const assessments = await assessRes.json();
+
+    const tbody = document.getElementById("assessmentsTableBody");
+    tbody.innerHTML = "";
+
+    assessments.data.forEach((item) => {
+      const row = document.createElement("tr");
+
+      row.innerHTML = `
+        <!-- Assessment Period -->
+        <td>
+          <h6 class="fw-bold">${formatPeriod(item.period_start, item.period_end)}</h6>
+          <p class="mb-1 text-muted">Assessed: ${item.assessed_at}</p>
+        </td>
+
+        <!-- Financial Details -->
+        <td>
+          Revenue: <span class="fw-bold text-dark">${formatCurrency(item.revenue)}</span><br/>
+        </td>
+
+        <!-- Payment Info -->
+        <td>
+          Due Date: <span class="fw-bold text-dark">${item.due_date}</span><br/>
+          Paid By: <span class="fw-bold text-dark">${item.paid_by || "N/A"}</span><br/>
+          Status: <span class="status2-badge text-dark">${item.status}</span>
+        </td>
+
+        <!-- Tax Calculation -->
+        <td>
+          Base Revenue: <span class="fw-bold">${formatCurrency(item.revenue)}</span><br/>
+          Tax Rate: <span class="fw-bold">${item.tax_rate}%</span><br/>
+          Calculated Tax: <span class="fw-bold">${formatCurrency(item.tax_liability)}</span>
+        </td>
+
+         <!-- Actions -->
+        <td>
+          <a class="action-link text-primary view-details-btn" style="text-decoration: none; cursor: pointer">
+            <i class="bi bi-eye"></i> View
+          </a><br/>
+        </td>
+      `;
+
+      tbody.appendChild(row);
+
+      // Add event listeners for row buttons
+      const viewDetailsBtn = row.querySelector(".view-details-btn");
+      const downloadInvoiceBtn = row.querySelector(".download-invoice-btn");
+
+      if (viewDetailsBtn) {
+        viewDetailsBtn.addEventListener("click", () => {
+          openAssessmentModal(item);
+        });
+      }
+
+      if (downloadInvoiceBtn) {
+        downloadInvoiceBtn.addEventListener("click", () => {
+          downloadInvoice(item);
+        });
+      }
+    });
+  } catch (err) {
+    console.error("Error loading assessments:", err);
+  }
+}
+
+document.addEventListener("DOMContentLoaded", function () {
+  document.getElementById("modal-download-invoice")?.addEventListener("click", function () {
+    if (currentAssessment) {
+      downloadInvoice(currentAssessment);
+    }
+  });
+
+  loadAssessments();
+});
+
+    </script>
+  </body>
+</html>

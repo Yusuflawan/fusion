@@ -1,0 +1,331 @@
+.card212 {
+  border-radius: 10px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+}
+.chart-container {
+  position: relative;
+  height: 500px; /* Increased height */
+}
+
+.card312 {
+  border-radius: 12px;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.08);
+}
+.metric-box {
+  border: 1px solid #e9ecef;
+  border-radius: 8px;
+  padding: 0.75rem 1rem;
+  margin-bottom: 1rem;
+  background: #fff;
+}
+.progress {
+  height: 8px;
+  border-radius: 4px;
+}
+.metric-label {
+  font-weight: 600;
+  margin-bottom: 0.25rem;
+}
+.metric-value {
+  font-weight: 600;
+  font-size: 0.9rem;
+}
+.badge-status {
+  font-size: 0.75rem;
+  padding: 3px 10px;
+  border-radius: 12px;
+  font-weight: 500;
+}
+.badge-excellent {
+  background: #000;
+  color: #fff;
+}
+.badge-good {
+  background: #f1f1f1;
+  color: #000;
+}
+/* cards under */
+.card412 {
+  border-radius: 12px;
+  border: 1px solid #e9ecef;
+}
+.submission-status {
+  font-size: 0.75rem;
+  padding: 3px 10px;
+  border-radius: 12px;
+  font-weight: 500;
+}
+.status-success {
+  background: #000;
+  color: #fff;
+}
+.status-failed {
+  background: #dc3545;
+  color: #fff;
+}
+.notification {
+  border-radius: 8px;
+  padding: 0.75rem 1rem;
+  margin-bottom: 0.75rem;
+  display: flex;
+  align-items: flex-start;
+  gap: 0.75rem;
+}
+.notif-success {
+  background: #e8f7ef;
+  border: 1px solid #b6e2c5;
+  color: #198754;
+}
+.notif-info {
+  background: #eef4ff;
+  border: 1px solid #d6e2ff;
+  color: #0d6efd;
+}
+.notif-warning {
+  background: #fffbea;
+  border: 1px solid #ffe69c;
+  color: #d17a00;
+}
+.notif-icon {
+  font-size: 1.2rem;
+  flex-shrink: 0;
+}
+.notif-body small {
+  font-size: 0.8rem;
+  color: #6c757d;
+}
+
+/* table */
+
+.card-customs {
+  border-radius: 12px;
+  padding: 20px;
+}
+.status-badge {
+  border-radius: 12px;
+  padding: 4px 10px;
+  font-size: 0.8rem;
+  font-weight: 500;
+  text-transform: capitalize;
+}
+.status-success {
+  background-color: #000;
+  color: #fff;
+}
+.status-failed {
+  background-color: #dc3545;
+  color: #fff;
+}
+.status-partial {
+  background-color: #e9ecef;
+  color: #495057;
+}
+.error-zero {
+  color: green;
+  font-weight: 500;
+}
+.error-high {
+  color: red;
+  font-weight: 600;
+}
+.action-link {
+  text-decoration: none;
+  margin-right: 10px;
+}
+.retry-link {
+  color: green;
+  cursor: pointer;
+  font-weight: 500;
+}
+th {
+  font-weight: 600;
+}
+/* row */
+
+.card-customse {
+  border-radius: 12px;
+  padding: 20px;
+}
+.error-box {
+  background-color: #fff5f5;
+  border-left: 4px solid red;
+  border-radius: 10px;
+  padding: 15px;
+  margin-bottom: 15px;
+}
+.error-title {
+  font-weight: 600;
+  color: red;
+}
+.error-message {
+  margin-top: 5px;
+  font-size: 0.95rem;
+  color: red;
+}
+.error-meta {
+  font-size: 0.85rem;
+  margin-top: 8px;
+  color: red;
+}
+.error-date {
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: red;
+}
+/* merchant card */
+
+.merchant-card {
+  border-radius: 12px;
+  border: 1px solid #eee;
+  padding: 20px;
+  margin-bottom: 20px;
+  transition: all 0.3s ease;
+}
+.merchant-card:hover {
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+.status-badge {
+  font-size: 0.8rem;
+  padding: 3px 8px;
+  border-radius: 12px;
+  font-weight: 500;
+  background: #000;
+  color: #fff;
+}
+.compliance-badge {
+  font-size: 0.75rem;
+  padding: 2px 8px;
+  border-radius: 8px;
+  font-weight: 500;
+}
+.compliant {
+  background: #000;
+  color: #fff;
+}
+.pending {
+  background: #f0f0f0;
+  color: #444;
+}
+.text-success-rate {
+  font-weight: 600;
+  color: #0a8a0a;
+}
+.text-liability {
+  color: #ff5722;
+  font-weight: 600;
+}
+.search-bar {
+  border-radius: 10px;
+  padding: 10px 15px;
+}
+.dropdown-filter {
+  border-radius: 10px;
+  padding: 10px;
+}
+
+/* integration status */
+
+.status-badge {
+  font-size: 0.75rem;
+  padding: 4px 10px;
+  border-radius: 10px;
+  text-transform: capitalize;
+}
+.status-active {
+  background: #000;
+  color: #fff;
+}
+.status-warning {
+  background: #e5e5e5;
+  color: #444;
+}
+.error-text {
+  color: red;
+  font-weight: 500;
+}
+.success-text {
+  color: green;
+  font-weight: 500;
+}
+.card-custom {
+  border-radius: 10px;
+}
+@media (max-width: 768px) {
+  .table-responsive {
+    font-size: 0.85rem;
+  }
+  .status-badge {
+    font-size: 0.65rem;
+    padding: 2px 6px;
+  }
+}
+/* ----- */
+
+.card-customed {
+  border-radius: 10px;
+}
+.form-label {
+  font-weight: 500;
+  font-size: 0.9rem;
+}
+input.form-control {
+  border-radius: 8px;
+}
+@media (max-width: 768px) {
+  .form-label {
+    font-size: 0.8rem;
+  }
+}
+/* chatr--- */
+.card-customee {
+  border-radius: 12px;
+}
+.chart-container {
+  position: relative;
+  height: 400px;
+  width: 100%;
+}
+/* perfor last card */
+
+.card-customy {
+  border-radius: 12px;
+}
+.metric-card {
+  border: 1px solid #e5e7eb;
+  border-radius: 10px;
+  padding: 15px;
+  margin-bottom: 15px;
+}
+.progress {
+  height: 8px;
+  border-radius: 5px;
+}
+.status-badge {
+  font-size: 12px;
+  font-weight: 500;
+  padding: 4px 10px;
+  border-radius: 12px;
+  display: inline-block;
+}
+.status-meeting {
+  background-color: #f3f4f6;
+  color: #111827;
+}
+.status-exceeding {
+  background-color: #000;
+  color: #fff;
+}
+/* select */
+.filter-select {
+  border-radius: 0.5rem; /* rounded corners */
+  padding: 0.5rem 1rem;
+  font-size: 0.95rem;
+  font-weight: 500;
+  border: 1px solid #dcdcdc;
+  background-color: #fff;
+  box-shadow: none;
+}
+.filter-select:focus {
+  border-color: #6c63ff;
+  box-shadow: 0 0 0 0.2rem rgba(108, 99, 255, 0.25);
+}

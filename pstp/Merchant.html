@@ -1,0 +1,542 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- begin::GXON Meta Basic -->
+    <meta charset="utf-8" />
+
+    <title>Fussion</title>
+    <!-- end::GXON Website Page Title -->
+
+    <!-- begin::GXON Mobile Specific -->
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="icon" type="image/png" href="assets/images/logo.jpeg" />
+
+    <link
+      rel="apple-touch-icon"
+      sizes="180x180"
+      href="assets/images/logo.jpeg"
+    />
+    <!-- end::GXON Favicon Tags -->
+
+    <!-- begin::GXON Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&display=swap"
+      rel="stylesheet"
+    />
+    <!-- end::GXON Google Fonts -->
+    <!-- Material Symbols Rounded (optional) -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded"
+      rel="stylesheet"
+    />
+
+    <!-- Material Symbols Sharp (optional) -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Sharp"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined"
+      rel="stylesheet"
+    />
+
+    <!-- begin::GXON Required Stylesheet -->
+    <link rel="stylesheet" href="assets/libs/flaticon/css/all/all.css" />
+    <link rel="stylesheet" href="assets/libs/lucide/lucide.css" />
+    <link rel="stylesheet" href="assets/libs/fontawesome/css/all.min.css" />
+    <link rel="stylesheet" href="assets/libs/simplebar/simplebar.css" />
+    <link rel="stylesheet" href="assets/libs/node-waves/waves.css" />
+    <link
+      rel="stylesheet"
+      href="assets/libs/bootstrap-select/css/bootstrap-select.min.css"
+    />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css"
+      rel="stylesheet"
+    />
+    <!-- end::GXON Required Stylesheet -->
+
+    <!-- begin::GXON CSS Stylesheet -->
+    <link rel="stylesheet" href="assets/libs/datatables/datatables.min.css" />
+    <link rel="stylesheet" href="assets/libs/flatpickr/flatpickr.min.css" />
+    <link rel="stylesheet" href="assets/css/styles.css" />
+    <link rel="stylesheet" href="assets/css/style1.css" />
+    <link rel="stylesheet" href="assets/css/my1.css" />
+    <link rel="stylesheet" href="assets/css/chart.css" />
+
+    <!-- end::GXON CSS Stylesheet -->
+
+    <!-- begin::GXON Googletagmanager -->
+    <script
+      async
+      src="https://www.googletagmanager.com/gtag/js?id=G-XWVQM68HHQ"
+    ></script>
+    <style>
+      .card-boddy {
+        overflow-x: auto;
+      }
+
+      .card-boddy table {
+        min-width: 900px; /* or whatever width your table needs */
+      }
+      .profiLe {
+        display: none;
+      }
+    </style>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag("js", new Date());
+
+      gtag("config", "G-XWVQM68HHQ", {
+        cookie_flags: "SameSite=None;Secure",
+        send_page_view: true,
+      });
+    </script>
+    <!-- end::GXON Googletagmanager -->
+  </head>
+
+  <body>
+    <div class="page-layout">
+      <!-- begin::GXON Page Header -->
+      <header class="app-header">
+        <div class="app-header-inner" id="header"></div>
+      </header>
+      <!-- end::GXON Page Header -->
+
+      <!-- begin::GXON Sidebar Menu -->
+      <div class="app-menubar" id="sidebsr"></div>
+      <!-- end::GXON Sidebar Menu -->
+
+      <!-- begin::GXON Sidebar right -->
+      <!-- <div class="app-sidebar-end">
+        <ul class="sidebar-list">
+          <li>
+            <a href="javascript:void(0);">
+              <div
+                class="avatar avatar-sm bg-warning shadow-sharp-warning rounded-circle text-white mx-auto mb-2"
+              >
+                <i class="fi fi-rr-to-do"></i>
+              </div>
+              <span class="text-dark">Tax</span>
+            </a>
+          </li>
+          <li>
+            <a href="javascript:void(0);">
+              <div
+                class="avatar avatar-sm bg-secondary shadow-sharp-secondary rounded-circle text-white mx-auto mb-2"
+              >
+                <i class="fi fi-rr-interrogation"></i>
+              </div>
+              <span class="text-dark">Help</span>
+            </a>
+          </li>
+          <li>
+            <a href="javascript:void(0);">
+              <div
+                class="avatar avatar-sm bg-info shadow-sharp-info rounded-circle text-white mx-auto mb-2"
+              >
+                <i class="fi fi-rr-calendar"></i>
+              </div>
+              <span class="text-dark">date</span>
+            </a>
+          </li>
+          <li>
+            <a href="javascript:void(0);">
+              <div
+                class="avatar avatar-sm bg-gray shadow-sharp-gray rounded-circle text-white mx-auto mb-2"
+              >
+                <i class="fi fi-rr-settings"></i>
+              </div>
+              <span class="text-dark">Settings</span>
+            </a>
+          </li>
+        </ul>
+      </div> -->
+      <!-- end::GXON Sidebar right -->
+
+      <main class="app-wrapper">
+        <div class="col-xxl-12 col-lg-12 col-sm-6">
+          <div class="container-fluid py-5">
+            <div
+              class="app-page-head d-flex flex-wrap gap-3 align-items-center justify-content-between mt-0"
+            >
+              <div class="clearfix">
+                <h1 class="app-page-title">Merchants</h1>
+                <nav aria-label="breadcrumb">
+                  <ol class="breadcrumb mb-0">
+                    <li class="breadcrumb-item">
+                      <a href="index.html">Dashboard</a>
+                    </li>
+                    <li class="breadcrumb-item active" aria-current="page">
+                      Merchants
+                    </li>
+                  </ol>
+                </nav>
+              </div>
+              <div class="dropdown">
+                <button
+                  class="btn btn-primary dropdown-toggle d-flex align-items-center gap-2"
+                  type="button"
+                  id="exportDropdown"
+                  data-bs-toggle="dropdown"
+                  aria-expanded="false"
+                >
+                  <i class="fi fi-rr-download"></i>
+                  Export Report
+                </button>
+                <ul class="dropdown-menu" aria-labelledby="exportDropdown">
+                  <li>
+                    <a class="dropdown-item" href="#"
+                      ><i class="fi fi-rr-file-csv me-2"></i> Export as CSV</a
+                    >
+                  </li>
+                  <li>
+                    <a class="dropdown-item" href="#"
+                      ><i class="fi fi-rr-file-pdf me-2"></i> Export as PDF</a
+                    >
+                  </li>
+                  <li>
+                    <a class="dropdown-item" href="#"
+                      ><i class="fi fi-rr-file-excel me-2"></i> Export as
+                      Excel</a
+                    >
+                  </li>
+                </ul>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-12">
+                <div class="row">
+                  <div class="col-xxl-2 col-lg-4 col-sm-6">
+                    <div
+                      class="card card-action action-border-secondary p-1 position-relative"
+                    >
+                      <div
+                        class="card-body d-flex gap-3 align-items-center p-4"
+                        style="position: relative"
+                      >
+                        <div class="clearfix">
+                          <div class="mb-1 text-dark fw-bold">
+                            Total <br />Merchants
+                          </div>
+                          <h3 class="mb-0 fw-bold mt-3 text-dark">3</h3>
+                          <small>Active merchants</small>
+                        </div>
+                        <div
+                          class="clearfix pe-2 text-primary"
+                          style="position: absolute; top: 10%; right: 0%"
+                        >
+                          <i class="fi fi-rr-users"></i>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-xxl-2 col-lg-4 col-sm-6">
+                    <div
+                      class="card card-action action-border-secondary p-1 position-relative"
+                    >
+                      <div
+                        class="card-body d-flex gap-3 align-items-center p-4"
+                        style="position: relative"
+                      >
+                        <div class="clearfix">
+                          <div class="mb-1 text-dark fw-bold">
+                            Total <br />Transactions
+                          </div>
+                          <h3 class="mb-0 fw-bold mt-3">46,120</h3>
+                          <small>Across all merchants</small>
+                        </div>
+                        <div
+                          class="clearfix pe-2 text-success"
+                          style="position: absolute; top: 10%; right: 0%"
+                        >
+                          <i class="fi fi-rr-exchange"></i>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="col-xxl-2 col-lg-4 col-sm-6">
+                    <div
+                      class="card card-action action-border-secondary p-1 position-relative"
+                    >
+                      <div
+                        class="card-body d-flex gap-3 align-items-center p-4"
+                        style="position: relative"
+                      >
+                        <div class="clearfix">
+                          <div class="mb-1 text-dark fw-bold">
+                            Total <br />Volume
+                          </div>
+                          <h3 class="mb-0 fw-bold text-dark mt-3">₦724.5M</h3>
+                          <small>Total processed today</small>
+                        </div>
+                        <div
+                          class="clearfix pe-2"
+                          style="
+                            position: absolute;
+                            top: 10%;
+                            right: 0%;
+                            color: blueviolet;
+                          "
+                        >
+                          <i class="fi fi-rr-coins"></i>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-xxl-2 col-lg-4 col-sm-6">
+                    <div
+                      class="card card-action action-border-secondary p-1 position-relative"
+                    >
+                      <div
+                        class="card-body d-flex gap-3 align-items-center p-4"
+                        style="position: relative"
+                      >
+                        <div class="clearfix">
+                          <div class="mb-1 text-dark fw-bold">
+                            Tax <br />Revenue
+                          </div>
+                          <h3 class="mb-0 fw-bold text-danger mt-3">₦11.28M</h3>
+                          <small>Total tax collected</small>
+                        </div>
+                        <div
+                          class="clearfix pe-2"
+                          style="
+                            position: absolute;
+                            top: 10%;
+                            right: 0%;
+                            color: red;
+                          "
+                        >
+                          <i class="fi fi-rr-bank"></i>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-xxl-2 col-lg-4 col-sm-6">
+                    <div
+                      class="card card-action action-border-secondary p-1 position-relative"
+                    >
+                      <div
+                        class="card-body d-flex gap-3 align-items-center p-4"
+                        style="position: relative"
+                      >
+                        <div class="clearfix">
+                          <div class="mb-1 text-dark fw-bold">
+                            Compliance Status
+                          </div>
+                          <h3 class="mb-0 fw-bold text-success mt-3">3/5</h3>
+                          <small>Merchants compliant</small>
+                        </div>
+                        <div
+                          class="clearfix pe-2 text-success"
+                          style="position: absolute; top: 10%; right: 0%"
+                        >
+                          <i class="fi fi-rr-shield-check"></i>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-xxl-2 col-lg-4 col-sm-6">
+                    <div
+                      class="card card-action action-border-secondary p-1 position-relative"
+                    >
+                      <div
+                        class="card-body d-flex gap-3 align-items-center p-4"
+                        style="position: relative"
+                      >
+                        <div class="clearfix">
+                          <div class="mb-1 text-dark fw-bold">
+                            Active<br />
+                            Terminals
+                          </div>
+                          <h3 class="mb-0 fw-bold text-dark mt-3">55</h3>
+                          <small>POS terminals online</small>
+                        </div>
+                        <div
+                          class="clearfix pe-2 text-primary"
+                          style="position: absolute; top: 10%; right: 0%"
+                        >
+                          <i class="fi fi-rr-credit-card"></i>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="">
+              <div class="row">
+  <div class="col-12">
+    <div class="card p-3 shadow-sm">
+      <h5>Active Merchants</h5>
+      <small class="text-muted">Select a merchant to view their transaction data</small>
+
+      <div class="d-flex flex-column flex-md-row align-items-center gap-2 mt-3">
+        <input
+          type="text"
+          class="form-control search-bar"
+          placeholder="Search merchants by name, location, or ID..."
+          id="searchInput"
+        />
+        <select class="form-select dropdown-filter w-auto" id="filterSelect">
+          <option value="all">All Types</option>
+          <option value="Retail">Retail</option>
+          <option value="Fuel/Gas">Fuel/Gas</option>
+          <option value="Electronics">Electronics</option>
+        </select>
+      </div>
+
+      <div class="row mt-4" id="merchantsGrid">
+      </div>
+    </div>
+  </div>
+</div>
+
+            </div>
+          </div>
+        </div>
+      </main>
+
+      <!-- begin::GXON Footer -->
+
+      <!-- end::GXON Footer -->
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+    <script>
+      function showProfile() {
+        document.getElementById("cards").style.display = "none";
+        document.getElementById("profileCard").style.display = "block";
+      }
+      function hideProfile() {
+        document.getElementById("cards").style.display = "block";
+        document.getElementById("profileCard").style.display = "none";
+      }
+    </script>
+    <!-- begin::GXON Page Scripts --><script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="assets/js/header.js"></script>
+    <!-- <script src="assets/libs/global/global.min.js"></script> -->
+    <script src="assets/libs/chartjs/chart.js"></script>
+    <script src="assets/libs/apexcharts/apexcharts.min.js"></script>
+    <script src="assets/libs/datatables/datatables.min.js"></script>
+    <script src="assets/libs/flatpickr/flatpickr.min.js"></script>
+    <script src="assets/js/flatpickr.js"></script>
+    <script src="assets/js/dashboard.js"></script>
+    <script src="assets/js/appSettings.js"></script>
+    <script src="assets/js/main.js"></script>
+    <script>
+document.addEventListener("DOMContentLoaded", async () => {
+  const merchantsGrid = document.getElementById("merchantsGrid");
+  const searchInput = document.getElementById("searchInput");
+  const filterSelect = document.getElementById("filterSelect");
+  const user = JSON.parse(localStorage.getItem("user"));
+
+  // console.log(user);
+
+  let merchants = [];
+
+  async function fetchMerchants() {
+    try {
+      const id = user.provider_id;
+      const res = await fetch(`https://arafatfootballacademy.com/fusion/backend/providers/${id}/marchants/all`);
+      const result = await res.json();
+
+      if (result.status === "success" && Array.isArray(result.data)) {
+        merchants = result.data;
+        renderMerchants(merchants);
+      } else {
+        merchantsGrid.innerHTML =
+          `<div class="col-12 text-center text-muted">No merchants found</div>`;
+      }
+    } catch (err) {
+      console.error("Error fetching merchants:", err);
+      merchantsGrid.innerHTML =
+        `<div class="col-12 text-center text-danger">Failed to load merchants</div>`;
+    }
+  }
+
+  function renderMerchants(list) {
+    merchantsGrid.innerHTML = "";
+
+    if (list.length === 0) {
+      merchantsGrid.innerHTML =
+        `<div class="col-12 text-center text-muted">No matching merchants</div>`;
+      return;
+    }
+
+    list.forEach(m => {
+      let complianceClass =
+        m.compliance_status === "compliant"
+          ? "compliant"
+          : m.compliance_status === "pending"
+          ? "pending"
+          : "non-compliant";
+
+      merchantsGrid.innerHTML += `
+        <div class="col-md-4 col-sm-6 mb-3">
+          <div class="merchant-card h-100 p-3 border rounded">
+            <div class="d-flex justify-content-between align-items-center">
+              <h6 class="mb-0 fw-bold">${m.business_name}</h6>
+              <span class="status-badge">${m.status}</span>
+            </div>
+            <small class="text-muted">${m.role || "N/A"}</small>
+            <hr />
+            <p class="mb-1"><strong>Owner:</strong> ${m.name}</p>
+            <p class="mb-1"><strong>Email:</strong> ${m.email}</p>
+            <p class="mb-1"><strong>Terminal:</strong> ${m.terminal_number}</p>
+            <p class="mb-1"><strong>Registered:</strong> ${m.registered_at}</p>
+            <p class="mb-1">
+              <strong>Tax Tier:</strong> ${m.tax_tier_id || "N/A"}
+            </p>
+            <p class="mb-1">
+              <strong>Tax Compliance:</strong>
+              <span class="compliance-badge ${complianceClass}">
+                ${m.compliance_status}
+              </span>
+            </p>
+          </div>
+        </div>
+      `;
+    });
+  }
+
+  function applyFilters() {
+    const searchVal = searchInput.value.toLowerCase();
+    const filterVal = filterSelect.value;
+
+    const filtered = merchants.filter(m => {
+      const matchesSearch =
+        m.name.toLowerCase().includes(searchVal) ||
+        m.business_name.toLowerCase().includes(searchVal) ||
+        (m.terminal_number && m.terminal_number.toLowerCase().includes(searchVal));
+
+      const matchesFilter =
+        filterVal === "all" ||
+        (m.business_type && m.business_type === filterVal);
+
+      return matchesSearch && matchesFilter;
+    });
+
+    renderMerchants(filtered);
+  }
+
+  searchInput.addEventListener("input", applyFilters);
+  filterSelect.addEventListener("change", applyFilters);
+
+  fetchMerchants();
+});
+</script>
+
+    <!-- end::GXON Page Scripts -->
+  </body>
+</html>

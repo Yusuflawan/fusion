@@ -1,0 +1,908 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <!-- begin::GXON Meta Basic -->
+  <meta charset="utf-8" />
+ <link rel="icon" type="image/png" href="assets/images/logo.jpeg" />
+
+  <title>Payroll | Fusion HR Management Admin Dashboard </title>
+  <!-- end::GXON Website Page Title -->
+
+  <!-- begin::GXON Mobile Specific -->
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <!-- end::GXON Mobile Specific -->
+
+  <link rel="apple-touch-icon" sizes="180x180" href="assets/images/logo.jpeg" />
+  <!-- end::GXON Favicon Tags -->
+
+  <!-- begin::GXON Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&display=swap"
+    rel="stylesheet" />
+  <!-- end::GXON Google Fonts -->
+
+  <!-- begin::GXON Required Stylesheet -->
+  <link rel="stylesheet" href="assets/libs/flaticon/css/all/all.css" />
+  <link rel="stylesheet" href="assets/libs/lucide/lucide.css" />
+  <link rel="stylesheet" href="assets/libs/fontawesome/css/all.min.css" />
+  <link rel="stylesheet" href="assets/libs/simplebar/simplebar.css" />
+  <link rel="stylesheet" href="assets/libs/node-waves/waves.css" />
+  <link rel="stylesheet" href="assets/libs/bootstrap-select/css/bootstrap-select.min.css" />
+  <!-- end::GXON Required Stylesheet -->
+
+  <!-- begin::GXON CSS Stylesheet -->
+  <link rel="stylesheet" href="assets/libs/datatables/datatables.min.css" />
+  <link rel="stylesheet" href="assets/libs/flatpickr/flatpickr.min.css" />
+  <link rel="stylesheet" href="assets/css/styles.css" />
+  <!-- end::GXON CSS Stylesheet -->
+
+  <!-- begin::GXON Googletagmanager -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-XWVQM68HHQ"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() {
+      dataLayer.push(arguments);
+    }
+    gtag("js", new Date());
+
+    gtag("config", "G-XWVQM68HHQ", {
+      cookie_flags: "SameSite=None;Secure",
+      send_page_view: true,
+    });
+  </script>
+  <!-- end::GXON Googletagmanager -->
+</head>
+
+<body>
+  <main>
+    <div class="page-layout">
+      <!-- begin::GXON Page Header -->
+      <header class="app-header">
+        <div class="app-header-inner" id="header"></div>
+      </header>
+
+      <div class="modal fade" id="searchResultsModal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+          <div class="modal-content">
+            <div class="modal-header py-1 px-3">
+              <form class="d-flex align-items-center position-relative w-100" action="payroll.html#">
+                <button type="button" class="btn btn-sm border-0 position-absolute start-0 p-0 text-sm">
+                  <i class="fi fi-rr-search"></i>
+                </button>
+                <input type="text" class="form-control form-control-lg ps-4 border-0 shadow-none" id="searchInput"
+                  placeholder="Search anything's" />
+              </form>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body pb-2" style="height: 300px" data-simplebar>
+              <div id="recentlyResults">
+                <span class="text-uppercase text-2xs fw-semibold text-muted d-block mb-2">Recently Searched:</span>
+                <ul class="list-inline search-list">
+                  <li>
+                    <a class="search-item" href="index.html">
+                      <i class="fi fi-rr-apps"></i> Dashboard
+                    </a>
+                  </li>
+                  <li>
+                    <a class="search-item" href="chat.html">
+                      <i class="fi fi-rr-comment"></i> Chat
+                    </a>
+                  </li>
+                  <li>
+                    <a class="search-item" href="calendar.html">
+                      <i class="fi fi-rr-calendar"></i> Calendar
+                    </a>
+                  </li>
+                  <li>
+                    <a class="search-item" href="chart/apexchart.html">
+                      <i class="fi fi-rr-chart-pie-alt"></i> Apexchart
+                    </a>
+                  </li>
+                  <li>
+                    <a class="search-item" href="pages/pricing.html">
+                      <i class="fi fi-rr-file"></i> Pricing
+                    </a>
+                  </li>
+                  <li>
+                    <a class="search-item" href="email/inbox.html">
+                      <i class="fi fi-rr-envelope"></i> Email
+                    </a>
+                  </li>
+                </ul>
+              </div>
+              <div id="searchContainer"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- begin::GXON Sidebar Menu -->
+      <div id="sidebsr"></div>
+      <!-- end::GXON Sidebar Menu -->
+
+      <!-- begin::GXON Sidebar right -->
+      <div class="app-sidebar-end"></div>
+      <!-- end::GXON Sidebar right -->
+    </div>
+    <div class="app-wrapper">
+      <div class="container">
+        <div class="app-page-head row align-items-center mb-4">
+          <!-- Left Column: Title and Breadcrumb -->
+          <div class="col-md-8">
+            <h1 class="app-page-title">Roles & Access Controls</h1>
+          </div>
+          <!-- Right Column: Button -->
+          <div class="col-md-4 text-md-start mt-3 mt-md-0">
+            <div class="d-flex justify-content-end">
+              <!-- Create New Role Button -->
+              <button type="button" class="btn btn-primary waves-effect waves-light" data-bs-toggle="modal"
+                data-bs-target="#createRoleModal">
+                <i class="fi fi-rr-plus me-1"></i> Create New Role
+              </button>
+            </div>
+          </div>
+
+          <!-- Create Role Modal -->
+          <div class="modal fade" id="createRoleModal" tabindex="-1" aria-labelledby="createRoleModalLabel"
+            aria-hidden="true">
+            <div class="modal-dialog modal-xl modal-dialog-scrollable">
+              <div class="modal-content">
+
+                <!-- Modal Header -->
+                <div class="modal-header">
+                  <h5 class="modal-title fw-bold" id="createRoleModalLabel">Create New Role</h5>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+
+                <!-- Modal Body -->
+                <div class="modal-body">
+                  <form>
+                    <!-- Role Name -->
+                    <div class="mb-3">
+                      <label class="form-label fw-semibold">Role Name</label>
+                      <input class="form-control" type="text" id="roleName" placeholder="e.g., Admin, Editor" />
+                    </div>
+
+                    <!-- Description -->
+                    <div class="mb-4">
+                      <label class="form-label fw-semibold">Description</label>
+                      <textarea class="form-control" rows="3" placeholder="Brief Description of the role"></textarea>
+                    </div>
+
+                    <!-- Permissions Section -->
+                    <div class="row g-3" id="permissionsContainer">
+
+                    </div>
+                  </form>
+                </div>
+
+                <!-- Modal Footer -->
+                <div class="modal-footer">
+                  <button id="create-role-btn" type="submit" class="btn btn-primary w-100">Create New Role</button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- permission role -->
+
+        <div class="col-lg-12">
+          <div class="card-header d-flex gap-3 flex-wrap align-items-center justify-content-between border-0 pb-0">
+            <div></div>
+            <div class="d-flex gap-3 flex-wrap">
+              <div id="dt_PayrollList_Search"></div>
+            </div>
+          </div>
+          <div class="container my-4">
+            <!-- Heading -->
+            <div class="mb-3">
+              <h6 class="fw-bold">System Roles (5 found)</h6>
+              <small class="text-muted">Manage role definitions and assignments</small>
+            </div>
+
+            <!-- Roles List -->
+            <div class="list-group">
+              <!-- Executive -->
+              <div class="list-group-item d-flex justify-content-between align-items-start rounded-3 mb-4">
+                <div>
+                  <h5 class="mb-2 d-flex gap-3">
+                    Executive <span class="badge bg-dark">System</span>
+                  </h5>
+                  <p class="mb-2 text-dark">
+                    Senior leadership with full strategic oversight access
+                  </p>
+                  <small class="text-muted">Users: 3 &nbsp; Permissions: 5 &nbsp; Modified:
+                    2024-01-15</small>
+                </div>
+                <div class="d-flex gap-2">
+                  <!-- Edit Permissions Button -->
+                  <button class="btn btn-sm btn-primary" data-bs-toggle="modal"
+                    data-bs-target="#editRolePermissionsModal">
+                    Edit
+                  </button>
+
+                  <!-- Edit Role Permissions Modal -->
+                  <div class="modal fade" id="editRolePermissionsModal" tabindex="-1" aria-hidden="true">
+                    <div class="modal-dialog modal-dialog-centered modal-lg">
+                      <div class="modal-content">
+
+                        <!-- Header -->
+                        <div class="modal-header d-flex flex-column align-items-start">
+                          <div class="w-100 d-flex justify-content-between align-items-start">
+                            <div>
+                              <h5 class="modal-title mb-1">Edit Role Permissions</h5>
+                              <small class="text-muted">Modify permissions for Executive</small>
+                            </div>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                          </div>
+                        </div>
+
+
+                        <!-- Body -->
+                        <div class="modal-body">
+
+                          <!-- Role Info -->
+                          <div class="p-3 mb-3  rounded ">
+                            <h5 class="fw-bold mb-1">Executive</h5>
+                            <p class="mb-1 text-muted">Senior leadership with full strategic oversight access</p>
+                            <small class="text-muted">Current permissions: 5</small>
+                          </div>
+
+                          <!-- Permissions Section -->
+                          <h6 class="fw-bold mb-2">Available Permissions</h6>
+
+                          <!-- Dashboard Access -->
+                          <div class="mb-3 border rounded p-3">
+                            <h6 class="fw-semibold">Dashboard Access</h6>
+                            <div class="form-check">
+                              <input class="form-check-input" type="checkbox" id="permDashboardView" checked>
+                              <label class="form-check-label fw-semibold" for="permDashboardView">Dashboard View</label>
+                              <div class="form-text">Access to main dashboard</div>
+                            </div>
+                            <div class="form-check">
+                              <input class="form-check-input" type="checkbox" id="permExecDashboard">
+                              <label class="form-check-label fw-semibold" for="permExecDashboard">Executive
+                                Dashboard</label>
+                              <div class="form-text">Access to executive-level dashboard</div>
+                            </div>
+                            <div class="form-check">
+                              <input class="form-check-input" type="checkbox" id="permAnalyticsDashboard">
+                              <label class="form-check-label fw-semibold" for="permAnalyticsDashboard">Analytics
+                                Dashboard</label>
+                              <div class="form-text">Access to analytics dashboard</div>
+                            </div>
+                          </div>
+
+                          <!-- User Management -->
+                          <div class="mb-3 border rounded p-3">
+                            <h6 class="fw-semibold">User Management</h6>
+                            <div class="form-check">
+                              <input class="form-check-input" type="checkbox" id="permUserView">
+                              <label class="form-check-label fw-semibold" for="permUserView">View Users</label>
+                              <div class="form-text">Ability to view all system users</div>
+                            </div>
+                            <div class="form-check">
+                              <input class="form-check-input" type="checkbox" id="permUserEdit">
+                              <label class="form-check-label fw-semibold" for="permUserEdit">Manage Users</label>
+                              <div class="form-text">Ability to add, edit, or remove users</div>
+                            </div>
+                            <div class="form-check">
+                              <input class="form-check-input" type="checkbox" id="permUserDelete">
+                              <label class="form-check-label fw-semibold" for="permUserDelete">Delete User</label>
+                              <div class="form-text">Ability to remove users from the system</div>
+                            </div>
+
+                            <div class="form-check">
+                              <input class="form-check-input" type="checkbox" id="permUserEdit">
+                              <label class="form-check-label fw-semibold" for="permUserEdit">Edit User</label>
+                              <div class="form-text">Ability to update user details</div>
+                            </div>
+
+                            <div class="form-check">
+                              <input class="form-check-input" type="checkbox" id="permUserCreate">
+                              <label class="form-check-label fw-semibold" for="permUserCreate">Create User</label>
+                              <div class="form-text">Ability to add new users</div>
+                            </div>
+
+                          </div>
+
+                          <!-- Role Management -->
+                          <div class="mb-3 border rounded p-3">
+                            <h6 class="fw-semibold">Role Management</h6>
+
+                            <div class="form-check">
+                              <input class="form-check-input" type="checkbox" id="permRoleCreate">
+                              <label class="form-check-label fw-semibold" for="permRoleCreate">Create Role</label>
+                              <div class="form-text">Ability to add new roles</div>
+                            </div>
+
+                            <div class="form-check">
+                              <input class="form-check-input" type="checkbox" id="permRoleEdit">
+                              <label class="form-check-label fw-semibold" for="permRoleEdit">Edit Role</label>
+                              <div class="form-text">Ability to modify role details</div>
+                            </div>
+
+                            <div class="form-check">
+                              <input class="form-check-input" type="checkbox" id="permRoleDelete">
+                              <label class="form-check-label fw-semibold" for="permRoleDelete">Delete Role</label>
+                              <div class="form-text">Ability to remove roles from the system</div>
+                            </div>
+
+                            <div class="form-check">
+                              <input class="form-check-input" type="checkbox" id="permRoleAssign">
+                              <label class="form-check-label fw-semibold" for="permRoleAssign">Assign
+                                Permissions</label>
+                              <div class="form-text">Ability to assign or revoke permissions for roles</div>
+                            </div>
+                          </div>
+
+                          <!-- Merchant Operations -->
+                          <div class="mb-3 border rounded p-3">
+                            <h6 class="fw-semibold">Merchant Operations</h6>
+
+                            <div class="form-check">
+                              <input class="form-check-input" type="checkbox" id="permMerchantProfile">
+                              <label class="form-check-label fw-semibold" for="permMerchantProfile">Merchant
+                                Profile</label>
+                              <div class="form-text">Access and manage merchant profiles</div>
+                            </div>
+
+                            <div class="form-check">
+                              <input class="form-check-input" type="checkbox" id="permTaxLiability">
+                              <label class="form-check-label fw-semibold" for="permTaxLiability">Tax Liability</label>
+                              <div class="form-text">View and manage merchant tax liabilities</div>
+                            </div>
+
+                            <div class="form-check">
+                              <input class="form-check-input" type="checkbox" id="permMerchantVerification">
+                              <label class="form-check-label fw-semibold" for="permMerchantVerification">Merchant
+                                Verification</label>
+                              <div class="form-text">Verify merchant information and compliance</div>
+                            </div>
+                          </div>
+
+                          <!-- System Configuration -->
+                          <div class="mb-3 border rounded p-3">
+                            <h6 class="fw-semibold">System Configuration</h6>
+
+                            <div class="form-check">
+                              <input class="form-check-input" type="checkbox" id="permSystemConfig">
+                              <label class="form-check-label fw-semibold" for="permSystemConfig">System Config</label>
+                              <div class="form-text">Manage overall system settings and parameters</div>
+                            </div>
+
+                            <div class="form-check">
+                              <input class="form-check-input" type="checkbox" id="permDataIngestion">
+                              <label class="form-check-label fw-semibold" for="permDataIngestion">Data Ingestion</label>
+                              <div class="form-text">Configure and manage data ingestion pipelines</div>
+                            </div>
+
+                            <div class="form-check">
+                              <input class="form-check-input" type="checkbox" id="permTaxConfig">
+                              <label class="form-check-label fw-semibold" for="permTaxConfig">Tax Config</label>
+                              <div class="form-text">Set up and manage tax configuration rules</div>
+                            </div>
+
+                            <div class="form-check">
+                              <input class="form-check-input" type="checkbox" id="permCommissionConfig">
+                              <label class="form-check-label fw-semibold" for="permCommissionConfig">Commission
+                                Config</label>
+                              <div class="form-text">Configure commission structures and policies</div>
+                            </div>
+                          </div>
+
+                          <!-- Reporting & Analytics -->
+                          <div class="mb-3 border rounded p-3">
+                            <h6 class="fw-semibold">Reporting & Analytics</h6>
+
+                            <div class="form-check">
+                              <input class="form-check-input" type="checkbox" id="permAdvancedReport">
+                              <label class="form-check-label fw-semibold" for="permAdvancedReport">Advanced
+                                Report</label>
+                              <div class="form-text">Access and generate advanced system reports</div>
+                            </div>
+
+                            <div class="form-check">
+                              <input class="form-check-input" type="checkbox" id="permQueryBuilder">
+                              <label class="form-check-label fw-semibold" for="permQueryBuilder">Query Builder</label>
+                              <div class="form-text">Create and run custom queries on system data</div>
+                            </div>
+
+                            <div class="form-check">
+                              <input class="form-check-input" type="checkbox" id="permFraudDetection">
+                              <label class="form-check-label fw-semibold" for="permFraudDetection">Fraud
+                                Detection</label>
+                              <div class="form-text">Monitor and flag suspicious activities</div>
+                            </div>
+
+                            <div class="form-check">
+                              <input class="form-check-input" type="checkbox" id="permAuditLogs">
+                              <label class="form-check-label fw-semibold" for="permAuditLogs">Audit Logs</label>
+                              <div class="form-text">Access and review system audit logs</div>
+                            </div>
+                          </div>
+
+
+
+                        </div>
+
+                        <!-- Footer -->
+                        <div class="modal-footer">
+                          <button class="btn btn-light" data-bs-dismiss="modal">Cancel</button>
+                          <button class="btn btn-dark">Save Changes</button>
+                        </div>
+
+                      </div>
+                    </div>
+                  </div>
+
+                  <!-- View Button -->
+                  <button class="btn btn-sm btn-success" data-bs-toggle="modal" data-bs-target="#roleDetailsModal">
+                    View
+                  </button>
+
+                  <!-- Role Details Modal -->
+                  <div class="modal fade" id="roleDetailsModal" tabindex="-1" aria-hidden="true">
+                    <div class="modal-dialog modal-dialog-centered modal-lg">
+                      <div class="modal-content">
+                        <div class="modal-header">
+                          <h5 class="modal-title">Role Details</h5>
+                          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+
+                        <div class="modal-body">
+                          <!-- Role Name -->
+                          <div class="mb-3">
+                            <h6 class="fw-bold mb-1">Role Name</h6>
+                            <p class="mb-0">Executive</p>
+                          </div>
+
+                          <!-- Description -->
+                          <div class="mb-3">
+                            <h6 class="fw-bold mb-1">Description</h6>
+                            <p class="mb-0">Senior leadership with full strategic oversight access</p>
+                          </div>
+
+                          <!-- Role Type & Users -->
+                          <div class="row mb-3">
+                            <div class="col-md-6">
+                              <h6 class="fw-bold mb-1">Role Type</h6>
+                              <span class="badge bg-dark">System Role</span>
+                            </div>
+                            <div class="col-md-6">
+                              <h6 class="fw-bold mb-1">Users Assigned</h6>
+                              <p class="mb-0 fw-semibold">3</p>
+                            </div>
+                          </div>
+
+                          <!-- Dates -->
+                          <div class="row mb-3">
+                            <div class="col-md-6">
+                              <h6 class="fw-bold mb-1">Created Date</h6>
+                              <p class="mb-0">2023-05-01</p>
+                            </div>
+                            <div class="col-md-6">
+                              <h6 class="fw-bold mb-1">Last Modified</h6>
+                              <p class="mb-0">2024-01-15</p>
+                            </div>
+                          </div>
+
+                          <!-- Permissions -->
+                          <div class="mb-3">
+                            <h6 class="fw-bold mb-2">Permissions (5)</h6>
+                            <span class="badge bg-light text-dark border me-1 mb-1">dashboard view</span>
+                            <span class="badge bg-light text-dark border me-1 mb-1">lga monitoring</span>
+                            <span class="badge bg-light text-dark border me-1 mb-1">strategic analytics</span>
+                            <span class="badge bg-light text-dark border me-1 mb-1">executive reports</span>
+                            <span class="badge bg-light text-dark border me-1 mb-1">system overview</span>
+                          </div>
+                        </div>
+
+                        <!-- Footer -->
+                        <div class="modal-footer">
+                          <button class="btn btn-dark" data-bs-dismiss="modal">Close</button>
+                          <button class="btn btn-outline-primary">Edit Permissions</button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                </div>
+              </div>
+
+              <!-- Compliance Officer -->
+              <div class="list-group-item d-flex justify-content-between align-items-start rounded-3 mb-4">
+                <div>
+                  <h5 class="mb-2 d-flex gap-3">
+                    Compliance Officer
+                    <span class="badge bg-dark">System</span>
+                  </h5>
+                  <p class="mb-2 text-dark">
+                    Tax enforcement officers with merchant monitoring
+                    capabilities
+                  </p>
+                  <small class="text-muted">Users: 12 &nbsp; Permissions: 5 &nbsp; Modified:
+                    2024-01-18</small>
+                </div>
+                <div class="d-flex gap-2">
+                  <button class="btn btn-sm btn-primary">Edit</button>
+                  <!-- View Button -->
+                  <button class="btn btn-sm btn-success" data-bs-toggle="modal" data-bs-target="#complianceRoleModal">
+                    View
+                  </button>
+
+                  <!-- Compliance Officer Role Modal -->
+                  <div class="modal fade" id="complianceRoleModal" tabindex="-1" aria-hidden="true">
+                    <div class="modal-dialog modal-dialog-centered modal-lg">
+                      <div class="modal-content">
+                        <div class="modal-header">
+                          <h5 class="modal-title">Role Details</h5>
+                          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+
+                        <div class="modal-body">
+                          <!-- Role Name -->
+                          <div class="mb-3">
+                            <h6 class="fw-bold mb-1">Role Name</h6>
+                            <p class="mb-0">Compliance Officer</p>
+                          </div>
+
+                          <!-- Description -->
+                          <div class="mb-3">
+                            <h6 class="fw-bold mb-1">Description</h6>
+                            <p class="mb-0">Tax enforcement officers with merchant monitoring capabilities</p>
+                          </div>
+
+                          <!-- Role Type & Users -->
+                          <div class="row mb-3">
+                            <div class="col-md-6">
+                              <h6 class="fw-bold mb-1">Role Type</h6>
+                              <span class="badge bg-dark">System Role</span>
+                            </div>
+                            <div class="col-md-6">
+                              <h6 class="fw-bold mb-1">Users Assigned</h6>
+                              <p class="mb-0 fw-semibold">12</p>
+                            </div>
+                          </div>
+
+                          <!-- Dates -->
+                          <div class="row mb-3">
+                            <div class="col-md-6">
+                              <h6 class="fw-bold mb-1">Created Date</h6>
+                              <p class="mb-0">2023-01-12</p>
+                            </div>
+                            <div class="col-md-6">
+                              <h6 class="fw-bold mb-1">Last Modified</h6>
+                              <p class="mb-0">2024-01-18</p>
+                            </div>
+                          </div>
+
+                          <!-- Permissions -->
+                          <div class="mb-3">
+                            <h6 class="fw-bold mb-2">Permissions (5)</h6>
+                            <span class="badge bg-light text-dark border me-1 mb-1">dashboard view</span>
+                            <span class="badge bg-light text-dark border me-1 mb-1">merchant monitoring</span>
+                            <span class="badge bg-light text-dark border me-1 mb-1">tax reports</span>
+                            <span class="badge bg-light text-dark border me-1 mb-1">compliance audit</span>
+                            <span class="badge bg-light text-dark border me-1 mb-1">system overview</span>
+                          </div>
+                        </div>
+
+                        <!-- Footer -->
+                        <div class="modal-footer">
+                          <button class="btn btn-dark" data-bs-dismiss="modal">Close</button>
+                          <button class="btn btn-outline-primary">Edit Permissions</button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                </div>
+              </div>
+
+              <!-- Data Analyst -->
+              <div class="list-group-item d-flex justify-content-between align-items-start rounded-3 mb-4">
+                <div>
+                  <h5 class="mb-2 d-flex gap-3">
+                    Data Analyst <span class="badge bg-dark">System</span>
+                  </h5>
+                  <p class="mb-2 text-dark">
+                    Advanced analytics and reporting specialists
+                  </p>
+                  <small class="text-muted">Users: 8 &nbsp; Permissions: 5 &nbsp; Modified:
+                    2024-01-10</small>
+                </div>
+                <div class="d-flex gap-2">
+                  <button class="btn btn-sm btn-primary">Edit</button>
+                  <!-- View Button -->
+                  <button class="btn btn-sm btn-success" data-bs-toggle="modal" data-bs-target="#dataAnalystRoleModal">
+                    View
+                  </button>
+
+                  <!-- Data Analyst Role Modal -->
+                  <div class="modal fade" id="dataAnalystRoleModal" tabindex="-1" aria-hidden="true">
+                    <div class="modal-dialog modal-dialog-centered modal-lg">
+                      <div class="modal-content">
+                        <div class="modal-header">
+                          <h5 class="modal-title">Role Details</h5>
+                          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+
+                        <div class="modal-body">
+                          <!-- Role Name -->
+                          <div class="mb-3">
+                            <h6 class="fw-bold mb-1">Role Name</h6>
+                            <p class="mb-0">Data Analyst</p>
+                          </div>
+
+                          <!-- Description -->
+                          <div class="mb-3">
+                            <h6 class="fw-bold mb-1">Description</h6>
+                            <p class="mb-0">Advanced analytics and reporting specialists</p>
+                          </div>
+
+                          <!-- Role Type & Users -->
+                          <div class="row mb-3">
+                            <div class="col-md-6">
+                              <h6 class="fw-bold mb-1">Role Type</h6>
+                              <span class="badge bg-dark">System Role</span>
+                            </div>
+                            <div class="col-md-6">
+                              <h6 class="fw-bold mb-1">Users Assigned</h6>
+                              <p class="mb-0 fw-semibold">8</p>
+                            </div>
+                          </div>
+
+                          <!-- Dates -->
+                          <div class="row mb-3">
+                            <div class="col-md-6">
+                              <h6 class="fw-bold mb-1">Created Date</h6>
+                              <p class="mb-0">2022-01-10</p>
+                            </div>
+                            <div class="col-md-6">
+                              <h6 class="fw-bold mb-1">Last Modified</h6>
+                              <p class="mb-0">2024-01-10</p>
+                            </div>
+                          </div>
+
+                          <!-- Permissions -->
+                          <div class="mb-3">
+                            <h6 class="fw-bold mb-2">Permissions (5)</h6>
+                            <span class="badge bg-light text-dark border me-1 mb-1">dashboard view</span>
+                            <span class="badge bg-light text-dark border me-1 mb-1">data visualization</span>
+                            <span class="badge bg-light text-dark border me-1 mb-1">advanced reporting</span>
+                            <span class="badge bg-light text-dark border me-1 mb-1">analytics dashboard</span>
+                            <span class="badge bg-light text-dark border me-1 mb-1">system overview</span>
+                          </div>
+                        </div>
+
+                        <!-- Footer -->
+                        <div class="modal-footer">
+                          <button class="btn btn-dark" data-bs-dismiss="modal">Close</button>
+                          <button class="btn btn-outline-primary">Edit Permissions</button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                </div>
+              </div>
+
+              <!-- System Administrator -->
+              <div class="list-group-item d-flex justify-content-between align-items-start rounded-3 mb-4">
+                <div>
+                  <h5 class="mb-2 d-flex gap-3">
+                    System Administrator
+                    <span class="badge bg-dark">System</span>
+                  </h5>
+                  <p class="mb-2 text-dark">
+                    Full system administration and configuration access
+                  </p>
+                  <small class="text-muted">Users: 2 &nbsp; Permissions: 6 &nbsp; Modified:
+                    2024-01-20</small>
+                </div>
+                <div class="d-flex gap-2">
+                  <button class="btn btn-sm btn-primary">Edit</button>
+                  <!-- View Button -->
+                  <button class="btn btn-sm btn-success" data-bs-toggle="modal" data-bs-target="#sysAdminRoleModal">
+                    View
+                  </button>
+
+                  <!-- System Administrator Role Modal -->
+                  <div class="modal fade" id="sysAdminRoleModal" tabindex="-1" aria-hidden="true">
+                    <div class="modal-dialog modal-dialog-centered modal-lg">
+                      <div class="modal-content">
+                        <div class="modal-header">
+                          <h5 class="modal-title">Role Details</h5>
+                          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+
+                        <div class="modal-body">
+                          <!-- Role Name -->
+                          <div class="mb-3">
+                            <h6 class="fw-bold mb-1">Role Name</h6>
+                            <p class="mb-0">System Administrator</p>
+                          </div>
+
+                          <!-- Description -->
+                          <div class="mb-3">
+                            <h6 class="fw-bold mb-1">Description</h6>
+                            <p class="mb-0">Full system administration and configuration access</p>
+                          </div>
+
+                          <!-- Role Type & Users -->
+                          <div class="row mb-3">
+                            <div class="col-md-6">
+                              <h6 class="fw-bold mb-1">Role Type</h6>
+                              <span class="badge bg-dark">System Role</span>
+                            </div>
+                            <div class="col-md-6">
+                              <h6 class="fw-bold mb-1">Users Assigned</h6>
+                              <p class="mb-0 fw-semibold">2</p>
+                            </div>
+                          </div>
+
+                          <!-- Dates -->
+                          <div class="row mb-3">
+                            <div class="col-md-6">
+                              <h6 class="fw-bold mb-1">Created Date</h6>
+                              <p class="mb-0">2024-01-20</p>
+                            </div>
+                            <div class="col-md-6">
+                              <h6 class="fw-bold mb-1">Last Modified</h6>
+                              <p class="mb-0">2024-01-20</p>
+                            </div>
+                          </div>
+
+                          <!-- Permissions -->
+                          <div class="mb-3">
+                            <h6 class="fw-bold mb-2">Permissions (6)</h6>
+                            <span class="badge bg-light text-dark border me-1 mb-1">dashboard view</span>
+                            <span class="badge bg-light text-dark border me-1 mb-1">user management</span>
+                            <span class="badge bg-light text-dark border me-1 mb-1">system configuration</span>
+                            <span class="badge bg-light text-dark border me-1 mb-1">security settings</span>
+                            <span class="badge bg-light text-dark border me-1 mb-1">audit logs</span>
+                            <span class="badge bg-light text-dark border me-1 mb-1">system overview</span>
+                          </div>
+                        </div>
+
+                        <!-- Footer -->
+                        <div class="modal-footer">
+                          <button class="btn btn-dark" data-bs-dismiss="modal">Close</button>
+                          <button class="btn btn-outline-primary">Edit Permissions</button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                </div>
+              </div>
+
+              <!-- LGA Coordinator (Custom Role with Delete) -->
+              <div class="list-group-item d-flex justify-content-between align-items-start rounded-3 mb-4">
+                <div>
+                  <h5 class="mb-2 d-flex gap-2">
+                    LGA Coordinator
+                    <span class="badge bg-secondary">Custom</span>
+                  </h5>
+                  <p class="mb-1 text-dark">
+                    Custom role for regional coordination tasks
+                  </p>
+                  <small class="text-muted">Users: 5 &nbsp; Permissions: 3 &nbsp; Modified:
+                    2024-01-12</small>
+                </div>
+                <div class="d-flex gap-2">
+                  <button class="btn btn-sm btn-primary">Edit</button>
+                  <!-- View Button -->
+                  <button class="btn btn-sm btn-success" data-bs-toggle="modal"
+                    data-bs-target="#lgaCoordinatorRoleModal">
+                    View
+                  </button>
+
+                  <!-- LGA Coordinator Role Modal -->
+                  <div class="modal fade" id="lgaCoordinatorRoleModal" tabindex="-1" aria-hidden="true">
+                    <div class="modal-dialog modal-dialog-centered modal-lg">
+                      <div class="modal-content">
+                        <div class="modal-header">
+                          <h5 class="modal-title">Role Details</h5>
+                          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+
+                        <div class="modal-body">
+                          <!-- Role Name -->
+                          <div class="mb-3">
+                            <h6 class="fw-bold mb-1">Role Name</h6>
+                            <p class="mb-0">LGA Coordinator</p>
+                          </div>
+
+                          <!-- Description -->
+                          <div class="mb-3">
+                            <h6 class="fw-bold mb-1">Description</h6>
+                            <p class="mb-0">Custom role for regional coordination tasks</p>
+                          </div>
+
+                          <!-- Role Type & Users -->
+                          <div class="row mb-3">
+                            <div class="col-md-6">
+                              <h6 class="fw-bold mb-1">Role Type</h6>
+                              <span class="badge bg-info text-dark">Custom Role</span>
+                            </div>
+                            <div class="col-md-6">
+                              <h6 class="fw-bold mb-1">Users Assigned</h6>
+                              <p class="mb-0 fw-semibold">5</p>
+                            </div>
+                          </div>
+
+                          <!-- Dates -->
+                          <div class="row mb-3">
+                            <div class="col-md-6">
+                              <h6 class="fw-bold mb-1">Created Date</h6>
+                              <p class="mb-0">2022-01-12</p>
+                            </div>
+                            <div class="col-md-6">
+                              <h6 class="fw-bold mb-1">Last Modified</h6>
+                              <p class="mb-0">2024-01-12</p>
+                            </div>
+                          </div>
+
+                          <!-- Permissions -->
+                          <div class="mb-3">
+                            <h6 class="fw-bold mb-2">Permissions (3)</h6>
+                            <span class="badge bg-light text-dark border me-1 mb-1">dashboard view</span>
+                            <span class="badge bg-light text-dark border me-1 mb-1">regional reports</span>
+                            <span class="badge bg-light text-dark border me-1 mb-1">coordination tasks</span>
+                          </div>
+                        </div>
+
+                        <!-- Footer -->
+                        <div class="modal-footer">
+                          <button class="btn btn-dark" data-bs-dismiss="modal">Close</button>
+                          <button class="btn btn-outline-primary">Edit Permissions</button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <button class="btn btn-sm btn-danger">Delete</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <!-- begin::GXON Footer -->
+  <footer class="footer-wrapper bg-body">
+    <div class="container">
+      <div class="row g-2">
+        <div class="col-lg-6 col-md-7 text-center text-md-start">
+          <p class="mb-0">
+            © <span class="currentYear">2025</a>.
+          </p>
+        </div>
+      </div>
+    </div>
+  </footer>
+  <!-- end::GXON Footer -->
+  <!-- begin::GXON Page Scripts -->
+   <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+  <script src="assets/js/header.js"></script>
+  <script src="assets/libs/global/global.min.js"></script>
+  <script src="assets/libs/chartjs/chart.js"></script>
+  <script src="assets/libs/apexcharts/apexcharts.min.js"></script>
+  <script src="assets/libs/datatables/datatables.min.js"></script>
+  <script src="assets/libs/flatpickr/flatpickr.min.js"></script>
+  <script src="assets/js/flatpickr.js"></script>
+  <script src="assets/js/dashboard.js"></script>
+  <script src="assets/js/appSettings.js"></script>
+  <script src="assets/js/main.js"></script>
+  <script src="assets/js/my-js/roles-permissions.js"></script>
+  <!-- end::GXON Page Scripts -->
+</body>
+
+</html>

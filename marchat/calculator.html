@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+
+    <meta charset="utf-8" />
+    <meta property="og:url" content="" />
+
+    <title>Fussion</title>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+<link rel="icon" type="image/png" href="assets/images/logo.jpeg" />
+    <link
+      rel="apple-touch-"
+      sizes="180x180"
+      href="assets/images/logo.jpeg"
+      title="Fussion"
+    />
+  
+    <link rel="preconnect" href="" />
+    <link rel="preconnect" href="" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&display=swap"
+      rel="stylesheet"
+    />
+
+    <link rel="stylesheet" href="assets/libs/flaticon/css/all/all.css" />
+    <link rel="stylesheet" href="assets/libs/lucide/lucide.css" />
+    <link rel="stylesheet" href="assets/libs/fontawesome/css/all.min.css" />
+    <link rel="stylesheet" href="assets/libs/simplebar/simplebar.css" />
+    <link rel="stylesheet" href="assets/libs/node-waves/waves.css" />
+    <link
+      rel="stylesheet"
+      href="assets/libs/bootstrap-select/css/bootstrap-select.min.css"
+    />
+
+    <link rel="stylesheet" href="assets/libs/tagify/tagify.css" />
+    <link rel="stylesheet" href="assets/css/styles.css" />
+    <!-- end::GXON CSS Stylesheet -->
+
+    <!-- begin::GXON Googletagmanager -->
+    <script
+      async
+      src="https://www.googletagmanager.com/gtag/js?id=G-XWVQM68HHQ"
+    ></script>
+    <style>
+      .slider {
+        width: 100%;
+        appearance: none;
+        height: 8px;
+        border-radius: 5px;
+        background: #ddd;
+        outline: none;
+        margin-top: 8px;
+      }
+      .slider::-webkit-slider-thumb {
+        appearance: none;
+        width: 20px;
+        height: 20px;
+        border-radius: 50%;
+        background: #3b3bff;
+        cursor: pointer;
+      }
+      .slider::-moz-range-thumb {
+        width: 20px;
+        height: 20px;
+        border-radius: 50%;
+        background: #3b3bff;
+        cursor: pointer;
+      }
+      .calc-btn {
+        background: #0a0a3f;
+        color: white;
+        font-weight: bold;
+        border: none;
+        border-radius: 30px;
+        width: 100%;
+        padding: 12px;
+        margin-top: 20px;
+        box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.3);
+      }
+      .calc-btn:hover {
+        background: #000066;
+      }
+      .label-text {
+        font-weight: 500;
+        margin-bottom: 5px;
+      }
+      /* Hidden result box */
+      #resultBox {
+        display: none;
+        margin-top: 20px;
+        padding: 20px;
+        border-radius: 12px;
+        background: #ffffff;
+        box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.1);
+      }
+      .slide {
+        animation: slideDown 0.5s ease forwards;
+      }
+      @keyframes slideDown {
+        from {
+          opacity: 0;
+          transform: translateY(-10px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+    </style>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag("js", new Date());
+
+      gtag("config", "G-XWVQM68HHQ", {
+        cookie_flags: "SameSite=None;Secure",
+        send_page_view: true,
+      });
+    </script>
+    <!-- end::GXON Googletagmanager -->
+  </head>
+
+  <body>
+    <div class="page-layout">
+      <!-- begin::GXON Page Header -->
+      <header class="app-header">
+        <div class="app-header-inner" id="header"></div>
+      </header>
+      <!-- end::GXON Page Header -->
+
+      <!-- begin::GXON Sidebar Menu -->
+      <div class="app-menubar" id="sidebsr"></div>
+      <!-- end::GXON Sidebar Menu -->
+
+      <!-- begin::GXON Sidebar right -->
+      <!-- end::GXON Sidebar right -->
+
+      <main class="app-wrapper">
+        <div class="container py-5">
+          <div class="card shadow p-4 rounded-4">
+            <!-- Annual Gross Income -->
+            <div class="row align-items-center mb-4">
+              <div class="col-md-6">
+                <label class="label-text">Annual Gross Income:</label>
+                <input
+                  type="range"
+                  min="300000"
+                  max="1000000000"
+                  value="20000000"
+                  class="slider"
+                  id="annualSlider"
+                />
+                <div class="d-flex justify-content-between">
+                  <small>₦300k</small>
+                  <small>₦1B</small>
+                </div>
+              </div>
+              <div class="col-md-6">
+                <label class="label-text">Amount (₦)</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  id="annualInput"
+                  value="20,000,000"
+                />
+              </div>
+            </div>
+
+            <!-- Monthly Gross Income -->
+            <div class="row align-items-center mb-4">
+              <div class="col-md-6">
+                <label class="label-text">Monthly Gross Income:</label>
+                <input
+                  type="range"
+                  min="100000"
+                  max="1000000000"
+                  value="2000000"
+                  class="slider"
+                  id="monthlySlider"
+                />
+                <div class="d-flex justify-content-between">
+                  <small>₦100k</small>
+                  <small>₦1B</small>
+                </div>
+              </div>
+              <div class="col-md-6">
+                <label class="label-text">Amount (₦)</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  id="monthlyInput"
+                  value="2,000,000"
+                />
+              </div>
+            </div>
+
+            <!-- Tax -->
+            <div class="row mb-4">
+              <div class="col-md-6 offset-md-6">
+                <label class="label-text">Tax (%)</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  id="taxInput"
+                  value="4"
+                />
+              </div>
+            </div>
+
+            <!-- Button -->
+            <button class="calc-btn" id="calculateBtn">Calculate</button>
+
+            <!-- Result Box -->
+            <div id="resultBox">
+              <h6 class="fw-bold">Result:</h6>
+              <p id="annualResult"></p>
+              <p id="monthlyResult"></p>
+              <button
+                id="payBtn"
+                class="btn bg-success btn-lg text-light px-5 rounded"
+              >
+                pay now
+              </button>
+            </div>
+          </div>
+        </div>
+      </main>
+
+      <!-- begin::GXON Footer -->
+
+      <!-- end::GXON Footer -->
+    </div>
+    <script>
+      const annualSlider = document.getElementById("annualSlider");
+      const annualInput = document.getElementById("annualInput");
+      const monthlySlider = document.getElementById("monthlySlider");
+      const monthlyInput = document.getElementById("monthlyInput");
+      const resultBox = document.getElementById("resultBox");
+      const annualResult = document.getElementById("annualResult");
+      const monthlyResult = document.getElementById("monthlyResult");
+
+      // Format number with commas
+      function formatNumber(num) {
+        return num.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+      }
+      function parseNumber(str) {
+        return parseInt(str.replace(/,/g, "")) || 0;
+      }
+
+      // Annual sync
+      annualSlider.oninput = function () {
+        annualInput.value = formatNumber(this.value);
+      };
+      annualInput.oninput = function () {
+        annualSlider.value = parseNumber(this.value);
+      };
+
+      // Monthly sync
+      monthlySlider.oninput = function () {
+        monthlyInput.value = formatNumber(this.value);
+      };
+      monthlyInput.oninput = function () {
+        monthlySlider.value = parseNumber(this.value);
+      };
+
+      // Calculate button
+      document.getElementById("calculateBtn").addEventListener("click", () => {
+        const annual = parseNumber(annualInput.value);
+        const monthly = parseNumber(monthlyInput.value);
+        const tax = parseFloat(document.getElementById("taxInput").value) || 0;
+
+        const annualTax = (annual * tax) / 100;
+        const monthlyTax = (monthly * tax) / 100;
+
+        // Update results
+        annualResult.textContent = `Annual Tax: ₦${formatNumber(annualTax)}`;
+        monthlyResult.textContent = `Monthly Tax: ₦${formatNumber(monthlyTax)}`;
+
+        // Show result box with slide animation
+        resultBox.style.display = "block";
+        resultBox.classList.remove("slide"); // reset animation
+        void resultBox.offsetWidth; // trigger reflow
+        resultBox.classList.add("slide");
+      });
+    </script>
+    <!-- begin::GXON Page Scripts -->
+     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="assets/js/header.js"></script>
+    <script src="assets/libs/global/global.min.js"></script>
+    <script src="assets/libs/tagify/tagify.js"></script>
+    <script src="assets/js/appSettings.js"></script>
+    <script src="assets/js/main.js"></script>
+    <script src="assets/js/loaderl.js"></script>
+    <!-- end::GXON Page Scripts -->
+  </body>
+</html>

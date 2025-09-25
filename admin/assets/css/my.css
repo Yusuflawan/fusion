@@ -1,0 +1,87 @@
+.statt-card {
+  border: 1px solid #eaeaea;
+  border-radius: 16px;
+  padding: 20px;
+  background: #fff;
+  /* transition: box-shadow 0.2s ease-in-out; */
+}
+/* .stat-card:hover {
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+      } */
+.stat-title {
+  font-size: 14px;
+  font-weight: 500;
+  color: #444;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.stat-value {
+  font-size: 22px;
+  font-weight: 700;
+  margin-top: 8px;
+}
+.stat-subtext {
+  font-size: 13px;
+  color: #777;
+}
+.icon-up {
+  font-size: 16px;
+}
+.text-purple {
+  color: #9c27b0; /* custom purple */
+}
+/* table */
+.card-custom {
+  border-radius: 16px;
+  border: 1px solid #eaeaea;
+}
+.table th {
+  font-size: 14px;
+  font-weight: 600;
+  color: #555;
+}
+.table td {
+  font-size: 14px;
+  vertical-align: middle;
+}
+.badge-role {
+  font-size: 12px;
+  font-weight: 500;
+  border-radius: 20px;
+  padding: 5px 12px;
+  background: #f8f9fa;
+  border: 1px solid #ddd;
+}
+.status-active {
+  background: #000;
+  color: #fff;
+  font-size: 12px;
+  font-weight: 500;
+  border-radius: 20px;
+  padding: 5px 12px;
+}
+.status-inactive {
+  background: #eaeaea;
+  color: #555;
+  font-size: 12px;
+  font-weight: 500;
+  border-radius: 20px;
+  padding: 5px 12px;
+}
+.action-link {
+  font-size: 13px;
+  font-weight: 500;
+  color: #28a745;
+  margin-left: 8px;
+  text-decoration: none;
+}
+.action-link:hover {
+  text-decoration: underline;
+}
+.delete-icon {
+  color: #dc3545;
+  font-size: 16px;
+  margin-left: 10px;
+  cursor: pointer;
+}
