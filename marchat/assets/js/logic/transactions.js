@@ -46,6 +46,7 @@ async function loadTransactions() {
         <td>${txn.transaction_type}</td>
         <td>${txn.location || "-"}</td>
         <td>${txn.issuing_bank || "-"}</td>
+        <td>${txn.wht || "-"}</td>
         <td>₦${Number(txn.commission || 0).toLocaleString()}</td>
         <td>
           <span class="badge ${
