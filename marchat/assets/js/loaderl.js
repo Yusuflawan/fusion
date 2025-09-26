@@ -88,8 +88,10 @@ async function switchAccount(accountId) {
       localStorage.setItem("all_accounts", JSON.stringify(accounts));
 
       fetchCardSummary();
+      renderRevenueChart();
+      renderTransactionChart();
     } else {
-      console.warn("No account object returned from switch API");
+      console.warn("No account object returned from switch");
     }
   } catch (error) {
     console.error("Error switching account:", error);
@@ -183,3 +185,161 @@ async function initDashboard() {
 }
 
 $(document).ready(initDashboard);
+
+async function renderRevenueChart() {
+  let marchant_number = JSON.parse(localStorage.getItem("default_account"));
+  const token = localStorage.getItem("token");
+
+  if (!marchant_number || !marchant_number.marchant_number) {
+    const profile = await fetchProfile();
+    if (profile && profile.marchant_number) {
+      marchant_number = profile;
+    } else {
+      console.error("Merchant number not found even after profile fetch.");
+      return;
+    }
+  }
+  try {
+    const id = JSON.parse(localStorage.getItem("default_account"));
+    const response = await fetch(`https://arafatfootballacademy.com/fusion/backend/marchants/${marchant_number.marchant_number}/revenue-trend`);
+    const result = await response.json();
+
+    if (result.status !== "success") {
+      throw new Error("Failed to fetch revenue data");
+    }
+
+    const labels = result.data.map(item => item.month_name);
+    const revenues = result.data.map(item => parseFloat(item.total_revenue));
+
+    const ctx = document.getElementById("revenueChart").getContext("2d");
+
+    new Chart(ctx, {
+      type: "line",
+      data: {
+        labels: labels,
+        datasets: [
+          {
+            label: "Revenue",
+            data: revenues,
+            borderColor: "#17a2b8",
+            backgroundColor: "#17a2b8",
+            tension: 0.4,
+            pointBackgroundColor: "#17a2b8",
+            pointRadius: 5,
+            pointHoverRadius: 7,
+          },
+        ],
+      },
+      options: {
+        responsive: true,
+        maintainAspectRatio: false,
+        plugins: {
+          legend: {
+            display: false,
+          },
+        },
+        scales: {
+          y: {
+            beginAtZero: true,
+            ticks: {
+              callback: function (value) {
+                return value.toLocaleString("en-US", { style: "currency", currency: "USD" });
+              },
+            },
+            grid: {
+              color: "#e5e7eb",
+            },
+          },
+          x: {
+            grid: {
+              color: "#e5e7eb",
+            },
+          },
+        },
+      },
+    });
+  } catch (error) {
+    console.error("Error loading revenue chart:", error);
+  }
+}
+
+renderRevenueChart();
+
+async function renderTransactionChart() {
+  let marchant_number = JSON.parse(localStorage.getItem("default_account"));
+  const token = localStorage.getItem("token");
+
+  if (!marchant_number || !marchant_number.marchant_number) {
+    const profile = await fetchProfile();
+    if (profile && profile.marchant_number) {
+      marchant_number = profile;
+    } else {
+      console.error("Merchant number not found even after profile fetch.");
+      return;
+    }
+  }
+
+  try {
+    const id = JSON.parse(localStorage.getItem("default_account"));
+    const response = await fetch(`https://arafatfootballacademy.com/fusion/backend/marchants/${marchant_number.marchant_number}/transaction-volume-chart`);
+    const result = await response.json();
+
+    if (result.status !== "success") {
+      throw new Error("Failed to fetch revenue data");
+    }
+
+    const labels = result.data.map(item => item.month_name);
+    const revenues = result.data.map(item => parseFloat(item.transaction_volume));
+
+    const ctx = document.getElementById("transactionChart").getContext("2d");
+
+    new Chart(ctx, {
+      type: "bar",
+      data: {
+        labels: labels,
+        datasets: [
+          {
+            label: "Revenue",
+            data: revenues,
+            borderColor: "#17a2b8", 
+            backgroundColor: "#17a2b8",
+            tension: 0.4,
+            pointBackgroundColor: "#17a2b8",
+            pointRadius: 5,
+            pointHoverRadius: 7,
+          },
+        ],
+      },
+      options: {
+        responsive: true,
+        maintainAspectRatio: false,
+        plugins: {
+          legend: {
+            display: false,
+          },
+        },
+        scales: {
+          y: {
+            beginAtZero: true,
+            ticks: {
+              callback: function (value) {
+                return value.toLocaleString("en-US", { style: "currency", currency: "USD" });
+              },
+            },
+            grid: {
+              color: "#e5e7eb",
+            },
+          },
+          x: {
+            grid: {
+              color: "#e5e7eb",
+            },
+          },
+        },
+      },
+    });
+  } catch (error) {
+    console.error("Error loading revenue chart:", error);
+  }
+}
+renderTransactionChart();
