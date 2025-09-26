@@ -233,4 +233,37 @@ async function initDashboard() {
     });
 }
 
-document.addEventListener("DOMContentLoaded", initDashboard);
+// document.addEventListener("DOMContentLoaded", initDashboard);
+
+$(document).ready(function() {
+
+  function fetchCardSummary() {
+    $.ajax({
+        url: baseUrl + '/marchant/MCH-20250918-001/dashboard-cards',
+        method: 'GET',
+        dataType: 'json',
+        success: function(response) {
+            if (response.status === 'success') {
+                $('#compliance_status').text("Compliant");
+                $('#compliance_message').text("All obligations current");
+                $('#total_volume').text(response.data.total_volume);
+                $('#liabilities').text(formatToNaira(response.data.total_tax_liability));
+                $('#total_revenue').text(formatToNaira(response.data.total_revenue));
+                $('#volume_period').text('This month');
+                $('#liability_status').text('Payment status updated');
+                $('#revenue_trend').text('Trends calculated');
+            } else {
+                console.error('Error: API response status is not success');
+            }
+        },
+        error: function(xhr, status, error) {
+            console.error('AJAX error:', status, error);
+        }
+    });
+  }
+  
+  // Initial fetch
+  fetchCardSummary();
+
+  
+});
