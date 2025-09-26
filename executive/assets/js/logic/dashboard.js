@@ -4,7 +4,7 @@ const totalRevenue = document.querySelector("#total_revenue");
 const activeMerchants = document.querySelector("#active_merchants");
 const complianceRate = document.querySelector("#compliance_rate");
 
-const stateId = 15;
+const stateId = 32;
 const period = "last_30_days";
 
 async function loadData() {
