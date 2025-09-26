@@ -1,7 +1,7 @@
 async function renderRevenueChart() {
   try {
-
-    const response = await fetch(`https://arafatfootballacademy.com/fusion/backend/marchants/marchant_number/revenue-trend`);
+    const id = JSON.parse(localStorage.getItem("default_account"));
+    const response = await fetch(`https://arafatfootballacademy.com/fusion/backend/marchants/${id.marchant_number}/revenue-trend`);
     const result = await response.json();
 
     if (result.status !== "success") {
@@ -21,7 +21,7 @@ async function renderRevenueChart() {
           {
             label: "Revenue",
             data: revenues,
-            borderColor: "#17a2b8", // Matches UI's info color
+            borderColor: "#17a2b8",
             backgroundColor: "#17a2b8",
             tension: 0.4,
             pointBackgroundColor: "#17a2b8",
@@ -67,8 +67,8 @@ renderRevenueChart();
 
 async function renderTransactionChart() {
   try {
-
-    const response = await fetch(`https://arafatfootballacademy.com/fusion/backend/marchants/marchant_number/transaction-volume-chart`);
+    const id = JSON.parse(localStorage.getItem("default_account"));
+    const response = await fetch(`https://arafatfootballacademy.com/fusion/backend/marchants/${id.marchant_number}/transaction-volume-chart`);
     const result = await response.json();
 
     if (result.status !== "success") {
@@ -88,7 +88,7 @@ async function renderTransactionChart() {
           {
             label: "Revenue",
             data: revenues,
-            borderColor: "#17a2b8", // Matches UI's info color
+            borderColor: "#17a2b8", 
             backgroundColor: "#17a2b8",
             tension: 0.4,
             pointBackgroundColor: "#17a2b8",

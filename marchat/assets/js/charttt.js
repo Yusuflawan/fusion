@@ -1,7 +1,7 @@
-const id = JSON.parse(localStorage.getItem("user"));
 async function renderTransactionChart() {
   try {
-    const response = await fetch(`https://arafatfootballacademy.com/fusion/backend/marchants/${id}/revenue-trend`); 
+    const id = JSON.parse(localStorage.getItem("default_account"));
+    const response = await fetch(`https://arafatfootballacademy.com/fusion/backend/marchants/${id}/`); 
     const result = await response.json();
 
     // console.log(result);
