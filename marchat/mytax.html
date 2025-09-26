@@ -450,18 +450,17 @@
 
           <div class="col-lg-12">
             <div class="table-responsive mt-4">
-  <table class="table table-hover align-middle">
-    <thead class="table-light">
-      <tr>
-        <th>Assessment Period</th>
-        <th>Financial Details</th>
-        <th>Payment Info</th>
-        <th>Tax Calculation</th>
-        <th>Actions</th>
-      </tr>
-    </thead>
-    <tbody id="assessmentsTableBody"></tbody>
-  </table>
+ <table class="table table-hover align-middle">
+        <thead class="table-light">
+          <tr>
+            <th>Assessment Period</th>
+            <th>Total Tax Liability</th>
+            <th>Status</th>
+            <th class="text-end">Actions</th>
+          </tr>
+        </thead>
+        <tbody id="assessmentsTableBody"></tbody>
+      </table>
 </div>
 
           </div>
@@ -469,128 +468,31 @@
       </main>
 
       <!-- Tax Assessment Details Modal -->
-      <div
-  class="modal fade"
-  id="taxModal"
-  tabindex="-1"
-  aria-labelledby="taxModalLabel"
-  aria-hidden="true"
->
-  <div class="modal-dialog modal-lg modal-dialog-scrollable">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="taxModalLabel">
-          Tax Assessment Details
-        </h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
-      </div>
-
-      <div class="modal-body">
-        <!-- Assessment & Financial Summary -->
-        <h6 class="fw-bold mb-2">Assessment Information</h6>
-        <table class="table table-sm table-bordered align-middle mb-4">
-          <tbody>
-            <tr>
-              <th>Assessment ID</th>
-              <td id="modal-assessment-id">-</td>
-              <th>Period</th>
-              <td id="modal-period">-</td>
-            </tr>
-            <tr>
-              <th>Assessment Date</th>
-              <td id="modal-assessment-date">-</td>
-              <th>Due Date</th>
-              <td id="modal-due-date">-</td>
-            </tr>
-            <tr>
-              <th>Status</th>
-              <td colspan="3">
-                <span id="modal-status" class="badge bg-secondary">-</span>
-              </td>
-            </tr>
-          </tbody>
-        </table>
-
-        <h6 class="fw-bold mb-2">Financial Summary</h6>
-        <table class="table table-sm table-bordered align-middle mb-4">
-          <tbody>
-            <tr>
-              <th>Total Revenue</th>
-              <td id="modal-revenue">-</td>
-              <th>Tax Rate</th>
-              <td id="modal-tax-rate">-</td>
-            </tr>
-            <tr>
-              <th>Tax Liability</th>
-              <td id="modal-tax-liability" class="tax-liability">-</td>
-              <th>Transaction Count</th>
-              <td id="modal-transaction-count">-</td>
-            </tr>
-            <tr>
-              <th>Average per Transaction</th>
-              <td colspan="3" id="modal-avg-transaction">-</td>
-            </tr>
-          </tbody>
-        </table>
-
-        <!-- Payment Service Provider -->
-        <h6 class="fw-bold mb-2">Payment Service Provider</h6>
-        <table class="table table-sm table-bordered align-middle mb-4">
-          <tbody>
-            <tr>
-              <th>PTSP Name</th>
-              <td id="modal-ptsp-name">-</td>
-              <th>Contact Phone</th>
-              <td id="modal-ptsp-phone">-</td>
-            </tr>
-            <tr>
-              <th>PTSP ID</th>
-              <td id="modal-ptsp-id">-</td>
-              <th>Contact Email</th>
-              <td id="modal-ptsp-email">-</td>
-            </tr>
-          </tbody>
-        </table>
-
-        <!-- Tax Calculation Breakdown -->
-        <h6 class="fw-bold mb-2">Tax Calculation Breakdown</h6>
-        <table class="table table-sm table-bordered align-middle">
-          <tbody>
-            <tr>
-              <th>Gross Transaction Revenue</th>
-              <td id="modal-gross-revenue">-</td>
-            </tr>
-            <tr>
-              <th>Less: Exemptions/Deductions</th>
-              <td id="modal-deductions">-</td>
-            </tr>
-            <tr>
-              <th>Taxable Revenue</th>
-              <td id="modal-taxable-revenue">-</td>
-            </tr>
-            <tr>
-              <th>Tax Rate Applied</th>
-              <td id="modal-applied-rate">-</td>
-            </tr>
-            <tr class="table-active">
-              <th>Total Tax Liability</th>
-              <td id="modal-total-liability" class="fw-bold tax-liability">-</td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-
-      <div class="modal-footer d-flex justify-content-between">
-        <button class="btn btn-primary" id="modal-download-invoice">
-          <i class="bi bi-download"></i> Download Invoice
-        </button>
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
-          Close
-        </button>
+  <div
+    class="modal fade"
+    id="assessmentModal"
+    tabindex="-1"
+    aria-labelledby="assessmentModalLabel"
+    aria-hidden="true"
+  >
+    <div class="modal-dialog modal-lg modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header bg-light">
+          <h5 class="modal-title fw-bold" id="assessmentModalLabel">
+            Tax Assessment Details
+          </h5>
+          <button
+            type="button"
+            class="btn-close"
+            data-bs-dismiss="modal"
+            aria-label="Close"
+          ></button>
+        </div>
+        <div class="modal-body" id="assessmentDetails">
+        </div>
       </div>
     </div>
   </div>
-</div>
 
 
       <!-- payment details modal -->
@@ -706,176 +608,159 @@
     <script src="assets/js/loaderl.js"></script>
 
     <script>
-      function formatCurrency(num) {
-        return "₦" + Number(num).toLocaleString("en-NG", { maximumFractionDigits: 2 });
-      }
-
-      function formatPeriod(start, end) {
-        const date = new Date(start);
-        return date.toLocaleString("en-US", { month: "long", year: "numeric" });
-      }
-
-      let currentAssessment = null;
-
-      function openAssessmentModal(assessment) {
-        currentAssessment = assessment;
-        
-        document.getElementById('modal-assessment-id').textContent = assessment.id || 'ASS-' + assessment.period_start.replace(/-/g, '');
-        document.getElementById('modal-period').textContent = formatPeriod(assessment.period_start, assessment.period_end);
-        document.getElementById('modal-assessment-date').textContent = assessment.assessed_at;
-        document.getElementById('modal-due-date').textContent = assessment.due_date;
-
-        const statusElement = document.getElementById('modal-status');
-        statusElement.textContent = assessment.status;
-        statusElement.className = 'badge ' + 
-          (assessment.status === 'paid' ? 'bg-success' : 
-           assessment.status === 'pending' ? 'bg-warning' : 'bg-secondary');
-        
-        document.getElementById('modal-revenue').textContent = formatCurrency(assessment.revenue);
-        document.getElementById('modal-tax-rate').textContent = assessment.tax_rate + '%';
-        document.getElementById('modal-tax-liability').textContent = formatCurrency(assessment.tax_liability);
-   
-        document.getElementById('modal-transaction-count').textContent = 'N/A';
-        document.getElementById('modal-avg-transaction').textContent = 'N/A';
-        
-        document.getElementById('modal-ptsp-name').textContent = 'Interswitch Nigeria Limited';
-        document.getElementById('modal-ptsp-phone').textContent = '+234-1-4488200';
-        document.getElementById('modal-ptsp-id').textContent = 'PTSP-001';
-        document.getElementById('modal-ptsp-email').textContent = 'tax.compliance@interswitch.com';
-
-        document.getElementById('modal-gross-revenue').textContent = formatCurrency(assessment.revenue);
-        document.getElementById('modal-deductions').textContent = '₦0';
-        document.getElementById('modal-taxable-revenue').textContent = formatCurrency(assessment.revenue);
-        document.getElementById('modal-applied-rate').textContent = assessment.tax_rate + '%';
-        document.getElementById('modal-total-liability').textContent = formatCurrency(assessment.tax_liability);
-        
-        const modal = new bootstrap.Modal(document.getElementById('taxModal'));
-        modal.show();
-      }
-
-
-      function downloadInvoice(assessment) {
-        const { jsPDF } = window.jspdf;
-        const pdf = new jsPDF();
-
-        pdf.setFontSize(20);
-        pdf.text('TAX ASSESSMENT INVOICE', 20, 20);
-        
-        pdf.setFontSize(12);
-        pdf.text(`Assessment ID: ${assessment.id || 'ASS-' + assessment.period_start.replace(/-/g, '')}`, 20, 40);
-        pdf.text(`Period: ${formatPeriod(assessment.period_start, assessment.period_end)}`, 20, 50);
-        pdf.text(`Assessment Date: ${assessment.assessed_at}`, 20, 60);
-        pdf.text(`Due Date: ${assessment.due_date}`, 20, 70);
-        pdf.text(`Status: ${assessment.status}`, 20, 80);
-        
-        pdf.text(`Revenue: ${formatCurrency(assessment.revenue)}`, 20, 100);
-        pdf.text(`Tax Rate: ${assessment.tax_rate}%`, 20, 110);
-        pdf.text(`Tax Liability: ${formatCurrency(assessment.tax_liability)}`, 20, 120);
-
-        pdf.save(`Tax_Invoice_${assessment.period_start}_${assessment.id || ''}.pdf`);
-      }
-
-async function loadAssessments() {
-  try {
-    const token = localStorage.getItem("token");
-    if (!token) {
-      console.error("Token not found in localStorage");
-      return;
-    }
-
-    // Get profile
-    const profileRes = await fetch("https://arafatfootballacademy.com/fusion/backend/profile", {
-      headers: { Authorization: `Bearer ${token}` },
-    });
-    const profileData = await profileRes.json();
-    console.log(profileData);
-
-    const merchant_number = profileData?.data?.marchant_number;
-    if (!merchant_number) {
-      console.error("No merchant_number found");
-      return;
-    }
-
-    // Get assessments
-    const assessRes = await fetch(
-      `https://arafatfootballacademy.com/fusion/backend/marchant/${merchant_number}/tax-assessments`,
-      { headers: { Authorization: `Bearer ${token}` } }
-    );
-    const assessments = await assessRes.json();
-
-    const tbody = document.getElementById("assessmentsTableBody");
-    tbody.innerHTML = "";
-
-    assessments.data.forEach((item) => {
-      const row = document.createElement("tr");
-
-      row.innerHTML = `
-        <!-- Assessment Period -->
-        <td>
-          <h6 class="fw-bold">${formatPeriod(item.period_start, item.period_end)}</h6>
-          <p class="mb-1 text-muted">Assessed: ${item.assessed_at}</p>
-        </td>
-
-        <!-- Financial Details -->
-        <td>
-          Revenue: <span class="fw-bold text-dark">${formatCurrency(item.revenue)}</span><br/>
-        </td>
-
-        <!-- Payment Info -->
-        <td>
-          Due Date: <span class="fw-bold text-dark">${item.due_date}</span><br/>
-          Paid By: <span class="fw-bold text-dark">${item.paid_by || "N/A"}</span><br/>
-          Status: <span class="status2-badge text-dark">${item.status}</span>
-        </td>
-
-        <!-- Tax Calculation -->
-        <td>
-          Base Revenue: <span class="fw-bold">${formatCurrency(item.revenue)}</span><br/>
-          Tax Rate: <span class="fw-bold">${item.tax_rate}%</span><br/>
-          Calculated Tax: <span class="fw-bold">${formatCurrency(item.tax_liability)}</span>
-        </td>
-
-         <!-- Actions -->
-        <td>
-          <a class="action-link text-primary view-details-btn" style="text-decoration: none; cursor: pointer">
-            <i class="bi bi-eye"></i> View
-          </a><br/>
-        </td>
-      `;
-
-      tbody.appendChild(row);
-
-      // Add event listeners for row buttons
-      const viewDetailsBtn = row.querySelector(".view-details-btn");
-      const downloadInvoiceBtn = row.querySelector(".download-invoice-btn");
-
-      if (viewDetailsBtn) {
-        viewDetailsBtn.addEventListener("click", () => {
-          openAssessmentModal(item);
-        });
-      }
-
-      if (downloadInvoiceBtn) {
-        downloadInvoiceBtn.addEventListener("click", () => {
-          downloadInvoice(item);
-        });
-      }
-    });
-  } catch (err) {
-    console.error("Error loading assessments:", err);
+  function formatCurrency(num) {
+    return "₦" + Number(num).toLocaleString("en-NG", { maximumFractionDigits: 2 });
   }
-}
 
-document.addEventListener("DOMContentLoaded", function () {
-  document.getElementById("modal-download-invoice")?.addEventListener("click", function () {
-    if (currentAssessment) {
-      downloadInvoice(currentAssessment);
+  function formatPeriod(start, end) {
+    const date = new Date(start);
+    return date.toLocaleString("en-US", { month: "long", year: "numeric" });
+  }
+
+  let currentAssessments = [];
+
+  async function loadAssessments() {
+    try {
+      const token = localStorage.getItem("token");
+      if (!token) {
+        console.error("Token not found in localStorage");
+        return;
+      }
+
+      const profileRes = await fetch("https://arafatfootballacademy.com/fusion/backend/profile", {
+        headers: { Authorization: `Bearer ${token}` },
+      });
+      const profileData = await profileRes.json();
+
+
+      const merchant_number = profileData?.data?.marchant_number;
+      if (!merchant_number) {
+        console.error("No merchant_number found");
+        return;
+      }
+
+      const assessRes = await fetch(
+        `https://arafatfootballacademy.com/fusion/backend/marchant/${merchant_number}/tax-assessments`,
+        { headers: { Authorization: `Bearer ${token}` } }
+      );
+      const response = await assessRes.json();
+
+      const tbody = document.getElementById("assessmentsTableBody");
+      tbody.innerHTML = "";
+
+      if (!response.data || !Array.isArray(response.data) || response.data.length === 0) {
+        tbody.innerHTML =
+          '<tr><td colspan="4" class="text-center text-muted">No assessments found</td></tr>';
+        return;
+      }
+
+      const grouped = {};
+      response.data.forEach((item) => {
+        const key = `${item.period_start}-${item.period_end}`;
+        if (!grouped[key]) grouped[key] = [];
+        grouped[key].push(item);
+      });
+
+
+      Object.keys(grouped).forEach((key) => {
+        const group = grouped[key];
+        const totalTax = group.reduce((sum, i) => sum + Number(i.tax_liability || 0), 0);
+        const overallStatus = group.every((i) => i.status === "paid")
+          ? "paid"
+          : group.some((i) => i.status === "pending")
+          ? "pending"
+          : "unpaid";
+
+        const row = document.createElement("tr");
+        row.innerHTML = `
+          <td>${formatPeriod(group[0].period_start, group[0].period_end)}</td>
+          <td>${formatCurrency(totalTax)}</td>
+          <td>
+            <span class="badge ${
+              overallStatus === "paid"
+                ? "bg-success"
+                : overallStatus === "pending"
+                ? "bg-warning text-dark"
+                : "bg-secondary"
+            } text-uppercase">${overallStatus}</span>
+          </td>
+          <td class="text-end">
+            <button class="btn btn-sm btn-primary view-details-btn">
+              <i class="bi bi-eye"></i> View
+            </button>
+          </td>
+        `;
+
+        tbody.appendChild(row);
+
+        // View button logic
+        const viewBtn = row.querySelector(".view-details-btn");
+        viewBtn.addEventListener("click", () => openAssessmentModal(group));
+      });
+    } catch (err) {
+      console.error("Error loading assessments:", err);
     }
-  });
+  }
 
-  loadAssessments();
-});
+  function openAssessmentModal(group) {
+    currentAssessments = group;
+    const modalBody = document.getElementById("assessmentDetails");
+    const period = formatPeriod(group[0].period_start, group[0].period_end);
 
-    </script>
+    const taxRows = group
+      .map(
+        (item) => `
+        <div class="border rounded p-3 mb-3">
+          <h6 class="fw-bold text-primary mb-2">${item.name} (${item.code})</h6>
+          <div class="row">
+            <div class="col-md-6 mb-2">
+              <strong>Assessed At:</strong> ${item.assessed_at || "N/A"}
+            </div>
+            <div class="col-md-6 mb-2">
+              <strong>Due Date:</strong> ${item.due_date || "N/A"}
+            </div>
+            <div class="col-md-6 mb-2">
+              <strong>Revenue:</strong> ${formatCurrency(item.revenue || 0)}
+            </div>
+            <div class="col-md-6 mb-2">
+              <strong>Tax Rate:</strong> ${item.tax_rate || 0}%
+            </div>
+            <div class="col-md-6 mb-2">
+              <strong>Tax Liability:</strong> ${formatCurrency(item.tax_liability || 0)}
+            </div>
+            <div class="col-md-6 mb-2">
+              <strong>Status:</strong>
+              <span class="badge ${
+                item.status === "paid"
+                  ? "bg-success"
+                  : item.status === "pending"
+                  ? "bg-warning text-dark"
+                  : "bg-secondary"
+              } text-uppercase">${item.status}</span>
+            </div>
+            <div class="col-md-12 mb-2">
+              <strong>Paid By:</strong> ${item.paid_by || "Not yet paid"}
+            </div>
+          </div>
+        </div>
+      `
+      )
+      .join("");
+
+    modalBody.innerHTML = `
+      <div class="border-bottom pb-3 mb-3">
+        <h5 class="fw-bold text-dark">Assessment Period</h5>
+        <p class="mb-0">${period}</p>
+      </div>
+      <div>${taxRows}</div>
+    `;
+
+    const modal = new bootstrap.Modal(document.getElementById("assessmentModal"));
+    modal.show();
+  }
+
+  document.addEventListener("DOMContentLoaded", loadAssessments);
+</script>
+
   </body>
 </html>
