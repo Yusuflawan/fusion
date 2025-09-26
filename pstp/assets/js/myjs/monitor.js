@@ -1,4 +1,3 @@
-const totalBatches = document.getElementById("totalBatches");
 const user = JSON.parse(localStorage.getItem("user"));
 const successful = document.getElementById("successful");
 const failed = document.getElementById("failed");
