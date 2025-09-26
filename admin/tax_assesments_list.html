@@ -1,0 +1,466 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- begin::GXON Meta Basic -->
+    <meta charset="utf-8" />
+    <title>Fusion</title>
+    <link rel="icon" type="image/png" href="assets/images/logo.jpeg" />
+    <!-- end::GXON Website Page Title -->
+
+    <!-- begin::GXON Mobile Specific -->
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <!-- end::GXON Mobile Specific -->
+
+    <!-- begin::GXON Favicon Tags -->
+
+    <!-- end::GXON Favicon Tags -->
+
+    <!-- begin::GXON Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&display=swap"
+      rel="stylesheet"
+    />
+    <!-- end::GXON Google Fonts -->
+
+    <!-- begin::GXON Required Stylesheet -->
+    <link rel="stylesheet" href="assets/libs/flaticon/css/all/all.css" />
+    <link rel="stylesheet" href="assets/libs/lucide/lucide.css" />
+    <link rel="stylesheet" href="assets/libs/fontawesome/css/all.min.css" />
+    <link rel="stylesheet" href="assets/libs/simplebar/simplebar.css" />
+    <link rel="stylesheet" href="assets/libs/node-waves/waves.css" />
+    <link
+      rel="stylesheet"
+      href="assets/libs/bootstrap-select/css/bootstrap-select.min.css"
+    />
+    <!-- end::GXON Required Stylesheet -->
+    <!-- begin::GXON CSS Stylesheet -->
+    <link rel="stylesheet" href="assets/libs/flatpickr/flatpickr.min.css" />
+    <link rel="stylesheet" href="assets/libs/datatables/datatables.min.css" />
+    <link rel="stylesheet" href="assets/css/styles.css" />
+    <!-- end::GXON CSS Stylesheet -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <!-- Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <!-- begin::GXON Googletagmanager -->
+    <script
+      async
+      src="https://www.googletagmanager.com/gtag/js?id=G-XWVQM68HHQ"
+    ></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag("js", new Date());
+
+      gtag("config", "G-XWVQM68HHQ", {
+        cookie_flags: "SameSite=None;Secure",
+        send_page_view: true,
+      });
+    </script>
+    <!-- end::GXON Googletagmanager -->
+    <style>
+      .container {
+        max-width: px;
+        margin: 0 auto;
+        padding: 20px;
+      }
+
+      .header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 20px;
+        padding-bottom: 10px;
+        border-bottom: 1px solid #e5e5e5;
+      }
+
+      .title {
+        font-size: 16px;
+        font-weight: 600;
+        color: #333;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+      }
+
+      .period {
+        font-size: 14px;
+        color: #666;
+      }
+
+      .chart-container {
+        margin-bottom: 30px;
+        height: 300px;
+        position: relative;
+        border: 1px solid #f0f0f0;
+        background: #fafafa;
+      }
+
+      .chart-svg {
+        width: 100%;
+        height: 100%;
+      }
+
+      .metrics {
+        display: flex;
+        justify-content: space-between;
+        gap: 20px;
+      }
+
+      .metric {
+        flex: 1;
+        text-align: left;
+      }
+
+      .metric-header {
+        display: flex;
+        align-items: center;
+        margin-bottom: 5px;
+      }
+
+      .metric-dot {
+        width: 8px;
+        height: 8px;
+        border-radius: 50%;
+        margin-right: 8px;
+      }
+
+      .metric-dot.ptsp {
+        background-color: #e85d75;
+      }
+
+      .metric-dot.pssp {
+        background-color: #4ecdc4;
+      }
+
+      .metric-label {
+        font-size: 13px;
+        color: #666;
+      }
+
+      .metric-value {
+        font-size: 18px;
+        font-weight: 600;
+        color: #333;
+        margin: 2px 0;
+      }
+
+      .avg-label {
+        font-size: 13px;
+        color: #666;
+        margin-bottom: 5px;
+      }
+
+      .avg-value {
+        font-size: 18px;
+        font-weight: 600;
+        color: #333;
+      }
+
+      .axis-label {
+        font-size: 11px;
+        fill: #666;
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+          sans-serif;
+      }
+
+      .grid-line {
+        stroke: #f0f0f0;
+        stroke-width: 1;
+      }
+
+      .chart-line {
+        fill: none;
+        stroke-width: 3;
+      }
+
+      .ptsp-line {
+        stroke: #e85d75;
+      }
+
+      .pssp-line {
+        stroke: #4ecdc4;
+      }
+
+      @media (max-width: 768px) {
+        .container {
+          padding: 15px;
+        }
+
+        .header {
+          flex-direction: column;
+          align-items: flex-start;
+          gap: 10px;
+        }
+
+        .metrics {
+          flex-direction: column;
+          gap: 15px;
+        }
+
+        .chart-container {
+          height: 250px;
+        }
+      }
+
+      @media (max-width: 480px) {
+        body {
+          padding: 10px;
+        }
+
+        .chart-container {
+          height: 200px;
+        }
+
+        .metric-value,
+        .avg-value {
+          font-size: 16px;
+        }
+      }
+      /* last chart */
+
+      .chart-card {
+        background: #fff;
+        border-radius: 16px;
+        padding: 20px;
+        box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+      }
+      .chart-container {
+        position: relative;
+        height: 350px;
+      }
+      .chart-title {
+        font-weight: 600;
+        font-size: 1.1rem;
+        color: #1a1a3d;
+      }
+    </style>
+  </head>
+  <body>
+    <header class="app-header">
+      <div class="app-header-inner" id="header"></div>
+    </header>
+
+    <div id="sidebsr"></div>
+
+<div class="app-sidebar-end"></div>
+<main class="app-wrapper">
+  <div class="col-lg-12">
+    <div class="table-responsive mt-4">
+      <table class="table table-hover align-middle">
+        <thead class="table-light">
+          <tr>
+            <th>Assessment Period</th>
+            <th>Total Tax Liability</th>
+            <th>Status</th>
+            <th class="text-end">Actions</th>
+          </tr>
+        </thead>
+        <tbody id="assessmentsTableBody"></tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- Modal -->
+  <div
+    class="modal fade"
+    id="assessmentModal"
+    tabindex="-1"
+    aria-labelledby="assessmentModalLabel"
+    aria-hidden="true"
+  >
+    <div class="modal-dialog modal-lg modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header bg-light">
+          <h5 class="modal-title fw-bold" id="assessmentModalLabel">
+            Tax Assessment Details
+          </h5>
+          <button
+            type="button"
+            class="btn-close"
+            data-bs-dismiss="modal"
+            aria-label="Close"
+          ></button>
+        </div>
+        <div class="modal-body" id="assessmentDetails">
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const url = new URL(window.location.href);
+    const queryMerchant = url.searchParams.get("merchant");
+    let currentAssessments = [];
+
+    function formatCurrency(num) {
+      if (!num) return "₦0.00";
+      return (
+        "₦" +
+        Number(num).toLocaleString("en-NG", {
+          minimumFractionDigits: 2,
+          maximumFractionDigits: 2,
+        })
+      );
+    }
+
+    function formatPeriod(start, end) {
+      return `${new Date(start).toLocaleDateString()} - ${new Date(
+        end
+      ).toLocaleDateString()}`;
+    }
+
+    async function loadAssessments() {
+      try {
+        const token = localStorage.getItem("token");
+        if (!token) {
+          console.error("Token not found in localStorage");
+          return;
+        }
+
+        const assessRes = await fetch(
+          `https://arafatfootballacademy.com/fusion/backend/marchant/${queryMerchant}/tax-assessments`,
+          { headers: { Authorization: `Bearer ${token}` } }
+        );
+        const response = await assessRes.json();
+        console.log(response);
+
+        const tbody = document.getElementById("assessmentsTableBody");
+        tbody.innerHTML = "";
+
+        if (!response.data || !Array.isArray(response.data)) {
+          tbody.innerHTML =
+            '<tr><td colspan="4" class="text-center text-muted">No assessments found</td></tr>';
+          return;
+        }
+
+
+        const grouped = {};
+        response.data.forEach((item) => {
+          const key = `${item.period_start}-${item.period_end}`;
+          if (!grouped[key]) grouped[key] = [];
+          grouped[key].push(item);
+        });
+
+        Object.keys(grouped).forEach((key) => {
+          const group = grouped[key];
+          const totalTax = group.reduce(
+            (sum, i) => sum + Number(i.tax_liability),
+            0
+          );
+          const overallStatus = group.every((i) => i.status === "paid")
+            ? "paid"
+            : group.some((i) => i.status === "pending")
+            ? "pending"
+            : "unpaid";
+
+          const row = document.createElement("tr");
+          row.innerHTML = `
+            <td>${formatPeriod(group[0].period_start, group[0].period_end)}</td>
+            <td>${formatCurrency(totalTax)}</td>
+            <td>
+              <span class="badge ${
+                overallStatus === "paid"
+                  ? "bg-success"
+                  : overallStatus === "pending"
+                  ? "bg-warning text-dark"
+                  : "bg-secondary"
+              } text-uppercase">${overallStatus}</span>
+            </td>
+            <td class="text-end">
+              <button class="btn btn-sm btn-primary view-details-btn">
+                <i class="bi bi-eye"></i> View
+              </button>
+            </td>
+          `;
+
+          tbody.appendChild(row);
+
+          const viewBtn = row.querySelector(".view-details-btn");
+          viewBtn.addEventListener("click", () => openAssessmentModal(group));
+        });
+      } catch (err) {
+        console.error("Error loading assessments:", err);
+      }
+    }
+
+    function openAssessmentModal(group) {
+      currentAssessments = group;
+      const modalBody = document.getElementById("assessmentDetails");
+
+      const period = formatPeriod(group[0].period_start, group[0].period_end);
+
+
+      const taxRows = group
+        .map(
+          (item) => `
+          <div class="border rounded p-3 mb-3">
+            <h6 class="fw-bold text-primary mb-2">${item.name} (${item.code})</h6>
+            <div class="row">
+              <div class="col-md-6 mb-2">
+                <strong>Assessed At:</strong> ${item.assessed_at}
+              </div>
+              <div class="col-md-6 mb-2">
+                <strong>Due Date:</strong> ${item.due_date}
+              </div>
+              <div class="col-md-6 mb-2">
+                <strong>Revenue:</strong> ${formatCurrency(item.revenue)}
+              </div>
+              <div class="col-md-6 mb-2">
+                <strong>Tax Rate:</strong> ${item.tax_rate}%
+              </div>
+              <div class="col-md-6 mb-2">
+                <strong>Tax Liability:</strong> ${formatCurrency(item.tax_liability)}
+              </div>
+              <div class="col-md-6 mb-2">
+                <strong>Status:</strong>
+                <span class="badge ${
+                  item.status === "paid"
+                    ? "bg-success"
+                    : item.status === "pending"
+                    ? "bg-warning text-dark"
+                    : "bg-secondary"
+                } text-uppercase">${item.status}</span>
+              </div>
+              <div class="col-md-12 mb-2">
+                <strong>Paid By:</strong> ${item.paid_by || "Not yet paid"}
+              </div>
+            </div>
+          </div>
+        `
+        )
+        .join("");
+
+      modalBody.innerHTML = `
+        <div class="border-bottom pb-3 mb-3">
+          <h5 class="fw-bold text-dark">Assessment Period</h5>
+          <p class="mb-0">${period}</p>
+        </div>
+
+        <div>${taxRows}</div>
+      `;
+
+      const modal = new bootstrap.Modal(document.getElementById("assessmentModal"));
+      modal.show();
+    }
+
+    document.addEventListener("DOMContentLoaded", loadAssessments);
+  </script>
+</main>
+
+
+ <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="assets/js/header.js"></script>
+    <script src="assets/libs/global/global.min.js"></script>
+    <script src="assets/libs/chartjs/chart.js"></script>
+    <script src="assets/libs/apexcharts/apexcharts.min.js"></script>
+    <script src="assets/libs/datatables/datatables.min.js"></script>
+    <script src="assets/libs/flatpickr/flatpickr.min.js"></script>
+</body>
+</html>

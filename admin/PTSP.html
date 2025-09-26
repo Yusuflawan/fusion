@@ -789,7 +789,6 @@ async function loadProviders() {
             <td>
               <i class="bi bi-envelope"></i> ${provider.provider_email} <br />
               <i class="bi bi-telephone"></i> N/A <br />
-              <i class="bi bi-geo-alt"></i> Lagos, Nigeria
             </td>
             <td>
               ID-${provider.id} <br />
@@ -803,15 +802,7 @@ async function loadProviders() {
               }
             </td>
             <td>
-              Merchants: ${provider.staff_quota} <br />
-              Volume: ₦${provider.terminal_volume}M <br />
-              Score: ${
-                provider.status === "active"
-                  ? "95.0%"
-                  : provider.status === "pending"
-                  ? "0%"
-                  : "N/A"
-              }
+              Volume: ${provider.terminal_volume} <br />
             </td>
             <td>
               <a href="#" class="text-primary view-btn" data-id="${provider.id}">
