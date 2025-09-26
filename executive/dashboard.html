@@ -323,7 +323,7 @@
 </style> -->
 
 <script>
-  const apiUrl = "https://arafatfootballacademy.com/fusion/backend/state/32/lga/performance-matrix"; 
+  const apiUrl = "https://arafatfootballacademy.com/fusion/backend/executive/lga-performance"; 
 
   function getStatusBadge(compliance) {
     if (compliance === null) {
@@ -391,14 +391,14 @@
 
     try {
       // Revenue API
-      const revenueApi = 'https://arafatfootballacademy.com/fusion/backend/executive/revenue-trend?state_id=32'; 
+      const revenueApi = 'https://arafatfootballacademy.com/fusion/backend/executive/revenue-trend'; 
       const revenueResponse = await axios.get(revenueApi);
       console.log(revenueResponse);
       const labels = revenueResponse.data.data.map(item => item.month_name);
       const revenues = revenueResponse.data.data.map(item => parseFloat(item.total_revenue));
 
       // Compliance API
-      const complianceApi = 'https://arafatfootballacademy.com/fusion/backend/executive/compliance/count?state_id=32'; 
+      const complianceApi = 'https://arafatfootballacademy.com/fusion/backend/executive/marchants-pie-chart'; 
       const complianceResponse = await axios.get(complianceApi);
       const complianceData = complianceResponse.data.data;
 
