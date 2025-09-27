@@ -228,75 +228,109 @@
 
     <div class="table-responsive">
       <table class="table align-middle mb-0">
-        <thead class="table-light">
-          <tr>
-            <th>LGA</th>
-            <th>Revenue (₦)</th>
-            <th>Target (₦)</th>
-            <th>Performance</th>
-            <th>Merchants</th>
-            <th>Compliance</th>
-            <th>Growth</th>
-            <th>Status</th>
-          </tr>
-        </thead>
-        <tbody id="lgaTableBody">
-        </tbody>
-      </table>
+  <thead class="table-light">
+    <tr>
+      <th>LGA</th>
+      <th>Revenue (₦)</th>
+      <th>Target (₦)</th>
+      <th>Performance</th>
+      <th>Merchants</th>
+      <th>Compliance</th>
+      <th>Growth</th>
+      <th>Status</th>
+    </tr>
+  </thead>
+  <tbody id="lgaTableBody"></tbody>
+</table>
     </div>
   </div>
 </div>
 
+
 <script>
-  document.addEventListener('DOMContentLoaded', async function () {
-    try {
-      const response = await fetch('https://arafatfootballacademy.com/fusion/backend/executive/32/detailed-lga-analysis');
-      const result = await response.json();
-      const tbody = document.getElementById('lgaTableBody');
+document.addEventListener("DOMContentLoaded", async function () {
+  const tbody = document.getElementById("lgaTableBody");
+  const endpoint = "https://arafatfootballacademy.com/fusion/backend/executive/lga-performance";
 
-      result.data.forEach(item => {
-        const formatCurrency = (val) => {
-          const num = parseFloat(val);
-          return isNaN(num) ? "₦0" : "₦" + num.toLocaleString();
-        };
+  function formatCurrency(value) {
+    const num = parseFloat(value);
+    return isNaN(num)
+      ? "₦0"
+      : "₦" + num.toLocaleString("en-NG", { maximumFractionDigits: 2 });
+  }
 
-
-        const performance = item.performance ?? "-";
-        const compliance = item.compliance ?? "-";
-        const growth = item.growth ?? "-";
-
-        let statusClass = "bg-warning-subtle text-warning";
-        if (item.status === "Excellent") {
-          statusClass = "bg-success-subtle text-success";
-        } else if (item.status === "Poor") {
-          statusClass = "bg-danger-subtle text-danger";
-        }
-
-        const row = `
-          <tr>
-            <td>${item.LGA}</td>
-            <td>${formatCurrency(item.revenue)}</td>
-            <td>${formatCurrency(item.target)}</td>
-            <td class="${performance.includes('%') && parseFloat(performance) >= 100 ? 'text-success' : 'text-danger'}">
-              ${performance}
-            </td>
-            <td>${item.marchants}</td>
-            <td>${compliance}</td>
-            <td class="${growth && growth.startsWith('+') ? 'text-success' : growth && growth.startsWith('-') ? 'text-danger' : ''}">
-              ${growth}
-            </td>
-            <td>
-              <span class="badge rounded-pill ${statusClass}">${item.status}</span>
-            </td>
-          </tr>
-        `;
-        tbody.insertAdjacentHTML('beforeend', row);
-      });
-    } catch (error) {
-      console.error('Error loading LGA table data:', error);
+  function getStatusBadge(status) {
+    if (!status) {
+      return `<span class="badge rounded-pill bg-secondary-subtle text-secondary">No Data</span>`;
     }
-  });
+
+    switch (status.toLowerCase()) {
+      case "excellent":
+        return `<span class="badge rounded-pill bg-success-subtle text-success">${status}</span>`;
+      case "good":
+        return `<span class="badge rounded-pill bg-warning-subtle text-warning">${status}</span>`;
+      case "poor":
+        return `<span class="badge rounded-pill bg-danger-subtle text-danger">${status}</span>`;
+      default:
+        return `<span class="badge rounded-pill bg-secondary-subtle text-secondary">${status}</span>`;
+    }
+  }
+
+  try {
+    tbody.innerHTML = `<tr><td colspan="8" class="text-center text-muted py-3">Loading...</td></tr>`;
+
+    const res = await fetch(endpoint);
+    const result = await res.json();
+
+    tbody.innerHTML = "";
+
+    if (!result?.data || result.data.length === 0) {
+      tbody.innerHTML = `<tr><td colspan="8" class="text-center text-muted py-3">No data available</td></tr>`;
+      return;
+    }
+
+    result.data.forEach(item => {
+      const lga = item.lga_name || "-";
+      const revenue = formatCurrency(item.total_revenue);
+      // const target = formatCurrency(item.target || 0);
+      const merchants = item.total_merchants ?? 0;
+      const compliance = item.compliance_rate + "%";
+      const growth = item.revenue_growth || "N/A";
+      const statusBadge = getStatusBadge(item.status);
+
+      const performanceClass =
+        parseFloat(item.compliance_rate) >= 50 ? "text-success" : "text-danger";
+
+      const growthClass =
+        growth.startsWith("+")
+          ? "text-success"
+          : growth.startsWith("-")
+          ? "text-danger"
+          : "";
+
+      const row = `
+        <tr>
+          <td>${lga}</td>
+          <td>${revenue}</td>
+          <td>-</td>
+          <td class="${performanceClass}">${compliance}</td>
+          <td>${merchants}</td>
+          <td>${compliance}</td>
+          <td class="${growthClass}">${growth}</td>
+          <td>${statusBadge}</td>
+        </tr>
+      `;
+
+      tbody.insertAdjacentHTML("beforeend", row);
+    });
+  } catch (error) {
+    console.error("Error loading LGA table data:", error);
+    tbody.innerHTML = `<tr><td colspan="8" class="text-center text-danger py-3">Error loading data</td></tr>`;
+  }
+});
 </script>
+
+
 
 
     </main>
@@ -319,45 +353,87 @@
 
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 <script>
-  document.addEventListener('DOMContentLoaded', async function () {
-    try {
-      const response = await fetch('https://arafatfootballacademy.com/fusion/backend/executive/32/revenue-activity');
-      const result = await response.json();
+document.addEventListener('DOMContentLoaded', async function () {
+  const listContainer = document.getElementById('lgaList');
 
-      const labels = result.data.map(item => item.lga_name);
-      const revenues = result.data.map(item => parseFloat(item.total_revenue));
+  try {
+    const response = await fetch('https://arafatfootballacademy.com/fusion/backend/executive/lga-performance');
+    const result = await response.json();
 
-      const ctx = document.getElementById('lgaChart').getContext('2d');
-      new Chart(ctx, {
-        type: 'bar',
-        data: {
-          labels: labels,
-          datasets: [{
-            label: 'Revenue Performance',
-            data: revenues,
-            backgroundColor: '#3b82f6'
-          }]
-        },
-        options: {
-          scales: {
-            y: {
-              beginAtZero: true,
-              grid: { color: '#f0f0f0' }
-            },
-            x: {
-              grid: { display: false }
+    if (!result?.data || result.data.length === 0) {
+      listContainer.innerHTML = '<p class="text-muted text-center">No data available</p>';
+      return;
+    }
+
+    const labels = result.data.map(item => item.lga_name);
+    const revenues = result.data.map(item => parseFloat(item.total_revenue));
+
+    const ctx = document.getElementById('lgaChart').getContext('2d');
+    new Chart(ctx, {
+      type: 'bar',
+      data: {
+        labels,
+        datasets: [{
+          label: 'Revenue (₦)',
+          data: revenues,
+          backgroundColor: '#3b82f6'
+        }]
+      },
+      options: {
+        scales: {
+          y: {
+            beginAtZero: true,
+            grid: { color: '#f0f0f0' },
+            ticks: {
+              callback: function(value) {
+                return '₦' + value.toLocaleString();
+              }
             }
           },
-          plugins: {
-            legend: { display: false }
+          x: {
+            grid: { display: false }
+          }
+        },
+        plugins: {
+          legend: { display: false },
+          tooltip: {
+            callbacks: {
+              label: function(context) {
+                return `₦${context.parsed.y.toLocaleString()}`;
+              }
+            }
           }
         }
-      });
-    } catch (error) {
-      console.error('Error loading data:', error);
-    }
-  });
+      }
+    });
+
+    const listHTML = `
+      <table class="table table-sm table-striped align-middle mb-0">
+        <thead>
+          <tr>
+            <th>LGA</th>
+            <th class="text-end">Revenue (₦)</th>
+          </tr>
+        </thead>
+        <tbody>
+          ${result.data.map(item => `
+            <tr>
+              <td>${item.lga_name}</td>
+              <td class="text-end">₦${parseFloat(item.total_revenue || 0).toLocaleString()}</td>
+            </tr>
+          `).join('')}
+        </tbody>
+      </table>
+    `;
+
+    listContainer.innerHTML = listHTML;
+  } catch (error) {
+    console.error('Error data:', error);
+    listContainer.innerHTML = '<p class="text-danger text-center">Error  data</p>';
+  }
+});
 </script>
+
 
 
   <!-- Chart.js -->
