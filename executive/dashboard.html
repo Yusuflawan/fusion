@@ -521,7 +521,8 @@ let complianceChartInstance = null;
 
 async function loadComplianceDistribution() {
   try {
-    const res = await fetch(`${baseUrl}/executive/compliance-distribution`);
+    // https://arafatfootballacademy.com/fusion/backend/executive
+    const res = await fetch(`${baseUrl}/executive/marchants-pie-chart`);
     const json = await res.json();
     const data = json.data || {};
 
