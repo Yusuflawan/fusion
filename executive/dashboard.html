@@ -59,7 +59,6 @@
     });
   </script>
   <!-- end::GXON Googletagmanager -->
-    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 </head>
 
 <body>
@@ -139,7 +138,7 @@
         <div class="app-page-head d-flex flex-wrap gap-3 align-items-center justify-content-between">
           <div class="clearfix">
             <h1 class="app-page-title">Dashboard</h1>
-            <span>Strategic overview of Lagos State IGR performance</span>
+            <span>Strategic overview of Plateau State IGR performance</span>
           </div>
         </div>
         <!-- DASHBOARD LAYOUT -->
@@ -233,18 +232,23 @@
               <p class="text-muted mb-4">Revenue and compliance by Local Government Area</p>
 
              <div class="table-responsive">
-  <table class="table align-middle table-hover">
-    <thead class="table-light">
-      <tr>
-        <th scope="col" class="ps-4">LGA</th>
-        <th scope="col">Revenue (₦)</th>
-        <th scope="col">Compliance (%)</th>
-        <th scope="col" class="pe-4">Status</th>
-      </tr>
-    </thead>
-    <tbody id="lga-table-body">
-    </tbody>
-  </table>
+ <table class="table align-middle table-hover">
+  <thead class="table-light">
+    <tr>
+      <th scope="col" class="ps-4">Local Government Area</th>
+      <th scope="col">Total Revenue (₦)</th>
+      <th scope="col">Compliance Rate (%)</th>
+      <th scope="col">Total Merchants</th>
+      <th scope="col">Total Assessments</th>
+      <th scope="col">Paid Assessments</th>
+      <th scope="col">Revenue Growth (%)</th>
+      <th scope="col" class="pe-4 text-center">Status</th>
+    </tr>
+  </thead>
+  <tbody id="lga-table-body"></tbody>
+</table>
+
+
 </div>
           </div>
         </div>
@@ -284,24 +288,6 @@
   <!-- Load Chart.js once -->
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
-<!-- Loading Spinner -->
-<div id="loading" style="text-align:center; padding:20px;">
-  <div class="spinner" 
-       style="width:40px; height:40px; border:4px solid #ddd; border-top:4px solid #007bff; border-radius:50%; animation: spin 1s linear infinite; margin:auto;">
-  </div>
-  <p>Loading charts...</p>
-</div>
-
-<!-- Chart Containers (hidden until data is ready) -->
-<canvas id="revenueChart" style="display:none; max-height:300px;"></canvas>
-<canvas id="complianceChart" style="display:none; max-height:300px;"></canvas>
-
-<style>
-  @keyframes spin {
-    0% { transform: rotate(0deg); }
-    100% { transform: rotate(360deg); }
-  }
-</style>
 
 <!-- Loading Spinner -->
 <!-- <div id="loading" style="text-align:center; padding:20px;">
@@ -325,27 +311,21 @@
 <script>
   const apiUrl = "https://arafatfootballacademy.com/fusion/backend/executive/lga-performance"; 
 
-  function getStatusBadge(compliance) {
-    if (compliance === null) {
+  function getStatusBadge(status) {
+    if (!status) {
       return `<span class="badge rounded-pill px-3 py-2 fw-semibold text-secondary bg-secondary-subtle">
                 No Data
               </span>`;
     }
 
-    const complianceRate = parseFloat(compliance);
-
-    if (complianceRate >= 85) {
-      return `<span class="badge rounded-pill px-3 py-2 fw-semibold text-success bg-success-subtle">
-                Excellent
-              </span>`;
-    } else if (complianceRate >= 70) {
-      return `<span class="badge rounded-pill px-3 py-2 fw-semibold text-warning bg-warning-subtle">
-                Good
-              </span>`;
-    } else {
-      return `<span class="badge rounded-pill px-3 py-2 fw-semibold text-danger bg-danger-subtle">
-                Needs Attention
-              </span>`;
+    switch (status.toLowerCase()) {
+      case "excellent":
+        return `<span class="badge rounded-pill px-3 py-2 fw-semibold text-success bg-success-subtle">${status}</span>`;
+      case "good":
+        return `<span class="badge rounded-pill px-3 py-2 fw-semibold text-warning bg-warning-subtle">${status}</span>`;
+      case "poor":
+      default:
+        return `<span class="badge rounded-pill px-3 py-2 fw-semibold text-danger bg-danger-subtle">${status}</span>`;
     }
   }
 
@@ -358,17 +338,19 @@
       tbody.innerHTML = "";
 
       result.data.forEach(item => {
-        const compliance = item.compliant_rate
-          ? parseFloat(item.compliant_rate)
-          : null;
+        const compliance = item.compliance_rate !== null ? parseFloat(item.compliance_rate) : null;
 
         const row = `
           <tr>
             <td class="ps-4">${item.lga_name}</td>
-            <td>₦${Number(item.transaction_volume).toLocaleString()}</td>
+            <td>₦${Number(item.total_revenue).toLocaleString()}</td>
             <td>${compliance !== null ? compliance + "%" : "-"}</td>
+            <td>${item.total_merchants}</td>
+            <td>${item.total_assessments}</td>
+            <td>${item.paid_assessments}</td>
+            <td>${item.revenue_growth}</td>
             <td class="pe-4">
-              ${getStatusBadge(compliance)}
+              ${getStatusBadge(item.status)}
             </td>
           </tr>
         `;
@@ -381,100 +363,17 @@
     }
   }
 
-
   document.addEventListener("DOMContentLoaded", loadLgaData);
-
-  document.addEventListener('DOMContentLoaded', async function () {
-    const loadingEl = document.getElementById('loading');
-    const revenueChartEl = document.getElementById('revenueChart');
-    const complianceChartEl = document.getElementById('complianceChart');
-
-    try {
-      // Revenue API
-      const revenueApi = 'https://arafatfootballacademy.com/fusion/backend/executive/revenue-trend'; 
-      const revenueResponse = await axios.get(revenueApi);
-      console.log(revenueResponse);
-      const labels = revenueResponse.data.data.map(item => item.month_name);
-      const revenues = revenueResponse.data.data.map(item => parseFloat(item.total_revenue));
-
-      // Compliance API
-      const complianceApi = 'https://arafatfootballacademy.com/fusion/backend/executive/marchants-pie-chart'; 
-      const complianceResponse = await axios.get(complianceApi);
-      const complianceData = complianceResponse.data.data;
-
-      const total = complianceData.total_marchants || 1;
-      const compliant = complianceData.compliant_marchants;
-      const nonCompliant = complianceData.non_compliant_marchants;
-      const partial = complianceData.partial_marchants;
-
-      const compliantPct = ((compliant / total) * 100).toFixed(1);
-      const partialPct = ((partial / total) * 100).toFixed(1);
-      const nonCompliantPct = ((nonCompliant / total) * 100).toFixed(1);
-
-
-      loadingEl.style.display = 'none';
-      revenueChartEl.style.display = 'block';
-      complianceChartEl.style.display = 'block';
-
-      // Revenue Trend Chart
-      new Chart(revenueChartEl, {
-        type: 'line',
-        data: {
-          labels: labels,
-          datasets: [
-            {
-              label: 'Actual Revenue',
-              data: revenues,
-              borderColor: '#007bff',
-              backgroundColor: 'transparent',
-              tension: 0.3,
-              pointRadius: 4
-            },
-          ]
-        },
-        options: {
-          plugins: { legend: { display: false } },
-          scales: { y: { beginAtZero: true } }
-        }
-      });
-
-      // Compliance Distribution Chart
-      new Chart(complianceChartEl, {
-        type: 'pie',
-        data: {
-          labels: [
-            `Compliant ${compliantPct}%`,
-            `Partial ${partialPct}%`,
-            `Non-Compliant ${nonCompliantPct}%`
-          ],
-          datasets: [{
-            data: [compliant, partial, nonCompliant],
-            backgroundColor: ['#20c997', '#f6b93b', '#e74c3c']
-          }]
-        },
-        options: {
-          plugins: {
-            legend: {
-              display: true,
-              position: 'right'
-            }
-          }
-        }
-      });
-
-    } catch (error) {
-      console.error("Error fetching data:", error);
-      loadingEl.innerHTML = "<p style='color:red;'>Please try again.</p>";
-    }
-  });
 </script>
+
 
 
 
   <!-- begin::GXON Page Scripts -->
 
+  <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
   <script src="assets/js/header.js"></script>
-  <script src="assets/js/logic/dashboard.js"></script>
+  <!-- <script src="assets/js/logic/dashboard.js"></script> -->
   <!-- <script src="assets/libs/global/global.min.js"></script> -->
   <script src="assets/libs/sortable/Sortable.min.js"></script>
   <script src="assets/libs/chartjs/chart.js"></script>
@@ -487,6 +386,53 @@
   <!-- <script src="assets/js/main.js"></script> -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 
+ <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+<script>
+// const baseUrl = "https://arafatfootballacademy.com/fusion/backend";
+
+const totalRevenue = document.querySelector("#total_revenue");
+const activeMerchants = document.querySelector("#active_merchants");
+const complianceRate = document.querySelector("#compliance_rate");
+
+const stateId = 32;
+const period = "last_30_days";
+
+async function loadData() {
+  try {
+    totalRevenue.textContent = "Loading...";
+    activeMerchants.textContent = "...";
+    complianceRate.textContent = "...";
+
+    const res = await axios.get(`${baseUrl}/executive/dashboard-cards`);
+    const { status, data } = res.data;
+
+    if (status === "success" && data) {
+      totalRevenue.textContent = formatToNaira(data.total_revenue);
+      activeMerchants.textContent = data.active_merchants.toLocaleString();
+      complianceRate.textContent = `${data.compliance_rate}%`;
+    } else {
+      totalRevenue.textContent = "N/A";
+      activeMerchants.textContent = "N/A";
+      complianceRate.textContent = "N/A";
+    }
+  } catch (error) {
+    console.error("Error loading dashboard data:", error);
+    totalRevenue.textContent = "Error";
+    activeMerchants.textContent = "Error";
+    complianceRate.textContent = "Error";
+  }
+}
+
+function formatToNaira(num) {
+  const n = Number(num) || 0;
+  if (n >= 1_000_000_000) return `₦${(n / 1_000_000_000).toFixed(1)}B`;
+  if (n >= 1_000_000) return `₦${(n / 1_000_000).toFixed(1)}M`;
+  if (n >= 1_000) return `₦${(n / 1_000).toFixed(1)}K`;
+  return `₦${n.toLocaleString()}`;
+}
+
+document.addEventListener("DOMContentLoaded", loadData);
+</script>
 
   <!-- end::GXON Page Scripts -->
 </body>

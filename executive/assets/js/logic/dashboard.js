@@ -13,43 +13,23 @@ async function loadData() {
     activeMerchants.textContent = "...";
     complianceRate.textContent = "...";
 
-    const [
-      totalRevenueRes,
-      activeMerchantsRes,
-      complianceRateRes,
-    ] = await Promise.all([
-      axios.get(`${baseUrl}/executive/total-revenue?state_id=${stateId}&period=${period}`),
-      axios.get(`${baseUrl}/executive/compliance/count?state_id=${stateId}`),
-      axios.get(`${baseUrl}/executive/compliance-rate?state_id=${stateId}&period=${period}`),
-    ]);
+    const res = await axios.get(`${baseUrl}/executive/dashboard-cards`);
+    const { status, data } = res.data;
 
-    console.log(complianceRateRes.data)
-
-    // Compliance Status
-    if (totalRevenueRes.data.status === "success") {
-      totalRevenue.textContent = formatToNaira(totalRevenueRes.data.data.revenue);
+    if (status === "success" && data) {
+      totalRevenue.textContent = formatToNaira(data.total_revenue);
+      activeMerchants.textContent = data.active_merchants.toLocaleString();
+      complianceRate.textContent = `${data.compliance_rate}%`;
     } else {
       totalRevenue.textContent = "N/A";
-    }
-
-    // Transaction Volume
-    if (activeMerchantsRes.data?.status === "success") {
-      activeMerchants.textContent = formatToNaira(activeMerchantsRes.data.data.total_marchants);
-    // activeMerchants.textContent = "text";
-    } else {
       activeMerchants.textContent = "N/A";
-    }
-
-    // Revenue
-    if (complianceRateRes.data?.status === "success") {
-      complianceRate.textContent = formatToNaira(complianceRateRes.data.data.total_assessments);
-    } else {
       complianceRate.textContent = "N/A";
     }
   } catch (error) {
-    // totalRevenue.textContent = "Error";
-    // complianceRate.textContent = "Error";
-    // activeMerchants.textContent = "Error";
+    console.error("Error loading dashboard data:", error);
+    totalRevenue.textContent = "Error";
+    activeMerchants.textContent = "Error";
+    complianceRate.textContent = "Error";
   }
 }
 
@@ -61,4 +41,6 @@ function formatToNaira(num) {
   return `₦${n.toLocaleString()}`;
 }
 
-loadData();
+// loadData();
+
+document.addEventListener("DOMContentLoaded", loadData);
