@@ -344,23 +344,26 @@
         `;
         return;
       }
-
       result.data.forEach(item => {
-        const compliance = item.compliance_rate !== null ? parseFloat(item.compliance_rate) : null;
+  const compliance = item.compliance_rate !== null ? parseFloat(item.compliance_rate) : null;
+  const totalRevenue = parseFloat(item.total_revenue) || 0;
 
-        const row = `
-          <tr>
-            <td class="ps-4">${item.lga_name}</td>
-            <td>₦${Number(item.total_revenue).toLocaleString()}</td>
-            <td>${compliance !== null ? compliance + "%" : "-"}</td>
-            <td class="pe-4 text-center">
-              ${getStatusBadge(item.status)}
-            </td>
-          </tr>
-        `;
+  const statusBadge = totalRevenue === 0 ? "No Transactions" : getStatusBadge(item.status);
 
-        tbody.insertAdjacentHTML("beforeend", row);
-      });
+  const row = `
+    <tr>
+      <td class="ps-4">${item.lga_name}</td>
+      <td>₦${totalRevenue.toLocaleString()}</td>
+      <td>${compliance !== null ? compliance + "%" : "-"}</td>
+      <td class="pe-4 text-center">
+        ${statusBadge}
+      </td>
+    </tr>
+  `;
+
+  tbody.insertAdjacentHTML("beforeend", row);
+});
+
 
     } catch (error) {
       console.error("Error fetching LGA data:", error);
