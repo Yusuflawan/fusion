@@ -212,6 +212,8 @@
                 </div>
               </div>
             </div>
+ 
+
             <div class="col-md-4">
               <div class="card p-3 h-100">
                 <h6 class="fw-bold">Compliance Distribution</h6>
@@ -385,8 +387,6 @@
   <script src="assets/js/appSettings.js"></script>
   <!-- <script src="assets/js/main.js"></script> -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
-
- <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 <script>
 // const baseUrl = "https://arafatfootballacademy.com/fusion/backend";
 
@@ -432,7 +432,148 @@ function formatToNaira(num) {
 }
 
 document.addEventListener("DOMContentLoaded", loadData);
+
+// const baseUrl = "https://arafatfootballacademy.com/fusion/backend";
+
+const ctx = document.getElementById("revenueChart").getContext("2d");
+let revenueChartInstance = null;
+
+function formatToNaira(amount) {
+  return "₦" + Number(amount).toLocaleString("en-NG", { maximumFractionDigits: 2 });
+}
+
+async function loadRevenueTrend() {
+  try {
+    const res = await fetch(`${baseUrl}/executive/revenue-trend`);
+    const json = await res.json();
+    const data = json.data || [];
+
+    const labels = data.map(item => item.month_name);
+    const revenues = data.map(item => parseFloat(item.total_revenue));
+
+    if (revenueChartInstance) revenueChartInstance.destroy();
+
+    revenueChartInstance = new Chart(ctx, {
+      type: "line",
+      data: {
+        labels,
+        datasets: [
+          {
+            label: "Total Revenue (₦)",
+            data: revenues,
+            borderColor: "#0d6efd",
+            backgroundColor: "rgba(13, 110, 253, 0.1)",
+            fill: true,
+            tension: 0.4,
+            pointRadius: 4,
+            pointBackgroundColor: "#0d6efd",
+          },
+        ],
+      },
+      options: {
+        responsive: true,
+        maintainAspectRatio: false,
+        plugins: {
+          legend: {
+            display: true,
+            position: "top",
+          },
+          tooltip: {
+            callbacks: {
+              label: function (context) {
+                return formatToNaira(context.parsed.y);
+              },
+            },
+          },
+        },
+        scales: {
+          y: {
+            beginAtZero: true,
+            ticks: {
+              callback: function (value) {
+                return "₦" + value.toLocaleString();
+              },
+            },
+          },
+        },
+      },
+    });
+  } catch (error) {
+    console.error("Error loading revenue trend:", error);
+  }
+}
+
+document.addEventListener("DOMContentLoaded", loadRevenueTrend);
+
+// const baseUrl = "https://arafatfootballacademy.com/fusion/backend";
+
+const complianceCtx = document.getElementById("complianceChart").getContext("2d");
+let complianceChartInstance = null;
+
+async function loadComplianceDistribution() {
+  try {
+    const res = await fetch(`${baseUrl}/executive/compliance-distribution`);
+    const json = await res.json();
+    const data = json.data || {};
+
+    const compliant = parseInt(data.compliant_marchants) || 0;
+    const partiallyCompliant = parseInt(data.partially_compliant_marchants) || 0;
+    const nonCompliant = parseInt(data.non_compliant_marchants) || 0;
+
+    if (complianceChartInstance) complianceChartInstance.destroy();
+
+    complianceChartInstance = new Chart(complianceCtx, {
+      type: "doughnut",
+      data: {
+        labels: ["Compliant", "Partially Compliant", "Non-Compliant"],
+        datasets: [
+          {
+            label: "Merchant Distribution",
+            data: [compliant, partiallyCompliant, nonCompliant],
+            backgroundColor: [
+              "rgba(40, 167, 69, 0.8)",  
+              "rgba(255, 193, 7, 0.8)",  
+              "rgba(220, 53, 69, 0.8)",  
+            ],
+            borderColor: [
+              "rgba(40, 167, 69, 1)",
+              "rgba(255, 193, 7, 1)",
+              "rgba(220, 53, 69, 1)",
+            ],
+            borderWidth: 1,
+          },
+        ],
+      },
+      options: {
+        responsive: true,
+        maintainAspectRatio: false,
+        plugins: {
+          legend: {
+            position: "bottom",
+            labels: { usePointStyle: true },
+          },
+          tooltip: {
+            callbacks: {
+              label: function (context) {
+                const label = context.label || "";
+                const value = context.raw || 0;
+                const total = compliant + partiallyCompliant + nonCompliant;
+                const percent = total > 0 ? ((value / total) * 100).toFixed(1) : 0;
+                return `${label}: ${value} (${percent}%)`;
+              },
+            },
+          },
+        },
+      },
+    });
+  } catch (error) {
+    console.error("Error loading compliance distribution:", error);
+  }
+}
+
+document.addEventListener("DOMContentLoaded", loadComplianceDistribution);
 </script>
+
 
   <!-- end::GXON Page Scripts -->
 </body>
