@@ -781,40 +781,51 @@
     <script src="assets/js/appSettings.js"></script>
     <script src="assets/js/main.js"></script>
     <!-- end::GXON Page Scripts -->
-     <script>
+<script>
 document.addEventListener("DOMContentLoaded", async () => {
-  const map = L.map('map').setView([9.0579, 7.4951], 10);
+  const map = L.map('map').setView([9.2182, 9.5176], 8);
 
   L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
     maxZoom: 18,
   }).addTo(map);
 
-  const response = await fetch("https://arafatfootballacademy.com/fusion/backend/state/32/lga/performance-matrix");
+  const response = await fetch("https://arafatfootballacademy.com/fusion/backend/executive/lga-performance");
   const result = await response.json();
 
-  console.log(result);
-
   if (result.status === "success") {
+    const coords = {
+      "Barkin Ladi": [9.5333, 8.9000],
+      "Bassa": [10.0833, 8.7333],
+      "Bokkos": [9.3167, 8.9833],
+      "Jos East": [9.9333, 9.1167],
+      "Jos North": [9.9333, 8.9000],
+      "Jos South": [9.7500, 8.8667],
+      "Kanam": [9.3333, 9.9667],
+      "Kanke": [9.4667, 9.3500],
+      "Langtang North": [9.1500, 9.7833],
+      "Langtang South": [8.6000, 9.8167],
+      "Mangu": [9.5167, 9.1333],
+      "Mikang": [8.8833, 9.6167],
+      "Pankshin": [9.3333, 9.4333],
+      "Qua'an Pan": [8.6167, 9.3833],
+      "Riyom": [9.6333, 8.7000],
+      "Shendam": [8.8833, 9.5333],
+      "Wase": [9.0833, 9.9833],
+    };
+
     result.data.forEach(lga => {
-      let coords = {
-        "Abaji": [8.474, 7.168],
-        "Bwari": [9.239, 7.383],
-        "Gwagwalada": [8.939, 7.082],
-        "Kuje": [8.878, 7.229],
-        "Kwali": [8.890, 7.020],
-        "Municipal Area Council": [9.0579, 7.4951],
-      };
+      const { lga_name, total_merchants, total_revenue, compliance_rate, revenue_growth, status, total_assessments, paid_assessments } = lga;
 
-      if (!coords[lga.lga_name]) return;
+      if (!coords[lga_name]) return;
 
-      let compliance = parseFloat(lga.compliant_rate) || 0;
+      const compliance = parseFloat(compliance_rate) || 0;
       let color = "gray";
       if (compliance >= 80) color = "green";
       else if (compliance >= 50) color = "orange";
       else color = "red";
 
-      const marker = L.circleMarker(coords[lga.lga_name], {
-        radius: 12,
+      const marker = L.circleMarker(coords[lga_name], {
+        radius: 10,
         fillColor: color,
         color: "#fff",
         weight: 2,
@@ -822,19 +833,28 @@ document.addEventListener("DOMContentLoaded", async () => {
         fillOpacity: 0.8
       }).addTo(map);
 
-      marker.bindPopup(`
-        <b>${lga.lga_name}</b><br>
-        Merchants: ${lga.marchant_count}<br>
-        Active: ${lga.active_marchants}<br>
-        Transactions: ₦${parseFloat(lga.transaction_volume).toLocaleString()}<br>
-        Compliant: ${lga.compliant_rate || "N/A"}<br>
-        Non-Compliant: ${lga.non_compliant_rate || "N/A"}<br>
-        Partial: ${lga.partial_compliant_rate || "N/A"}
-      `);
+      const popupContent = `
+        <div style="font-size: 14px; line-height: 1.4;">
+          <b style="font-size:16px;">${lga_name}</b><br>
+          <hr style="margin: 5px 0;">
+          <b>Total Merchants:</b> ${total_merchants}<br>
+          <b>Total Revenue:</b> ₦${parseFloat(total_revenue).toLocaleString()}<br>
+          <b>Total Assessments:</b> ${total_assessments}<br>
+          <b>Paid Assessments:</b> ${paid_assessments}<br>
+          <b>Compliance Rate:</b> ${compliance_rate}%<br>
+          <b>Status:</b> ${status}<br>
+          <b>Revenue Growth:</b> ${revenue_growth}
+        </div>
+      `;
+
+      marker.bindPopup(popupContent);
     });
+  } else {
+    console.error("Failed to load data:", result.message);
   }
 });
 </script>
+
 
 </body>
 

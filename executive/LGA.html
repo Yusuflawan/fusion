@@ -290,39 +290,40 @@ document.addEventListener("DOMContentLoaded", async function () {
     }
 
     result.data.forEach(item => {
-      const lga = item.lga_name || "-";
-      const revenue = formatCurrency(item.total_revenue);
-      // const target = formatCurrency(item.target || 0);
-      const merchants = item.total_merchants ?? 0;
-      const compliance = item.compliance_rate + "%";
-      const growth = item.revenue_growth || "N/A";
-      const statusBadge = getStatusBadge(item.status);
+  const lga = item.lga_name || "-";
+  const totalRevenue = parseFloat(item.total_revenue) || 0;
+  const revenue = formatCurrency(totalRevenue);
+  const merchants = item.total_merchants ?? 0;
+  const compliance = item.compliance_rate + "%";
+  const growth = item.revenue_growth || "N/A";
+  const statusBadge = totalRevenue === 0 ? "No Transactions" : getStatusBadge(item.status);
 
-      const performanceClass =
-        parseFloat(item.compliance_rate) >= 50 ? "text-success" : "text-danger";
+  const performanceClass =
+    parseFloat(item.compliance_rate) >= 50 ? "text-success" : "text-danger";
 
-      const growthClass =
-        growth.startsWith("+")
-          ? "text-success"
-          : growth.startsWith("-")
-          ? "text-danger"
-          : "";
+  const growthClass =
+    growth.startsWith("+")
+      ? "text-success"
+      : growth.startsWith("-")
+      ? "text-danger"
+      : "";
 
-      const row = `
-        <tr>
-          <td>${lga}</td>
-          <td>${revenue}</td>
-          <td>-</td>
-          <td class="${performanceClass}">-</td>
-          <td>${merchants}</td>
-          <td>${compliance}</td>
-          <td class="${growthClass}">-</td>
-          <td>${statusBadge}</td>
-        </tr>
-      `;
+  const row = `
+    <tr>
+      <td>${lga}</td>
+      <td>${revenue}</td>
+      <td>-</td>
+      <td class="${performanceClass}">-</td>
+      <td>${merchants}</td>
+      <td>${compliance}</td>
+      <td class="${growthClass}">-</td>
+      <td>${statusBadge}</td>
+    </tr>
+  `;
 
-      tbody.insertAdjacentHTML("beforeend", row);
-    });
+  tbody.insertAdjacentHTML("beforeend", row);
+});
+
   } catch (error) {
     console.error("Error loading LGA table data:", error);
     tbody.innerHTML = `<tr><td colspan="8" class="text-center text-danger py-3">Error loading data</td></tr>`;
