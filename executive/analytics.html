@@ -266,7 +266,7 @@
               </div>
 
               <!-- ===== Forecast Chart Card ===== -->
-              <div class="card rounded-4 shadow-sm mb-4">
+              <!-- <div class="card rounded-4 shadow-sm mb-4">
                 <div class="card-body">
                   <h6 class="fw-bold">Revenue Forecast &amp; Projections</h6>
                   <p class="small text-muted mb-4">
@@ -274,7 +274,7 @@
                   </p>
                   <canvas id="forecastChart" height="100"></canvas>
                 </div>
-              </div>
+              </div> -->
 
               <!-- ===== Sector Contribution Section ===== -->
               <div class="card rounded-4 shadow-sm">
@@ -315,32 +315,35 @@
               </div>
 
               <script>
-                document.addEventListener(
-                  "DOMContentLoaded",
-                  async function () {
-                    const container =
-                      document.getElementById("sectorContainer");
+  document.addEventListener("DOMContentLoaded", async function () {
+    const container = document.getElementById("sectorContainer");
 
-                    try {
-                      const response = await fetch(
-                        "https://arafatfootballacademy.com/fusion/backend/executive/32/sector-distribution-analysis"
-                      );
-                      const result = await response.json();
-                      container.innerHTML = "";
+    try {
+      const response = await fetch(
+        "https://arafatfootballacademy.com/fusion/backend/executive/sector-distribution"
+      );
+      const result = await response.json();
+      container.innerHTML = "";
 
-                      result.data.forEach((item) => {
-                        const percentage =
-                          parseFloat(item.revenue_percentage) || 0;
-                        const growth = "+8.5%";
-                        const growthClass = "text-success";
-                        const risk = {
-                          label: "medium risk",
-                          class: "bg-warning-subtle text-warning",
-                        };
+      if (!result.data || result.data.length === 0) {
+        container.innerHTML = `<p class="text-muted small">No sector data available.</p>`;
+        return;
+      }
 
-                        const sectorBlock = `
+      result.data.forEach((item) => {
+        const percentage = parseFloat(item.contribution) || 0;
+        const revenue = parseFloat(item.sector_revenue) || 0;
+
+        const growth = revenue > 0 ? "+8.5%" : "0%";
+        const growthClass = revenue > 0 ? "text-success" : "text-muted";
+        const risk =
+          revenue > 0
+            ? { label: "medium risk", class: "bg-warning-subtle text-warning" }
+            : { label: "no activity", class: "bg-light text-secondary" };
+
+        const sectorBlock = `
           <div class="d-flex justify-content-between mb-2">
-            <strong>${item.business_type}</strong>
+            <strong>${item.sector}</strong>
             <div class="text-end small">
               <span class="text-secondary">${percentage.toFixed(
                 1
@@ -354,15 +357,15 @@
           </div>
         `;
 
-                        container.insertAdjacentHTML("beforeend", sectorBlock);
-                      });
-                    } catch (error) {
-                      console.error("Error loading sector data:", error);
-                      container.innerHTML = `<p class="text-danger small">Failed to load data.</p>`;
-                    }
-                  }
-                );
-              </script>
+        container.insertAdjacentHTML("beforeend", sectorBlock);
+      });
+    } catch (error) {
+      console.error("Error loading sector data:", error);
+      container.innerHTML = `<p class="text-danger small">Failed to load data.</p>`;
+    }
+  });
+</script>
+
             </div>
           </div>
         </div>
@@ -432,7 +435,7 @@
     <script src="assets/js/appSettings.js"></script>
     <script src="assets/js/main.js"></script>
     <script>
-      const baseUrl = "https://arafatfootballacademy.com/fusion/backend";
+      // const baseUrl = "https://arafatfootballacademy.com/fusion/backend";
 
       const revenueEfficiency = document.querySelector("#revenueEfficiency");
       const marketPenetration = document.querySelector("#marketPenetration");
@@ -462,10 +465,12 @@
 
             // console.log(revenueEfficiencyRes,marketPenetrationRes,revenuePerMarchantRes)
 
+            // console.log(revenueEfficiencyRes.data)
 
           // Compliance Status
           if (revenueEfficiencyRes.data.status === "success") {
-            revenueEfficiency.textContent = `${revenueEfficiencyRes.data.data.revenue_efficiency}%`
+            // revenueEfficiency.textContent = `${revenueEfficiencyRes.data.data.revenue_efficiency}%`
+            revenueEfficiency.textContent = `0%`
           } else {
             revenueEfficiency.textContent = "N/A";
           }
