@@ -469,7 +469,8 @@
 
           // Compliance Status
           if (revenueEfficiencyRes.data.status === "success") {
-            revenueEfficiency.textContent = `${revenueEfficiencyRes.data.data.revenue_efficiency}%`
+            // revenueEfficiency.textContent = `${revenueEfficiencyRes.data.data.revenue_efficiency}%`
+            revenueEfficiency.textContent = `0%`
           } else {
             revenueEfficiency.textContent = "N/A";
           }
