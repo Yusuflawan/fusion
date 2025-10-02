@@ -1,0 +1,431 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <!-- begin::GXON Meta Basic -->
+  <meta charset="utf-8" />
+  <meta name="theme-color" content="#316AFF" />
+  <meta name="robots" content="index, follow" />
+  <meta name="author" content="LayoutDrop" />
+  <meta name="format-detection" content="telephone=no" />
+  <meta name="keywords"
+    content="HR Management, HR Dashboard, Admin Template, Admin Dashboard, Bootstrap Admin, HR Admin Panel, Employee Management, Human Resources Dashboard, Responsive Admin Template, Web App Dashboard, HRMS Admin, Staff Management Dashboard, Bootstrap 5 Admin, Modern Admin Template, Admin UI Kit, ThemeForest Admin Template, SaaS Dashboard, Project Management Admin, HR Web Application, RTL Dashboard" />
+  <meta name="description"
+    content="GXON is a professional and modern HR Management Admin Dashboard Template built with Bootstrap. It includes light and dark modes, and is ideal for managing employees, attendance, payroll, recruitment, and more — perfect for HR software and admin panels." />
+  <!-- end::GXON Meta Basic -->
+
+  <!-- begin::GXON Meta Social -->
+  <meta property="og:url" content="https://gxon.layoutdrop.com/demo/" />
+  <meta property="og:site_name" content="GXON HR Management Admin Dashboard Template + RTL" />
+  <meta property="og:type" content="website" />
+  <meta property="og:locale" content="en_US" />
+  <meta property="og:title" content="GXON HR Management Admin Dashboard Template + RTL" />
+  <meta property="og:description"
+    content="GXON is a professional and modern HR Management Admin Dashboard Template built with Bootstrap. It includes light and dark modes, and is ideal for managing employees, attendance, payroll, recruitment, and more — perfect for HR software and admin panels." />
+  <meta property="og:image" content="https://gxon.layoutdrop.com/demo/preview.png" />
+  <!-- end::GXON Meta Social -->
+
+  <!-- begin::GXON Meta Twitter -->
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:url" content="https://gxon.layoutdrop.com/demo/" />
+  <meta name="twitter:creator" content="@layoutdrop" />
+  <meta name="twitter:title" content="GXON HR Management Admin Dashboard Template + RTL" />
+  <meta name="twitter:description"
+    content="GXON is a professional and modern HR Management Admin Dashboard Template built with Bootstrap. It includes light and dark modes, and is ideal for managing employees, attendance, payroll, recruitment, and more — perfect for HR software and admin panels." />
+  <!-- end::GXON Meta Twitter -->
+
+  <!-- begin::GXON Website Page Title -->
+  <title>GXON HR Management Admin Dashboard Template + RTL</title>
+  <!-- end::GXON Website Page Title -->
+
+  <!-- begin::GXON Mobile Specific -->
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <!-- end::GXON Mobile Specific -->
+
+  <!-- begin::GXON Favicon Tags -->
+  <link rel="icon" type="image/png" href="assets/images/favicon.png" />
+  <link rel="apple-touch-icon" sizes="180x180" href="assets/images/apple-touch-icon.png" />
+  <!-- end::GXON Favicon Tags -->
+
+  <!-- begin::GXON Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&display=swap"
+    rel="stylesheet" />
+  <!-- end::GXON Google Fonts -->
+
+  <!-- begin::GXON Required Stylesheet -->
+  <link rel="stylesheet" href="assets/libs/flaticon/css/all/all.css" />
+  <link rel="stylesheet" href="assets/libs/lucide/lucide.css" />
+  <link rel="stylesheet" href="assets/libs/fontawesome/css/all.min.css" />
+  <link rel="stylesheet" href="assets/libs/simplebar/simplebar.css" />
+  <link rel="stylesheet" href="assets/libs/node-waves/waves.css" />
+  <link rel="stylesheet" href="assets/libs/bootstrap-select/css/bootstrap-select.min.css" />
+  <!-- end::GXON Required Stylesheet -->
+
+  <!-- begin::GXON CSS Stylesheet -->
+  <link rel="stylesheet" href="assets/libs/flatpickr/flatpickr.min.css" />
+  <link rel="stylesheet" href="assets/libs/datatables/datatables.min.css" />
+  <link rel="stylesheet" href="assets/css/styles.css" />
+  <!-- Bootstrap core CSS (already in your project) -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+
+  <!-- Add this line for Bootstrap Icons -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
+
+  <!-- end::GXON CSS Stylesheet -->
+
+  <!-- begin::GXON Googletagmanager -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-XWVQM68HHQ"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() {
+      dataLayer.push(arguments);
+    }
+    gtag("js", new Date());
+
+    gtag("config", "G-XWVQM68HHQ", {
+      cookie_flags: "SameSite=None;Secure",
+      send_page_view: true,
+    });
+  </script>
+  <!-- end::GXON Googletagmanager -->
+</head>
+
+<body>
+  <div class="page-layout">
+    <!-- begin::GXON Page Header -->
+    <header class="app-header">
+      <div class="app-header-inner" id="header"></div>
+    </header>
+    <!-- end::GXON Page Header -->
+
+    <div class="modal fade" id="searchResultsModal" tabindex="-1" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+          <div class="modal-header py-1 px-3">
+            <form class="d-flex align-items-center position-relative w-100" action="index.html#">
+              <button type="button" class="btn btn-sm border-0 position-absolute start-0 p-0 text-sm">
+                <i class="fi fi-rr-search"></i>
+              </button>
+              <input type="text" class="form-control form-control-lg ps-4 border-0 shadow-none" id="searchInput"
+                placeholder="Search anything's" />
+            </form>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body pb-2" style="height: 300px" data-simplebar>
+            <div id="recentlyResults">
+              <span class="text-uppercase text-2xs fw-semibold text-muted d-block mb-2">Recently Searched:</span>
+              <ul class="list-inline search-list">
+                <li>
+                  <a class="search-item" href="index.html">
+                    <i class="fi fi-rr-apps"></i> Dashboard
+                  </a>
+                </li>
+                <li>
+                  <a class="search-item" href="chat.html">
+                    <i class="fi fi-rr-comment"></i> Chat
+                  </a>
+                </li>
+                <li>
+                  <a class="search-item" href="calendar.html">
+                    <i class="fi fi-rr-calendar"></i> Calendar
+                  </a>
+                </li>
+                <li>
+                  <a class="search-item" href="chart/apexchart.html">
+                    <i class="fi fi-rr-chart-pie-alt"></i> Apexchart
+                  </a>
+                </li>
+                <li>
+                  <a class="search-item" href="pages/pricing.html">
+                    <i class="fi fi-rr-file"></i> Pricing
+                  </a>
+                </li>
+                <li>
+                  <a class="search-item" href="email/inbox.html">
+                    <i class="fi fi-rr-envelope"></i> Email
+                  </a>
+                </li>
+              </ul>
+            </div>
+            <div id="searchContainer"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- begin::GXON Sidebar Menu -->
+    <div class="app-menubar" id="sidebsr"></div>
+    <!-- end::GXON Sidebar Menu -->
+
+    <!-- begin::GXON Sidebar right -->
+    <div class="app-sidebar-end">
+    </div>
+    <!-- end::GXON Sidebar right -->
+
+    <main class="app-wrapper">
+      <!-- Stats Cards Row -->
+<div class="row g-4 mb-4">
+    <!-- Total Merchants -->
+    <div class="col-md-3">
+        <div class="card border-1">
+            <div class="card-body">
+                <div class="d-flex justify-content-between align-items-start mb-3">
+                    <h6 class="card-subtitle text-muted mb-0">Total Merchants</h6>
+                    <i class="bi bi-people text-muted"></i>
+                </div>
+                <h1 class="card-title mb-1" id="total-marchants">5,451</h1>
+                <p class="text-muted small mb-0">Across 4 PTSPs</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Overdue PTSPs -->
+    <div class="col-md-3">
+        <div class="card border-1">
+            <div class="card-body">
+                <div class="d-flex justify-content-between align-items-start mb-3">
+                    <h6 class="card-subtitle text-muted mb-0">Overdue PTSPs</h6>
+                    <i class="bi bi-exclamation-triangle text-danger"></i>
+                </div>
+                <h1 class="card-title fw-bold mb-1 text-danger" id="overdue-ptsp">1</h1>
+                <p class="text-muted small mb-0">Require immediate attention</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- High Risk PTSPs -->
+    <div class="col-md-3">
+        <div class="card border-1">
+            <div class="card-body">
+                <div class="d-flex justify-content-between align-items-start mb-3">
+                    <h6 class="card-subtitle text-muted mb-0">High Risk PTSPs</h6>
+                    <i class="bi bi-exclamation-circle text-warning"></i>
+                </div>
+                <h1 class="card-title fw-bold mb-1 text-warning">1</h1>
+                <p class="text-muted small mb-0">Enhanced monitoring needed</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Avg PTSP Compliance -->
+    <div class="col-md-3">
+        <div class="card border-1">
+            <div class="card-body">
+                <div class="d-flex justify-content-between align-items-start mb-3">
+                    <h6 class="card-subtitle text-muted mb-0">Avg PTSP Compliance</h6>
+                    <i class="bi bi-check-circle text-success"></i>
+                </div>
+                <h1 class="card-title fw-bold mb-1 text-success" id="average-compliance">79%</h1>
+                <p class="text-muted small mb-0">Overall score</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- PTSP Search & Filter -->
+<div class="card border-1 mb-4">
+    <div class="card-body">
+        <h5 class="card-title mb-3">PTSP Search & Filter</h5>
+        <div class="input-group">
+            <span class="input-group-text bg-white border-end-0">
+                <i class="bi bi-search text-muted"></i>
+            </span>
+            <input type="text" class="form-control border-start-0" placeholder="Search by PTSP name, license number, or email...">
+            <div class="input-group-text bg-white border-start-0">
+            </div>
+            <button class="btn btn-primary px-4" type="button">Search</button>
+        </div>
+    </div>
+</div>
+
+<!-- Priority Alerts -->
+<div class="card border-1 mb-4">
+    <div class="card-body">
+        <h5 class="card-title mb-1">Priority Alerts</h5>
+        <p class="text-muted small mb-4">PTSPs and compliance issues requiring immediate attention</p>
+        
+        <!-- Alert Item 1 -->
+        <div class="d-flex align-items-center p-3 mb-2 bg-light rounded">
+            <span class="bg-danger rounded-circle" style="width: 12px; height: 12px; min-width: 12px;"></span>
+            <div class="flex-grow-1 ms-3">
+                <h6 class="mb-1 fw-bold">Lagos Electronics Hub</h6>
+                <p class="text-muted small mb-0">Tax payment overdue by 45 days</p>
+            </div>
+            <div class="text-end">
+                <span class="badge bg-danger">high</span>
+                <p class="text-muted small mb-0 mt-1">2024-01-20</p>
+            </div>
+        </div>
+
+        <!-- Alert Item 2 -->
+        <div class="d-flex align-items-center p-3 mb-2 bg-light rounded">
+            <span class="bg-warning rounded-circle" style="width: 12px; height: 12px; min-width: 12px;"></span>
+            <div class="flex-grow-1 ms-3">
+                <h6 class="mb-1 fw-bold">Surulere Market Co.</h6>
+                <p class="text-muted small mb-0">Unusual transaction pattern detected</p>
+            </div>
+            <div class="text-end">
+                <span class="badge bg-secondary">medium</span>
+                <p class="text-muted small mb-0 mt-1">2024-01-18</p>
+            </div>
+        </div>
+
+        <!-- Alert Item 3 -->
+        <div class="d-flex align-items-center p-3 bg-light rounded">
+            <span class="bg-warning rounded-circle" style="width: 12px; height: 12px; min-width: 12px;"></span>
+            <div class="flex-grow-1 ms-3">
+                <h6 class="mb-1 fw-bold">Victoria Stores</h6>
+                <p class="text-muted small mb-0">Compliance score dropped below threshold</p>
+            </div>
+            <div class="text-end">
+                <span class="badge bg-secondary">medium</span>
+                <p class="text-muted small mb-0 mt-1">2024-01-16</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- My Recent Activity -->
+<div class="card border-0 shadow-sm">
+    <div class="card-body">
+        <h5 class="card-title mb-1">My Recent Activity</h5>
+        <p class="text-muted small mb-4">Your recent compliance actions</p>
+        
+        <!-- Activity Item 1 -->
+        <div class="d-flex align-items-start mb-3">
+            <span class="bg-primary rounded-circle me-3" style="width: 8px; height: 8px; min-width: 8px; margin-top: 6px;"></span>
+            <div>
+                <span class="text-muted small me-2">10:30 AM</span>
+                <span>Updated compliance status for Lagos Electronics Hub</span>
+            </div>
+        </div>
+
+        <!-- Activity Item 2 -->
+        <div class="d-flex align-items-start mb-3">
+            <span class="bg-success rounded-circle me-3" style="width: 8px; height: 8px; min-width: 8px; margin-top: 6px;"></span>
+            <div>
+                <span class="text-muted small me-2">09:15 AM</span>
+                <span>Verified payment for Emeka Trading Ltd</span>
+            </div>
+        </div>
+
+        <!-- Activity Item 3 -->
+        <div class="d-flex align-items-start">
+            <span class="bg-warning rounded-circle me-3" style="width: 8px; height: 8px; min-width: 8px; margin-top: 6px;"></span>
+            <div>
+                <span class="text-muted small me-2">08:45 AM</span>
+                <span>Flagged Surulere Market Co. for investigation</span>
+            </div>
+        </div>
+    </div>
+</div>
+
+    </main>
+
+    <!-- begin::GXON Footer -->
+    <footer class="footer-wrapper bg-body">
+      <div class="container">
+        <div class="row g-2">
+          <div class="col-lg-6 col-md-7 text-center text-md-start">
+            <p class="mb-0">
+              © <span class="currentYear">2025</span>. Proudly powered by
+              <a href="javascript:void(0);">Binarifylimited</a>.
+            </p>
+          </div>
+          <div class="col-lg-6 col-md-5">
+            <ul class="d-flex list-inline mb-0 gap-3 flex-wrap justify-content-center justify-content-md-end">
+              <li>
+                <a class="text-body" href="index.html">Home</a>
+              </li>
+              <li>
+                <a class="text-body" href="pages/faq.html">Faq's</a>
+              </li>
+              <li>
+                <a class="text-body" href="pages/faq.html">Support</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </footer>
+    <!-- end::GXON Footer -->
+  </div>
+  <!-- Load Chart.js once -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+
+      // Revenue Trend Chart
+      new Chart(document.getElementById('revenueChart'), {
+        type: 'line',
+        data: {
+          labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun'],
+          datasets: [
+            {
+              label: 'Actual Revenue',
+              data: [2000000, 2300000, 2800000, 3200000, 3000000, 3400000],
+              borderColor: '#007bff',
+              backgroundColor: 'transparent',
+              tension: 0.3,
+              pointRadius: 4
+            },
+            {
+              label: 'Target Revenue',
+              data: [1900000, 2100000, 2500000, 2800000, 3000000, 3200000],
+              borderColor: '#20c997',
+              borderDash: [5, 5],
+              backgroundColor: 'transparent',
+              tension: 0.3,
+              pointRadius: 0
+            }
+          ]
+        },
+        options: {
+          plugins: { legend: { display: false } },
+          scales: { y: { beginAtZero: true } }
+        }
+      });
+
+      // Compliance Distribution Chart
+      new Chart(document.getElementById('complianceChart'), {
+        type: 'pie',
+        data: {
+          labels: ['Compliant 68%', 'Partial 22%', 'Non-Compliant 10%'],
+          datasets: [{
+            data: [68, 22, 10],
+            backgroundColor: ['#20c997', '#f6b93b', '#e74c3c']
+          }]
+        },
+        options: {
+          plugins: {
+            legend: {
+              display: true,
+              position: 'right'
+            }
+          }
+        }
+      });
+
+    });
+  </script>
+
+  <!-- begin::GXON Page Scripts -->
+  <script src="assets/js/header.js"></script>
+  <script src="assets/libs/global/global.min.js"></script>
+  <script src="assets/libs/sortable/Sortable.min.js"></script>
+  <script src="assets/libs/chartjs/chart.js"></script>
+  <script src="assets/libs/flatpickr/flatpickr.min.js"></script>
+  <script src="assets/libs/apexcharts/apexcharts.min.js"></script>
+  <script src="assets/libs/datatables/datatables.min.js"></script>
+  <script src="assets/js/dashboard.js"></script>
+  <script src="assets/js/todolist.js"></script>
+  <script src="assets/js/appSettings.js"></script>
+  <script src="assets/js/main.js"></script>
+  <script src="assets/js/my-js/dashboard.js"></script>
+  <!-- end::GXON Page Scripts -->
+</body>
+
+</html>

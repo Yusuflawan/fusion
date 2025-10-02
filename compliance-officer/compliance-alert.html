@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+  <!-- begin::GXON Meta Basic -->
+  <meta charset="utf-8">
+  <meta name="theme-color" content="#316AFF">
+  <meta name="robots" content="index, follow">
+  <meta name="author" content="LayoutDrop">
+  <meta name="format-detection" content="telephone=no">
+  <meta name="keywords"
+    content="HR Management, HR Dashboard, Admin Template, Admin Dashboard, Bootstrap Admin, HR Admin Panel, Employee Management, Human Resources Dashboard, Responsive Admin Template, Web App Dashboard, HRMS Admin, Staff Management Dashboard, Bootstrap 5 Admin, Modern Admin Template, Admin UI Kit, ThemeForest Admin Template, SaaS Dashboard, Project Management Admin, HR Web Application, RTL Dashboard">
+  <meta name="description"
+    content="GXON is a professional and modern HR Management Admin Dashboard Template built with Bootstrap. It includes light and dark modes, and is ideal for managing employees, attendance, payroll, recruitment, and more — perfect for HR software and admin panels.">
+  <!-- end::GXON Meta Basic -->
+
+  <!-- begin::GXON Meta Social -->
+  <meta property="og:url" content="https://gxon.layoutdrop.com/demo/">
+  <meta property="og:site_name" content="Leave | GXON HR Management Admin Dashboard Template + RTL">
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="en_US">
+  <meta property="og:title" content="Leave | GXON HR Management Admin Dashboard Template + RTL">
+  <meta property="og:description"
+    content="GXON is a professional and modern HR Management Admin Dashboard Template built with Bootstrap. It includes light and dark modes, and is ideal for managing employees, attendance, payroll, recruitment, and more — perfect for HR software and admin panels.">
+  <meta property="og:image" content="https://gxon.layoutdrop.com/demo/preview.png">
+  <!-- end::GXON Meta Social -->
+
+  <!-- begin::GXON Meta Twitter -->
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:url" content="https://gxon.layoutdrop.com/demo/">
+  <meta name="twitter:creator" content="@layoutdrop">
+  <meta name="twitter:title" content="Leave | GXON HR Management Admin Dashboard Template + RTL">
+  <meta name="twitter:description"
+    content="GXON is a professional and modern HR Management Admin Dashboard Template built with Bootstrap. It includes light and dark modes, and is ideal for managing employees, attendance, payroll, recruitment, and more — perfect for HR software and admin panels.">
+  <!-- end::GXON Meta Twitter -->
+
+  <!-- begin::GXON Website Page Title -->
+  <title>Leave | GXON HR Management Admin Dashboard Template + RTL</title>
+  <!-- end::GXON Website Page Title -->
+
+  <!-- begin::GXON Mobile Specific -->
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- end::GXON Mobile Specific -->
+
+  <!-- begin::GXON Favicon Tags -->
+  <link rel="icon" type="image/png" href="assets/images/favicon.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="assets/images/apple-touch-icon.png">
+  <!-- end::GXON Favicon Tags -->
+
+  <!-- begin::GXON Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&display=swap"
+    rel="stylesheet">
+  <!-- end::GXON Google Fonts -->
+
+  <!-- begin::GXON Required Stylesheet -->
+  <link rel="stylesheet" href="assets/libs/flaticon/css/all/all.css">
+  <link rel="stylesheet" href="assets/libs/lucide/lucide.css">
+  <link rel="stylesheet" href="assets/libs/fontawesome/css/all.min.css">
+  <link rel="stylesheet" href="assets/libs/simplebar/simplebar.css">
+  <link rel="stylesheet" href="assets/libs/node-waves/waves.css">
+  <link rel="stylesheet" href="assets/libs/bootstrap-select/css/bootstrap-select.min.css">
+  <!-- end::GXON Required Stylesheet -->
+
+  <!-- begin::GXON CSS Stylesheet -->
+  <link rel="stylesheet" href="assets/libs/datatables/datatables.min.css">
+  <link rel="stylesheet" href="assets/libs/flatpickr/flatpickr.min.css">
+  <link rel="stylesheet" href="assets/css/styles.css">
+  <!-- end::GXON CSS Stylesheet -->
+
+
+  <!-- Bootstrap Icons CDN -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+
+
+  <!-- begin::GXON Googletagmanager -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-XWVQM68HHQ"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
+
+    gtag('config', 'G-XWVQM68HHQ', {
+      'cookie_flags': 'SameSite=None;Secure',
+      'send_page_view': true
+    });
+  </script>
+  <!-- end::GXON Googletagmanager -->
+
+</head>
+
+<body>
+  <div class="page-layout">
+
+    <!-- begin::GXON Page Header -->
+    <header class="app-header">
+      <div class="app-header-inner" id="header"></div>
+    </header>
+    <!-- end::GXON Page Header -->
+
+    <div class="modal fade" id="searchResultsModal" tabindex="-1" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+          <div class="modal-header py-1 px-3">
+            <form class="d-flex align-items-center position-relative w-100" action="leave.html#">
+              <button type="button" class="btn btn-sm border-0 position-absolute start-0 p-0 text-sm ">
+                <i class="fi fi-rr-search"></i>
+              </button>
+              <input type="text" class="form-control form-control-lg ps-4 border-0 shadow-none" id="searchInput"
+                placeholder="Search anything's">
+            </form>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body pb-2" style="height: 300px;" data-simplebar>
+            <div id="recentlyResults">
+              <span class="text-uppercase text-2xs fw-semibold text-muted d-block mb-2">Recently
+                Searched:</span>
+              <ul class="list-inline search-list">
+                <li>
+                  <a class="search-item" href="index.html">
+                    <i class="fi fi-rr-apps"></i> Dashboard
+                  </a>
+                </li>
+                <li>
+                  <a class="search-item" href="chat.html">
+                    <i class="fi fi-rr-comment"></i> Chat
+                  </a>
+                </li>
+                <li>
+                  <a class="search-item" href="calendar.html">
+                    <i class="fi fi-rr-calendar"></i> Calendar
+                  </a>
+                </li>
+                <li>
+                  <a class="search-item" href="chart/apexchart.html">
+                    <i class="fi fi-rr-chart-pie-alt"></i> Apexchart
+                  </a>
+                </li>
+                <li>
+                  <a class="search-item" href="pages/pricing.html">
+                    <i class="fi fi-rr-file"></i> Pricing
+                  </a>
+                </li>
+                <li>
+                  <a class="search-item" href="email/inbox.html">
+                    <i class="fi fi-rr-envelope"></i> Email
+                  </a>
+                </li>
+              </ul>
+            </div>
+            <div id="searchContainer"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- begin::GXON Sidebar Menu -->
+    <div id="sidebsr"></div>
+    <!-- end::GXON Sidebar Menu -->
+
+    <!-- begin::GXON Sidebar right -->
+    <div class="app-sidebar-end">
+    </div>
+    <!-- end::GXON Sidebar right -->
+
+    <main class="app-wrapper">
+      <div class="container py-4">
+
+        <!-- Page Header -->
+        <div class="mb-4">
+          <h3 class="fw-bold">Compliance Alerts</h3>
+          <p class="text-muted">Manage and respond to compliance alerts</p>
+        </div>
+
+        <!-- Top Summary Cards -->
+        <div class="row g-3 mb-4">
+          <!-- Active Alerts -->
+          <div class="col-md-3">
+            <div class="card border-1 p-3">
+              <h6 class="fw-bold mb-4">
+                Active Alerts
+                <i class="bi bi-exclamation-triangle text-warning float-end"></i>
+              </h6>
+              <h3 class="text-danger mb-0">2</h3>
+              <small class="text-muted">Require attention</small>
+            </div>
+          </div>
+
+          <!-- High Priority -->
+          <div class="col-md-3">
+            <div class="card border-1 p-3">
+              <h6 class="fw-bold mb-4">
+                High Priority
+                <i class="bi bi-x-circle text-danger float-end"></i>
+              </h6>
+              <h3 class="text-danger mb-0">1</h3>
+              <small class="text-muted">Critical issues</small>
+            </div>
+          </div>
+
+          <!-- Overdue Payments -->
+          <div class="col-md-3">
+            <div class="card border-1 p-3">
+              <h6 class="fw-bold mb-4">
+                Overdue Payments
+                <i class="bi bi-clock-history text-purple float-end"></i>
+              </h6>
+              <h3 class="text-purple mb-0">1</h3>
+              <small class="text-muted">Past due date</small>
+            </div>
+          </div>
+
+          <!-- Avg Response Time -->
+          <div class="col-md-3">
+            <div class="card border-1 p-3">
+              <h6 class="fw-bold mb-4">
+                Avg Response Time
+                <i class="bi bi-clock text-info float-end"></i>
+              </h6>
+              <h3 class="text-primary mb-0">2.3h</h3>
+              <small class="text-muted">Average handling</small>
+            </div>
+          </div>
+        </div>
+
+
+        <!-- Active Alerts Section -->
+        <div class="card border-0 shadow-sm mb-4">
+          <div class="card-body">
+            <h5 class="fw-bold mb-3">Active Alerts</h5>
+            <p class="text-muted">Current compliance alerts requiring attention</p>
+
+            <!-- Alert Card (High Priority) -->
+            <div class="p-3 mb-3 rounded" style="background:#fff5f5; border-left:5px solid #dc3545;">
+              <div class="d-flex justify-content-between align-items-start">
+                <div>
+                  <span class="badge bg-danger me-1">high priority</span>
+                  <span class="badge bg-warning text-dark me-1">overdue payment</span>
+                  <span class="badge bg-dark">active</span>
+                  <h6 class="fw-bold mt-2 mb-2">Lagos Electronics Hub</h6>
+                  <p class="mb-1 text-muted">Tax payment overdue by 45 days – ₦90,000 liability</p>
+                  <small class="text-muted">Created: 2024-01-20 08:30:00 | Officer: Sarah Okafor | Risk Score: 85/100 |
+                    Due: 2024-01-25</small>
+                </div>
+                <div class="text-end">
+                  <a href="#" class="me-3 text-primary">Investigate</a>
+                  <a href="#" class="me-3 text-success">Resolve</a>
+                  <a href="#" class="text-muted">View Details</a>
+                </div>
+              </div>
+            </div>
+
+            <!-- Alert Card (Low Priority) -->
+            <div class="p-3 rounded" style="background:#f5f9ff; border-left:5px solid #0d6efd;">
+              <div class="d-flex justify-content-between align-items-start">
+                <div>
+                  <span class="badge bg-info me-1">low priority</span>
+                  <span class="badge bg-primary me-1">new merchant</span>
+                  <span class="badge bg-dark">active</span>
+                  <h6 class="fw-bold mt-2 mb-1">Fresh Mart Lagos</h6>
+                  <p class="mb-1 text-muted">New merchant requires initial compliance assessment</p>
+                  <small class="text-muted">Created: 2024-01-15 09:20:00 | Officer: Sarah Okafor | Risk Score:
+                    45/100</small>
+                </div>
+                <div class="text-end">
+                  <a href="#" class="me-3 text-primary">Investigate</a>
+                  <a href="#" class="me-3 text-success">Resolve</a>
+                  <a href="#" class="text-muted">View Details</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Bottom Section -->
+        <div class="row g-3">
+          <!-- Alert Types -->
+          <div class="col-md-6">
+            <div class="card shadow-sm border-0 p-3">
+              <h6 class="fw-bold">Alert Types Distribution</h6>
+              <p class="text-muted mb-3">Breakdown of alert categories</p>
+              <div class="d-flex text-dark flex-column gap-2">
+                <span>Overdue Payments <span class="float-end">1</span></span>
+                <span>Suspicious Patterns <span class="float-end">1</span></span>
+                <span>Compliance Drops <span class="float-end">1</span></span>
+                <span>System Issues <span class="float-end">1</span></span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Resolution Performance -->
+          <div class="col-md-6">
+            <div class="card shadow-sm border-0 p-3">
+              <h6 class="fw-bold">Resolution Performance</h6>
+              <p class="text-muted mb-3">Alert handling efficiency metrics</p>
+              <div class="d-flex text-dark flex-column gap-2">
+                <span>Resolution Rate <span class="float-end text-success">78.5%</span></span>
+                <span>Avg Response Time <span class="float-end text-primary">2.3 hours</span></span>
+                <span>Escalation Rate <span class="float-end text-warning">12.4%</span></span>
+                <span>High Priority Resolved <span class="float-end text-success">85.2%</span></span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+
+    </main>
+
+    <!-- begin::GXON Footer -->
+    <footer class="footer-wrapper bg-body">
+      <div class="container">
+        <div class="row g-2">
+          <div class="col-lg-6 col-md-7 text-center text-md-start">
+            <p class="mb-0">© <span class="currentYear">2025</span> GXON. Proudly powered by <a
+                href="javascript:void(0);">LayoutDrop</a>.</p>
+          </div>
+          <div class="col-lg-6 col-md-5">
+            <ul class="d-flex list-inline mb-0 gap-3 flex-wrap justify-content-center justify-content-md-end">
+              <li>
+                <a class="text-body" href="index.html">Home</a>
+              </li>
+              <li>
+                <a class="text-body" href="pages/faq.html">Faq's</a>
+              </li>
+              <li>
+                <a class="text-body" href="pages/faq.html">Support</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </footer>
+    <!-- end::GXON Footer -->
+
+  </div>
+  <!-- begin::GXON Page Scripts -->
+  <script src="assets/js/leaflet.js"></script>"
+  <script src="assets/js/header.js"></script>
+  <script src="assets/libs/global/global.min.js"></script>
+  <script src="assets/libs/chartjs/chart.js"></script>
+  <script src="assets/libs/apexcharts/apexcharts.min.js"></script>
+  <script src="assets/libs/datatables/datatables.min.js"></script>
+  <script src="assets/libs/flatpickr/flatpickr.min.js"></script>
+  <script src="assets/js/flatpickr.js"></script>
+  <script src="assets/js/dashboard.js"></script>
+  <script src="assets/js/appSettings.js"></script>
+  <script src="assets/js/main.js"></script>
+  <!-- end::GXON Page Scripts -->
+</body>
+
+</html>

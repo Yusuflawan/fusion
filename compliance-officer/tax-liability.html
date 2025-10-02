@@ -1,0 +1,679 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <!-- begin::GXON Meta Basic -->
+  <meta charset="utf-8" />
+  <meta name="theme-color" content="#316AFF" />
+  <meta name="robots" content="index, follow" />
+  <meta name="author" content="LayoutDrop" />
+  <meta name="format-detection" content="telephone=no" />
+  <meta name="keywords"
+    content="HR Management, HR Dashboard, Admin Template, Admin Dashboard, Bootstrap Admin, HR Admin Panel, Employee Management, Human Resources Dashboard, Responsive Admin Template, Web App Dashboard, HRMS Admin, Staff Management Dashboard, Bootstrap 5 Admin, Modern Admin Template, Admin UI Kit, ThemeForest Admin Template, SaaS Dashboard, Project Management Admin, HR Web Application, RTL Dashboard" />
+  <meta name="description"
+    content="GXON is a professional and modern HR Management Admin Dashboard Template built with Bootstrap. It includes light and dark modes, and is ideal for managing employees, attendance, payroll, recruitment, and more — perfect for HR software and admin panels." />
+  <!-- end::GXON Meta Basic -->
+
+  <!-- begin::GXON Meta Social -->
+  <meta property="og:url" content="https://gxon.layoutdrop.com/demo/" />
+  <meta property="og:site_name" content="GXON HR Management Admin Dashboard Template + RTL" />
+  <meta property="og:type" content="website" />
+  <meta property="og:locale" content="en_US" />
+  <meta property="og:title" content="GXON HR Management Admin Dashboard Template + RTL" />
+  <meta property="og:description"
+    content="GXON is a professional and modern HR Management Admin Dashboard Template built with Bootstrap. It includes light and dark modes, and is ideal for managing employees, attendance, payroll, recruitment, and more — perfect for HR software and admin panels." />
+  <meta property="og:image" content="https://gxon.layoutdrop.com/demo/preview.png" />
+  <!-- end::GXON Meta Social -->
+
+  <!-- begin::GXON Meta Twitter -->
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:url" content="https://gxon.layoutdrop.com/demo/" />
+  <meta name="twitter:creator" content="@layoutdrop" />
+  <meta name="twitter:title" content="GXON HR Management Admin Dashboard Template + RTL" />
+  <meta name="twitter:description"
+    content="GXON is a professional and modern HR Management Admin Dashboard Template built with Bootstrap. It includes light and dark modes, and is ideal for managing employees, attendance, payroll, recruitment, and more — perfect for HR software and admin panels." />
+  <!-- end::GXON Meta Twitter -->
+
+  <!-- begin::GXON Website Page Title -->
+  <title>GXON HR Management Admin Dashboard Template + RTL</title>
+  <!-- end::GXON Website Page Title -->
+
+  <!-- begin::GXON Mobile Specific -->
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <!-- end::GXON Mobile Specific -->
+
+  <!-- begin::GXON Favicon Tags -->
+  <link rel="icon" type="image/png" href="assets/images/favicon.png" />
+  <link rel="apple-touch-icon" sizes="180x180" href="assets/images/apple-touch-icon.png" />
+  <!-- end::GXON Favicon Tags -->
+
+  <!-- begin::GXON Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&display=swap"
+    rel="stylesheet" />
+  <!-- end::GXON Google Fonts -->
+
+  <!-- begin::GXON Required Stylesheet -->
+  <link rel="stylesheet" href="assets/libs/flaticon/css/all/all.css" />
+  <link rel="stylesheet" href="assets/libs/lucide/lucide.css" />
+  <link rel="stylesheet" href="assets/libs/fontawesome/css/all.min.css" />
+  <link rel="stylesheet" href="assets/libs/simplebar/simplebar.css" />
+  <link rel="stylesheet" href="assets/libs/node-waves/waves.css" />
+  <link rel="stylesheet" href="assets/libs/bootstrap-select/css/bootstrap-select.min.css" />
+  <!-- end::GXON Required Stylesheet -->
+
+  <!-- begin::GXON CSS Stylesheet -->
+  <link rel="stylesheet" href="assets/libs/flatpickr/flatpickr.min.css" />
+  <link rel="stylesheet" href="assets/libs/datatables/datatables.min.css" />
+  <link rel="stylesheet" href="assets/css/styles.css" />
+  <!-- Bootstrap core CSS (already in your project) -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+
+  <!-- Add this line for Bootstrap Icons -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
+
+  <!-- end::GXON CSS Stylesheet -->
+
+  <!-- begin::GXON Googletagmanager -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-XWVQM68HHQ"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() {
+      dataLayer.push(arguments);
+    }
+    gtag("js", new Date());
+
+    gtag("config", "G-XWVQM68HHQ", {
+      cookie_flags: "SameSite=None;Secure",
+      send_page_view: true,
+    });
+  </script>
+  <!-- end::GXON Googletagmanager -->
+</head>
+
+<body>
+  <div class="page-layout">
+    <!-- begin::GXON Page Header -->
+    <header class="app-header">
+      <div class="app-header-inner" id="header"></div>
+    </header>
+    <!-- end::GXON Page Header -->
+
+    <div class="modal fade" id="searchResultsModal" tabindex="-1" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+          <div class="modal-header py-1 px-3">
+            <form class="d-flex align-items-center position-relative w-100" action="index.html#">
+              <button type="button" class="btn btn-sm border-0 position-absolute start-0 p-0 text-sm">
+                <i class="fi fi-rr-search"></i>
+              </button>
+              <input type="text" class="form-control form-control-lg ps-4 border-0 shadow-none" id="searchInput"
+                placeholder="Search anything's" />
+            </form>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body pb-2" style="height: 300px" data-simplebar>
+            <div id="recentlyResults">
+              <span class="text-uppercase text-2xs fw-semibold text-muted d-block mb-2">Recently Searched:</span>
+              <ul class="list-inline search-list">
+                <li>
+                  <a class="search-item" href="index.html">
+                    <i class="fi fi-rr-apps"></i> Dashboard
+                  </a>
+                </li>
+                <li>
+                  <a class="search-item" href="chat.html">
+                    <i class="fi fi-rr-comment"></i> Chat
+                  </a>
+                </li>
+                <li>
+                  <a class="search-item" href="calendar.html">
+                    <i class="fi fi-rr-calendar"></i> Calendar
+                  </a>
+                </li>
+                <li>
+                  <a class="search-item" href="chart/apexchart.html">
+                    <i class="fi fi-rr-chart-pie-alt"></i> Apexchart
+                  </a>
+                </li>
+                <li>
+                  <a class="search-item" href="pages/pricing.html">
+                    <i class="fi fi-rr-file"></i> Pricing
+                  </a>
+                </li>
+                <li>
+                  <a class="search-item" href="email/inbox.html">
+                    <i class="fi fi-rr-envelope"></i> Email
+                  </a>
+                </li>
+              </ul>
+            </div>
+            <div id="searchContainer"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- begin::GXON Sidebar Menu -->
+    <div class="app-menubar" id="sidebsr"></div>
+    <!-- end::GXON Sidebar Menu -->
+
+    <!-- begin::GXON Sidebar right -->
+    <div class="app-sidebar-end">
+    </div>
+    <!-- end::GXON Sidebar right -->
+
+    <main class="app-wrapper">
+      <div class="container-fluid py-4">
+        <!-- Header Section -->
+        <div class="row mb-4">
+          <div class="col-md-8">
+            <h2 class="fw-bold mb-1">Tax Liabilities</h2>
+            <p class="text-muted">Track and manage merchant tax obligations</p>
+          </div>
+          <div class="col-md-4">
+            <div class="d-flex gap-2 justify-content-md-end">
+              <select class="form-select">
+                <option selected>Current Period</option>
+                <option>Last Month</option>
+                <option>Last Quarter</option>
+                <option>Last Year</option>
+              </select>
+              <select class="form-select">
+                <option selected>All Status</option>
+                <option>Paid</option>
+                <option>Overdue</option>
+                <option>Pending</option>
+              </select>
+            </div>
+          </div>
+        </div>
+
+        <!-- Stats Cards -->
+        <div class="row g-3 mb-4">
+          <!-- Total Liabilities -->
+          <div class="col-lg-3 col-md-6">
+            <div class="card border-1">
+              <div class="card-body">
+                <div class="d-flex justify-content-between align-items-start mb-3">
+                  <h6 class="text-muted fw-semibold mb-0">Total Liabilities</h6>
+                  <i class="fas fa-credit-card text-secondary"></i>
+                </div>
+                <h4 class="mb-1" id="total-liabilities">₦0.4M</h4>
+                <small class="text-muted">4 merchants</small>
+              </div>
+            </div>
+          </div>
+
+          <!-- Overdue Amount -->
+          <div class="col-lg-3 col-md-6">
+            <div class="card border-1">
+              <div class="card-body">
+                <div class="d-flex justify-content-between align-items-start mb-3">
+                  <h6 class="text-muted fw-semibold mb-0">Overdue Amount</h6>
+                  <i class="fas fa-exclamation-triangle text-danger"></i>
+                </div>
+                <h4 class="text-danger mb-1" id="overdue-amount">₦138K</h4>
+                <small class="text-muted">2 merchants</small>
+              </div>
+            </div>
+          </div>
+
+          <!-- Collected -->
+          <div class="col-lg-3 col-md-6">
+            <div class="card border-1">
+              <div class="card-body">
+                <div class="d-flex justify-content-between align-items-start mb-3">
+                  <h6 class="text-muted fw-semibold mb-0">Collected</h6>
+                  <i class="fas fa-check-circle text-success"></i>
+                </div>
+                <h4 class="text-success mb-1" id="collected-tax-liailities">₦125K</h4>
+                <small class="text-muted">1 payments</small>
+              </div>
+            </div>
+          </div>
+
+          <!-- Collection Rate -->
+          <div class="col-lg-3 col-md-6">
+            <div class="card border-1">
+              <div class="card-body">
+                <div class="d-flex justify-content-between align-items-start mb-3">
+                  <h6 class="text-muted fw-semibold mb-0">Collection Rate</h6>
+                  <i class="fas fa-chart-line text-primary"></i>
+                </div>
+                <h4 class="text-primary mb-1" id="collection-rate">25.0%</h4>
+                <small class="text-muted">Success rate</small>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Tax Liability Details Table -->
+        <div class="card border-1">
+          <div class="card-body">
+            <h5 class="fw-bold mb-1">Tax Liability Details</h5>
+            <p class="text-muted small mb-4">Detailed view of merchant tax obligations</p>
+
+            <div class="table-responsive">
+              <table class="table table-hover align-middle">
+                <thead class="table-light">
+                  <tr>
+                    <th>Merchant</th>
+                    <th>Period</th>
+                    <th class="text-end">Revenue</th>
+                    <th class="text-end">Tax Liability</th>
+                    <th>Due Date</th>
+                    <th>PTSP</th>
+                    <th class="text-center">Status</th>
+                    <th class="text-center">Actions</th>
+                  </tr>
+                </thead>
+                <tbody id="taxTableBody">
+                  <tr>
+                    <td>
+                      <div class="fw-normalbold">Emeka Trading Ltd</div>
+                      <small class="text-muted">M001</small>
+                    </td>
+                    <td>January 2024</td>
+                    <td class="text-end">₦2.5M</td>
+                    <td class="text-end">₦125K</td>
+                    <td>2024-02-15</td>
+                    <td>Interswitch Nigeria</td>
+                    <td class="text-center">
+                      <span class="badge bg-dark rounded-pill">paid</span>
+                    </td>
+                    <!-- Update your table cell to this -->
+                    <td class="text-center">
+                      <a href="#" class="text-primary text-decoration-none" data-bs-toggle="modal"
+                        data-bs-target="#taxLiabilityModal">
+                        <i class="fas fa-eye me-1"></i>View Details
+                      </a>
+                    </td>
+
+                    <!-- Tax Liability Modal -->
+                    <div class="modal fade" id="taxLiabilityModal" tabindex="-1"
+                      aria-labelledby="taxLiabilityModalLabel" aria-hidden="true">
+                      <div class="modal-dialog modal-dialog-centered">
+                        <div class="modal-content">
+                          <div class="modal-header">
+                            <div>
+                              <h5 class="modal-title" id="taxLiabilityModalLabel">Tax Liability Details</h5>
+                              <p class="text-muted mb-0 small">Managing tax liability for Emeka Trading Ltd</p>
+                            </div>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                          </div>
+                          <div class="modal-body">
+                            <div class="row g-3">
+                              <div class="col-md-6">
+                                <label for="merchantName" class="form-label">Merchant Name</label>
+                                <input type="text" class="form-control" id="merchantName" value="Emeka Trading Ltd"
+                                  readonly>
+                              </div>
+                              <div class="col-md-6">
+                                <label for="period" class="form-label">Period</label>
+                                <input type="text" class="form-control" id="period" value="January 2024" readonly>
+                              </div>
+                              <div class="col-md-6">
+                                <label for="revenue" class="form-label">Revenue</label>
+                                <input type="text" class="form-control" id="revenue" value="₦2.5M" readonly>
+                              </div>
+                              <div class="col-md-6">
+                                <label for="taxLiability" class="form-label">Tax Liability</label>
+                                <input type="text" class="form-control" id="taxLiability" value="₦125K" readonly>
+                              </div>
+                              <div class="col-md-6">
+                                <label for="dueDate" class="form-label">Due Date</label>
+                                <input type="text" class="form-control" id="dueDate" value="2024-02-15" readonly>
+                              </div>
+                              <div class="col-md-6">
+                                <label for="status" class="form-label">Status</label>
+                                <input type="text" class="form-control" id="status" value="paid" readonly>
+                              </div>
+                            </div>
+                          </div>
+                          <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </tr>
+                  <tr>
+                    <td>
+                      <div class="fw-normalbold">Lagos Electronics Hub</div>
+                      <small class="text-muted">M002</small>
+                    </td>
+                    <td>January 2024</td>
+                    <td class="text-end fw-normalbold">₦1.8M</td>
+                    <td class="text-end fw-normalbold">₦90K</td>
+                    <td>
+                      <div>2024-02-15</div>
+                      <small class="text-danger">45 days overdue</small>
+                    </td>
+                    <td>Flutterwave</td>
+                    <td class="text-center">
+                      <span class="badge bg-danger rounded-pill">overdue</span>
+                    </td>
+                    <td class="text-center">
+                      <!-- Update your View Details for Pending to this -->
+                      <a href="#" class="text-primary text-decoration-none me-2" data-bs-toggle="modal"
+                        data-bs-target="#taxLiabilityPendingModal">
+                        <i class="fas fa-eye me-1"></i>View Details
+                      </a>
+
+                      <!-- Tax Liability Pending Modal -->
+                      <div class="modal fade" id="taxLiabilityPendingModal" tabindex="-1"
+                        aria-labelledby="taxLiabilityPendingModalLabel" aria-hidden="true">
+                        <div class="modal-dialog modal-dialog-centered">
+                          <div class="modal-content">
+                            <div class="modal-header">
+                              <div>
+                                <h5 class="modal-title" id="taxLiabilityPendingModalLabel">Tax Liability Details</h5>
+                                <p class="text-muted mb-0 small">Managing tax liability for Emeka Trading Ltd</p>
+                              </div>
+                              <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body">
+                              <div class="row g-3">
+                                <div class="col-md-6">
+                                  <label for="pendingMerchantName" class="form-label">Merchant Name</label>
+                                  <input type="text" class="form-control" id="pendingMerchantName"
+                                    value="Emeka Trading Ltd" readonly>
+                                </div>
+                                <div class="col-md-6">
+                                  <label for="pendingPeriod" class="form-label">Period</label>
+                                  <input type="text" class="form-control" id="pendingPeriod" value="January 2024"
+                                    readonly>
+                                </div>
+                                <div class="col-md-6">
+                                  <label for="pendingRevenue" class="form-label">Revenue</label>
+                                  <input type="text" class="form-control" id="pendingRevenue" value="₦2.5M" readonly>
+                                </div>
+                                <div class="col-md-6">
+                                  <label for="pendingTaxLiability" class="form-label">Tax Liability</label>
+                                  <input type="text" class="form-control" id="pendingTaxLiability" value="₦125K"
+                                    readonly>
+                                </div>
+                                <div class="col-md-6">
+                                  <label for="pendingDueDate" class="form-label">Due Date</label>
+                                  <input type="text" class="form-control" id="pendingDueDate" value="2024-02-15"
+                                    readonly>
+                                </div>
+                                <div class="col-md-6">
+                                  <label for="pendingStatus" class="form-label">Status</label>
+                                  <input type="text" class="form-control" id="pendingStatus" value="pending" readonly>
+                                </div>
+                              </div>
+
+                              <!-- Overdue Alert -->
+                              <div class="alert alert-danger d-flex align-items-center mt-3 mb-0" role="alert">
+                                <i class="fas fa-exclamation-circle me-2"></i>
+                                <div>This payment is 45 days overdue</div>
+                              </div>
+                            </div>
+                            <div class="modal-footer">
+                              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+
+                      <a href="#" class="text-danger text-decoration-none" data-bs-toggle="modal"
+                        data-bs-target="#enforceTaxModal">
+                        <i class="fas fa-exclamation-circle me-1"></i>Enforce
+                      </a>
+
+                      <!-- Enforce Tax Collection Modal -->
+                      <div class="modal fade" id="enforceTaxModal" tabindex="-1" aria-labelledby="enforceTaxModalLabel"
+                        aria-hidden="true">
+                        <div class="modal-dialog modal-dialog-centered">
+                          <div class="modal-content">
+                            <div class="modal-header">
+                              <div>
+                                <h5 class="modal-title" id="enforceTaxModalLabel">Enforce Tax Collection</h5>
+                                <p class="text-muted mb-0 small">Managing tax liability for Lagos Electronics Hub</p>
+                              </div>
+                              <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body">
+                              <div class="row g-3">
+                                <div class="col-md-6">
+                                  <label for="enforceMerchantName" class="form-label">Merchant Name</label>
+                                  <input type="text" class="form-control" id="enforceMerchantName"
+                                    value="Lagos Electronics Hub" readonly>
+                                </div>
+                                <div class="col-md-6">
+                                  <label for="enforcePeriod" class="form-label">Period</label>
+                                  <input type="text" class="form-control" id="enforcePeriod" value="January 2024"
+                                    readonly>
+                                </div>
+                                <div class="col-md-6">
+                                  <label for="enforceRevenue" class="form-label">Revenue</label>
+                                  <input type="text" class="form-control" id="enforceRevenue" value="₦1.8M" readonly>
+                                </div>
+                                <div class="col-md-6">
+                                  <label for="enforceTaxLiability" class="form-label">Tax Liability</label>
+                                  <input type="text" class="form-control" id="enforceTaxLiability" value="₦90K"
+                                    readonly>
+                                </div>
+                                <div class="col-md-6">
+                                  <label for="enforceDueDate" class="form-label">Due Date</label>
+                                  <input type="text" class="form-control" id="enforceDueDate" value="2024-02-15"
+                                    readonly>
+                                </div>
+                                <div class="col-md-6">
+                                  <label for="enforceStatus" class="form-label">Status</label>
+                                  <input type="text" class="form-control" id="enforceStatus" value="overdue" readonly>
+                                </div>
+                              </div>
+
+                              <!-- Overdue Alert -->
+                              <div class="alert alert-danger d-flex align-items-center mt-3 mb-3" role="alert">
+                                <i class="fas fa-exclamation-circle me-2"></i>
+                                <div>This payment is 45 days overdue</div>
+                              </div>
+
+                              <!-- Enforcement Action -->
+                              <div class="mb-3">
+                                <label for="enforcementAction" class="form-label">Enforcement Action</label>
+                                <select class="form-select" id="enforcementAction">
+                                  <option selected>Send Payment Notice</option>
+                                  <option>Suspend Account</option>
+                                  <option>Legal Action</option>
+                                  <option>Payment Plan</option>
+                                </select>
+                              </div>
+
+                              <!-- Enforcement Notes -->
+                              <div class="mb-3">
+                                <label for="enforcementNotes" class="form-label">Enforcement Notes</label>
+                                <textarea class="form-control" id="enforcementNotes" rows="3"
+                                  placeholder="Enter details for enforcement action..."></textarea>
+                              </div>
+                            </div>
+                            <div class="modal-footer">
+                              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                              <button type="button" class="btn btn-danger">Initiate Enforcement</button>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <div class="fw-normalbold">Victoria Stores</div>
+                      <small class="text-muted">M003</small>
+                    </td>
+                    <td>January 2024</td>
+                    <td class="text-end fw-normalbold">₦3.2M</td>
+                    <td class="text-end fw-normalbold">₦160K</td>
+                    <td>2024-02-15</td>
+                    <td>Paystack</td>
+                    <td class="text-center">
+                      <span class="badge bg-warning text-dark rounded-pill">pending</span>
+                    </td>
+                    <!-- View Details Button inside table -->
+                    <td class="text-center">
+                      <a href="#" class="text-primary text-decoration-none" data-bs-toggle="modal"
+                        data-bs-target="#taxDetailsModal">
+                        <i class="fas fa-eye me-1"></i>View Details
+                      </a>
+                    </td>
+
+                    <!-- Tax Liability Details Modal -->
+                    <div class="modal fade" id="taxDetailsModal" tabindex="-1" aria-labelledby="taxDetailsModalLabel"
+                      aria-hidden="true">
+                      <div class="modal-dialog modal-md">
+                        <div class="modal-content">
+
+                          <!-- Modal Header -->
+                          <div class="modal-header">
+                            <div>
+                              <h5 class="modal-title fw-semibold" id="taxDetailsModalLabel">Tax Liability Details</h5>
+                              <p class="text-muted small mb-0">Managing tax liability for Emeka Trading Ltd</p>
+                            </div>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                          </div>
+
+                          <!-- Modal Body -->
+                          <div class="modal-body">
+                            <form>
+                              <div class="row g-3">
+                                <!-- Merchant Name -->
+                                <div class="col-md-6">
+                                  <label class="form-label fw-semibold">Merchant Name</label>
+                                  <input type="text" class="form-control bg-light" value="Emeka Trading Ltd" readonly>
+                                </div>
+
+                                <!-- Period -->
+                                <div class="col-md-6">
+                                  <label class="form-label fw-semibold">Period</label>
+                                  <input type="text" class="form-control bg-light" value="January 2024" readonly>
+                                </div>
+
+                                <!-- Revenue -->
+                                <div class="col-md-6">
+                                  <label class="form-label fw-semibold">Revenue</label>
+                                  <input type="text" class="form-control bg-light" value="₦3.5M" readonly>
+                                </div>
+
+                                <!-- Tax Liability -->
+                                <div class="col-md-6">
+                                  <label class="form-label fw-semibold">Tax Liability</label>
+                                  <input type="text" class="form-control bg-light" value="₦125K" readonly>
+                                </div>
+
+                                <!-- Due Date -->
+                                <div class="col-md-6">
+                                  <label class="form-label fw-semibold">Due Date</label>
+                                  <input type="text" class="form-control bg-light" value="2024-02-15" readonly>
+                                </div>
+
+                                <!-- Status -->
+                                <div class="col-md-6">
+                                  <label class="form-label fw-semibold">Status</label>
+                                  <input type="text" class="form-control bg-light" value="pending" readonly>
+                                </div>
+                              </div>
+                            </form>
+                          </div>
+
+                          <!-- Modal Footer -->
+                          <div class="modal-footer">
+                            <button type="button" class="btn btn-outline-secondary"
+                              data-bs-dismiss="modal">Cancel</button>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+
+                    <!-- Bootstrap JS Bundle -->
+                    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+                  </tr>
+                  <tr>
+                    <td>
+                      <div class="fw-normalbold">Surulere Market Co.</div>
+                      <small class="text-muted">M004</small>
+                    </td>
+                    <td>December 2023</td>
+                    <td class="text-end fw-normalbold">₦0.9M</td>
+                    <td class="text-end fw-normalbold">₦48K</td>
+                    <td>
+                      <div>2024-01-15</div>
+                      <small class="text-danger">67 days overdue</small>
+                    </td>
+                    <td>Interswitch Nigeria</td>
+                    <td class="text-center">
+                      <span class="badge bg-danger rounded-pill">overdue</span>
+                    </td>
+                    <td class="text-center">
+                      <a href="#" class="text-primary text-decoration-none me-2">
+                        <i class="fas fa-eye me-1"></i>View Details
+                      </a>
+                      <a href="#" class="text-danger text-decoration-none">
+                        <i class="fas fa-exclamation-circle me-1"></i>Enforce
+                      </a>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+    </main>
+
+    <!-- begin::GXON Footer -->
+    <footer class="footer-wrapper bg-body">
+      <div class="container">
+        <div class="row g-2">
+          <div class="col-lg-6 col-md-7 text-center text-md-start">
+            <p class="mb-0">
+              © <span class="currentYear">2025</span>. Proudly powered by
+              <a href="javascript:void(0);">Binarifylimited</a>.
+            </p>
+          </div>
+          <div class="col-lg-6 col-md-5">
+            <ul class="d-flex list-inline mb-0 gap-3 flex-wrap justify-content-center justify-content-md-end">
+              <li>
+                <a class="text-body" href="index.html">Home</a>
+              </li>
+              <li>
+                <a class="text-body" href="pages/faq.html">Faq's</a>
+              </li>
+              <li>
+                <a class="text-body" href="pages/faq.html">Support</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </footer>
+    <!-- end::GXON Footer -->
+  </div>
+  <!-- Load Chart.js once -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <!-- begin::GXON Page Scripts -->
+  <script src="assets/js/header.js"></script>
+  <script src="assets/libs/global/global.min.js"></script>
+  <script src="assets/libs/sortable/Sortable.min.js"></script>
+  <script src="assets/libs/chartjs/chart.js"></script>
+  <script src="assets/libs/flatpickr/flatpickr.min.js"></script>
+  <script src="assets/libs/apexcharts/apexcharts.min.js"></script>
+  <script src="assets/libs/datatables/datatables.min.js"></script>
+  <script src="assets/js/dashboard.js"></script>
+  <script src="assets/js/todolist.js"></script>
+  <script src="assets/js/appSettings.js"></script>
+  <script src="assets/js/main.js"></script>
+  <script src="assets/js/my-js/tax-liability.js"></script>
+  <!-- end::GXON Page Scripts -->
+</body>
+
+</html>
