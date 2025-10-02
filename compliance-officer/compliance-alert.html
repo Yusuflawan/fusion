@@ -70,10 +70,8 @@
   <link rel="stylesheet" href="assets/css/styles.css">
   <!-- end::GXON CSS Stylesheet -->
 
-
   <!-- Bootstrap Icons CDN -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
-
 
   <!-- begin::GXON Googletagmanager -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-XWVQM68HHQ"></script>
@@ -183,7 +181,7 @@
                 Active Alerts
                 <i class="bi bi-exclamation-triangle text-warning float-end"></i>
               </h6>
-              <h3 class="text-danger mb-0">2</h3>
+              <h3 class="text-danger mb-0" id="active-alerts">2</h3>
               <small class="text-muted">Require attention</small>
             </div>
           </div>
@@ -195,7 +193,7 @@
                 High Priority
                 <i class="bi bi-x-circle text-danger float-end"></i>
               </h6>
-              <h3 class="text-danger mb-0">1</h3>
+              <h3 class="text-danger mb-0" id="high-priority">1</h3>
               <small class="text-muted">Critical issues</small>
             </div>
           </div>
@@ -207,7 +205,7 @@
                 Overdue Payments
                 <i class="bi bi-clock-history text-purple float-end"></i>
               </h6>
-              <h3 class="text-purple mb-0">1</h3>
+              <h3 class="text-purple mb-0" id="overdue">1</h3>
               <small class="text-muted">Past due date</small>
             </div>
           </div>
@@ -219,7 +217,7 @@
                 Avg Response Time
                 <i class="bi bi-clock text-info float-end"></i>
               </h6>
-              <h3 class="text-primary mb-0">2.3h</h3>
+              <h3 class="text-primary mb-0">0.23s</h3>
               <small class="text-muted">Average handling</small>
             </div>
           </div>
@@ -232,14 +230,16 @@
             <h5 class="fw-bold mb-3">Active Alerts</h5>
             <p class="text-muted">Current compliance alerts requiring attention</p>
 
+            <div id="alerts-container"></div> <!-- Alerts will be injected here -->
+
             <!-- Alert Card (High Priority) -->
-            <div class="p-3 mb-3 rounded" style="background:#fff5f5; border-left:5px solid #dc3545;">
+            <!-- <div class="p-3 mb-3 rounded" style="background:#fff5f5; border-left:5px solid #dc3545;">
               <div class="d-flex justify-content-between align-items-start">
                 <div>
                   <span class="badge bg-danger me-1">high priority</span>
                   <span class="badge bg-warning text-dark me-1">overdue payment</span>
                   <span class="badge bg-dark">active</span>
-                  <h6 class="fw-bold mt-2 mb-2">Lagos Electronics Hub</h6>
+                  <h6 class="fw-bold mt-2 mb-2">GTBank Payment Gateway</h6>
                   <p class="mb-1 text-muted">Tax payment overdue by 45 days – ₦90,000 liability</p>
                   <small class="text-muted">Created: 2024-01-20 08:30:00 | Officer: Sarah Okafor | Risk Score: 85/100 |
                     Due: 2024-01-25</small>
@@ -250,10 +250,10 @@
                   <a href="#" class="text-muted">View Details</a>
                 </div>
               </div>
-            </div>
+            </div> -->
 
             <!-- Alert Card (Low Priority) -->
-            <div class="p-3 rounded" style="background:#f5f9ff; border-left:5px solid #0d6efd;">
+            <!-- <div class="p-3 rounded" style="background:#f5f9ff; border-left:5px solid #0d6efd;">
               <div class="d-flex justify-content-between align-items-start">
                 <div>
                   <span class="badge bg-info me-1">low priority</span>
@@ -270,14 +270,14 @@
                   <a href="#" class="text-muted">View Details</a>
                 </div>
               </div>
-            </div>
+            </div> -->
           </div>
         </div>
 
         <!-- Bottom Section -->
         <div class="row g-3">
           <!-- Alert Types -->
-          <div class="col-md-6">
+          <!-- <div class="col-md-6">
             <div class="card shadow-sm border-0 p-3">
               <h6 class="fw-bold">Alert Types Distribution</h6>
               <p class="text-muted mb-3">Breakdown of alert categories</p>
@@ -288,10 +288,10 @@
                 <span>System Issues <span class="float-end">1</span></span>
               </div>
             </div>
-          </div>
+          </div> -->
 
           <!-- Resolution Performance -->
-          <div class="col-md-6">
+          <!-- <div class="col-md-6">
             <div class="card shadow-sm border-0 p-3">
               <h6 class="fw-bold">Resolution Performance</h6>
               <p class="text-muted mb-3">Alert handling efficiency metrics</p>
@@ -302,7 +302,7 @@
                 <span>High Priority Resolved <span class="float-end text-success">85.2%</span></span>
               </div>
             </div>
-          </div>
+          </div> -->
         </div>
 
       </div>
@@ -349,6 +349,7 @@
   <script src="assets/js/dashboard.js"></script>
   <script src="assets/js/appSettings.js"></script>
   <script src="assets/js/main.js"></script>
+  <script src="assets/js/my-js/compliance-alert.js"></script>
   <!-- end::GXON Page Scripts -->
 </body>
 

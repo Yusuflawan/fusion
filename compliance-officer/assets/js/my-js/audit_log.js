@@ -9,7 +9,7 @@ document.addEventListener("DOMContentLoaded", async () => {
     }
 
     try {
-        const response = await fetch(`${baseUrl}/audit-logs/count`, {
+        const response = await fetch(`${baseUrl}/compliance-officer/audit-logs`, {
             method: "GET",
             headers: {
                 "Content-Type": "application/json",
@@ -19,74 +19,42 @@ document.addEventListener("DOMContentLoaded", async () => {
 
         const result = await response.json();
 
-        document.getElementById("total-activities-count").textContent = result.data.count;
+        // Total activities
+        document.getElementById("total-activities").textContent = result.data.length;
 
-    } catch (error) {
-        console.error("Error fetching data:", error);
-    }
+        // Count high impact activities (those mentioning "non-compliant" in details)
+        const highImpactCount = result.data.filter(update =>
+            update.detail.toLowerCase().includes("non-compliant")
+        ).length;
+        document.getElementById("high-impact-activities").textContent = highImpactCount;
 
-    try {
-        const response = await fetch(`${baseUrl}/audit-logs/failed-logins/count`, {
-            method: "GET",
-            headers: {
-                "Content-Type": "application/json",
-            }
-        });
-        if (!response.ok) throw new Error("Network response was not ok");
+        const container = document.getElementById("systemUpdates");
 
-        const result = await response.json();
+        if (result.status === "success" && result.data.length > 0) {
+            result.data.forEach(update => {
+                // Badge color (based on success/failed)
+                let badgeColor = "bg-warning";
+                if (update.status === "success") badgeColor = "bg-success";
+                if (update.status === "failed") badgeColor = "bg-danger";
 
-        document.getElementById("failed-login-count").textContent = result.data.count;
+                const li = document.createElement("li");
+                li.className = "list-group-item";
 
-    } catch (error) {
-        console.error("Error fetching data:", error);
-    }
-
-    
-    try {
-        const response = await fetch(`${baseUrl}/audit-logs`, {
-            method: "GET",
-            headers: {
-                "Content-Type": "application/json",
-            }
-        });
-
-        if (!response.ok) throw new Error("Network response was not ok");
-
-        const result = await response.json();
-
-        const tableBody = document.querySelector("table tbody");
-        tableBody.innerHTML = ""; // clear old rows
-
-        result.data.forEach(log => {
-            const row = document.createElement("tr");
-
-            row.innerHTML = `
-                <td class="pe-0">
-                    <div class="form-check">
-                        <input class="form-check-input" data-checkbox type="checkbox">
+                li.innerHTML = `
+                    <span class="badge ${badgeColor} me-2">&bull;</span>
+                    <strong>${update.action_type.replace("_", " ")}</strong><br>
+                    <small>${update.detail}</small>
+                    <div class="mt-2">
+                        <span class="badge bg-secondary">${update.user_type}</span>
+                        <span class="float-end text-dark">${update.performed_at}</span>
                     </div>
-                </td>
-                <td>
-                    <div class="d-flex align-items-center mw-175px">
-                        <div class="ms-2">${new Date(log.performed_at).toLocaleString()}</div>
-                    </div>
-                </td>
-                <td>${log.user_email !== "0" ? log.user_email : "Unknown User"}</td>
-                <td>${log.action_type}</td>
-                <td>
-                    <span class="badge bg-primary-subtle text-primary">${log.role_name ?? "N/A"}</span>
-                </td>
-                <td>${log.detail}</td>
-                <td class="text-end">
-                    <span class="badge ${log.status === "success" ? "bg-success" : "bg-danger"}">
-                        ${log.status}
-                    </span>
-                </td>
-            `;
+                `;
 
-            tableBody.appendChild(row);
-        });
+                container.appendChild(li);
+            });
+        } else {
+            container.innerHTML = `<li class="list-group-item text-muted">No system updates found</li>`;
+        }
 
     } catch (error) {
         console.error("Error fetching data:", error);
@@ -96,4 +64,5 @@ document.addEventListener("DOMContentLoaded", async () => {
 
 });
 
+    // document.getElementById("total-activities-count").textContent = result.data.count;
 

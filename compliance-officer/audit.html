@@ -187,7 +187,7 @@
                   <i class="bi bi-list-task fs-4"></i>
                 </div>
                 <h6 class="mb-4">Total Activities</h6>
-                <h4 class="mb-1">5</h4>
+                <h4 class="mb-1" id="total-activities">5</h4>
                 <small class="text-muted">This period</small>
               </div>
             </div>
@@ -200,15 +200,14 @@
                   <i class="bi bi-exclamation-triangle-fill fs-4"></i>
                 </div>
                 <h6 class="mb-4">High Impact</h6>
-                <h4 class="mb-1">1</h4>
+                <h4 class="mb-1" id="high-impact-activities">1</h4>
                 <small class="text-muted">Critical Action</small>
               </div>
             </div>
 
             <!-- Investigations -->
-            <div class="col-md-3">
+            <!-- <div class="col-md-3">
               <div class="card p-3 position-relative">
-                <!-- Icon top-right -->
                 <div class="position-absolute top-0 end-0 m-2 text-warning">
                   <i class="bi bi-shield-fill-exclamation fs-4"></i>
                 </div>
@@ -216,12 +215,11 @@
                 <h4 class="mb-1">1</h4>
                 <small class="text-muted">Active Cases</small>
               </div>
-            </div>
+            </div> -->
 
             <!-- Verifications -->
-            <div class="col-md-3">
+            <!-- <div class="col-md-3">
               <div class="card p-3 position-relative">
-                <!-- Icon top-right -->
                 <div class="position-absolute top-0 end-0 m-2 text-success">
                   <i class="bi bi-check-circle-fill fs-4"></i>
                 </div>
@@ -229,7 +227,7 @@
                 <h4 class="mb-1">1</h4>
                 <small class="text-muted">Complete</small>
               </div>
-            </div>
+            </div> -->
 
           </div>
         </div>
@@ -256,10 +254,10 @@
           <h6 class="fw-bold mb-3">Activity Timeline</h6>
           <p class="text-muted">Chronological record of compliance officer actions</p>
 
-          <ul class="list-group list-group-flush">
+          <ul id="systemUpdates" class="list-group list-group-flush">
 
             <!-- Activity 1 -->
-            <li class="list-group-item">
+            <!-- <li class="list-group-item">
               <span class="badge bg-warning me-2">&bull;</span>
               <strong>Updated compliance status</strong><br>
               <small>
@@ -271,10 +269,10 @@
                 <span class="badge bg-secondary">merchant</span>
                 <span class="float-end text-dark">2024-01-20 14:30:22</span>
               </div>
-            </li>
+            </li> -->
 
             <!-- Activity 2 -->
-            <li class="list-group-item">
+            <!-- <li class="list-group-item">
               <span class="badge bg-success me-2">&bull;</span>
               <strong>Verified payment</strong><br>
               <small>
@@ -286,57 +284,12 @@
                 <span class="badge bg-secondary">merchant</span>
                 <span class="float-end text-dark">2024-01-20 11:15:45</span>
               </div>
-            </li>
-
-            <!-- Activity 3 -->
-            <li class="list-group-item">
-              <span class="badge bg-danger me-2">&bull;</span>
-              <strong>Initiated investigation</strong><br>
-              <small>
-                Target: <b>Surulere Market Co.</b> | Officer: <b>Sarah Okafor</b><br>
-                Started investigation for suspicious transaction patterns and tax evasion
-              </small>
-              <div class="mt-2">
-                <span class="badge bg-danger">high impact</span>
-                <span class="badge bg-secondary">merchant</span>
-                <span class="float-end text-dark">2024-01-19 16:45:12</span>
-              </div>
-            </li>
-
-            <!-- Activity 4 -->
-            <li class="list-group-item">
-              <span class="badge bg-success me-2">&bull;</span>
-              <strong>Generated report</strong><br>
-              <small>
-                Target: <b>Compliance Report Q4 2023</b> | Officer: <b>Sarah Okafor</b><br>
-                Generated quarterly compliance report for executive review
-              </small>
-              <div class="mt-2">
-                <span class="badge bg-secondary">low impact</span>
-                <span class="badge bg-secondary">report</span>
-                <span class="float-end text-dark">2024-01-19 09:20:33</span>
-              </div>
-            </li>
-
-            <!-- Activity 5 -->
-            <li class="list-group-item">
-              <span class="badge bg-warning me-2">&bull;</span>
-              <strong>Updated risk assessment</strong><br>
-              <small>
-                Target: <b>Victoria Stores</b> | Officer: <b>Sarah Okafor</b><br>
-                Elevated risk level from low to medium based on compliance score drop
-              </small>
-              <div class="mt-2">
-                <span class="badge bg-secondary">medium impact</span>
-                <span class="badge bg-secondary">merchant</span>
-                <span class="float-end text-dark">2024-01-18 13:55:17</span>
-              </div>
-            </li>
+            </li> -->
           </ul>
         </div>
 
         <!-- Bottom Cards -->
-        <div class="row g-3">
+        <!-- <div class="row g-3">
           <div class="col-md-6">
             <div class="card p-3">
               <h6 class="fw-bold">Activity Distribution</h6>
@@ -360,7 +313,7 @@
               </ul>
             </div>
           </div>
-        </div>
+        </div> -->
       </div>
     </main>
 
@@ -404,7 +357,58 @@
   <script src="assets/js/dashboard.js"></script>
   <script src="assets/js/appSettings.js"></script>
   <script src="assets/js/main.js"></script>
+  <script src="assets/js/my-js/audit_log.js"></script>
   <!-- end::GXON Page Scripts -->
 </body>
 
 </html>
+
+
+
+
+
+            <!-- Activity 3 -->
+            <!-- <li class="list-group-item">
+              <span class="badge bg-danger me-2">&bull;</span>
+              <strong>Initiated investigation</strong><br>
+              <small>
+                Target: <b>Surulere Market Co.</b> | Officer: <b>Sarah Okafor</b><br>
+                Started investigation for suspicious transaction patterns and tax evasion
+              </small>
+              <div class="mt-2">
+                <span class="badge bg-danger">high impact</span>
+                <span class="badge bg-secondary">merchant</span>
+                <span class="float-end text-dark">2024-01-19 16:45:12</span>
+              </div>
+            </li> -->
+
+            <!-- Activity 4 -->
+            <!-- <li class="list-group-item">
+              <span class="badge bg-success me-2">&bull;</span>
+              <strong>Generated report</strong><br>
+              <small>
+                Target: <b>Compliance Report Q4 2023</b> | Officer: <b>Sarah Okafor</b><br>
+                Generated quarterly compliance report for executive review
+              </small>
+              <div class="mt-2">
+                <span class="badge bg-secondary">low impact</span>
+                <span class="badge bg-secondary">report</span>
+                <span class="float-end text-dark">2024-01-19 09:20:33</span>
+              </div>
+            </li> -->
+
+            <!-- Activity 5 -->
+            <!-- <li class="list-group-item">
+              <span class="badge bg-warning me-2">&bull;</span>
+              <strong>Updated risk assessment</strong><br>
+              <small>
+                Target: <b>Victoria Stores</b> | Officer: <b>Sarah Okafor</b><br>
+                Elevated risk level from low to medium based on compliance score drop
+              </small>
+              <div class="mt-2">
+                <span class="badge bg-secondary">medium impact</span>
+                <span class="badge bg-secondary">merchant</span>
+                <span class="float-end text-dark">2024-01-18 13:55:17</span>
+              </div>
+            </li> -->
+          
