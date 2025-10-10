@@ -1,6 +1,6 @@
 
-// const baseUrl = "https://arafatfootballacademy.com/fusion/backend";
-const baseUrl = "http://localhost:8080/fusion/backend";
+const baseUrl = "https://arafatfootballacademy.com/fusion/backend";
+// const baseUrl = "http://localhost:8080/fusion/backend";
 
 // handle message display
 function displayMessage(message, color) {
