@@ -299,6 +299,7 @@
           <th>Commission</th>
           <th>WHT</th>
           <th>Date / Time</th>
+          <th>Service Charge</th>
           <th>Status</th>
         </tr>
       </thead>
@@ -362,6 +363,7 @@
       const bank = row.issuing_bank ?? "-";
       const commission = row.commission ?? "-";
       const wht = row.wht ?? "-";
+      const serviceCharge = row.ptsp_charge ?? "-";
 
       return `
         <tr>
@@ -374,6 +376,7 @@
           <td>${commission}</td>
           <td>${wht}</td>
           <td>${created}</td>
+          <td>${serviceCharge}</td>
           <td><span class="badge bg-${status === "success" ? "success" : "secondary"}">${status}</span></td>
         </tr>
       `;

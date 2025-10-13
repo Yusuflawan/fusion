@@ -48,6 +48,7 @@ async function loadTransactions() {
         <td>${txn.issuing_bank || "-"}</td>
         <td>${txn.wht || "-"}</td>
         <td>₦${Number(txn.commission || 0).toLocaleString()}</td>
+        <td>${txn.ptsp_charge || "-"}</td>
         <td>
           <span class="badge ${
             txn.status.toLowerCase() === "success"
